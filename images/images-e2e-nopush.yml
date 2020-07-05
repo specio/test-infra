@@ -7,8 +7,8 @@ trigger:
     - releases/*
 
 jobs:
-- job: docker_push_oe_ci_linux
-  displayName: Docker Build and Push CI Images for Openenclave
+- job: docker_image_build
+  displayName: Docker Build and Push CI Images
   strategy:
     matrix:
       Ubuntu_1804:
@@ -22,6 +22,7 @@ jobs:
       #Windows_2019:
         #DockerFile_Path: images/windows/2019/Dockerfile
         #repository: brmclare/oesdk-windows2019-dogfood
+        #pool: 
     maxParallel: 99
   pool:
       name: $(pool)
@@ -39,3 +40,30 @@ jobs:
         buildContext: '.'
         tags: |
           $(Build.BuildId)
+
+- job: docker_image_validate
+    dependsOn: docker_image_build
+    displayName: Validate Docker images
+    strategy:
+    matrix:
+      Ubuntu_1804:
+        dockerimage: brmclare/oesdk-ubuntu1804-dogfood
+        pool: 1804CISGXagentspool
+        options: -it --device /dev/sgx:/dev/sgx sgxdcap:latest
+        validation: images/debian/validate.sh
+      Ubuntu_1604:
+        dockerimage: brmclare/oesdk-ubuntu1604-dogfood
+        pool: 1804CISGXagentspool
+        options: -it --device /dev/sgx:/dev/sgx sgxdcap:latest
+        validation: images/debian/validate.sh
+      #Windows_2019:
+        #dockerimage: brmclare/oesdk-windows2019-dogfood
+        #pool: 
+        #options: -it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"
+        #validation: images/windows/validate.cmd
+    maxParallel: 99
+    pool:
+        name: $(pool)
+    container: 
+      image: $(dockerimage):$(Build.BuildId)
+      options: $(options)

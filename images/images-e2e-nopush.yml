@@ -40,11 +40,10 @@ jobs:
         buildContext: '.'
         tags: |
           $(Build.BuildId)
-
 - job: docker_image_validate
-    dependsOn: docker_image_build
-    displayName: Validate Docker images
-    strategy:
+  dependsOn: docker_image_build
+  displayName: Validate Docker images
+  strategy:
     matrix:
       Ubuntu_1804:
         dockerimage: brmclare/oesdk-ubuntu1804-dogfood
@@ -62,8 +61,8 @@ jobs:
         #options: -it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"
         #validation: images/windows/validate.cmd
     maxParallel: 99
-    pool:
-        name: $(pool)
-    container: 
-      image: $(dockerimage):$(Build.BuildId)
-      options: $(options)
+  pool:
+      name: $(pool)
+  container: 
+    image: $(dockerimage):$(Build.BuildId)
+    options: $(options)

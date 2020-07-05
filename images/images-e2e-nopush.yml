@@ -66,3 +66,5 @@ jobs:
   container: 
     image: $(dockerimage):$(Build.BuildId)
     options: $(options)
+  steps:
+    - script: $(validation)

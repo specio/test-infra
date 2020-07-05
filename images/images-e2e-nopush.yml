@@ -8,7 +8,7 @@ trigger:
 
 jobs:
 - job: docker_image_build
-  displayName: Docker Build and Push CI Images
+  displayName: Build and Push CI Images To Dogfood repo
   strategy:
     matrix:
       Ubuntu_1804:
@@ -42,7 +42,7 @@ jobs:
           $(Build.BuildId)
 - job: docker_image_validate
   dependsOn: docker_image_build
-  displayName: Validate Docker images
+  displayName: Validate Images from Dogfood repo
   strategy:
     matrix:
       Ubuntu_1804:

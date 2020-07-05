@@ -60,14 +60,16 @@ jobs:
         pool: 1804CISGXagentspool
         options: -it --device /dev/sgx:/dev/sgx
         validation: images/debian/validate.sh
-      #Windows_2019:
-        #dockerimage: brmclare/oesdk-windows2019-dogfood
-        #pool: 
-        #options: -it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"
-        #validation: images/windows/validate.cmd
+      Windows_2019:
+        dockerimage: brmclare/oesdk-windows2019-dogfood
+        pool:
+        vmImage: windows-latest
+        options: #-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"
+        validation: #images/windows/validate.cmd
     maxParallel: 99
   pool:
       name: $(pool)
+      vmImage: $(vmImage)
   container: 
     image: $(dockerimage):$(Build.BuildId)
     options: $(options)

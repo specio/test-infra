@@ -48,12 +48,12 @@ jobs:
       Ubuntu_1804:
         dockerimage: brmclare/oesdk-ubuntu1804-dogfood
         pool: 1804CISGXagentspool
-        options: -it --device /dev/sgx:/dev/sgx sgxdcap:latest
+        options: -it --device /dev/sgx:/dev/sgx
         validation: images/debian/validate.sh
       Ubuntu_1604:
         dockerimage: brmclare/oesdk-ubuntu1604-dogfood
         pool: 1804CISGXagentspool
-        options: -it --device /dev/sgx:/dev/sgx sgxdcap:latest
+        options: -it --device /dev/sgx:/dev/sgx
         validation: images/debian/validate.sh
       #Windows_2019:
         #dockerimage: brmclare/oesdk-windows2019-dogfood

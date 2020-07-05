@@ -31,4 +31,4 @@ jobs:
   container: 
     image: $(dockerimage):$(Build.BuildId)
   steps:
-    - script: 'cd /prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=/tools/plugins.yaml --config-path=/tools/config.yaml'
+    - script: 'cd /prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=config/prow/plugins.yaml --config-path=config/prow/config.yaml'

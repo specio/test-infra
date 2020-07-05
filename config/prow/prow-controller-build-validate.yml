@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -6,14 +7,28 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
+- job: docker_image_build
+  displayName: Build and Push Prow Controller Image To Dogfood repo
+  pool: 1804CISGXagentspool
+  workspace:
+    clean: all 
+  steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'brmclareDockerHub'
+        repository: 'prow-controller-dogfood'
+        command: 'buildAndPush'
+        Dockerfile: 'config/prow/Dockerfile'
+        buildContext: '.'
+        tags: |
+          $(Build.BuildId)
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- job: docker_image_validate
+  displayName: Validate Prow Controller Image  from Dogfood repo
+  dependsOn: docker_image_build
+  pool: 1804CISGXagentspool
+  container: 
+    image: $(dockerimage):$(Build.BuildId)
+  steps:
+    - script: 'cd /prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=/tools/plugins.yaml --config-path=/tools/config.yaml'

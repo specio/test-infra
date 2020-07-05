@@ -15,17 +15,21 @@ jobs:
         DockerFile_Path: images/debian/1804/Dockerfile
         repository: brmclare/oesdk-ubuntu1804-dogfood
         pool: 1804CISGXagentspool
+        vmImage:
       Ubuntu_1604:
         DockerFile_Path: images/debian/1804/Dockerfile
         repository: brmclare/oesdk-ubuntu1604-dogfood
         pool: 1804CISGXagentspool
-      #Windows_2019:
-        #DockerFile_Path: images/windows/2019/Dockerfile
-        #repository: brmclare/oesdk-windows2019-dogfood
-        #pool: 
+        vmImage:
+      Windows_2019:
+        DockerFile_Path: images/windows/2019/Dockerfile
+        repository: brmclare/oesdk-windows2019-dogfood
+        pool:
+        vmImage: windows-latest
     maxParallel: 99
   pool:
       name: $(pool)
+      vmImage: $(vmImage)
   workspace:
     clean: all 
   #container: containerReference # container to run this job inside

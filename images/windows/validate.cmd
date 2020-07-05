@@ -1,0 +1,1 @@
+mkdir temp && cd temp && git clone https://github.com/openenclave/openenclave.git && cd openenclave && git checkout v0.9.x && mkdir out && cd out && mkdir x64-Debug && cd x64-Debug && vcvars64.bat &&cmake -G Ninja -DLVI_MITIGATION=ControlFlow -DNUGET_PACKAGE_PATH=C:\Downloads\prereqs\nuget -DCMAKE_INSTALL_PREFIX=C:/openenclave ../.. && ninja && ctest

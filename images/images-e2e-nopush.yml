@@ -27,6 +27,7 @@ jobs:
         pool:
         vmImage: windows-latest
     maxParallel: 99
+  # TODO:// only use pools. Workaround in place due to lack of Docker in the Ci Agents for Windows
   pool:
       name: $(pool)
       vmImage: $(vmImage)

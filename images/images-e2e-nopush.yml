@@ -12,17 +12,19 @@ jobs:
   strategy:
     matrix:
       Ubuntu_1804:
-        Docker_File: 'images/debian/1804/Dockerfile'
+        DockerFile_Path: images/debian/1804/Dockerfile
         repository: brmclare/oesdk-ubuntu1804-dogfood
+        pool: 1804CISGXagentspool
       Ubuntu_1604:
-        Docker_File: 'images/debian/1804/Dockerfile'
+        DockerFile_Path: images/debian/1804/Dockerfile
         repository: brmclare/oesdk-ubuntu1604-dogfood
+        pool: 1804CISGXagentspool
       #Windows_2019:
-        #Docker_File: 'images/windows/2019/Dockerfile'
+        #DockerFile_Path: images/windows/2019/Dockerfile
         #repository: brmclare/oesdk-windows2019-dogfood
     maxParallel: 99
   pool:
-      name: '1804CISGXagentspool'
+      name: $(pool)
   workspace:
     clean: all 
   #container: containerReference # container to run this job inside
@@ -33,7 +35,7 @@ jobs:
         containerRegistry: 'brmclareDockerHub'
         repository: '$(repository)'
         command: 'buildAndPush'
-        Dockerfile: '$(Docker_File)'
+        Dockerfile: '$(DockerFile_Path)'
         buildContext: '.'
         tags: |
           $(Build.BuildId)

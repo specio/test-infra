@@ -17,7 +17,7 @@ jobs:
     - task: Docker@2
       inputs:
         containerRegistry: 'brmclareDockerHub'
-        repository: 'prow-controller-dogfood'
+        repository: 'brmclare/prow-controller-dogfood'
         command: 'buildAndPush'
         Dockerfile: 'config/prow/Dockerfile'
         buildContext: '.'

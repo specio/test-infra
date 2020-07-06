@@ -25,11 +25,3 @@ RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 |
 RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - && \
     echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
     apt update && apt install bazel-3.0.0 -y
-
-# Use the official prow tools to keep in line with their efforts
-RUN git clone https://github.com/kubernetes/test-infra.git /prow-tools/
-
-# Prelaod the bazel server packages, leads to transient npm errors
-COPY . /temp
-RUN cd /prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=/temp/config/prow/plugins.yaml --config-path=/temp/config/prow/config.yaml
-RUN rm -rf /temp

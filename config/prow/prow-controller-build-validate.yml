@@ -29,6 +29,6 @@ jobs:
   dependsOn: docker_image_build
   pool: 1804CISGXagentspool
   container: 
-    image: $(dockerimage):$(Build.BuildId)
+    image: brmclare/prow-controller-dogfood:$(Build.BuildId)
   steps:
     - script: 'cd /prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=config/prow/plugins.yaml --config-path=config/prow/config.yaml'

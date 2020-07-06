@@ -28,3 +28,7 @@ RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - && \
 
 # Use the official prow tools to keep in line with their efforts
 RUN git clone https://github.com/kubernetes/test-infra.git /prow-tools/
+
+# Prelaod the bazel server connection
+COPY . .
+RUN cd /prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=config/prow/plugins.yaml --config-path=config/prow/config.yaml

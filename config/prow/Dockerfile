@@ -2,7 +2,7 @@
 # Copyright (c) Open Enclave SDK contributors.
 # Licensed under the MIT License.
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # UPDATE EVERYTHING!!!
 RUN apt-get update && apt-get upgrade -y

@@ -5,7 +5,10 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  branches:
+    include:
+    - master
+    - releases/*
 
 jobs:
 - job: docker_image_build

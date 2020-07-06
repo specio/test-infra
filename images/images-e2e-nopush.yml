@@ -1,10 +1,10 @@
-    # Image build and validate e2e
+# Image build and validate e2e
 
-      trigger:
-        branches:
-          include:
-          - master
-          - releases/*
+trigger:
+  branches:
+    include:
+    - master
+    - releases/*
 
 jobs:
 - job: docker_image_build

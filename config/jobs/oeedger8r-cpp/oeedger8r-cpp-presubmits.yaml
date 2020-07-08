@@ -1,0 +1,33 @@
+presubmits:
+  openenclave-ci/oeedger8r-cpp:
+  - name: pull-oeedger8r-1804
+    branches:
+    - master
+    always_run: true
+    decorate: false
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: brmclare/oesdk-ubuntu1804-dev:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "./hack/checkout.sh && ./hack/cmakebuild.sh"
+
+  - name: pull-oeedger8r-1604
+    branches:
+    - master
+    always_run: true
+    decorate: false
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: brmclare/oesdk-ubuntu1604-dev:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "./hack/checkout.sh && ./hack/cmakebuild.sh"

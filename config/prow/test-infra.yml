@@ -13,7 +13,7 @@ trigger:
 jobs:
 
 - job: docker_image_validate
-  displayName: Validate Prow Controller Image from latest image
+  displayName: Validate Test-Infra CI Config
   pool: 1804CISGXagentspool
   container: 
     image: brmclare/test-infra:latest

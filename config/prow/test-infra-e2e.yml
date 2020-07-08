@@ -12,7 +12,7 @@ trigger:
 
 jobs:
 - job: docker_image_build
-  displayName: Build and Push Prow Controller Image To Dogfood repo
+  displayName:  Validate Test-Infra CI image and Config
   pool: 1804CISGXagentspool
   workspace:
     clean: all 

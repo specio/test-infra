@@ -12,7 +12,7 @@ trigger:
 
 jobs:
 - job: docker_image_build
-  displayName: Build and Push Prow Controller Image To Dogfood repo
+  displayName:  Validate Test-Infra CI image and Config
   pool: 1804CISGXagentspool
   workspace:
     clean: all 
@@ -34,4 +34,4 @@ jobs:
   container: 
     image: brmclare/test-infra:$(Build.BuildId)
   steps:
-    - script: 'git clone https://github.com/kubernetes/test-infra.git prow-tools; cd prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=$PWD/../config/prow/plugins.yaml --config-path=$PWD/../config/prow/config.yaml'
+    - script: './hack/merge-prow-jobs.sh && git clone https://github.com/kubernetes/test-infra.git prow-tools; cd prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=$PWD/../config/prow/plugins.yaml --config-path=$PWD/../config/prow/config.yaml'

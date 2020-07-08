@@ -8,7 +8,13 @@ FROM ubuntu:18.04
 RUN apt-get update && apt-get upgrade -y
 
 # Install dependencies
-RUN apt install -y python-pip python3-pip curl git vim curl gnupg
+RUN apt install -y python-pip python3-pip curl git vim curl gnupg snapd software-properties-common docker
+
+# Get yq
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+RUN add-apt-repository ppa:rmescandon/yq
+RUN apt update
+RUN apt install yq -y
 
 # Get Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash

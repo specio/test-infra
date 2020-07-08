@@ -19,11 +19,19 @@ tide:
 plank:
   default_decoration_configs:
     '*':
+      timeout: 4h
+      grace_period: 15s
+      job_url_prefix_config:
+      '*': https://<domain>/view/gcs
       utility_images: # using the tag we identified above
         clonerefs: "gcr.io/k8s-prow/clonerefs:v20200611-4c51f3fcb1"
         initupload: "gcr.io/k8s-prow/initupload:v20200611-4c51f3fcb1"
         entrypoint: "gcr.io/k8s-prow/entrypoint:v20200611-4c51f3fcb1"
         sidecar: "gcr.io/k8s-prow/sidecar:v20200611-4c51f3fcb1"
+      gcs_configuration: # configuration for uploading job results to GCS
+        bucket: <bucket-name>
+        path_strategy: explicit
+      gcs_credentials_secret: <secret-name>
 
 github_reporter:
   job_types_to_report:

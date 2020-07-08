@@ -18,4 +18,4 @@ jobs:
   container: 
     image: brmclare/test-infra:latest
   steps:
-    - script: 'git clone https://github.com/kubernetes/test-infra.git prow-tools; cd prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=$PWD/../config/prow/plugins.yaml --config-path=$PWD/../config/prow/config.yaml'
+    - script: './hack/merge-prow-jobs.sh && git clone https://github.com/kubernetes/test-infra.git prow-tools; cd prow-tools && bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=$PWD/../config/prow/plugins.yaml --config-path=$PWD/../config/prow/config.yaml'

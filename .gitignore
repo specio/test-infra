@@ -38,3 +38,6 @@ Thumbs.db
 
 # Ignore congfig file unless explicitly added
 config/prow/config.yaml
+
+# Ignore notes
+Notes.txt

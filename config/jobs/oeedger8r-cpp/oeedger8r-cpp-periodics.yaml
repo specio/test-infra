@@ -1,9 +1,8 @@
 
 periodics:
 - name: periodic-openenclave-oeedger8r-1804-dry
-  decorate: false
-  interval: 30m
-  decorate: false
+  decorate: true
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1804-dev:latest
@@ -19,9 +18,8 @@ periodics:
       ctest"
 
 - name: periodic-openenclave-oeedger8r-1804-full
-  decorate: false
-  interval: 30m
-  decorate: false
+  decorate: true
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1804-dev:latest
@@ -37,9 +35,8 @@ periodics:
       ctest"
 
 - name: periodic-openenclave-oeedger8r-1604-dry
-  decorate: false
-  interval: 30m
-  decorate: false
+  decorate: true
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1604-dev:latest
@@ -54,9 +51,8 @@ periodics:
       make"
 
 - name: periodic-openenclave-oeedger8r-1604-full
-  decorate: false
-  interval: 30m
-  decorate: false
+  decorate: true
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1604-dev:latest

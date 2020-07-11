@@ -1,0 +1,17 @@
+presubmits:
+  BRMcLaren/test-infra:
+  - name: pull-test-infra-latest
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/test-infra:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "Echo ping"

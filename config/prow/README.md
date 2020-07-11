@@ -131,22 +131,24 @@ kubectl create clusterrolebinding cluster-admin-binding-"${USER}" \
   --clusterrole=cluster-admin --user="${USER}"
 ```
 
+## Set namespaces for prowjobs and test pods
+```
+kubectl create namespace test-pods
+```
+
 ## Create GH secrets:
 ```
 openssl rand -hex 20 > $PWD/hmac
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
 # Create an oauth token over at gh
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
+kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json
+
 ```
 
 ## Add the prow components to the cluster
 ```
 kubectl apply -f config/prow/cluster/starter.yaml
-```
-
-## Set namespaces for prowjobs and test pods
-```
-kubectl create namespace test-pods
 ```
 
 ## Check deployment status
@@ -178,5 +180,6 @@ bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=/home/brmclare/test-in
 
 ## Clean up
 ```
-az group delete --name ${RESOURCE_GROUP} --yes --no-wait
-az group delete --name MC_$
+az group delete --name ${RESOURCE_GROUP} --yes
+az group delete --name MC_${RESOURCE_GROUP}_oe-${AKS_CLUSTER}_${LOCATION} --yes
+```

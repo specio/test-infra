@@ -1,7 +1,7 @@
 periodics:
 - name: periodic-openenclave-openenclave-sdk-1604-dry
   decorate: true 
-  interval: 15m
+  interval: 12h
   decorate: false
   spec:
     containers:
@@ -18,8 +18,7 @@ periodics:
 
 - name: periodic-openenclave-openenclave-sdk-1604-full
   decorate: true 
-  interval: 15m
-  decorate: false
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1604-dev:latest
@@ -36,8 +35,7 @@ periodics:
 
 - name: periodic-openenclave-openenclave-sdk-1804-dry
   decorate: true 
-  interval: 15m
-  decorate: false
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1804-dev:latest
@@ -53,8 +51,7 @@ periodics:
 
 - name: periodic-openenclave-openenclave-sdk-1804-full
   decorate: true 
-  interval: 15m
-  decorate: false
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1804-dev:latest
@@ -71,8 +68,7 @@ periodics:
 
 - name: periodic-openenclave-openenclave-1604-sdk-sgx-1
   decorate: true 
-  interval: 15m
-  decorate: false
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1604-dev:latest
@@ -96,8 +92,7 @@ periodics:
 
 - name: periodic-openenclave-openenclave-1804-sdk-sgx-1
   decorate: true 
-  interval: 15m
-  decorate: false
+  interval: 12h
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1804-dev:latest

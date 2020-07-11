@@ -67,6 +67,6 @@ $ git commit -s -m "This is my commit message."
 If you have been sent here by a bot, please run the following on your branch to fix.
 
 ```
-git commit --amend --signoff
+git commit --amend --signoff --all
 git push --force-with-lease origin
 ```

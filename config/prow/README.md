@@ -160,7 +160,16 @@ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 ## (OPTIONAL) Set DNS
 
-With the above IP go to the portal and look up your scale set with all the information you have provided and set a DNS to the external IP above. 
+With the above IP go to the portal and look up your scale set with all the information you have provided and set a DNS to the external IP above.
+
+## (OPTIONAL) Use official prow tools to valdiate your work, we do.
+
+Run the following to test the files, replacing the paths as necessary:
+
+```
+cd ~/prow-tools
+bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=/home/brmclare/test-infra/config/prow/plugins.yaml --config-path=/home/brmclare/test-infra/config/prow/config.yaml
+```
 
 ## Clean up
 ```

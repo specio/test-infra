@@ -4,12 +4,12 @@
 ## Install dependencies
 
 ```
-apt install -y python3-pip curl git vim 
+sudo apt install -y python3-pip curl git gnupg
 
 ```
 ## Install Azure CLI
 ```
-curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
 ## Install Kubectl
@@ -21,25 +21,29 @@ kubectl version --client
 ```
 ## Install Helm
 ```
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | sudo bash
 ```
 
 ## Install Bazel
 ```
-apt install curl gnupg
 curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
 echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-apt update && apt install bazel
-apt update && apt full-upgrade -y
+sudo apt update && sudo apt install bazel-3.0.0 -y
 ```
 ## Get Prow tools
 ```
-git clone https://github.com/kubernetes/test-infra.git /tools/
+git clone https://github.com/kubernetes/test-infra.git ~/prow-tools
 ```
 
 ## AZ login
 ```
 az login
+```
+
+## List all subscriptions
+
+```
+az account list
 ```
 
 ## Set Subscription
@@ -49,7 +53,7 @@ az account set --subscription "${SUBSCRIPTION_ID}"
 
 ## Create AKS RBAC Service Principal
 ```
-az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
+az ad sp create-for-rbac --skip-assignment --name oeTestInfraServicePrincipal
 ```
 
 ## Create Resource Group
@@ -57,7 +61,7 @@ az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
 ```
 
-## Create AKS Cluster
+## Create AKS Cluster with non-ACCNodes
 ```
 az aks create --resource-group ${RESOURCE_GROUP} \
     --name ${AKS_CLUSTER} \
@@ -70,9 +74,23 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --enable-cluster-autoscaler \
     --service-principal ${SERVICE_PRINCIPAL} \
     --client-secret ${CLIENT_SECRET} \
-    --min-count 3 \
+    --min-count 1 \
     --max-count 10 \
     --ssh-key-value ${PATH_KEY}
+```
+
+## (OPTIONAL) add DC series node pool for hybrid cluster
+```
+az extension add --name aks-preview
+
+az aks nodepool add --cluster-name ${AKS_CLUSTER} \
+    --resource-group ${RESOURCE_GROUP} \
+    --name acclin \
+    --min-count 1 \
+    --max-count 10 \
+    --enable-cluster-autoscaler \
+    --node-vm-size "Standard_DC2s_v2" \
+    --aks-custom-headers "usegen2vm=true"
 ```
 
 ## Get Credentials
@@ -115,9 +133,10 @@ kubectl create clusterrolebinding cluster-admin-binding-"${USER}" \
 
 ## Create GH secrets:
 ```
-openssl rand -hex 20 > /secret
-kubectl create secret generic hmac-token --from-file=/hmac
-kubectl create secret generic oauth-token --from-file=/oauth
+openssl rand -hex 20 > $PWD/hmac
+kubectl create secret generic hmac-token --from-file=$PWD/hmac
+# Create an oauth token over at gh
+kubectl create secret generic oauth-token --from-file=$PWD/oauth
 ```
 
 ## Add the prow components to the cluster
@@ -138,6 +157,10 @@ kubectl get ingress ing
 ```
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 ```
+
+## (OPTIONAL) Set DNS
+
+With the above IP go to the portal and look up your scale set with all the information you have provided and set a DNS to the external IP above. 
 
 ## Clean up
 ```

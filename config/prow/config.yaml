@@ -1,26 +1,31 @@
 prowjob_namespace: default
 pod_namespace: test-pods
+
 tide:
   sync_period: 15m
   queries:
-    - orgs:
-        - openenclave-ci
-      labels:
-        - lgtm
-        - approved
-      missingLabels:
-        - do-not-merge
-        - do-not-merge/hold
-        - do-not-merge/invalid-owners-file
-        - do-not-merge/work-in-progress
-        - needs-rebases
+  - orgs:
+    - openenclave-ci
+    labels:
+    - lgtm
+    - approved
+    missingLabels:
+    - do-not-merge
+    - do-not-merge/hold
+    - do-not-merge/invalid-owners-file
+    - do-not-merge/work-in-progress
+    - needs-rebases
+
 plank:
+  # used to link to job results for decorated jobs (with pod utilities)
+  job_url_prefix_config:
+    '*': https://<domain>/view/gcs
+  job_url_template: 'https://<domain>/view/gcs/<bucket-name>/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
+  report_template: '[Full PR test history](https://<domain>/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}})'
   default_decoration_configs:
     '*':
       timeout: 4h
       grace_period: 15s
-      job_url_prefix_config:
-      '*': https://<domain>/view/gcs
       utility_images: # using the tag we identified above
         clonerefs: "gcr.io/k8s-prow/clonerefs:v20200611-4c51f3fcb1"
         initupload: "gcr.io/k8s-prow/initupload:v20200611-4c51f3fcb1"
@@ -30,128 +35,20 @@ plank:
         bucket: <bucket-name>
         path_strategy: explicit
       gcs_credentials_secret: <secret-name>
+
 github_reporter:
   job_types_to_report:
-    - presubmit
-    - postsubmit
+  - presubmit
+  - postsubmit
+
 sinker:
   resync_period: 15m
   max_prowjob_age: 48h
   max_pod_age: 48h
   terminated_pod_ttl: 30m
+
 presubmits:
-  openenclave-ci/oeedger8r-cpp:
-    - name: pull-oeedger8r-1804
-      branches:
-        - master
-      always_run: true
-      decorate: false
-      skip_report: false
-      max_concurrency: 10
-      spec:
-        containers:
-          - image: brmclare/oesdk-ubuntu1804-dev:latest
-            command:
-              - /bin/bash
-            args:
-              - -c
-              - "./hack/checkout.sh && ./hack/cmakebuild.sh"
-    - name: pull-oeedger8r-1604
-      branches:
-        - master
-      always_run: true
-      decorate: false
-      skip_report: false
-      max_concurrency: 10
-      spec:
-        containers:
-          - image: brmclare/oesdk-ubuntu1604-dev:latest
-            command:
-              - /bin/bash
-            args:
-              - -c
-              - "./hack/checkout.sh && ./hack/cmakebuild.sh"
+
 periodics:
-  - name: periodic-openenclave-openenclave-sdk-1604-dry
-    decorate: true
-    interval: 15m
-    spec:
-      containers:
-        - image: brmclare/oesdk-ubuntu1604-dev:latest
-          command:
-            - sh
-            - "-c"
-            # Hack, need to get Docker file in oeeger8r repo
-            - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && mkdir build && cd build && cmake .. && make"
-  - name: periodic-openenclave-openenclave-sdk-1604-full
-    decorate: true
-    interval: 15m
-    spec:
-      containers:
-        - image: brmclare/oesdk-ubuntu1604-dev:latest
-          command:
-            - sh
-            - "-c"
-            # Hack, need to get Docker file in oeeger8r repo
-            - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && mkdir build && cd build && cmake .. && make && OE_SIMULATION=1 ctest"
-  - name: periodic-openenclave-openenclave-sdk-1804-dry
-    decorate: true
-    interval: 15m
-    spec:
-      containers:
-        - image: brmclare/oesdk-ubuntu1804-dev:latest
-          command:
-            - sh
-            - "-c"
-            # Hack, need to get Docker file in oeeger8r repo
-            - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && mkdir build && cd build && cmake .. && make"
-  - name: periodic-openenclave-openenclave-sdk-1804-full
-    decorate: true
-    interval: 15m
-    spec:
-      containers:
-        - image: brmclare/oesdk-ubuntu1804-dev:latest
-          command:
-            - sh
-            - "-c"
-            # Hack, need to get Docker file in oeeger8r repo
-            - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && mkdir build && cd build && cmake .. && make && OE_SIMULATION=1 ctest"
-  - name: periodic-openenclave-openenclave-1604-sdk-sgx-1
-    decorate: true
-    interval: 15m
-    spec:
-      containers:
-        - image: brmclare/oesdk-ubuntu1604-dev:latest
-          command:
-            - sh
-            - "-c"
-            # Hack, need to get Docker file in oeeger8r repo
-            - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && mkdir build && cd build && cmake .. && make && ctest"
-          securityContext:
-            privileged: true
-      volumes:
-        - name: dev-sgx
-          hostPath:
-            path: /dev/sgx
-      restartPolicy: Never
-  - name: periodic-openenclave-openenclave-1804-sdk-sgx-1
-    decorate: true
-    interval: 15m
-    spec:
-      containers:
-        - image: brmclare/oesdk-ubuntu1804-dev:latest
-          command:
-            - sh
-            - "-c"
-            # Hack, need to get Docker file in oeeger8r repo
-            - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && mkdir build && cd build && cmake .. && make && ctest"
-          volumeMounts:
-            - mountPath: /dev/sgx
-              name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-        - name: dev-sgx
-          hostPath:
-            path: /dev/sgx
+
 presets:

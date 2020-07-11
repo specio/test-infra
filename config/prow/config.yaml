@@ -1,6 +1,7 @@
 prowjob_namespace: default
 pod_namespace: test-pods
 tide:
+  target_url: http://oe-prow-status.uksouth.cloudapp.azure.com/tide
   sync_period: 1m
   queries:
     - repos:

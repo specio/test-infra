@@ -14,4 +14,4 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "Echo ping"
+        - "echo ping"

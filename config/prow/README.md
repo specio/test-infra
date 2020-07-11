@@ -144,6 +144,11 @@ kubectl create secret generic oauth-token --from-file=$PWD/oauth
 kubectl apply -f config/prow/cluster/starter.yaml
 ```
 
+## Set namespaces for prowjobs and test pods
+```
+kubectl create namespace test-pods
+```
+
 ## Check deployment status
 ```
 kubectl get deployments -w

@@ -1,0 +1,1 @@
+bazel-3.0.0 run //prow/cmd/checkconfig -- --plugin-config=/home/brmclare/test-infra/config/prow/plugins.yaml --config-path=/home/brmclare/test-infra/config/prow/config.yaml

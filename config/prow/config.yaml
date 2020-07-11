@@ -4,8 +4,8 @@ pod_namespace: test-pods
 tide:
   sync_period: 15m
   queries:
-  - orgs:
-    - openenclave-ci
+  - repos:
+    - BRMcLaren/test-infra
     labels:
     - lgtm
     - approved

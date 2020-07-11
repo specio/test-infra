@@ -1,5 +1,5 @@
 plugins:
-  openenclave-ci:
+  BRMcLaren/test-infra:
   - approve
   - assign
   - blunderbuss
@@ -35,9 +35,7 @@ label:
     - community/discussion
     - community/maintenance
     - community/question
-    - platform/aws
     - platform/azure
-    - platform/gcp
     - platform/other
     - tide/merge-method-merge
     - tide/merge-method-rebase

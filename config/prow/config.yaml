@@ -2,6 +2,7 @@ prowjob_namespace: default
 pod_namespace: test-pods
 tide:
   target_url: http://oe-prow-status.uksouth.cloudapp.azure.com/tide
+  pr_status_base_url: http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs/oe-prow-artifacts/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}
   sync_period: 1m
   queries:
     - repos:

@@ -1,54 +1,44 @@
 prowjob_namespace: default
 pod_namespace: test-pods
-
 tide:
   sync_period: 15m
   queries:
-  - repos:
-    - BRMcLaren/test-infra
-    labels:
-    - lgtm
-    - approved
-    missingLabels:
-    - do-not-merge
-    - do-not-merge/hold
-    - do-not-merge/invalid-owners-file
-    - do-not-merge/work-in-progress
-    - needs-rebases
-
+    - repos:
+        - BRMcLaren/test-infra
+      labels:
+        - lgtm
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebases
 plank:
   # used to link to job results for decorated jobs (with pod utilities)
   job_url_prefix_config:
-    '*': https://<domain>/view/gcs
-  job_url_template: 'https://<domain>/view/gcs/<bucket-name>/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
-  report_template: '[Full PR test history](https://<domain>/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}})'
+    '*': http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs
+  job_url_template: 'http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs/<bucket-name>/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
+  report_template: '[Full PR test history](http://oe-prow-status.uksouth.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}})'
   default_decoration_configs:
     '*':
       timeout: 4h
       grace_period: 15s
       utility_images: # using the tag we identified above
-        clonerefs: "gcr.io/k8s-prow/clonerefs:v20200611-4c51f3fcb1"
-        initupload: "gcr.io/k8s-prow/initupload:v20200611-4c51f3fcb1"
-        entrypoint: "gcr.io/k8s-prow/entrypoint:v20200611-4c51f3fcb1"
-        sidecar: "gcr.io/k8s-prow/sidecar:v20200611-4c51f3fcb1"
+        clonerefs: "gcr.io/k8s-prow/clonerefs:v20200710-7fa016752a"
+        initupload: "gcr.io/k8s-prow/initupload:v20200710-7fa016752a"
+        entrypoint: "gcr.io/k8s-prow/entrypoint:v20200710-7fa016752a"
+        sidecar: "gcr.io/k8s-prow/sidecar:v20200710-7fa016752a"
       gcs_configuration: # configuration for uploading job results to GCS
-        bucket: <bucket-name>
+        bucket: oe-prow-artifacts
         path_strategy: explicit
-      gcs_credentials_secret: <secret-name>
-
+      gcs_credentials_secret: gcs-credentials
 github_reporter:
   job_types_to_report:
   - presubmit
   - postsubmit
-
 sinker:
   resync_period: 15m
   max_prowjob_age: 48h
   max_pod_age: 48h
   terminated_pod_ttl: 30m
-
-presubmits:
-
-periodics:
-
-presets:

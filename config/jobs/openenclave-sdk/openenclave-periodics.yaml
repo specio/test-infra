@@ -19,7 +19,6 @@ periodics:
 - name: periodic-openenclave-openenclave-sdk-1604-full
   decorate: true 
   interval: 15m
-  decorate: false
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1604-dev:latest
@@ -37,7 +36,6 @@ periodics:
 - name: periodic-openenclave-openenclave-sdk-1804-dry
   decorate: true 
   interval: 15m
-  decorate: false
   spec:
     containers:
     - image: brmclare/oesdk-ubuntu1804-dev:latest

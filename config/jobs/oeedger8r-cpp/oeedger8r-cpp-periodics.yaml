@@ -1,7 +1,7 @@
 
 periodics:
 - name: periodic-openenclave-oeedger8r-1804-dry
-  decorate: false
+  decorate: true
   interval: 30m
   spec:
     containers:
@@ -18,7 +18,7 @@ periodics:
       ctest"
 
 - name: periodic-openenclave-oeedger8r-1804-full
-  decorate: false
+  decorate: true
   interval: 30m
   spec:
     containers:
@@ -35,7 +35,7 @@ periodics:
       ctest"
 
 - name: periodic-openenclave-oeedger8r-1604-dry
-  decorate: false
+  decorate: true
   interval: 30m
   spec:
     containers:
@@ -51,7 +51,7 @@ periodics:
       make"
 
 - name: periodic-openenclave-oeedger8r-1604-full
-  decorate: false
+  decorate: true
   interval: 30m
   spec:
     containers:

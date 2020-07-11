@@ -1,7 +1,7 @@
 prowjob_namespace: default
 pod_namespace: test-pods
 tide:
-  sync_period: 15m
+  sync_period: 1m
   queries:
     - repos:
         - BRMcLaren/test-infra
@@ -18,7 +18,7 @@ plank:
   # used to link to job results for decorated jobs (with pod utilities)
   job_url_prefix_config:
     '*': http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs
-  job_url_template: 'http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs/<bucket-name>/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
+  job_url_template: 'http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs/oe-prow-artifacts/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
   report_template: '[Full PR test history](http://oe-prow-status.uksouth.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}})'
   default_decoration_configs:
     '*':
@@ -35,8 +35,8 @@ plank:
       gcs_credentials_secret: gcs-credentials
 github_reporter:
   job_types_to_report:
-  - presubmit
-  - postsubmit
+    - presubmit
+    - postsubmit
 sinker:
   resync_period: 15m
   max_prowjob_age: 48h

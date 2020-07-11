@@ -1,3 +1,8 @@
+Contributing to Open Enclave Test Infra
+------------------------------
+Thank you for wanting to contribute to the test infrastracture of Open Enclave!
+
+
 Developer Certificate of Origin
 ------------------------------
 

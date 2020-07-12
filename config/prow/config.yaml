@@ -45,3 +45,83 @@ sinker:
   max_prowjob_age: 6h
   max_pod_age: 48h
   terminated_pod_ttl: 30m
+presubmits:
+  BRMcLaren/test-infra:
+    - name: pull-test-infra-latest
+      branches:
+        - master
+      always_run: true
+      decorate: true
+      skip_report: false
+      max_concurrency: 10
+      spec:
+        containers:
+          - image: openenclave/test-infra:latest
+            command:
+              - /bin/bash
+            args:
+              - -c
+              - "echo ping"
+    - name: pull-test-infra-build-image
+      branches:
+        - master
+      always_run: true
+      decorate: true
+      skip_report: false
+      max_concurrency: 10
+      spec:
+        containers:
+          - image: gcr.io/k8s-testimages/kubekins-e2e:v20200710-6b3b6fe-master
+            command:
+              - /bin/bash
+            args:
+              - -c
+              - "systemctl start docker && docker ps"
+            securityContext:
+              privileged: true
+  openenclave-ci/oeedger8r-cpp:
+    - name: pull-oeedger8r-1804
+      branches:
+        - master
+      always_run: true
+      decorate: false
+      skip_report: false
+      max_concurrency: 10
+      spec:
+        containers:
+          - image: brmclare/oesdk-ubuntu1804-dev:latest
+            command:
+              - /bin/bash
+            args:
+              - -c
+              - "./hack/checkout.sh && ./hack/cmakebuild.sh"
+    - name: pull-oeedger8r-1604
+      branches:
+        - master
+      always_run: true
+      decorate: false
+      skip_report: false
+      max_concurrency: 10
+      spec:
+        containers:
+          - image: brmclare/oesdk-ubuntu1604-dev:latest
+            command:
+              - /bin/bash
+            args:
+              - -c
+              - "./hack/checkout.sh && ./hack/cmakebuild.sh"
+periodics:
+  - name: ci-openenclave-oeedger8r-cmake-1804
+    extra_refs:
+      - org: openenclave
+        repo: oeedger8r-cpp
+        base_ref: master
+    decorate: true
+    interval: 3m
+    spec:
+      containers:
+        - image: brmclare/ubuntu1804:latest
+          command:
+            - sh
+            - "-c"
+            - "/hack/cmake-build.sh"

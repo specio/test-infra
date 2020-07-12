@@ -6,6 +6,24 @@ periodics:
   decorate: true 
   interval: 12h
   spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node.kubernetes.io/instance-type
+              operator: In
+              values:
+              - Standard_DC2s
+              - Standard_DC4s
+              - Standard_DC1s_v2
+              - Standard_DC2s_v2
+              - Standard_DC4s_v2
+              - Standard_DC8_v2
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux 
     containers:
     - image: openenclave/ubuntu1804:latest
       command:

@@ -16,8 +16,7 @@ presubmits:
         - -c
         - "echo ping"
 
-  BRMcLaren/test-infra:
-  - name: pull-test-infra-cmake
+  - name: pull-test-infra-validate-cmake-build
     branches:
     - master
     always_run: true
@@ -33,7 +32,6 @@ presubmits:
         - -c
         - "git clone https://github.com/openenclave/oeedger8r-cpp && cd oeedger8r-cpp && /hack/cmake-build.sh"
 
-  BRMcLaren/test-infra:
   - name: pull-test-infra-validate-prow-job-config
     branches:
     - master

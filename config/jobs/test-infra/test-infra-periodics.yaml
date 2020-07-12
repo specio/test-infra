@@ -1,0 +1,15 @@
+periodics:
+  - name: ci-openenclave-test-validate-prow-jobs
+    extra_refs:
+    - org: BRMcLaren
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 3m
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - "-c"
+            - "/hack/merge-prow-jobs.sh && /hack/validate-prow-jobs.sh"

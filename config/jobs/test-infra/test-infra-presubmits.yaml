@@ -1,6 +1,6 @@
 presubmits:
   BRMcLaren/test-infra:
-  - name: pull-test-infra-latest
+  - name: pull-test-infra-latest-ping
     branches:
     - master
     always_run: true
@@ -15,7 +15,9 @@ presubmits:
         args:
         - -c
         - "echo ping"
-  - name: pull-test-infra-build-image
+
+  BRMcLaren/test-infra:
+  - name: pull-test-infra-latest
     branches:
     - master
     always_run: true
@@ -24,12 +26,9 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-      - image: gcr.io/k8s-testimages/kubekins-e2e:v20200710-6b3b6fe-master
+      - image: openenclave/ubuntu1804:latest
         command:
         - /bin/bash
         args:
         - -c
-        - "systemctl start docker && docker ps"
-        # docker-in-docker needs privileged mode
-        securityContext:
-          privileged: true
+        - "git clone https://github.com/openenclave/oeedger8r-cpp && cd oeedger8r-cpp && /hack/cmake-build.sh"

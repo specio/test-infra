@@ -1,6 +1,6 @@
 presubmits:
   openenclave-ci/oeedger8r-cpp:
-  - name: pull-oeedger8r-1804
+  - name: pr-oeedger8r-1804
     branches:
     - master
     always_run: true

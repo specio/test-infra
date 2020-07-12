@@ -1,6 +1,6 @@
 presubmits:
   BRMcLaren/test-infra:
-  - name: pull-test-infra-latest
+  - name: pull-test-infra-ping
     branches:
     - master
     always_run: true
@@ -14,4 +14,38 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "Echo ping"
+        - "echo ping"
+
+  BRMcLaren/test-infra:
+  - name: pull-test-infra-cmake
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "git clone https://github.com/openenclave/oeedger8r-cpp && cd oeedger8r-cpp && /hack/cmake-build.sh"
+
+  BRMcLaren/test-infra:
+  - name: pull-test-infra-validate-prow-job-config
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/test-infra:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "/hack/merge-prow-jobs.sh && /hack/validate-prow-jobs.sh"

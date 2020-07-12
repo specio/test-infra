@@ -1,87 +1,36 @@
 periodics:
-- name: periodic-openenclave-openenclave-sdk-1604-dry
+- name: periodic-openenclave-openenclave-sdk-1804-dc
+  extra_refs:
+  - org: openenclave
+    repo: openenclave
   decorate: true 
-  interval: 12h
-  decorate: false
+  interval: 5m
   spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node.kubernetes.io/instance-type
+              operator: In
+              values:
+              - Standard_DC2s
+              - Standard_DC4s
+              - Standard_DC1s_v2
+              - Standard_DC2s_v2
+              - Standard_DC4s_v2
+              - Standard_DC8_v2
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux 
     containers:
-    - image: brmclare/oesdk-ubuntu1604-dev:latest
+    - image: openenclave/ubuntu1804:latest
       command:
       - sh
       - "-c"
       # Hack, need to get Docker file in oeeger8r repo
-      - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && \
-      mkdir build && \
-      cd build && \
-      cmake .. && \
-      make"
-
-- name: periodic-openenclave-openenclave-sdk-1604-full
-  decorate: true 
-  interval: 12h
-  spec:
-    containers:
-    - image: brmclare/oesdk-ubuntu1604-dev:latest
-      command:
-      - sh
-      - "-c"
-      # Hack, need to get Docker file in oeeger8r repo
-      - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && \
-      mkdir build && \
-      cd build && \
-      cmake .. && \
-      make && \
-      OE_SIMULATION=1 ctest"
-
-- name: periodic-openenclave-openenclave-sdk-1804-dry
-  decorate: true 
-  interval: 12h
-  spec:
-    containers:
-    - image: brmclare/oesdk-ubuntu1804-dev:latest
-      command:
-      - sh
-      - "-c"
-      # Hack, need to get Docker file in oeeger8r repo
-      - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && \
-      mkdir build && \
-      cd build && \
-      cmake .. && \
-      make"
-
-- name: periodic-openenclave-openenclave-sdk-1804-full
-  decorate: true 
-  interval: 12h
-  spec:
-    containers:
-    - image: brmclare/oesdk-ubuntu1804-dev:latest
-      command:
-      - sh
-      - "-c"
-      # Hack, need to get Docker file in oeeger8r repo
-      - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && \
-      mkdir build && \
-      cd build && \
-      cmake .. && \
-      make && \
-      OE_SIMULATION=1 ctest"
-
-- name: periodic-openenclave-openenclave-1604-sdk-sgx-1
-  decorate: true 
-  interval: 12h
-  spec:
-    containers:
-    - image: brmclare/oesdk-ubuntu1604-dev:latest
-      command:
-      - sh
-      - "-c"
-      # Hack, need to get Docker file in oeeger8r repo
-      - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && \
-      mkdir build && \
-      cd build && \
-      cmake .. && \
-      make && \
-      ctest"
+      - "echo ping"
       securityContext:
         privileged: true
     volumes:
@@ -90,28 +39,42 @@ periodics:
         path: /dev/sgx
     restartPolicy: Never
 
-- name: periodic-openenclave-openenclave-1804-sdk-sgx-1
+- name: periodic-openenclave-openenclave-sdk-1604-dc
+  extra_refs:
+  - org: openenclave
+    repo: openenclave
   decorate: true 
-  interval: 12h
+  interval: 1m
   spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node.kubernetes.io/instance-type
+              operator: In
+              values:
+              - Standard_DC2s
+              - Standard_DC4s
+              - Standard_DC1s_v2
+              - Standard_DC2s_v2
+              - Standard_DC4s_v2
+              - Standard_DC8_v2
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux 
     containers:
-    - image: brmclare/oesdk-ubuntu1804-dev:latest
-      command:
-      - sh
-      - "-c"
-      # Hack, need to get Docker file in oeeger8r repo
-      - "git clone --recursive https://github.com/openenclave/openenclave && cd openenclave && \
-      mkdir build && \
-      cd build && \
-      cmake .. && \
-      make && \
-      ctest"
-      volumeMounts:
-      - mountPath: /dev/sgx
-        name: dev-sgx
+    - image: openenclave/ubuntu1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "./hack/checkout-scm.sh && ./hack/cmake-build.sh"
       securityContext:
         privileged: true
     volumes:
     - name: dev-sgx
       hostPath:
         path: /dev/sgx
+    restartPolicy: Never

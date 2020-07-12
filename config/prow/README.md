@@ -142,7 +142,7 @@ openssl rand -hex 20 > $PWD/hmac
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
 # Create an oauth token over at gh
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
-(optional) kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json
+kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json #(optional) 
 
 ```
 

@@ -15,3 +15,21 @@ presubmits:
         args:
         - -c
         - "echo ping"
+  - name: pull-test-infra-build-image
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: gcr.io/k8s-testimages/kubekins-e2e:v20200710-6b3b6fe-master
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "systemctl start docker && docker ps"
+        # docker-in-docker needs privileged mode
+        securityContext:
+          privileged: true

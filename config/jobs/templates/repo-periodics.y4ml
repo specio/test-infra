@@ -1,0 +1,11 @@
+periodics:
+- name: something unique
+  decorate: true
+  interval: 12h
+  spec:
+    containers:
+    - image: container
+      command:
+      - sh
+      - "-c"
+      - "command"

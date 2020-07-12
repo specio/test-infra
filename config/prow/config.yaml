@@ -1,9 +1,8 @@
 prowjob_namespace: default
 pod_namespace: test-pods
 log_level: debug
-
 tide:
-  sync_period: 1m
+  sync_period: 2m
   queries:
     - repos:
         - BRMcLaren/test-infra
@@ -18,16 +17,16 @@ tide:
         - needs-rebases
 plank:
   job_url_prefix_config:
-    '*': http://51.11.170.45/view/gcs
-  job_url_template: 'http://51.11.170.45/view/gcs/oe-prow-artifacts/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
+    '*': http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs
+  job_url_template: 'http://oe-prow-status.uksouth.cloudapp.azure.com/view/gcs/oe-prow-artifacts/pr-logs/pull/{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}'
   report_templates:
-    '*': '[Full PR test history](http://51.11.170.45/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](http://51.11.170.45/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by [linking to](http://git.k8s.io/community/contributors/devel/sig-testing/flaky-tests.md#filing-issues-for-flaky-tests) an [open issue](http://github.com/{{.Spec.Refs.Org}}/{{.Spec.Refs.Repo}}/issues?q=is:issue+is:open) when you hit one in your PR.'
+    '*': '[Full PR test history](http://oe-prow-status.uksouth.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](http://oe-prow-status.uksouth.cloudapp.azure.com/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by [linking to](http://git.k8s.io/community/contributors/devel/sig-testing/flaky-tests.md#filing-issues-for-flaky-tests) an [open issue](http://github.com/{{.Spec.Refs.Org}}/{{.Spec.Refs.Repo}}/issues?q=is:issue+is:open) when you hit one in your PR.'
   pod_pending_timeout: 15m
   pod_unscheduled_timeout: 1m
   default_decoration_configs:
     '*':
       timeout: 4h
-      grace_period: 15s
+      grace_period: 10m
       utility_images:
         clonerefs: "gcr.io/k8s-prow/clonerefs:v20200710-7fa016752a"
         initupload: "gcr.io/k8s-prow/initupload:v20200710-7fa016752a"

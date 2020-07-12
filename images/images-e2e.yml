@@ -13,27 +13,21 @@ jobs:
     matrix:
       Ubuntu_1804:
         DockerFile_Path: images/debian/1804/Dockerfile
-        repository: brmclare/oesdk-ubuntu1804-dogfood
-        pool: 1804CISGXagentspool
-        vmImage:
+        repository: brmclare/ubuntu1804
+        vmImage: ubuntu-latest
       Ubuntu_1604:
-        DockerFile_Path: images/debian/1804/Dockerfile
-        repository: brmclare/oesdk-ubuntu1604-dogfood
-        pool: 1804CISGXagentspool
-        vmImage:
+        DockerFile_Path: images/debian/1604/Dockerfile
+        repository: brmclare/ubuntu1804
+        vmImage: ubuntu-latest
       Windows_2019:
         DockerFile_Path: images/windows/2019/Dockerfile
-        repository: brmclare/oesdk-windows2019-dogfood
-        pool:
+        repository: brmclare/windows2019
         vmImage: windows-latest
     maxParallel: 99
-  # TODO:// only use pools. Workaround in place due to lack of Docker in the Ci Agents for Windows
   pool:
-      name: $(pool)
       vmImage: $(vmImage)
   workspace:
     clean: all 
-  #container: containerReference # container to run this job inside
   timeoutInMinutes: 60
   steps:
     - task: Docker@2
@@ -45,6 +39,7 @@ jobs:
         buildContext: '.'
         tags: |
           $(Build.BuildId)
+
 - job: docker_image_validate
   dependsOn: docker_image_build
   displayName: Validate Images from Dogfood repo

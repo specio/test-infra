@@ -1,6 +1,6 @@
 WORKSPACE=${1:-".."}
 BUILD_TYPE=${2:-Debug}
-OPTIONAL_ARGS=${4:}
+OPTIONAL_ARGS=${4:-""}
 CTEST_TIMEOUT_SECONDS=${5:-400}
 
 # Set up directory expectations

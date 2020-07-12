@@ -5,7 +5,7 @@ periodics:
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
-    interval: 3m
+    interval: 3h
     spec:
       containers:
         - image: openenclave/ubuntu1804:latest

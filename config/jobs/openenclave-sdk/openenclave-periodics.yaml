@@ -4,7 +4,7 @@ periodics:
   - org: openenclave
     repo: openenclave
   decorate: true 
-  interval: 5m
+  interval: 3h
   spec:
     affinity:
       nodeAffinity:
@@ -44,7 +44,7 @@ periodics:
   - org: openenclave
     repo: openenclave
   decorate: true 
-  interval: 1m
+  interval: 3h
   spec:
     affinity:
       nodeAffinity:

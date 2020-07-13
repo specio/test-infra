@@ -8,7 +8,7 @@ periodics:
     interval: 3h
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/test-infra:latest
           command:
             - sh
             - "-c"

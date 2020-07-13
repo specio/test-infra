@@ -1,80 +1,30 @@
 periodics:
-- name: periodic-openenclave-openenclave-sdk-1804-dc
-  extra_refs:
-  - org: openenclave
-    repo: openenclave
-  decorate: true 
-  interval: 3h
-  spec:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: node.kubernetes.io/instance-type
-              operator: In
-              values:
-              - Standard_DC2s
-              - Standard_DC4s
-              - Standard_DC1s_v2
-              - Standard_DC2s_v2
-              - Standard_DC4s_v2
-              - Standard_DC8_v2
-            - key: kubernetes.io/os
-              operator: In
-              values:
-              - linux 
-    containers:
-    - image: openenclave/ubuntu1804:latest
-      command:
-      - sh
-      - "-c"
-      # Hack, need to get Docker file in oeeger8r repo
-      - "echo ping"
-      securityContext:
-        privileged: true
-    volumes:
-    - name: dev-sgx
-      hostPath:
-        path: /dev/sgx
-    restartPolicy: Never
+  - name: ci-openenclave-openenclave-cmake-1804
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 3h
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - "-c"
+            - "/hack/cmake-build.sh"
 
-- name: periodic-openenclave-openenclave-sdk-1604-dc
-  extra_refs:
-  - org: openenclave
-    repo: openenclave
-  decorate: true 
-  interval: 3h
-  spec:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: node.kubernetes.io/instance-type
-              operator: In
-              values:
-              - Standard_DC2s
-              - Standard_DC4s
-              - Standard_DC1s_v2
-              - Standard_DC2s_v2
-              - Standard_DC4s_v2
-              - Standard_DC8_v2
-            - key: kubernetes.io/os
-              operator: In
-              values:
-              - linux 
-    containers:
-    - image: openenclave/ubuntu1604:latest
-        command:
-        - /bin/bash
-        args:
-        - -c
-        - "./hack/checkout-scm.sh && ./hack/cmake-build.sh"
-      securityContext:
-        privileged: true
-    volumes:
-    - name: dev-sgx
-      hostPath:
-        path: /dev/sgx
-    restartPolicy: Never
+  - name: ci-openenclave-openenclave-cmake-1604
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 3h
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - "-c"
+            - "/hack/cmake-build.sh"

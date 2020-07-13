@@ -28,7 +28,7 @@ jobs:
       vmImage: $(vmImage)
   workspace:
     clean: all 
-  timeoutInMinutes: 60
+  timeoutInMinutes: 120
   steps:
     - task: Docker@2
       inputs:

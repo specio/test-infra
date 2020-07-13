@@ -46,4 +46,4 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "echo $PWD && ls -l && ./hack/merge-prow-jobs.sh && ./hack/validate-prow-jobs.sh"
+        - "./hack/merge-prow-jobs.sh && ./hack/validate-prow-jobs.sh"

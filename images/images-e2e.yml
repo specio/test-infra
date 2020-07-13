@@ -28,7 +28,7 @@ jobs:
       vmImage: $(vmImage)
   workspace:
     clean: all 
-  timeoutInMinutes: 60
+  timeoutInMinutes: 120
   steps:
     - task: Docker@2
       inputs:
@@ -46,17 +46,17 @@ jobs:
   strategy:
     matrix:
       Ubuntu_1804:
-        dockerimage: brmclare/oesdk-ubuntu1804-dogfood
+        dockerimage: brmclare/ubuntu1804
         pool: 1804CISGXagentspool
         options: -it --device /dev/sgx:/dev/sgx
         validation: images/debian/validate.sh
       Ubuntu_1604:
-        dockerimage: brmclare/oesdk-ubuntu1604-dogfood
+        dockerimage: brmclare/ubuntu1604
         pool: 1804CISGXagentspool
         options: -it --device /dev/sgx:/dev/sgx
         validation: images/debian/validate.sh
       Windows_2019:
-        dockerimage: brmclare/oesdk-windows2019-dogfood
+        dockerimage: brmclare/windows2019
         pool:
         vmImage: windows-latest
         options: #-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"

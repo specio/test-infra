@@ -1,5 +1,5 @@
 periodics:
-  - name: ci-openenclave-openenclave-cmake-1804
+  - name: ci-openenclave-openenclave-cmake-1804-2
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -7,29 +7,12 @@ periodics:
     decorate: true
     interval: 5m
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node.kubernetes.io/instance-type
-                operator: In
-                values:
-                - Standard_DC2s
-                - Standard_DC4s
-                - Standard_DC1s_v2
-                - Standard_DC2s_v2
-                - Standard_DC4s_v2
-                - Standard_DC8_v2
-              - key: kubernetes.io/os
-                operator: In
-                values:
-                - linux 
       containers:
         - image: openenclave/ubuntu1804:latest
           command:
             - sh
             - "-c"
+            - "/hack/cmake-build.sh"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -41,7 +24,7 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-openenclave-cmake-1604
+  - name: ci-openenclave-openenclave-cmake-1604-2
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -49,29 +32,12 @@ periodics:
     decorate: true
     interval: 5m
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node.kubernetes.io/instance-type
-                operator: In
-                values:
-                - Standard_DC2s
-                - Standard_DC4s
-                - Standard_DC1s_v2
-                - Standard_DC2s_v2
-                - Standard_DC4s_v2
-                - Standard_DC8_v2
-              - key: kubernetes.io/os
-                operator: In
-                values:
-                - linux 
       containers:
         - image: openenclave/ubuntu1604:latest
           command:
             - sh
             - "-c"
+            - "/hack/cmake-build.sh"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx

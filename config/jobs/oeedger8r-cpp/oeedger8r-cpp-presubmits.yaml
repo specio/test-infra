@@ -1,6 +1,6 @@
 presubmits:
   openenclave-ci/oeedger8r-cpp:
-  - name: pr-oeedger8r-1804
+  - name: pr-oeedger8r-cmake-1804
     branches:
     - master
     always_run: true
@@ -10,6 +10,21 @@ presubmits:
     spec:
       containers:
       - image: openenclave/ubuntu1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - "/hack/cmake-build.sh"
+  - name: pr-oeedger8r-cmake-1604
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu1604:latest
         command:
         - /bin/bash
         args:

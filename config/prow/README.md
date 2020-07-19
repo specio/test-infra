@@ -77,6 +77,20 @@ az account set --subscription "${SUBSCRIPTION_ID}"
 az ad sp create-for-rbac --skip-assignment --name oeTestInfraServicePrincipal
 ```
 
+## Use some default values to get started
+
+```
+export SUBSCRIPTION_ID="<>"
+export SERVICE_PRINCIPAL="<AppIDFromAbove"
+export CLIENT_SECRET="<PasswordFromAbove>"
+export LOCATION="uksouth"
+export RESOURCE_GROUP="ProwResources"
+export AKS_CLUSTER_NAME="oe-prow"
+export NODE_SIZE="STANDARD_DC2s_v2"
+export MIN_NODE_COUNT="1"
+export MAX_NODE_COUNT="10"
+export PATH_KEY="~/.ssh/id_rsa.pub"
+```
 ## Create Resource Group
 ```
 az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
@@ -87,8 +101,7 @@ az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
 Run the following to create the cluster.
 ```
 az aks create --resource-group ${RESOURCE_GROUP} \
-    --name ${AKS_CLUSTER} \
-    --node-count ${NODE_COUNT} \
+    --name ${AKS_CLUSTER_NAME} \
     --node-vm-size ${NODE_SIZE} \
     --max-count ${MAX_NODE_COUNT} \
     --vm-set-type VirtualMachineScaleSets \
@@ -97,16 +110,17 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --enable-cluster-autoscaler \
     --service-principal ${SERVICE_PRINCIPAL} \
     --client-secret ${CLIENT_SECRET} \
-    --min-count 1 \
-    --max-count 10 \
-    --ssh-key-value ${PATH_KEY}
+    --min-count ${MIN_NODE_COUNT} \
+    --max-count ${MAX_NODE_COUNT} \
+    --ssh-key-value ${PATH_KEY} \
+    --aks-custom-headers "usegen2vm=true"
 ```
 
 ## add DC series node pool for hybrid cluster
 ```
 az extension add --name aks-preview
 
-az aks nodepool add --cluster-name ${AKS_CLUSTER} \
+az aks nodepool add --cluster-name ${AKS_CLUSTER_NAME} \
     --resource-group ${RESOURCE_GROUP} \
     --name acclin \
     --min-count 1 \
@@ -120,9 +134,9 @@ az aks nodepool add --cluster-name ${AKS_CLUSTER} \
 
 ## Get Credentials
 
-This will also set up kubectl to point to the new cluster on GCP.
+This will also set up kubectl to point to the new cluster.
 ```
-az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER}
+az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME}
 ```
 
 ## Create a namespace for your ingress resources
@@ -192,7 +206,26 @@ kubectl -n test-pods create secret generic gcs-credentials --from-file=service-a
 
 Run the following command to deploy a basic set of prow components.
 ```
-kubectl apply -f config/prow/cluster/starter.yaml
+kubectl apply -f config/prow/cluster/configs.yaml
+kubectl apply -f config/prow/cluster/hook_deployment.yaml
+kubectl apply -f config/prow/cluster/hook_service.yaml
+kubectl apply -f config/prow/cluster/plank_deployment.yaml
+kubectl apply -f config/prow/cluster/sinker_deployment.yaml
+kubectl apply -f config/prow/cluster/deck_deployment.yaml
+kubectl apply -f config/prow/cluster/deck_service.yaml
+kubectl apply -f config/prow/cluster/horolgium_deployment.yaml
+kubectl apply -f config/prow/cluster/tide_deployment.yaml
+kubectl apply -f config/prow/cluster/tide_service.yaml
+kubectl apply -f config/prow/cluster/ing_ingress.yaml
+kubectl apply -f config/prow/cluster/statusreconciler_deployment.yaml
+kubectl apply -f config/prow/cluster/test_pods.yaml
+kubectl apply -f config/prow/cluster/deck_rbac.yaml
+kubectl apply -f config/prow/cluster/horolgium_rbac.yaml
+kubectl apply -f config/prow/cluster/plank_rbac.yaml
+kubectl apply -f config/prow/cluster/sinker_rbac.yaml
+kubectl apply -f config/prow/cluster/hook_rbac.yaml
+kubectl apply -f config/prow/cluster/tide_rbac.yaml
+kubectl apply -f config/prow/cluster/statusreconciler_rbac.yaml
 ```
 
 After a moment, the cluster components will be running.
@@ -212,6 +245,12 @@ tide         1         1         1            1           1m
 kubectl apply -f config/prow/cluster/crier_rbac.yaml
 kubectl apply -f config/prow/cluster/crier_deployment.yaml
 ```
+
+## Check deployment status
+```
+kubectl get deployments -w
+```
+
 You should see
 ```
 crier              1/1     1            1           127m
@@ -223,10 +262,7 @@ sinker             1/1     1            1           128m
 statusreconciler   1/1     1            1           128m
 tide               1/1     1            1           128m
 ```
-## Check deployment status
-```
-kubectl get deployments -w
-```
+
 ## Get Ingress IP address
 ```
 kubectl get ingress ing

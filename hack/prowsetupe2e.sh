@@ -41,6 +41,7 @@ openssl rand -hex 20 > $PWD/hmac
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
 
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
+kubectl create secret generic jenkins-token --from-file=$PWD/hmac
 
 kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json
 
@@ -66,6 +67,8 @@ kubectl apply -f test-infra/config/prow/cluster/tide_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/statusreconciler_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
+kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
+kubectl apply -f test-infra/config/prow/cluster/jenkins_service.yaml
 
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 

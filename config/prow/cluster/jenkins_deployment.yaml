@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-operator
+spec:
+  replicas: 1 # Do not scale up.
+  template:
+    metadata:
+      labels:
+        app: jenkins-operator
+    spec:
+      containers:
+      - name: jenkins-operator
+        image: gcr.io/k8s-prow/jenkins-operator:0.55
+        ports:
+        - name: logs
+          containerPort: 8080
+        args:
+        - --dry-run=false
+        - --jenkins-token-file=/etc/jenkins/jenkins
+        volumeMounts:
+        - mountPath: /etc/jenkins
+          name: jenkins
+          readOnly: true
+        - name: oauth
+          mountPath: /etc/github
+          readOnly: true
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+      volumes:
+      - name: jenkins
+        secret:
+          defaultMode: 420
+          secretName: jenkins-token
+      - name: oauth
+        secret:
+          secretName: oauth-token
+      - name: config
+        configMap:
+          name: config
+  selector:
+    matchLabels:
+      app: jenkins-operator

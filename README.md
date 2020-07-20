@@ -3,6 +3,8 @@
 
 This repository contains tools and configuration files for the testing and automation needs of the OpenEnclave project.
 
+[![Slack Channel](https://img.shields.io/badge/Slack-Join-purple)](https://openenclaveciteam.slack.com/)
+
 CI Job Management
 ------------------------------
 

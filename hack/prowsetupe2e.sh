@@ -1,5 +1,9 @@
+kubectl delete deployments --all
+kubectl delete pods --all
+kubectl delete nodes --all
+
 az group delete --name ${RESOURCE_GROUP} --yes
-az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER}_${LOCATION} --yes
+az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER_NAME}_${LOCATION} --yes
 
 az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
 az aks create --resource-group ${RESOURCE_GROUP} \
@@ -70,10 +74,9 @@ kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
 
 
-kubectl apply -f https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
-#helm repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
-
-#helm install jenkins-operator jenkins/jenkins-operator
+kubectl apply -f https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
+helm repo add jenkins https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/chart
+helm install jenkins-operator jenkins/jenkins-operator
 
 kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_service.yaml
@@ -81,4 +84,12 @@ kubectl apply -f test-infra/config/prow/cluster/jenkins_rbac.yaml
 
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
-kubectl get deployments -w 
+#1. Watch Jenkins instance being created:
+kubectl --namespace default get pods -w
+
+#2. Get Jenkins credentials:
+kubectl --namespace default get secret jenkins-operator-credentials-jenkins -o 'jsonpath={.data.user}' | base64 -d
+kubectl --namespace default get secret jenkins-operator-credentials-jenkins -o 'jsonpath={.data.password}' | base64 -d
+
+#3. Connect to Jenkins (actual Kubernetes cluster):
+kubectl --namespace default port-forward jenkins-jenkins 8080:8080

@@ -1,10 +1,13 @@
 kubectl delete --all namespaces
 
+# Delete Any Existing Resources
 az group delete --name ${RESOURCE_GROUP} --yes
 az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER_NAME}_${LOCATION} --yes
 
+# Create Resource Group
 az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
 
+# Create AKS Cluster
 az aks create --resource-group ${RESOURCE_GROUP} \
     --name ${AKS_CLUSTER_NAME} \
     --node-vm-size ${NODE_SIZE} \
@@ -21,9 +24,10 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --kubernetes-version 1.17.7 \
     --aks-custom-headers "usegen2vm=true"
 
-
+# Get AKS Credentials
 az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
 
+# Create Ingress Rules
 kubectl create namespace ingress-basic
  
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
@@ -35,6 +39,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set rbac.create=true
 
+# Create Cluster Bindings
 kubectl create clusterrolebinding cluster-admin-binding-"${USER}" \
   --clusterrole=cluster-admin --user="${USER}"
 
@@ -43,7 +48,6 @@ kubectl create namespace test-pods
 openssl rand -hex 20 > $PWD/hmac
 
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
-
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
 kubectl create secret generic jenkins-token --from-file=$PWD/hmac
 
@@ -72,13 +76,15 @@ kubectl apply -f test-infra/config/prow/cluster/statusreconciler_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
 
+# Deploy Prow Jenkins Controller
 kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_service.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_rbac.yaml
 
-kubectl apply -f https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
-helm repo add jenkins https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/chart
-helm install jenkins-operator2 jenkins/jenkins-operator
+# Deploy Jenkins
+kubectl apply -f https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
+helm repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
+helm install jenkins-operator jenkins/jenkins-operator
 
 sleep 2m
 

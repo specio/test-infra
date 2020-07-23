@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,13 +12,14 @@ spec:
     spec:
       containers:
       - name: jenkins-operator
-        image: gcr.io/k8s-prow/jenkins-operator:0.55
+        image: gcr.io/k8s-prow/jenkins-operator:latest
         ports:
         - name: logs
           containerPort: 8080
         args:
         - --dry-run=false
-        - --jenkins-token-file=/etc/jenkins/jenkins
+        - --jenkins-token-file=/etc/github/oauth
+        - --github-token-path=/etc/github/oauth
         volumeMounts:
         - mountPath: /etc/jenkins
           name: jenkins
@@ -31,7 +33,6 @@ spec:
       volumes:
       - name: jenkins
         secret:
-          defaultMode: 420
           secretName: jenkins-token
       - name: oauth
         secret:

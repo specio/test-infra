@@ -1,5 +1,5 @@
 az group delete --name ${RESOURCE_GROUP} --yes
-az group delete --name MC_${RESOURCE_GROUP}_oe-${AKS_CLUSTER}_${LOCATION} --yes
+az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER}_${LOCATION} --yes
 
 az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
 az aks create --resource-group ${RESOURCE_GROUP} \
@@ -15,11 +15,12 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --min-count ${MIN_NODE_COUNT} \
     --max-count ${MAX_NODE_COUNT} \
     --ssh-key-value ${PATH_KEY} \
+    --kubernetes-version 1.17.7 \
     --aks-custom-headers "usegen2vm=true"
 
 
  az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
- 
+
  kubectl create namespace ingress-basic
  
  helm repo add stable https://kubernetes-charts.storage.googleapis.com
@@ -67,8 +68,16 @@ kubectl apply -f test-infra/config/prow/cluster/tide_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/statusreconciler_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
+
+
+kubectl apply -f https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
+#helm repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
+
+#helm install jenkins-operator jenkins/jenkins-operator
+
 kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_service.yaml
+kubectl apply -f test-infra/config/prow/cluster/jenkins_rbac.yaml
 
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 

@@ -1,11 +1,10 @@
-kubectl delete deployments --all
-kubectl delete pods --all
-kubectl delete nodes --all
+kubectl delete --all namespaces
 
 az group delete --name ${RESOURCE_GROUP} --yes
 az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER_NAME}_${LOCATION} --yes
 
 az group create --location ${LOCATION} --name ${RESOURCE_GROUP}
+
 az aks create --resource-group ${RESOURCE_GROUP} \
     --name ${AKS_CLUSTER_NAME} \
     --node-vm-size ${NODE_SIZE} \
@@ -23,13 +22,13 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --aks-custom-headers "usegen2vm=true"
 
 
- az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
+az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
 
- kubectl create namespace ingress-basic
+kubectl create namespace ingress-basic
  
- helm repo add stable https://kubernetes-charts.storage.googleapis.com
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
 
- helm install nginx-ingress stable/nginx-ingress \
+helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -73,14 +72,15 @@ kubectl apply -f test-infra/config/prow/cluster/statusreconciler_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
 
-
-kubectl apply -f https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
-helm repo add jenkins https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/chart
-helm install jenkins-operator jenkins/jenkins-operator
-
 kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_service.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_rbac.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
+helm repo add jenkins https://raw.githubusercontent.com/BRMcLaren/kubernetes-operator/master/chart
+helm install jenkins-operator2 jenkins/jenkins-operator
+
+sleep 2m
 
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 

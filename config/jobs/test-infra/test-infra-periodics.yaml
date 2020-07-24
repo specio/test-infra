@@ -12,4 +12,4 @@ periodics:
           command:
             - sh
             - "-c"
-            - ./hack/merge-prow-jobs.sh && ./hack/validate-prow-jobs.sh""
+            - "./hack/merge-prow-jobs.sh && ./hack/validate-prow-jobs.sh"

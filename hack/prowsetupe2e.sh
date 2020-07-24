@@ -86,7 +86,7 @@ kubectl apply -f https://raw.githubusercontent.com/jenkinsci/kubernetes-operator
 helm repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
 helm install jenkins-operator jenkins/jenkins-operator
 
-sleep 2m
+sleep 4m
 
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 

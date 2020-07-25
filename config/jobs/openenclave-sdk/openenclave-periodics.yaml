@@ -1,5 +1,5 @@
 periodics:
-  - name: ci-openenclave-openenclave-cmake-1804-2
+  - name: ci-openenclave-openenclave-cmake-1804
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -24,7 +24,7 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-openenclave-cmake-1604-2
+  - name: ci-openenclave-openenclave-cmake-1604
     extra_refs:
     - org: openenclave
       repo: openenclave

@@ -1,0 +1,64 @@
+postsubmits:
+  BRMcLaren/test-infra:
+  - name: post-test-infra-push-image-bootstrap-did
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "docker build . -f images/bootstap/Dockerfile"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-test-infra-push-build-image-debian-1604
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "docker build . -f images/debian/1604/Dockerfile"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-test-infra-push-build-image-debian-1804
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "docker build . -f images/debian/1804/Dockerfile"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock

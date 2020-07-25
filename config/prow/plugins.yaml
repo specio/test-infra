@@ -8,6 +8,7 @@ plugins:
   - goose
   - help
   - hold
+  - invalidcommitmsg
   - label
   - lifecycle
   - lgtm
@@ -29,6 +30,7 @@ plugins:
   - goose
   - help
   - hold
+  - invalidcommitmsg
   - label
   - lifecycle
   - lgtm

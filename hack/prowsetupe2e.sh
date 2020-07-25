@@ -76,6 +76,9 @@ kubectl apply -f test-infra/config/prow/cluster/statusreconciler_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
 
+kubectl create configmap config   --from-file=config.yaml=$PWD/test-infra/config/prow/config.yaml  --dry-run=client -o yaml | kubectl replace configmap config -f -
+kubectl create configmap plugins   --from-file=$PWD/test-infra/config/prow/plugins.yaml --dry-run=client -o yaml   | kubectl replace configmap plugins -f -
+
 # Deploy Prow Jenkins Controller
 kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
 kubectl apply -f test-infra/config/prow/cluster/jenkins_service.yaml

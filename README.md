@@ -1,9 +1,11 @@
 # Openenclave Test Infrastructure
 ------------------------------
 
-This repository contains tools and configuration files for the testing and automation needs of the OpenEnclave project.
-
+[![Build status](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=post-openenclave-test-infra-*)](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=post-openenclave-test-infra-*)
 [![Slack Channel](https://img.shields.io/badge/Slack-Join-purple)](https://openenclaveciteam.slack.com/)
+
+
+This repository contains tools and configuration files for the testing and automation needs of the OpenEnclave project.
 
 CI Job Management
 ------------------------------
@@ -14,3 +16,4 @@ Open Enclave uses a [prow](https://github.com/kubernetes/test-infra/blob/master/
 - [Delete job configs](https://github.com/kubernetes/test-infra/blob/master/config/jobs/README.md#deleting-jobs)
 - [Test job configs locally](https://github.com/kubernetes/test-infra/blob/master/config/jobs/README.md#testing-jobs-locally)
 - [Trigger jobs on PRs using bot commmands](https://go.k8s.io/bot-commands)
+

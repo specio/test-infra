@@ -1,6 +1,6 @@
 presubmits:
   openenclave-ci/openenclave:
-  - name: pr-openenclave-cmake-1804
+  - name: pr-openenclave-openenclave-cmake-1804
     branches:
     - master
     always_run: true
@@ -24,7 +24,7 @@ presubmits:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never
-  - name: pr-openenclave-cmake-1604
+  - name: pr-openenclave-openenclave-cmake-1604
     branches:
     - master
     always_run: true

@@ -1,6 +1,6 @@
 presubmits:
   BRMcLaren/test-infra:
-  - name: pr-test-infra-ping
+  - name: pr-openenclave-test-infra-ping
     branches:
     - master
     always_run: true
@@ -16,7 +16,7 @@ presubmits:
         - -c
         - "echo ping"
 
-  - name: pr-test-infra-validate-cmake-build
+  - name: pr-openenclave-test-infra-validate-cmake-build
     branches:
     - master
     always_run: true
@@ -32,7 +32,7 @@ presubmits:
         - -c
         - "git clone https://github.com/openenclave/oeedger8r-cpp && cd oeedger8r-cpp && /hack/cmake-build.sh"
 
-  - name: pr-test-infra-validate-prow-job-config
+  - name: pr-openenclave-test-infra-validate-prow-job-config
     branches:
     - master
     always_run: true
@@ -48,7 +48,7 @@ presubmits:
         - -c
         - "./hack/merge-prow-jobs.sh && ./hack/validate-prow-jobs.sh"
 
-  - name:  pr-test-infra-validate-build-image-debian-1804
+  - name: pr-openenclave-test-infra-validate-build-image-debian-1804
     branches:
     - master
     always_run: true
@@ -72,7 +72,7 @@ presubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name:  pr-test-infra-validate-build-image-debian-1604
+  - name: pr-openenclave-test-infra-validate-build-image-debian-1604
     branches:
     - master
     always_run: true
@@ -96,7 +96,7 @@ presubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name:  pr-test-infra-validate-build-image-bootstrap-did
+  - name: pr-openenclave-test-infra-validate-build-image-bootstrap-did
     branches:
     - master
     always_run: true

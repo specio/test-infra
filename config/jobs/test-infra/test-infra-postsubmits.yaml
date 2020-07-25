@@ -1,6 +1,6 @@
 postsubmits:
   BRMcLaren/test-infra:
-  - name: post-test-infra-push-image-bootstrap-did
+  - name: post-openenclave-test-infra-push-image-bootstrap-did
     branches:
     - master
     decorate: true
@@ -21,7 +21,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-test-infra-push-build-image-debian-1604
+  - name: post-openenclave-test-infra-push-build-image-debian-1604
     branches:
     - master
     decorate: true
@@ -42,7 +42,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-test-infra-push-build-image-debian-1804
+  - name: post-openenclave-test-infra-push-build-image-debian-1804
     branches:
     - master
     decorate: true

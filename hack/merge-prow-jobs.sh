@@ -1,3 +1,4 @@
+set -ex
 # Script for merging in all prow jobs into one config for consumption
 
 # Find mainline prow Config.yaml

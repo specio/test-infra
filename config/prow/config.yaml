@@ -22,7 +22,7 @@ plank:
   report_templates:
     '*': '[Full PR test history](http://oe-prow-status.uksouth.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](http://oe-prow-status.uksouth.cloudapp.azure.com/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by openening an issue when you hit one in your PR.'
   pod_pending_timeout: 15m
-  pod_unscheduled_timeout: 1m
+  pod_unscheduled_timeout: 15m
   default_decoration_configs:
     '*':
       timeout: 4h

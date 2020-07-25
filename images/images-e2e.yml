@@ -17,7 +17,7 @@ jobs:
         vmImage: ubuntu-latest
       Ubuntu_1604:
         DockerFile_Path: images/debian/1604/Dockerfile
-        repository: brmclare/ubuntu1804
+        repository: brmclare/ubuntu1604
         vmImage: ubuntu-latest
       Windows_2019:
         DockerFile_Path: images/windows/2019/Dockerfile

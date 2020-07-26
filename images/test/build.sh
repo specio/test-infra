@@ -27,6 +27,11 @@ PUSH=0
 TAG="image:latest"
 DOCKER_PATH=""
 
+# Hack to allow scripts to run locally and in a container
+if ! [ -f /.dockerenv ]; then
+    echo SUDO=sudo
+fi
+
 # Parse the command line - keep looping as long as there is at least one more argument
 while [[ $# -gt 0 ]]; do
     key=$1
@@ -51,15 +56,15 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ ${BUILD} -eq 1 ]]; then
-    docker build . -f ${DOCKER_PATH} -t ${TAG}  || sudo docker build . -f ${DOCKER_PATH} -t ${TAG} 
+    ${SUDO} docker build . -f ${DOCKER_PATH} -t ${TAG} 
 fi
 
 if [[ ${TEST} -eq 1 ]]; then
-   docker run -it ${TAG} bash -c "./images/test/validate.sh" || sudo docker run -it ${TAG} bash -c "./images/test/validate.sh"
+    ${SUDO} docker run ${TAG} bash -c "./images/test/validate.sh" 
 fi
 
 if [[ ${PUSH} -eq 1 ]]; then
     # TODO https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/
-    docker login --username=$DOCKER_USER --password=$DOCKER_PAS
-    docker push ${TAG} || sudo docker push ${TAG} 
+    ${SUDO} docker login --username=$DOCKER_USER --password=$DOCKER_PAS
+    ${SUDO} docker push ${TAG}
 fi

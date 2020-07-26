@@ -52,6 +52,11 @@ NINJA=0
 # build with lvi mitigation. Defailt is disabled
 LVI_MITIGATION=0
 
+# Hack to allow scripts to run locally and in a container
+if ! [ -f /.dockerenv ]; then
+    echo SUDO=sudo
+fi
+
 # Parse the command line - keep looping as long as there is at least one more argument
 while [[ $# -gt 0 ]]; do
     key=$1
@@ -113,7 +118,7 @@ fi
 # Delete the build directory if it exists. This allows calling this script iteratively
 # for multiple configurations for a platform.
 if [[ -d ./build ]]; then
-  rm -rf ./build || sudo rm -rf ./build 
+  ${SUDO} rm -rf ./build 
 fi
 
 mkdir build && cd build || exit 1
@@ -186,7 +191,7 @@ if [[ ${BUILD_PACKAGE} -eq 1 ]]; then
         ninja -v
         ninja -v package
     else
-        make package || sudo make package
+        ${SUDO} make package
     fi
 fi
 
@@ -194,9 +199,9 @@ if [[ ${INSTALL_PACKAGE} -eq 1 ]]; then
     echo "Installing package"
     echo ""
     if [[ ${NINJA} -eq 1 ]]; then
-        ninja -v install || sudo ninja -v install
+        ${SUDO} ninja -v install
     else
-        make install || sudo make install
+        ${SUDO} make install
     fi
 fi
 
@@ -204,7 +209,7 @@ if [[ ${TEST_PACKAGE} -eq 1 ]]; then
     echo "Testing package installation"
     echo ""
     if [[ -d ~/samples ]]; then
-        rm -rf ~/samples || sudo rm -rf ~/samples 
+        ${SUDO} rm -rf ~/samples 
     fi
     cp -r /opt/openenclave/share/openenclave/samples ~/
     cd ~/samples

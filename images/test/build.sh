@@ -46,7 +46,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ ${BUILD} -eq 1 ]]; then
-    echo build$ #docker build . -f ${DOCKER_PATH} -t ${TAG}  || sudo docker build . -f ${DOCKER_PATH} -t ${TAG} 
+    docker build . -f ${DOCKER_PATH} -t ${TAG}  || sudo docker build . -f ${DOCKER_PATH} -t ${TAG} 
 fi
 
 if [[ ${TEST} -eq 1 ]]; then

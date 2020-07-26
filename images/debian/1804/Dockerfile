@@ -8,4 +8,4 @@ RUN apt-get install -y git linux-headers-azure
 
 # Hack until decouple architecture
 COPY ./ /
-RUN images/debian/setup.sh
+RUN images/scripts/setup.sh

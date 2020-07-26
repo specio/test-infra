@@ -1,4 +1,4 @@
-git clone https://github.com/openenclave/openenclave.git
+git clone https://github.com/BRMcLaren/openenclave.git
 
 # Install Ansible
 n=0
@@ -13,7 +13,7 @@ done
 n=0
 until [ "$n" -ge 5 ]
 do
-   ansible-playbook openenclave/scripts/ansible/oe-contributors-acc-setup-no-driver.yml && break
+   ansible-playbook openenclave/scripts/ansible/oe-contributors-acc-setup.yml && break
    n=$((n+1)) 
    sleep 15
 done

@@ -31,7 +31,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "docker build . -f images/debian/1604/Dockerfile"
+            - "./images/test/build.sh --docker_path images/debian/1604/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:
@@ -52,7 +52,28 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "docker build . -f images/debian/1804/Dockerfile"
+            - "./images/test/build.sh --docker_path images/debian/1804/Dockerfile"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-rhel-8.1
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:

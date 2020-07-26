@@ -1,13 +1,7 @@
 git clone https://github.com/openenclave/openenclave.git
 
 # Install Ansible
-n=0
-until [ "$n" -ge 5 ]
-do
-   openenclave/scripts/ansible/install-ansible.sh && break
-   n=$((n+1)) 
-   sleep 15
-done
+openenclave/scripts/ansible/install-ansible.sh && break
 
 # Run Ansible Playbook
 n=0

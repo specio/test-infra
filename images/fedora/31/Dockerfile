@@ -1,4 +1,4 @@
-FROM centos:7
+FROM fedora:31
 
 # UPDATE EVERYTHING!!!
 RUN yum update -y && yum upgrade -y

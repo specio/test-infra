@@ -46,11 +46,16 @@ INSTALL_PACKAGE=0
 # Test a package. Default is disabled
 TEST_PACKAGE=0
 # Run in simulation mode. Default is disabled
-SIMULATION_MODE=0
+SIMULATION_MODE=1
 # build with ninja. Defailt is disabled
 NINJA=0
 # build with lvi mitigation. Defailt is disabled
 LVI_MITIGATION=0
+
+# Hack to allow scripts to run locally and in a container
+if ! [ -f /.dockerenv ]; then
+    echo SUDO=sudo
+fi
 
 # Parse the command line - keep looping as long as there is at least one more argument
 while [[ $# -gt 0 ]]; do
@@ -113,11 +118,10 @@ fi
 # Delete the build directory if it exists. This allows calling this script iteratively
 # for multiple configurations for a platform.
 if [[ -d ./build ]]; then
-  rm -rf ./build || sudo rm -rf ./build 
+  ${SUDO} rm -rf ./build 
 fi
 
-#mkdir build && cd build || exit 1
-cd build || exit 1
+mkdir build && cd build || exit 1
 
 CMAKE="cmake .. -DCMAKE_BUILD_TYPE=${BUILD_TYPE}"
 
@@ -168,19 +172,17 @@ else
 fi
 
 # Finally run the tests in simulation or on Hardware
-if [[ ${DISABLE_SIM} -ne 1 ]]; then
+if [[ ${SIMULATION_MODE} -ne 1 ]]; then
     SIMULATION_MODE_TEXT="simulation"
     export OE_SIMULATION=1
-else
-    SIMULATION_MODE_TEXT="hardware"
 fi
 
-#if ! ctest --output-on-failure; then
-#    echo ""
-#    echo "Test failed for ${COMPILER_VALUE} ${BUILD_TYPE} in ${SIMULATION_MODE_TEXT} mode"
-#    echo ""
-#    exit 1
-#fi
+if ! ctest --output-on-failure; then
+    echo ""
+    echo "Test failed for ${SIMULATION_MODE_TEXT} ${COMPILER_VALUE} ${BUILD_TYPE} ${SIMULATION_MODE_TEXT}"
+    echo ""
+    exit 1
+fi
 
 if [[ ${BUILD_PACKAGE} -eq 1 ]]; then
     echo "Building package"
@@ -189,7 +191,7 @@ if [[ ${BUILD_PACKAGE} -eq 1 ]]; then
         ninja -v
         ninja -v package
     else
-        make package || sudo make package
+        ${SUDO} make package
     fi
 fi
 
@@ -197,9 +199,9 @@ if [[ ${INSTALL_PACKAGE} -eq 1 ]]; then
     echo "Installing package"
     echo ""
     if [[ ${NINJA} -eq 1 ]]; then
-        ninja -v install || sudo ninja -v install
+        ${SUDO} ninja -v install
     else
-        make install || sudo make install
+        ${SUDO} make install
     fi
 fi
 
@@ -207,7 +209,7 @@ if [[ ${TEST_PACKAGE} -eq 1 ]]; then
     echo "Testing package installation"
     echo ""
     if [[ -d ~/samples ]]; then
-        rm -rf ~/samples || sudo rm -rf ~/samples 
+        ${SUDO} rm -rf ~/samples 
     fi
     cp -r /opt/openenclave/share/openenclave/samples ~/
     cd ~/samples

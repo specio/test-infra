@@ -61,7 +61,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "docker build . -f images/debian/1804/Dockerfile"
+            - "./images/test/build.sh --docker_path images/debian/1804/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:
@@ -85,7 +85,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "docker build . -f images/debian/1604/Dockerfile"
+            - "./images/test/build.sh --docker_path images/debian/1804/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:

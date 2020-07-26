@@ -83,3 +83,24 @@ postsubmits:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-centos-7.5
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock

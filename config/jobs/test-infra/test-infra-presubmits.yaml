@@ -143,3 +143,27 @@ presubmits:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+
+  - name: pr-openenclave-test-infra-validate-build-image-centos-7.5
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock

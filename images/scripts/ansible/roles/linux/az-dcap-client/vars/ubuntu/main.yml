@@ -1,0 +1,3 @@
+---
+validation_distribution_files:
+  - "/usr/lib/libdcap_quoteprov.so"

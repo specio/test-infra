@@ -1,0 +1,8 @@
+---
+- name: Install the dkms package
+  apt:
+    name:
+      - "dkms"
+    state: latest
+    update_cache: yes
+    install_recommends: no

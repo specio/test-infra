@@ -1,0 +1,11 @@
+---
+ci_apt_packages:
+  - "automake"
+  - "dh-exec"
+  - "dpkg-dev"
+  - "gawk"
+  - "git"
+  - "libmbedtls10"
+  - "sudo"
+  - "libcurl4"
+  - "libprotobuf10"

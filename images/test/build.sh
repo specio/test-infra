@@ -36,6 +36,11 @@ while [[ $# -gt 0 ]]; do
         shift # past the key and to the value
         DOCKER_PATH=$1
         ;;
+        # This is a flag type option. Will catch --docker_tag 
+        --docker_tag)
+        shift # past the key and to the value
+        TAG=$1
+        ;;
         *)
         echo "Unknown option '${key}'"
         exit 1

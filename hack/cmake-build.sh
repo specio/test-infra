@@ -112,9 +112,9 @@ fi
 
 # Delete the build directory if it exists. This allows calling this script iteratively
 # for multiple configurations for a platform.
-#if [[ -d ./build ]]; then
-#  rm -rf ./build || sudo rm -rf ./build 
-#fi
+if [[ -d ./build ]]; then
+  rm -rf ./build || sudo rm -rf ./build 
+fi
 
 #mkdir build && cd build || exit 1
 cd build || exit 1

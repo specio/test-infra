@@ -14,7 +14,7 @@ periodics:
             - "-c"
             - "./hack/merge-prow-jobs.sh && ./hack/validate-prow-jobs.sh"
 
-  - name: ci-openenclave-test-infra-validate-build-image-debian-1604
+  - name: ci-openenclave-test-infra-validate-build-image-ubuntu-1604
     extra_refs:
     - org: BRMcLaren
       repo: test-infra
@@ -27,7 +27,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/debian/1604/Dockerfile"
+            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:
@@ -38,7 +38,7 @@ periodics:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: ci-openenclave-test-infra-validate-build-image-debian-1804
+  - name: ci-openenclave-test-infra-validate-build-image-ubuntu-1804
     extra_refs:
     - org: BRMcLaren
       repo: test-infra
@@ -51,7 +51,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/debian/1804/Dockerfile"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:

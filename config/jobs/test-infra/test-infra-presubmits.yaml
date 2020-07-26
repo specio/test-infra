@@ -133,7 +133,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile"
+            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing"
           securityContext:
             privileged: true
           volumeMounts:

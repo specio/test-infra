@@ -13,6 +13,7 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
    echo "        -h or --help to Display usage and exit"
    echo "        --docker_path path to docker file"
    echo "        --docker_tag custom tag to use"
+   echo "        --skip_testing disable testing of the image"
    echo ""
    exit 0
 fi
@@ -45,6 +46,10 @@ while [[ $# -gt 0 ]]; do
         --docker_tag)
         shift # past the key and to the value
         TAG=$1
+        ;;
+        # This is a flag type option. Will catch --docker_tag 
+        --skip_testing)
+        TEST=0
         ;;
         *)
         echo "Unknown option '${key}'"

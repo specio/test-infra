@@ -36,7 +36,7 @@ jobs:
   dependsOn: docker_image_build
   displayName: Validate Images
   strategy:
-    matrix:
+    matrix: 
       Windows_2019:
         dockerimage: brmclare/windows2019
         pool:

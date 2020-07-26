@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.1
+FROM fedora:31
 
 # UPDATE EVERYTHING!!!
 RUN yum update -y && yum upgrade -y

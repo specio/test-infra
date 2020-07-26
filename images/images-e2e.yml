@@ -11,14 +11,6 @@ jobs:
   displayName: Build and Push CI Images
   strategy:
     matrix:
-      Ubuntu_1804:
-        DockerFile_Path: images/debian/1804/Dockerfile
-        repository: brmclare/ubuntu1804
-        vmImage: ubuntu-latest
-      Ubuntu_1604:
-        DockerFile_Path: images/debian/1604/Dockerfile
-        repository: brmclare/ubuntu1604
-        vmImage: ubuntu-latest
       Windows_2019:
         DockerFile_Path: images/windows/2019/Dockerfile
         repository: brmclare/windows2019
@@ -45,16 +37,6 @@ jobs:
   displayName: Validate Images
   strategy:
     matrix:
-      Ubuntu_1804:
-        dockerimage: brmclare/ubuntu1804
-        pool: 1804CISGXagentspool
-        options: -it --device /dev/sgx:/dev/sgx
-        validation: images/debian/validate.sh
-      Ubuntu_1604:
-        dockerimage: brmclare/ubuntu1604
-        pool: 1804CISGXagentspool
-        options: -it --device /dev/sgx:/dev/sgx
-        validation: images/debian/validate.sh
       Windows_2019:
         dockerimage: brmclare/windows2019
         pool:

@@ -21,7 +21,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-test-infra-push-build-image-debian-1604
+  - name: post-openenclave-test-infra-push-build-image-ubuntu-1604
     branches:
     - master
     decorate: true
@@ -31,7 +31,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/debian/1604/Dockerfile"
+            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:
@@ -42,7 +42,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-test-infra-push-build-image-debian-1804
+  - name: post-openenclave-test-infra-push-build-image-ubuntu-1804
     branches:
     - master
     decorate: true
@@ -52,7 +52,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/debian/1804/Dockerfile"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile"
           securityContext:
             privileged: true
           volumeMounts:
@@ -74,6 +74,48 @@ postsubmits:
             - sh
             - "-c"
             - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-centos-7.5
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-fedora-31
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing"
           securityContext:
             privileged: true
           volumeMounts:

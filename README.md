@@ -4,7 +4,7 @@
 [![Build status](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-openenclave-test-infra-*)](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-openenclave-test-infra-*)
 [![Post Build status](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=post-openenclave-test-infra-*)](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=post-openenclave-test-infra-*)
 [![Slack Channel](https://img.shields.io/badge/Slack-Join-purple)](https://openenclaveciteam.slack.com/)
-
+![GitGuardian scan](https://github.com/BRMcLaren/test-infra/workflows/GitGuardian%20scan/badge.svg)
 
 This repository contains tools and configuration files for the testing and automation needs of the OpenEnclave project.
 

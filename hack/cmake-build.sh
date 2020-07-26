@@ -46,7 +46,7 @@ INSTALL_PACKAGE=0
 # Test a package. Default is disabled
 TEST_PACKAGE=0
 # Run in simulation mode. Default is disabled
-SIMULATION_MODE=0
+SIMULATION_MODE=1
 # build with ninja. Defailt is disabled
 NINJA=0
 # build with lvi mitigation. Defailt is disabled
@@ -116,8 +116,7 @@ if [[ -d ./build ]]; then
   rm -rf ./build || sudo rm -rf ./build 
 fi
 
-#mkdir build && cd build || exit 1
-cd build || exit 1
+mkdir build && cd build || exit 1
 
 CMAKE="cmake .. -DCMAKE_BUILD_TYPE=${BUILD_TYPE}"
 
@@ -168,19 +167,17 @@ else
 fi
 
 # Finally run the tests in simulation or on Hardware
-if [[ ${DISABLE_SIM} -ne 1 ]]; then
+if [[ ${SIMULATION_MODE} -ne 1 ]]; then
     SIMULATION_MODE_TEXT="simulation"
     export OE_SIMULATION=1
-else
-    SIMULATION_MODE_TEXT="hardware"
 fi
 
-#if ! ctest --output-on-failure; then
-#    echo ""
-#    echo "Test failed for ${COMPILER_VALUE} ${BUILD_TYPE} in ${SIMULATION_MODE_TEXT} mode"
-#    echo ""
-#    exit 1
-#fi
+if ! ctest --output-on-failure; then
+    echo ""
+    echo "Test failed for ${SIMULATION_MODE_TEXT} ${COMPILER_VALUE} ${BUILD_TYPE} ${SIMULATION_MODE_TEXT}"
+    echo ""
+    exit 1
+fi
 
 if [[ ${BUILD_PACKAGE} -eq 1 ]]; then
     echo "Building package"

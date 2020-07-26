@@ -1,0 +1,24 @@
+test-infra/openenclave:
+- config/jobs/openenclave-sdk/*
+
+test-infra/oeedger8r-cpp:
+- config/jobs/oeedger8r-cpp/*
+
+test-infra/test-infra:
+- config/jobs/test-infra/*
+
+containers:
+- images/ubuntu
+- images/rhel
+- images/centos
+- images/fedora
+- images/windows
+
+docs:
+- any: ['**/*.md']
+
+owners:
+- any: ['**/OWNERS']
+
+workflows:
+- any: ['.github/*']

@@ -1,4 +1,4 @@
-# Opene Enclave Test Infrastructure
+# Open Enclave Test Infrastructure
 
 
 [![Build status](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-openenclave-test-infra-*)](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-openenclave-test-infra-*)

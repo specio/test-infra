@@ -2,7 +2,7 @@ prowjob_namespace: default
 pod_namespace: test-pods
 log_level: debug
 tide:
-  sync_period: 2m
+  sync_period: 1m
   queries:
     - repos:
         - BRMcLaren/test-infra
@@ -25,8 +25,8 @@ plank:
   pod_unscheduled_timeout: 15m
   default_decoration_configs:
     '*':
-      timeout: 4h
-      grace_period: 10m
+      timeout: 2h
+      grace_period: 15m
       utility_images:
         clonerefs: "gcr.io/k8s-prow/clonerefs:v20200710-7fa016752a"
         initupload: "gcr.io/k8s-prow/initupload:v20200710-7fa016752a"
@@ -41,7 +41,7 @@ github_reporter:
     - presubmit
     - postsubmit
 sinker:
-  resync_period: 15m
-  max_prowjob_age: 6h
-  max_pod_age: 3h
+  resync_period: 1m
+  max_prowjob_age: 48h
+  max_pod_age: 48h
   terminated_pod_ttl: 30m

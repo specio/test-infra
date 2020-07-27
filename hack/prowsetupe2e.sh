@@ -1,3 +1,11 @@
+export LOCATION="uksouth"
+export RESOURCE_GROUP="ProwResources"
+export AKS_CLUSTER_NAME="oe-prow"
+export NODE_SIZE="Standard_DC8_v2"
+export MIN_NODE_COUNT="1"
+export MAX_NODE_COUNT="10"
+export PATH_KEY="~/.ssh/id_rsa.pub"
+
 kubectl delete --all namespaces
 
 # Delete Any Existing Resources
@@ -76,8 +84,9 @@ kubectl apply -f test-infra/config/prow/cluster/statusreconciler_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_rbac.yaml
 kubectl apply -f test-infra/config/prow/cluster/crier_deployment.yaml
 
-kubectl create configmap config   --from-file=config.yaml=$PWD/test-infra/config/prow/config.yaml  --dry-run=client -o yaml | kubectl replace configmap config -f -
-kubectl create configmap plugins   --from-file=$PWD/test-infra/config/prow/plugins.yaml --dry-run=client -o yaml   | kubectl replace configmap plugins -f -
+# Apply config and plugins
+kubectl create configmap config --from-file=config.yaml=$PWD/test-infra/config/prow/config.yaml  --dry-run=client -o yaml | kubectl replace configmap config -f -
+kubectl create configmap plugins --from-file=$PWD/test-infra/config/prow/plugins.yaml --dry-run=client -o yaml   | kubectl replace configmap plugins -f -
 
 # Deploy Prow Jenkins Controller
 kubectl apply -f test-infra/config/prow/cluster/jenkins_deployment.yaml
@@ -94,11 +103,15 @@ sleep 4m
 kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 #1. Watch Jenkins instance being created:
-kubectl --namespace default get pods -w
+kubectl --namespace default get pods
 
 #2. Get Jenkins credentials:
 kubectl --namespace default get secret jenkins-operator-credentials-jenkins -o 'jsonpath={.data.user}' | base64 -d
 kubectl --namespace default get secret jenkins-operator-credentials-jenkins -o 'jsonpath={.data.password}' | base64 -d
 
 #3. Connect to Jenkins (actual Kubernetes cluster):
-kubectl --namespace default port-forward jenkins-jenkins 8080:8080
+#kubectl --namespace default port-forward jenkins-jenkins 8080:8080
+
+# Delete Any Existing Resources
+#az group delete --name ${RESOURCE_GROUP} --yes
+#az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER_NAME}_${LOCATION} --yes

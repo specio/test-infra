@@ -61,7 +61,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ ${BUILD} -eq 1 ]]; then
-    ${SUDO} docker build . -f ${DOCKER_PATH} -t ${TAG} 
+    ${SUDO} docker build . -f ${DOCKER_PATH} -t ${TAG} --no-cache
 fi
 
 if [[ ${TEST} -eq 1 ]]; then

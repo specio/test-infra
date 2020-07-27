@@ -61,7 +61,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1804"
           securityContext:
             privileged: true
           volumeMounts:
@@ -85,7 +85,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1604"
           securityContext:
             privileged: true
           volumeMounts:
@@ -133,7 +133,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing"
+            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing --docker_tag openenclave/rhel-8.1"
           securityContext:
             privileged: true
           volumeMounts:
@@ -157,7 +157,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing --docker_tag centos-7.5"
           securityContext:
             privileged: true
           volumeMounts:
@@ -181,7 +181,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing"
+            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing --docker_tag fedora-31"
           securityContext:
             privileged: true
           volumeMounts:

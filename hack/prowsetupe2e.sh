@@ -1,5 +1,5 @@
 export LOCATION="uksouth"
-export RESOURCE_GROUP="OpenEnclaveCICD"
+export RESOURCE_GROUP="OpenEnclaveCICDDev"
 export AKS_CLUSTER_NAME="oe-prow"
 export NODE_SIZE="Standard_DC8_v2"
 export MIN_NODE_COUNT="3"

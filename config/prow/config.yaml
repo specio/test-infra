@@ -19,7 +19,7 @@ plank:
   job_url_template: 'https://storage.googleapis.com/oe-prow-artifacts/{{if eq .Spec.Type "presubmit"}}pr-logs/pull{{else if eq .Spec.Type "batch"}}pr-logs/pull{{else}}logs{{end}}{{if eq .Spec.Type "presubmit"}}/{{.Spec.Refs.Org}}_{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}{{else if eq .Spec.Type "batch"}}/batch{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}/build-log.txt'
   #TODO Fix Prow Config Report Template
   report_templates:
-    '*': '[Full PR test history](http://oe-prow-status.uksouth.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](https://prow.k8s.io/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by [linking to](https://git.k8s.io/community/contributors/devel/sig-testing/flaky-tests.md#filing-issues-for-flaky-tests) an [open issue](https://github.com/{{.Spec.Refs.Org}}/{{.Spec.Refs.Repo}}/issues?q=is:issue+is:open) when you hit one in your PR.'
+    '*': '[Full PR test history](http://oe-prow-status.uksouth.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](http://oe-prow-status.uksouth.cloudapp.azure.com/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by openening an issue when you hit one in your PR.'
   pod_pending_timeout: 15m
   pod_unscheduled_timeout: 15m
   default_decoration_configs:
@@ -205,7 +205,7 @@ periodics:
           path: /var/run/docker.sock
   - name: ci-openenclave-openenclave-cmake-1804
     extra_refs:
-    - org: openenclave
+    - org: BRMcLaren
       repo: openenclave
       base_ref: master
     decorate: true
@@ -230,7 +230,7 @@ periodics:
 
   - name: ci-openenclave-openenclave-cmake-1604
     extra_refs:
-    - org: openenclave
+    - org: BRMcLaren
       repo: openenclave
       base_ref: master
     decorate: true
@@ -254,7 +254,7 @@ periodics:
       restartPolicy: Never
   - name: ci-openenclave-oeedger8r-cmake-1804
     extra_refs:
-    - org: openenclave
+    - org: BRMcLaren
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
@@ -269,7 +269,7 @@ periodics:
 
   - name: ci-openenclave-oeedger8r-cmake-1604
     extra_refs:
-    - org: openenclave
+    - org: BRMcLaren
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
@@ -282,7 +282,7 @@ periodics:
             - "-c"
             - "/hack/cmake-build.sh"
 presubmits:
-  openenclave-ci/oeedger8r-cpp:
+  BRMcLaren/oeedger8r-cpp:
   - name: pr-openenclave-oeedger8r-cmake-1804
     branches:
     - master
@@ -505,7 +505,7 @@ presubmits:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
-  openenclave-ci/openenclave:
+  BRMcLaren/openenclave:
   - name: pr-openenclave-openenclave-cmake-1804
     branches:
     - master

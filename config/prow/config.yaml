@@ -4,11 +4,8 @@ log_level: debug
 tide:
   sync_period: 1m
   queries:
-    - repos:
-        - BRMcLaren/test-infra
-        - BRMcLaren/openenclave
-        - BRMcLaren/oeedger8r-cpp
-        - openenclave/oeedger8r-cpp
+    - orgs:
+        - openenclave-ci
       labels:
         - lgtm
         - approved
@@ -50,7 +47,7 @@ sinker:
 periodics:
   - name: ci-openenclave-test-infra-validate-prow-jobs
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -65,7 +62,7 @@ periodics:
 
   - name: ci-openenclave-test-infra-validate-build-image-ubuntu-1604
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -89,7 +86,7 @@ periodics:
 
   - name: ci-openenclave-test-infra-validate-build-image-ubuntu-1804
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -113,7 +110,7 @@ periodics:
 
   - name: ci-openenclave-test-infra-validate-build-image-rhel-8.1
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -137,7 +134,7 @@ periodics:
 
   - name: ci-openenclave-test-infra-validate-build-image-bootstrap-did
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -161,7 +158,7 @@ periodics:
 
   - name: ci-openenclave-test-infra-validate-build-image-centos-7.5
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -185,7 +182,7 @@ periodics:
 
   - name: ci-openenclave-test-infra-validate-build-image-fedora-31
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
@@ -208,7 +205,7 @@ periodics:
           path: /var/run/docker.sock
   - name: ci-openenclave-openenclave-cmake-1804
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: openenclave
       base_ref: master
     decorate: true
@@ -233,7 +230,7 @@ periodics:
 
   - name: ci-openenclave-openenclave-cmake-1604
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: openenclave
       base_ref: master
     decorate: true
@@ -257,7 +254,7 @@ periodics:
       restartPolicy: Never
   - name: ci-openenclave-oeedger8r-cmake-1804
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
@@ -272,7 +269,7 @@ periodics:
 
   - name: ci-openenclave-oeedger8r-cmake-1604
     extra_refs:
-    - org: BRMcLaren
+    - org: openenclave-ci
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
@@ -285,7 +282,7 @@ periodics:
             - "-c"
             - "/hack/cmake-build.sh"
 presubmits:
-  BRMcLaren/oeedger8r-cpp:
+  openenclave-ci/oeedger8r-cpp:
   - name: pr-openenclave-oeedger8r-cmake-1804
     branches:
     - master
@@ -316,7 +313,7 @@ presubmits:
         args:
         - -c
         - "/hack/cmake-build.sh"
-  BRMcLaren/test-infra:
+  openenclave-ci/test-infra:
   - name: pr-openenclave-test-infra-ping
     branches:
     - master
@@ -508,7 +505,7 @@ presubmits:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
-  BRMcLaren/openenclave:
+  openenclave-ci/openenclave:
   - name: pr-openenclave-openenclave-cmake-1804
     branches:
     - master
@@ -558,7 +555,7 @@ presubmits:
           path: /dev/sgx
       restartPolicy: Never
 postsubmits:
-  BRMcLaren/test-infra:
+  openenclave-ci/test-infra:
   - name: post-openenclave-test-infra-push-image-bootstrap-did
     branches:
     - master

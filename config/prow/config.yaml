@@ -6,6 +6,9 @@ tide:
   queries:
     - repos:
         - BRMcLaren/test-infra
+        - BRMcLaren/openenclave
+        - BRMcLaren/oeedger8r-cpp
+        - openenclave/oeedger8r-cpp
       labels:
         - lgtm
         - approved
@@ -554,3 +557,130 @@ presubmits:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never
+postsubmits:
+  BRMcLaren/test-infra:
+  - name: post-openenclave-test-infra-push-image-bootstrap-did
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "docker build . -f images/bootstap/Dockerfile"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-ubuntu-1604
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile --docker_tag openenclave/ubuntu-1604"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-ubuntu-1804
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1804"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-rhel-8.1
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing --docker_tag openenclave/rhel-8.1"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-centos-7.5
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing --docker_tag openenclave/centos-7.5"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: post-openenclave-test-infra-push-build-image-fedora-31
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing --docker_tag openenclave/fefora-31"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock

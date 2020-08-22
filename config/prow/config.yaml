@@ -365,9 +365,9 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-ubuntu-1804
     branches:
     - master
-    always_run: true
     decorate: true
     skip_report: false
+    run_if_changed: "images/ubuntu/*"
     max_concurrency: 10
     spec:
       containers:
@@ -389,10 +389,10 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-ubuntu-1604
     branches:
     - master
-    always_run: true
     decorate: true
     skip_report: false
     max_concurrency: 10
+    run_if_changed: "images/ubuntu/*"
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -413,10 +413,10 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-bootstrap-did
     branches:
     - master
-    always_run: true
     decorate: true
     skip_report: false
     max_concurrency: 10
+    run_if_changed: "images/bootstrap/*"
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -437,10 +437,10 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-rhel-8.1
     branches:
     - master
-    always_run: true
     decorate: true
     skip_report: false
     max_concurrency: 10
+    run_if_changed: "images/rhel/*"
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -461,10 +461,10 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-centos-7.5
     branches:
     - master
-    always_run: true
     decorate: true
     skip_report: false
     max_concurrency: 10
+    run_if_changed: "images/centos/*"
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -485,10 +485,10 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-fedora-31
     branches:
     - master
-    always_run: true
     decorate: true
     skip_report: false
     max_concurrency: 10
+    run_if_changed: "images/fedora/*"
     spec:
       containers:
         - image: openenclave/test-infra-did:latest

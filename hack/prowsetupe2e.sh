@@ -6,8 +6,6 @@ export MIN_NODE_COUNT="3"
 export MAX_NODE_COUNT="10"
 export PATH_KEY="~/.ssh/id_rsa.pub"
 
-kubectl delete --all namespaces
-
 # Delete Any Existing Resources
 az group delete --name ${RESOURCE_GROUP} --yes
 az group delete --name MC_${RESOURCE_GROUP}_${AKS_CLUSTER_NAME}_${LOCATION} --yes

@@ -1,11 +1,11 @@
 export LOCATION="uksouth"
-export RESOURCE_GROUP="OpenEnclaveCICDDev"
-export AKS_CLUSTER_NAME="oe-prow-dev"
+export RESOURCE_GROUP="OpenEnclaveCICDProd"
+export AKS_CLUSTER_NAME="oe-prow-prod"
 export NODE_SIZE="Standard_DC8_v2"
 export MIN_NODE_COUNT="3"
 export MAX_NODE_COUNT="10"
 export PATH_KEY="~/.ssh/id_rsa.pub"
-export DNS_LABEL="oe-prow-status-dev"
+export DNS_LABEL="oe-prow-status"
 
 # Delete Any Existing Resources
 az group delete --name ${RESOURCE_GROUP} --yes
@@ -83,7 +83,7 @@ kubectl apply -f config/prow/cluster/deck_service.yaml
 kubectl apply -f config/prow/cluster/horolgium_deployment.yaml
 kubectl apply -f config/prow/cluster/tide_deployment.yaml
 kubectl apply -f config/prow/cluster/tide_service.yaml
-kubectl apply -f config/prow/cluster/ing_ingress_dev.yaml
+kubectl apply -f config/prow/cluster/ing_ingress.yaml
 kubectl apply -f config/prow/cluster/statusreconciler_deployment.yaml
 kubectl apply -f config/prow/cluster/test_pods.yaml
 kubectl apply -f config/prow/cluster/deck_rbac.yaml

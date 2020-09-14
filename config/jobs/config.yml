@@ -40,4 +40,5 @@ openenclave:
 
   compilers:
     clang-8
+    clang-7
     gcc

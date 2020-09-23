@@ -12,7 +12,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile --docker_tag openenclave/ubuuntu-1604"
+            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile --docker_tag openenclave/ubuuntu-1604:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
           securityContext:
             privileged: true
           volumeMounts:
@@ -36,7 +36,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1804"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1804:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
           securityContext:
             privileged: true
           volumeMounts:
@@ -60,7 +60,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing --docker_tag openenclave/rhel-8.1"
+            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing --docker_tag openenclave/rhel-8.1:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
           securityContext:
             privileged: true
           volumeMounts:
@@ -84,7 +84,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "docker build . -f images/bootstap/Dockerfile"
+            - "./images/test/build.sh --docker_path images/bootstap/Dockerfile --skip_testing --docker_tag openenclave/test-infra-did:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
           securityContext:
             privileged: true
           volumeMounts:
@@ -108,7 +108,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing --docker_tag openenclave/centos-7.5"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing --docker_tag openenclave/centos-7.5:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
           securityContext:
             privileged: true
           volumeMounts:
@@ -132,7 +132,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing --docker_tag openenclave/fedora-31"
+            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing --docker_tag openenclave/fedora-31:latest --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
           securityContext:
             privileged: true
           volumeMounts:
@@ -142,6 +142,7 @@ periodics:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+
   - name: ci-openenclave-test-infra-jenkins-ping
     extra_refs:
     - org: openenclave-ci
@@ -158,7 +159,7 @@ periodics:
             - "python /hack/jenkins_bootstrap.py --job job-runner --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN)"
 
 presets:
-- env:                     # a preset with no labels is applied to all jobs
+- env:
   - name: JENKINS_TOKEN
     valueFrom:
       secretKeyRef:
@@ -170,3 +171,12 @@ presets:
   
   - name: JENKINS_URL
     value: http://oe-jenk-master-test.canadacentral.cloudapp.azure.com
+
+  - name: DOCKER_USER
+    value: openenclave
+
+  - name: DOCKER_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: docker-password
+        key: docker-password

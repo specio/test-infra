@@ -72,6 +72,10 @@ kubectl create secret generic hmac-token --from-file=$PWD/hmac
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
 kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json
 
+# Create Jenkins token
+### Generate a dummy credential even if you are not using Jenkins or else some prow jobs will fail
+kubectl -n test-pods create secret generic jenkins-token --from-file=jenkins-token=$PWD/jenkins-secret
+
 kubectl apply -f config/prow/cluster/configs.yaml
 kubectl apply -f config/prow/cluster/hook_deployment.yaml
 kubectl apply -f config/prow/cluster/hook_service.yaml
@@ -113,15 +117,3 @@ kubectl create configmap job-config \
 
 # Ending remarks
 az network public-ip list --resource-group ${AKS_RESOURCE_GROUP} --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
-
-# Generate TLS cert
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -out aks-ingress-tls.crt \
-    -keyout aks-ingress-tls.key \
-    -subj "/CN=${DNS_LABEL}.uksouth.cloudapp.azure.com/O=aks-ingress-tls"
-
-# Create TLS secret
-kubectl create secret tls prow-tls \
-    --namespace ingress-basic \
-    --key aks-ingress-tls.key \
-    --cert aks-ingress-tls.crt

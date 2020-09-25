@@ -22,6 +22,7 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
    echo "        --build_package to Build a .deb package after testing"
    echo "        --install_package to install a .deb package after testing"
    echo "        --test_package to test the installed package"
+   echo "        --enable_snmalloc builds with snmalloc"
    echo "        --simulation_mode to run in simulation mode"
    echo "        --hardware_mode to run in hardware mode"
    echo "        --enable_full_libcxx_tests to Enable libcxx tests"
@@ -52,7 +53,8 @@ SIMULATION_MODE=1
 NINJA=0
 # build with lvi mitigation. Defailt is disabled
 LVI_MITIGATION=0
-
+# build with snmalloc. Defailt is disabled
+SNMALLOC=0
 # Hack to allow scripts to run locally and in a container
 if ! [ -f /.dockerenv ]; then
     echo SUDO=sudo
@@ -89,6 +91,10 @@ while [[ $# -gt 0 ]]; do
         # This is a flag type option. Will catch --build_package
         --build_package)
         BUILD_PACKAGE=1
+        ;;
+        # This is a flag type option. Will catch --enable_snmalloc
+        --enable_snmalloc)
+        SNMALLOC=1
         ;;
         # This is an arg value type option. Will catch -b value or --build_type value
         -b|--build_type)
@@ -141,6 +147,9 @@ if [[ ${ENABLE_FULL_LIBCXX_TESTS} -eq 1 ]]; then
 fi
 if [[ ${LVI_MITIGATION} -eq 1 ]]; then
     CMAKE+=" -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DLVI_MITIGATION_SKIP_TESTS=OFF"
+fi
+if [[ ${SNMALLOC} -eq 1 ]]; then
+    CMAKE+=" -DUSE_SNMALLOC=ON"
 fi
 
 echo "CMake command is '${CMAKE}'"

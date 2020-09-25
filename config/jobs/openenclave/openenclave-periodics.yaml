@@ -1,7 +1,7 @@
 periodics:
-  - name: ci-openenclave-ubuntu-1604-Release-clang-8
+  - name: ci-openenclave-ubuntu-1604-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -12,11 +12,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1604-Release-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -31,7 +31,7 @@ periodics:
 
   - name: ci-openenclave-ubuntu-1604-Release-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -44,9 +44,9 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1604-RelDebInfo-clang-8
+  - name: ci-openenclave-ubuntu-1604-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -57,11 +57,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1604-RelDebInfo-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -76,7 +76,7 @@ periodics:
 
   - name: ci-openenclave-ubuntu-1604-RelDebInfo-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -89,9 +89,9 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1604-Debug-clang-8
+  - name: ci-openenclave-ubuntu-1604-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -102,11 +102,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1604-Debug-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -121,7 +121,7 @@ periodics:
 
   - name: ci-openenclave-ubuntu-1604-Debug-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -134,9 +134,9 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
 
-  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -147,7 +147,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -161,7 +161,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -186,7 +186,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1604-Release-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -209,9 +209,9 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -222,7 +222,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -236,7 +236,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -261,7 +261,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1604-RelDebInfo-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -284,9 +284,9 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -297,7 +297,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -311,7 +311,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -336,7 +336,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1604-Debug-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -359,9 +359,9 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-ubuntu-1804-Release-clang-8
+  - name: ci-openenclave-ubuntu-1804-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -372,11 +372,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1804-Release-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -391,7 +391,7 @@ periodics:
 
   - name: ci-openenclave-ubuntu-1804-Release-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -404,9 +404,9 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1804-RelDebInfo-clang-8
+  - name: ci-openenclave-ubuntu-1804-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -417,11 +417,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1804-RelDebInfo-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -436,7 +436,7 @@ periodics:
 
   - name: ci-openenclave-ubuntu-1804-RelDebInfo-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -449,9 +449,9 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1804-Debug-clang-8
+  - name: ci-openenclave-ubuntu-1804-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -462,11 +462,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1804-Debug-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -481,7 +481,7 @@ periodics:
 
   - name: ci-openenclave-ubuntu-1804-Debug-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -494,9 +494,9 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
 
-  - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -507,7 +507,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -521,7 +521,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -546,7 +546,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1804-Release-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -569,9 +569,9 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -582,7 +582,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -596,7 +596,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -621,7 +621,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1804-RelDebInfo-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -644,9 +644,9 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -657,7 +657,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -671,7 +671,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-7
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -696,7 +696,7 @@ periodics:
 
   - name: ci-openenclave-sgx-ubuntu-1804-Debug-gcc
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -719,9 +719,9 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never        
 
-  - name: ci-openenclave-jenk-rhel-8.1-Release-clang-8
+  - name: ci-openenclave-jenk-rhel-8.1-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -732,11 +732,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8
+  - name: ci-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -747,11 +747,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-rhel-8.1-Debug-clang-8
+  - name: ci-openenclave-jenk-rhel-8.1-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -762,11 +762,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-win-2016-Release-clang-8
+  - name: ci-openenclave-jenk-win-2016-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -777,11 +777,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-win-2016-RelDebInfo-clang-8
+  - name: ci-openenclave-jenk-win-2016-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -792,11 +792,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-win-2016-Debug-clang-8
+  - name: ci-openenclave-jenk-win-2016-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -807,11 +807,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-win-2019-Release-clang-8
+  - name: ci-openenclave-jenk-win-2019-Release-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -822,11 +822,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-win-2019-RelDebInfo-clang-8
+  - name: ci-openenclave-jenk-win-2019-RelDebInfo-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -837,11 +837,11 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8-lvi"'        
 
-  - name: ci-openenclave-jenk-win-2019-Debug-clang-8
+  - name: ci-openenclave-jenk-win-2019-Debug-clang-8-lvi
     extra_refs:
-    - org: openenclave-ci
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
@@ -852,4 +852,4 @@ periodics:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8-lvi"'        

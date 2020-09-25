@@ -140,7 +140,7 @@ if [[ ${ENABLE_FULL_LIBCXX_TESTS} -eq 1 ]]; then
     CMAKE+=" -DENABLE_FULL_LIBCXX_TESTS=1"
 fi
 if [[ ${LVI_MITIGATION} -eq 1 ]]; then
-    CMAKE+=" -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin"
+    CMAKE+=" -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DLVI_MITIGATION_SKIP_TESTS=OFF"
 fi
 
 echo "CMake command is '${CMAKE}'"

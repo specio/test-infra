@@ -1,9 +1,10 @@
 export LOCATION="uksouth"
 export RESOURCE_GROUP="OpenEnclaveCICD"
 export AKS_CLUSTER_NAME="oe-prow-dev"
-export NODE_SIZE="Standard_DC8_v2"
+export NODE_SIZE="Standard_DC2s_v2"
 export MIN_NODE_COUNT="3"
-export MAX_NODE_COUNT="10"
+export MAX_POD="10"
+export MAX_NODE_COUNT="100"
 export PATH_KEY="~/.ssh/id_rsa.pub"
 export DNS_LABEL="oe-prow-status"
 
@@ -27,6 +28,7 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --client-secret ${CLIENT_SECRET} \
     --min-count ${MIN_NODE_COUNT} \
     --max-count ${MAX_NODE_COUNT} \
+    --max-pod ${MAX_POD} \
     --ssh-key-value ${PATH_KEY} \
     --aks-custom-headers "usegen2vm=true"
 
@@ -67,7 +69,7 @@ kubectl create clusterrolebinding cluster-admin-binding-"${USER}" \
 kubectl create namespace test-pods
 
 # Credentials
-openssl rand -hex 20 > $PWD/hmac
+#openssl rand -hex 20 > $PWD/hmac
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
 kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json
@@ -79,6 +81,13 @@ kubectl -n test-pods create secret generic jenkins-token --from-file=jenkins-tok
 # Create Docker credentials token
 ### Generate a dummy credential even if you are not using Docker or else some prow jobs will fail
 kubectl -n test-pods create secret generic docker-password --from-file=docker-password=$PWD/docker-creds
+
+# Generate and configure PR Status
+kubectl create secret generic github-oauth-config --from-file=secret=$PWD/pr-status
+kubectl create secret generic cookie --from-file=secret=$PWD/cookie.txt
+
+# Generate Slack integration
+kubectl create secret generic slack-token --from-literal=token=$PWD/slack-reporter
 
 kubectl apply -f config/prow/cluster/configs.yaml
 kubectl apply -f config/prow/cluster/hook_deployment.yaml

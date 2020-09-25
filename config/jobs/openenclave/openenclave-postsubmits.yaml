@@ -1,6 +1,6 @@
 postsubmits:
   openenclave-ci/openenclave:
-  - name: post-openenclave-ubuntu-1604-Release-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1604-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -10,7 +10,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -21,7 +21,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Release-clang-7
+  - name: post-openenclave-sim-ubuntu-1604-Release-clang-7
     branches:
     - master
     decorate: true
@@ -31,7 +31,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -42,7 +42,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Release-gcc
+  - name: post-openenclave-sim-ubuntu-1604-Release-gcc
     branches:
     - master
     decorate: true
@@ -52,7 +52,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -63,7 +63,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -73,7 +73,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -84,7 +84,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-7
+  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -94,7 +94,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -105,7 +105,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-gcc
+  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -115,7 +115,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -126,7 +126,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -136,7 +136,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -147,7 +147,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-clang-7
+  - name: post-openenclave-sim-ubuntu-1604-Debug-clang-7
     branches:
     - master
     decorate: true
@@ -157,7 +157,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -168,7 +168,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-gcc
+  - name: post-openenclave-sim-ubuntu-1604-Debug-gcc
     branches:
     - master
     decorate: true
@@ -178,7 +178,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -199,7 +199,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-Release-clang-7
     branches:
@@ -211,7 +211,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-Release-gcc
     branches:
@@ -223,7 +223,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8-lvi
     branches:
@@ -235,7 +235,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-7
     branches:
@@ -247,7 +247,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-gcc
     branches:
@@ -259,7 +259,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8-lvi
     branches:
@@ -271,7 +271,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-7
     branches:
@@ -283,7 +283,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1604-Debug-gcc
     branches:
@@ -295,9 +295,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-ubuntu-1804-Release-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1804-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -307,7 +307,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -318,7 +318,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Release-clang-7
+  - name: post-openenclave-sim-ubuntu-1804-Release-clang-7
     branches:
     - master
     decorate: true
@@ -328,7 +328,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -339,7 +339,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Release-gcc
+  - name: post-openenclave-sim-ubuntu-1804-Release-gcc
     branches:
     - master
     decorate: true
@@ -349,7 +349,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -360,7 +360,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -370,7 +370,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -381,7 +381,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-7
+  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -391,7 +391,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -402,7 +402,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-gcc
+  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -412,7 +412,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -423,7 +423,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -433,7 +433,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -444,7 +444,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-clang-7
+  - name: post-openenclave-sim-ubuntu-1804-Debug-clang-7
     branches:
     - master
     decorate: true
@@ -454,7 +454,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -465,7 +465,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-gcc
+  - name: post-openenclave-sim-ubuntu-1804-Debug-gcc
     branches:
     - master
     decorate: true
@@ -475,7 +475,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -496,7 +496,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-Release-clang-7
     branches:
@@ -508,7 +508,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-Release-gcc
     branches:
@@ -520,7 +520,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8-lvi
     branches:
@@ -532,7 +532,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-7
     branches:
@@ -544,7 +544,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-gcc
     branches:
@@ -556,7 +556,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8-lvi
     branches:
@@ -568,7 +568,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-7
     branches:
@@ -580,7 +580,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode'
 
   - name: post-openenclave-sgx-ubuntu-1804-Debug-gcc
     branches:
@@ -592,7 +592,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
+            - '/hack/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode'        
 
   - name: post-openenclave-jenk-rhel-8.1-Release-clang-8-lvi
     branches:

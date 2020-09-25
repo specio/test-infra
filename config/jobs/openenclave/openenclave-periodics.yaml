@@ -12,7 +12,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1604-Release-clang-7
     extra_refs:
@@ -57,7 +57,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1604-RelDebInfo-clang-7
     extra_refs:
@@ -102,7 +102,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1604-Debug-clang-7
     extra_refs:
@@ -147,7 +147,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -222,7 +222,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -297,7 +297,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -372,7 +372,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1804-Release-clang-7
     extra_refs:
@@ -417,7 +417,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1804-RelDebInfo-clang-7
     extra_refs:
@@ -462,7 +462,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
 
   - name: ci-openenclave-ubuntu-1804-Debug-clang-7
     extra_refs:
@@ -507,7 +507,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -582,7 +582,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -657,7 +657,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug openenclave--compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx

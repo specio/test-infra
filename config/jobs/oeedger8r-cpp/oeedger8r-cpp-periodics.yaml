@@ -12,7 +12,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+
   - name: ci-oeedger8r-cpp-ubuntu-1604-Release-clang-7
     extra_refs:
     - org: openenclave-ci
@@ -26,7 +27,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+
   - name: ci-oeedger8r-cpp-ubuntu-1604-Release-gcc
     extra_refs:
     - org: openenclave-ci
@@ -40,7 +42,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'        
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+
   - name: ci-oeedger8r-cpp-ubuntu-1604-Debug-clang-8
     extra_refs:
     - org: openenclave-ci
@@ -54,7 +57,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+
   - name: ci-oeedger8r-cpp-ubuntu-1604-Debug-clang-7
     extra_refs:
     - org: openenclave-ci
@@ -68,7 +72,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+
   - name: ci-oeedger8r-cpp-ubuntu-1604-Debug-gcc
     extra_refs:
     - org: openenclave-ci
@@ -82,7 +87,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+
   - name: ci-oeedger8r-cpp-ubuntu-1804-Release-clang-8
     extra_refs:
     - org: openenclave-ci
@@ -96,7 +102,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+
   - name: ci-oeedger8r-cpp-ubuntu-1804-Release-clang-7
     extra_refs:
     - org: openenclave-ci
@@ -110,7 +117,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+
   - name: ci-oeedger8r-cpp-ubuntu-1804-Release-gcc
     extra_refs:
     - org: openenclave-ci
@@ -124,7 +132,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'        
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+
   - name: ci-oeedger8r-cpp-ubuntu-1804-Debug-clang-8
     extra_refs:
     - org: openenclave-ci
@@ -138,7 +147,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+
   - name: ci-oeedger8r-cpp-ubuntu-1804-Debug-clang-7
     extra_refs:
     - org: openenclave-ci
@@ -152,7 +162,8 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+
   - name: ci-oeedger8r-cpp-ubuntu-1804-Debug-gcc
     extra_refs:
     - org: openenclave-ci

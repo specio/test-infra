@@ -19,7 +19,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -39,7 +40,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1604-Release-gcc
     branches:
     - master
@@ -59,7 +61,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1604-Debug-clang-8
     branches:
     - master
@@ -79,7 +82,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -99,7 +103,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1604-Debug-gcc
     branches:
     - master
@@ -119,7 +124,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1804-Release-clang-8
     branches:
     - master
@@ -139,7 +145,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -159,7 +166,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1804-Release-gcc
     branches:
     - master
@@ -179,7 +187,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1804-Debug-clang-8
     branches:
     - master
@@ -199,7 +208,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -219,7 +229,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-oeedger8r-cpp-ubuntu-1804-Debug-gcc
     branches:
     - master

@@ -19,7 +19,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -39,7 +40,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-Release-gcc
     branches:
     - master
@@ -59,7 +61,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-8
     branches:
     - master
@@ -79,7 +82,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-7
     branches:
     - master
@@ -99,7 +103,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-RelDebInfo-gcc
     branches:
     - master
@@ -119,7 +124,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-Debug-clang-8
     branches:
     - master
@@ -139,7 +145,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -159,7 +166,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1604-Debug-gcc
     branches:
     - master
@@ -179,7 +187,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-sgx-ubuntu-1604-Release-clang-8
     branches:
     - master
@@ -190,7 +199,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -201,7 +211,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-Release-gcc
     branches:
     - master
@@ -212,7 +223,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8
     branches:
     - master
@@ -223,7 +235,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-7
     branches:
     - master
@@ -234,7 +247,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-gcc
     branches:
     - master
@@ -245,7 +259,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8
     branches:
     - master
@@ -256,7 +271,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -267,7 +283,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1604-Debug-gcc
     branches:
     - master
@@ -278,7 +295,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
+
   - name: post-openenclave-ubuntu-1804-Release-clang-8
     branches:
     - master
@@ -298,7 +316,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -318,7 +337,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-Release-gcc
     branches:
     - master
@@ -338,7 +358,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-8
     branches:
     - master
@@ -358,7 +379,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-7
     branches:
     - master
@@ -378,7 +400,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-RelDebInfo-gcc
     branches:
     - master
@@ -398,7 +421,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-Debug-clang-8
     branches:
     - master
@@ -418,7 +442,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -438,7 +463,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-ubuntu-1804-Debug-gcc
     branches:
     - master
@@ -458,7 +484,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock        
+          path: /var/run/docker.sock
+
   - name: post-openenclave-sgx-ubuntu-1804-Release-clang-8
     branches:
     - master
@@ -469,7 +496,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -480,7 +508,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-Release-gcc
     branches:
     - master
@@ -491,7 +520,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8
     branches:
     - master
@@ -502,7 +532,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-7
     branches:
     - master
@@ -513,7 +544,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-gcc
     branches:
     - master
@@ -524,7 +556,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8
     branches:
     - master
@@ -535,7 +568,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -546,7 +580,8 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
+
   - name: post-openenclave-sgx-ubuntu-1804-Debug-gcc
     branches:
     - master

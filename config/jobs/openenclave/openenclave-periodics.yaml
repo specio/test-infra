@@ -1,5 +1,5 @@
 periodics:
-  - name: ci-openenclave-ubuntu-1604-Release-clang-8-lvi
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-8-lvi
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -14,7 +14,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation'
 
-  - name: ci-openenclave-ubuntu-1604-Release-clang-7
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -29,7 +29,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-7'
 
-  - name: ci-openenclave-ubuntu-1604-Release-gcc
+  - name: ci-openenclave-sim-ubuntu-1604-Release-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -44,7 +44,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Release --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1604-RelDebInfo-clang-8-lvi
+  - name: ci-openenclave-sim-ubuntu-1604-RelDebInfo-clang-8-lvi
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -59,7 +59,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
 
-  - name: ci-openenclave-ubuntu-1604-RelDebInfo-clang-7
+  - name: ci-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -74,7 +74,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7'
 
-  - name: ci-openenclave-ubuntu-1604-RelDebInfo-gcc
+  - name: ci-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -89,7 +89,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1604-Debug-clang-8-lvi
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -104,7 +104,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
 
-  - name: ci-openenclave-ubuntu-1604-Debug-clang-7
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -119,7 +119,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-7'
 
-  - name: ci-openenclave-ubuntu-1604-Debug-gcc
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -359,7 +359,7 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-openenclave-ubuntu-1804-Release-clang-8-lvi
+  - name: ci-openenclave-sim-ubuntu-1804-Release-clang-8-lvi
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -374,7 +374,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation'
 
-  - name: ci-openenclave-ubuntu-1804-Release-clang-7
+  - name: ci-openenclave-sim-ubuntu-1804-Release-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -389,7 +389,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Release --compiler=clang-7'
 
-  - name: ci-openenclave-ubuntu-1804-Release-gcc
+  - name: ci-openenclave-sim-ubuntu-1804-Release-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -404,7 +404,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Release --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1804-RelDebInfo-clang-8-lvi
+  - name: ci-openenclave-sim-ubuntu-1804-RelDebInfo-clang-8-lvi
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -419,7 +419,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
 
-  - name: ci-openenclave-ubuntu-1804-RelDebInfo-clang-7
+  - name: ci-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -434,7 +434,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7'
 
-  - name: ci-openenclave-ubuntu-1804-RelDebInfo-gcc
+  - name: ci-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -449,7 +449,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
 
-  - name: ci-openenclave-ubuntu-1804-Debug-clang-8-lvi
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -464,7 +464,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
 
-  - name: ci-openenclave-ubuntu-1804-Debug-clang-7
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -479,7 +479,7 @@ periodics:
             - '-c'
             - '/hack/cmake-build.sh --build_package -b=Debug --compiler=clang-7'
 
-  - name: ci-openenclave-ubuntu-1804-Debug-gcc
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave

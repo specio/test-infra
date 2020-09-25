@@ -1,6 +1,6 @@
 postsubmits:
   openenclave-ci/openenclave:
-  - name: post-openenclave-ubuntu-1604-Release-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1604-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -21,7 +21,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Release-clang-7
+  - name: post-openenclave-sim-ubuntu-1604-Release-clang-7
     branches:
     - master
     decorate: true
@@ -42,7 +42,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Release-gcc
+  - name: post-openenclave-sim-ubuntu-1604-Release-gcc
     branches:
     - master
     decorate: true
@@ -63,7 +63,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -84,7 +84,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-7
+  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -105,7 +105,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-gcc
+  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -126,7 +126,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -147,7 +147,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-clang-7
+  - name: post-openenclave-sim-ubuntu-1604-Debug-clang-7
     branches:
     - master
     decorate: true
@@ -168,7 +168,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-gcc
+  - name: post-openenclave-sim-ubuntu-1604-Debug-gcc
     branches:
     - master
     decorate: true
@@ -297,7 +297,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-ubuntu-1804-Release-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1804-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -318,7 +318,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Release-clang-7
+  - name: post-openenclave-sim-ubuntu-1804-Release-clang-7
     branches:
     - master
     decorate: true
@@ -339,7 +339,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Release-gcc
+  - name: post-openenclave-sim-ubuntu-1804-Release-gcc
     branches:
     - master
     decorate: true
@@ -360,7 +360,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -381,7 +381,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-7
+  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -402,7 +402,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-gcc
+  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -423,7 +423,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-clang-8-lvi
+  - name: post-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -444,7 +444,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-clang-7
+  - name: post-openenclave-sim-ubuntu-1804-Debug-clang-7
     branches:
     - master
     decorate: true
@@ -465,7 +465,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-gcc
+  - name: post-openenclave-sim-ubuntu-1804-Debug-gcc
     branches:
     - master
     decorate: true

@@ -9,7 +9,7 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-      - image: openenclave/test-infra:latest
+      - image: openenclave/jenkinsoperator:latest
         command:
         - /bin/bash
         args:

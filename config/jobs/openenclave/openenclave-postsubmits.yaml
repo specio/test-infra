@@ -1,6 +1,6 @@
 postsubmits:
   openenclave-ci/openenclave:
-  - name: post-openenclave-ubuntu-1604-Release-clang-8
+  - name: post-openenclave-ubuntu-1604-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -10,7 +10,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -63,7 +63,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-8
+  - name: post-openenclave-ubuntu-1604-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -73,7 +73,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -126,7 +126,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1604-Debug-clang-8
+  - name: post-openenclave-ubuntu-1604-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -136,7 +136,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -189,7 +189,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-sgx-ubuntu-1604-Release-clang-8
+  - name: post-openenclave-sgx-ubuntu-1604-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -225,7 +225,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8
+  - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -261,7 +261,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8
+  - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -297,7 +297,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-ubuntu-1804-Release-clang-8
+  - name: post-openenclave-ubuntu-1804-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -307,7 +307,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -360,7 +360,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-8
+  - name: post-openenclave-ubuntu-1804-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -370,7 +370,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -423,7 +423,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-ubuntu-1804-Debug-clang-8
+  - name: post-openenclave-ubuntu-1804-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -433,7 +433,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
           securityContext:
             privileged: true
           volumeMounts:
@@ -486,7 +486,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-sgx-ubuntu-1804-Release-clang-8
+  - name: post-openenclave-sgx-ubuntu-1804-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -522,7 +522,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8
+  - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -558,7 +558,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
 
-  - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8
+  - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -594,7 +594,7 @@ postsubmits:
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
 
-  - name: post-openenclave-jenk-rhel-8.1-Release-clang-8
+  - name: post-openenclave-jenk-rhel-8.1-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -604,9 +604,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8
+  - name: post-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -616,9 +616,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-rhel-8.1-Debug-clang-8
+  - name: post-openenclave-jenk-rhel-8.1-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -628,9 +628,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-win-2016-Release-clang-8
+  - name: post-openenclave-jenk-win-2016-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -640,9 +640,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-win-2016-RelDebInfo-clang-8
+  - name: post-openenclave-jenk-win-2016-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -652,9 +652,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-win-2016-Debug-clang-8
+  - name: post-openenclave-jenk-win-2016-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -664,9 +664,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-win-2019-Release-clang-8
+  - name: post-openenclave-jenk-win-2019-Release-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -676,9 +676,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-win-2019-RelDebInfo-clang-8
+  - name: post-openenclave-jenk-win-2019-RelDebInfo-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -688,9 +688,9 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8-lvi"'        
 
-  - name: post-openenclave-jenk-win-2019-Debug-clang-8
+  - name: post-openenclave-jenk-win-2019-Debug-clang-8-lvi
     branches:
     - master
     decorate: true
@@ -700,4 +700,4 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8"'        
+            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8-lvi"'        

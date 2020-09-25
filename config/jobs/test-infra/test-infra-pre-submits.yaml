@@ -25,7 +25,7 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-      - image: openenclave/ubuntu1804:latest
+      - image: openenclave/ubuntu-1804:latest
         command:
         - /bin/bash
         args:

@@ -1,5 +1,5 @@
 presubmits:
-  openenclave-ci/oeedger8r-cpp:
+  openenclave/oeedger8r-cpp:
   - name: pr-oeedger8r-cpp-ubuntu-1604-Release-clang-8
     branches:
     - master

@@ -31,7 +31,7 @@ def windowsDockerbuild(String label, String tag = 'latest') {
 }
 
 try{
-    "Wind2019 Docker Build":          { windowsDockerbuild('acc-win2019-docker', '18.04', 'clang-7', 'Release', 'ControlFlow', 'ON') } 
+    windowsDockerbuild('acc-win2019-docker')
 } catch(Exception e) {
     println "Caught global pipeline exception: " + e
     GLOBAL_ERROR = e

@@ -207,7 +207,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh --build_package -b= --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - '/hack/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx

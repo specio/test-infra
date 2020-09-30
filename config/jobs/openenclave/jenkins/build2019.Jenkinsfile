@@ -15,17 +15,15 @@ AGENTS_LABELS = [
 
 def windowsDockerbuild(String label, String tag = 'latest') {
     def node_label = AGENTS_LABELS[label]
-    stage("Windows ${label} ${build_type} with SGX ${has_quote_provider} LVI_MITIGATION=${lvi_mitigation}") {
-        node(node_label) {
-            timeout(GLOBAL_TIMEOUT_MINUTES) {
-                stage("Checkout") {
-                    cleanWs()
-                    checkout scm
-                }
+    node(node_label) {
+        timeout(GLOBAL_TIMEOUT_MINUTES) {
+            stage("Checkout") {
+                cleanWs()
+                checkout scm
+            }
 
-                stage("Build SGX Win 2019 Docker Image") {
-                    docker.build(tag, " -f images/windows/2019/Dockerfile .")
-                }
+            stage("Build SGX Win 2019 Docker Image") {
+                docker.build(tag, " -f images/windows/2019/Dockerfile .")
             }
         }
     }

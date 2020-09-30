@@ -3,6 +3,28 @@ Contributing to Open Enclave Test Infra
 Thank you for wanting to contribute to the test infrastracture of Open Enclave!
 
 
+Code of Conduct
+---------------
+
+The Open Enclave SDK community abides by the
+[OE SDK Code of Conduct](https://github.com/openenclave/openenclave/blob/master/docs/CODE_OF_CONDUCT.md). Here is an
+excerpt:
+
+*In the interest of fostering an open and welcoming environment, we as
+contributors and maintainers pledge to make participation in our project and our
+community a harassment-free experience for everyone, regardless of age, body
+size, disability, ethnicity, sex characteristics, gender identity and
+expression, level of experience, education, socio-economic status, nationality,
+personal appearance, race, religion, or sexual identity and orientation.*
+
+As a member of the OE SDK project, you represent the project and your fellow
+contributors. We value our community tremendously and want to build and maintain
+a friendly, inclusive, collaborative environment for all our contributors and
+users.
+
+If there is conflict, either within or between SIGs, or between any members of
+the community, wherein it is desirable, the issue can be raised to the [CGC](https://github.com/openenclave/openenclave/blob/master/docs/Community/governance/README.md).
+
 Developer Certificate of Origin
 ------------------------------
 

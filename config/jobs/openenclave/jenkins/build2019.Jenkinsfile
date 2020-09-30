@@ -33,9 +33,9 @@ def windowsDockerbuild(String label, String tag = 'latest') {
                     bat """
                         git clone https://github.com/openenclave/openenclave && \
                         vcvars64.bat x64 && \
-                        cmake.exe ${WORKSPACE} -G Ninja -DCMAKE_BUILD_TYPE=${buildType} -DBUILD_ENCLAVES=ON -DHAS_QUOTE_PROVIDER=${hasQuoteProvider} -DLVI_MITIGATION=${lviMitigation} -DLVI_MITIGATION_SKIP_TESTS=${lviMitigationSkipTests} -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet -Wdev ${extra_cmake_args.join(' ')} && \
+                        cmake.exe ${WORKSPACE} -G Ninja -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:\\Downloads\\prereqs\\nuget -DCPACK_GENERATOR=NuGet -Wdev && \
                         ninja.exe && \
-                        ctest.exe -V -C ${buildType} --timeout ${timeoutSeconds} && \
+                        ctest.exe -V --timeout ${timeoutSeconds} && \
                         cpack.exe -D CPACK_NUGET_COMPONENT_INSTALL=ON -DCPACK_COMPONENTS_ALL=OEHOSTVERIFY && \
                         cpack.exe && \
                         (if exist C:\\oe rmdir /s/q C:\\oe) && \
@@ -47,7 +47,7 @@ def windowsDockerbuild(String label, String tag = 'latest') {
                             cd C:\\oe\\open-enclave\\openenclave\\share\\openenclave\\samples\\"%%i"
                             mkdir build
                             cd build
-                            cmake .. -G Ninja -DNUGET_PACKAGE_PATH=C:\\oe_prereqs -DLVI_MITIGATION=${lviMitigation} || exit /b %errorlevel%
+                            cmake .. -G Ninja -DNUGET_PACKAGE_PATH=C:\\Downloads\\prereqs\\nuget || exit /b %errorlevel%
                             ninja || exit /b %errorlevel%
                             ninja run || exit /b %errorlevel%
                         )

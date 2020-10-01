@@ -51,10 +51,16 @@ presubmits:
           volumeMounts:
             - name: dockersock
               mountPath: "/var/run/docker.sock"
+            - mountPath: /dev/sgx
+              name: dev-sgx
       volumes:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
   - name: pr-openenclave-test-infra-validate-build-image-ubuntu-1604
     branches:
@@ -147,10 +153,16 @@ presubmits:
           volumeMounts:
             - name: dockersock
               mountPath: "/var/run/docker.sock"
+            - mountPath: /dev/sgx
+              name: dev-sgx
       volumes:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
   - name: pr-openenclave-test-infra-validate-build-image-fedora-31
     branches:

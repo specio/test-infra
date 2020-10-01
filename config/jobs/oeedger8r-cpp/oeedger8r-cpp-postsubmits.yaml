@@ -10,7 +10,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -31,7 +31,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -52,7 +52,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -73,7 +73,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -94,7 +94,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -115,7 +115,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -136,7 +136,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -157,7 +157,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -178,7 +178,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -199,7 +199,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -220,7 +220,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -241,7 +241,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:

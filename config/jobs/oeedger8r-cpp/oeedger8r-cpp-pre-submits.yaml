@@ -14,7 +14,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8'
 
   - name: pr-oeedger8r-cpp-ubuntu-1604-Release-clang-7
     branches:
@@ -30,7 +30,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7'
 
   - name: pr-oeedger8r-cpp-ubuntu-1604-Release-gcc
     branches:
@@ -46,7 +46,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc'
 
   - name: pr-oeedger8r-cpp-ubuntu-1604-Debug-clang-8
     branches:
@@ -62,7 +62,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8'
 
   - name: pr-oeedger8r-cpp-ubuntu-1604-Debug-clang-7
     branches:
@@ -78,7 +78,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7'
 
   - name: pr-oeedger8r-cpp-ubuntu-1604-Debug-gcc
     branches:
@@ -94,7 +94,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc'
 
   - name: pr-oeedger8r-cpp-ubuntu-1804-Release-clang-8
     branches:
@@ -110,7 +110,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8'
 
   - name: pr-oeedger8r-cpp-ubuntu-1804-Release-clang-7
     branches:
@@ -126,7 +126,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7'
 
   - name: pr-oeedger8r-cpp-ubuntu-1804-Release-gcc
     branches:
@@ -142,7 +142,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc'
 
   - name: pr-oeedger8r-cpp-ubuntu-1804-Debug-clang-8
     branches:
@@ -158,7 +158,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8'
 
   - name: pr-oeedger8r-cpp-ubuntu-1804-Debug-clang-7
     branches:
@@ -174,7 +174,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7'
 
   - name: pr-oeedger8r-cpp-ubuntu-1804-Debug-gcc
     branches:
@@ -190,7 +190,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=Debug --compiler=gcc'        
+        - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc'        
 
   - name: pr-oeedger8r-cpp-jenk-rhel-8.1-Release-clang-8
     branches:

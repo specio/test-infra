@@ -16,9 +16,10 @@ do
 
   for compiler in clang-7 clang-8
   do
-    for build in Debug Release RelDebInfo
+    # TODO re-enable RelDebInfo once clang-8 incompatability is fixed
+    for build in Debug Release #RelDebInfo
       do
-        ../hack/cmake-build.sh -b=${build} --compiler=${compiler}--hardware_mode
+        ../hack/cmake-build.sh -b=${build} --compiler=${compiler} --hardware_mode
       done
   done
   # cd back to root

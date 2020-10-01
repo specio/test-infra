@@ -37,10 +37,16 @@ postsubmits:
           volumeMounts:
             - name: dockersock
               mountPath: "/var/run/docker.sock"
+            - mountPath: /dev/sgx
+              name: dev-sgx
       volumes:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
   - name: post-openenclave-test-infra-push-build-image-ubuntu-1804
     branches:
@@ -58,10 +64,16 @@ postsubmits:
           volumeMounts:
             - name: dockersock
               mountPath: "/var/run/docker.sock"
+            - mountPath: /dev/sgx
+              name: dev-sgx
       volumes:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
   - name: post-openenclave-test-infra-push-build-image-rhel-8.1
     branches:

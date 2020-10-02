@@ -185,7 +185,7 @@ periodics:
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
-    interval: 1m
+    interval: 12h
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
@@ -200,7 +200,7 @@ periodics:
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
-    interval: 1m
+    interval: 12h
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
@@ -215,7 +215,7 @@ periodics:
       repo: oeedger8r-cpp
       base_ref: master
     decorate: true
-    interval: 1m
+    interval: 12h
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest

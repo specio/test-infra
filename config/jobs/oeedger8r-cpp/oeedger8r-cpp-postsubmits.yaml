@@ -1,5 +1,5 @@
 postsubmits:
-  openenclave-ci/oeedger8r-cpp:
+  openenclave/oeedger8r-cpp:
   - name: post-oeedger8r-cpp-ubuntu-1604-Release-clang-8
     branches:
     - master
@@ -252,74 +252,38 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock        
 
-  - name: post-oeedger8r-cpp-jenk-rhel-8.1-Release-clang-8
+  - name: ci-oeedger8r-cpp-rhel8-clang-8
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! oeedger8r-cpp-rhel-8.1-Release-clang-8"'        
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave"
 
-  - name: post-oeedger8r-cpp-jenk-rhel-8.1-Debug-clang-8
+  - name: ci-oeedger8r-cpp-windows-2016
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! oeedger8r-cpp-rhel-8.1-Debug-clang-8"'        
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave"
 
-  - name: post-oeedger8r-cpp-jenk-win-2016-Release-clang-8
+  - name: ci-oeedger8r-cpp-windows-2019
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! oeedger8r-cpp-win-2016-Release-clang-8"'        
-
-  - name: post-oeedger8r-cpp-jenk-win-2016-Debug-clang-8
-    branches:
-    - master
-    decorate: true
-    spec:
-      containers:
-        - image: openenclave/test-infra-did:latest
-          command:
-            - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! oeedger8r-cpp-win-2016-Debug-clang-8"'        
-
-  - name: post-oeedger8r-cpp-jenk-win-2019-Release-clang-8
-    branches:
-    - master
-    decorate: true
-    spec:
-      containers:
-        - image: openenclave/test-infra-did:latest
-          command:
-            - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! oeedger8r-cpp-win-2019-Release-clang-8"'        
-
-  - name: post-oeedger8r-cpp-jenk-win-2019-Debug-clang-8
-    branches:
-    - master
-    decorate: true
-    spec:
-      containers:
-        - image: openenclave/test-infra-did:latest
-          command:
-            - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! oeedger8r-cpp-win-2019-Debug-clang-8"'        
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave"

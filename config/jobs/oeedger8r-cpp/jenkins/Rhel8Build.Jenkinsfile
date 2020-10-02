@@ -22,8 +22,10 @@ void checkout() {
         rm -rf ${REPO_NAME} && \
         git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
         cd ${REPO_NAME} && \
-        git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/* && \
-        git checkout origin/pr/${PULL_NUMBER}
+        git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
+        if [[ $PULL_NUMBER -ne 'master' ]]; then
+            git checkout origin/pr/${PULL_NUMBER}
+        fi
         """
 }
 

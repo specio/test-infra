@@ -9,8 +9,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8"
           securityContext:
             privileged: true
           volumeMounts:
@@ -30,8 +30,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7"
           securityContext:
             privileged: true
           volumeMounts:
@@ -51,8 +51,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc"
           securityContext:
             privileged: true
           volumeMounts:
@@ -72,8 +72,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8"
           securityContext:
             privileged: true
           volumeMounts:
@@ -93,8 +93,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7"
           securityContext:
             privileged: true
           volumeMounts:
@@ -114,8 +114,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc"
           securityContext:
             privileged: true
           volumeMounts:
@@ -135,8 +135,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-8"
           securityContext:
             privileged: true
           volumeMounts:
@@ -156,8 +156,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=clang-7"
           securityContext:
             privileged: true
           volumeMounts:
@@ -177,8 +177,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Release --compiler=gcc"
           securityContext:
             privileged: true
           volumeMounts:
@@ -198,8 +198,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-8"
           securityContext:
             privileged: true
           volumeMounts:
@@ -219,8 +219,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=clang-7"
           securityContext:
             privileged: true
           volumeMounts:
@@ -240,8 +240,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc'
+            - "-c"
+            - "/testing/oeedger8r-cpp/cmake-build.sh -b=Debug --compiler=gcc"
           securityContext:
             privileged: true
           volumeMounts:

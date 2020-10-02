@@ -157,6 +157,11 @@ class Trigger():
                     # Job is still running
                     check_job_status = 0
             print " View blue ocean @ ", blue_ocean_url
+            
+            # Handle output
+            job_result = requests.get(job_status_url).get("result")
+            if job_result == "FAILURE":
+                raise Exception("This exception is raised to trigger the GitHub status, see actual build errors above!")
 
     def main(self):
         queue_url = self.trigger_build()

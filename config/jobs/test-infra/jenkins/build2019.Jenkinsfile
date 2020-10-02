@@ -1,16 +1,10 @@
 pipeline {
     agent { label 'SGXFLC-Windows-2019-Docker' }
     stages {
-        stage('Checkout') {
-            steps {
-                cleanWs()
-                checkout scm
-            }
-        }
         stage('Build SGX Win 2019 Docker Image') {
             steps {
                 script {
-                    echo "build"
+                    checkout()
                     docker.build("windows-2019:latest", "-f images/windows/2019/Dockerfile ." )
                 }
             }
@@ -82,4 +76,14 @@ pipeline {
             }
         }
     }
+}
+
+void checkout() {
+    bat """
+        (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
+        git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
+        cd ${REPO_NAME} && \
+        git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/* && \
+        if NOT %PULL_NUMBER%==master git checkout origin/pr/${PULL_NUMBER}
+        """
 }

@@ -168,7 +168,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job job-runner --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN)"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/jenkins-ping --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN)"
 
   - name: ci-openenclave-test-infra-validate-build-image-windows-2019
     extra_refs:
@@ -183,4 +183,4 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job windows2019BuildMaster --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN)"
+            - "python /hack/jenkins_bootstrap.py --job windows2019BuildMaster --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN) --parameters PULL_NUMBER=master,REPO_NAME=test-infra,REPO_OWNER=openenclave"

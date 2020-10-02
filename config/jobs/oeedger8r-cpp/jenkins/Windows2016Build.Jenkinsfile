@@ -2,6 +2,8 @@ CTEST_TIMEOUT_SECONDS = 480
 REPO_OWNER = env.REPO_OWNER
 REPO_NAME = env.REPO_NAME
 PULL_NUMBER = env.PULL_NUMBER
+TEST_INFRA = env.TEST_INFRA
+TEST_INFRA ? PULL_NUMBER = "master" : null
 
 pipeline {
     agent { label 'SGXFLC-Windows-2016-DCAP' }

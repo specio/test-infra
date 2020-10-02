@@ -16,22 +16,6 @@ presubmits:
         - -c
         - "echo ping"
 
-  - name: pr-openenclave-test-infra-validate-cmake-build
-    branches:
-    - master
-    run_if_changed: "hacks/*"
-    decorate: true
-    skip_report: false
-    max_concurrency: 10
-    spec:
-      containers:
-      - image: openenclave/ubuntu-1804:latest
-        command:
-        - /bin/bash
-        args:
-        - -c
-        - "git clone https://github.com/openenclave/oeedger8r-cpp && cd oeedger8r-cpp && /hack/cmake-build.sh"
-
   - name: pr-openenclave-test-infra-validate-build-image-ubuntu-1804
     branches:
     - master

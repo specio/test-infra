@@ -148,7 +148,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  --parameters PULL_NUMBER=master,REPO_NAME=test-infra,REPO_OWNER=openenclave"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,REPO_NAME=test-infra,REPO_OWNER=openenclave"
 
   - name: post-openenclave-test-infra-validate-oeedgrg8r-rhel-8
     branches:

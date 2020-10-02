@@ -1,7 +1,7 @@
 CTEST_TIMEOUT_SECONDS = 480
-REPO_OWNER = env.REPO_OWNER
-REPO_NAME = env.REPO_NAME
 PULL_NUMBER = env.PULL_NUMBER
+TEST_INFRA = env.TEST_INFRA
+TEST_INFRA ? PULL_NUMBER = "master" : null
 
 pipeline {
     agent { label 'ACC-RHEL-8' }
@@ -9,31 +9,32 @@ pipeline {
         stage('RHEL 8 Build Release') {
             steps {
                 script {
-                    checkout()
-                    cmake_build_linux("Release")
+                    checkout("openenclave","oeedger8r-cpp")
+                    cmake_build_linux("oeedger8r-cpp","Release")
                 }
             }
         }
         stage('RHEL 8 Build RelWithDebInfo') {
             steps {
                 script {
-                    checkout()
-                    cmake_build_linux("RelWithDebInfo")
+                    checkout("openenclave","oeedger8r-cpp")
+                    cmake_build_linux("oeedger8r-cpp","RelWithDebInfo")
                 }
             }
         }
         stage('RHEL 8 Build Debug') {
             steps {
                 script {
-                    checkout()
-                    cmake_build_linux("Debug")
+                    checkout("openenclave","oeedger8r-cpp")
+                    cmake_build_linux("oeedger8r-cpp","Debug")
                 }
             }
         }
     }
 }
 
-void checkout() {
+
+void checkout(String REPO_OWNER, String REPO_NAME ) {
     sh  """
         rm -rf ${REPO_NAME} && \
         git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
@@ -45,12 +46,12 @@ void checkout() {
         """
 }
 
-void cmake_build_linux( String buildConfig ) {
+void cmake_build_linux( String REPO_NAME, String BUILD_CONFIG ) {
     sh  """
         cd ${REPO_NAME} && \
         mkdir build && cd build &&\
-        cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${buildConfig} -Wdev
+        cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
         ninja -v
-        ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
+        ctest --output-on-failure --timeout ${REPO_NAME}
         """
 }

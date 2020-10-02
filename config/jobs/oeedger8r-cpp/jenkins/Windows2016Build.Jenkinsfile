@@ -4,15 +4,15 @@ REPO_NAME = env.REPO_NAME
 PULL_NUMBER = env.PULL_NUMBER
 
 pipeline {
-    agent { label 'SGXFLC-Windows-2016-DCAP' }
+    agent { label 'Windows-2016-Docker' }
     stages {
         stage('Win 2016 Build') {
             steps {
                 script {
-                    //docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
-                    checkout()
-                    cmake_build_windows()
-                    //}
+                    docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                        checkout()
+                        cmake_build_windows()
+                    }
                 }
             }
         }
@@ -25,7 +25,7 @@ void checkout() {
         git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
         cd ${REPO_NAME} && \
         git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/* && \
-        git checkout origin/pr/${PULL_NUMBER}
+        if NOT %PULL_NUMBER%==master git checkout origin/pr/${PULL_NUMBER}
         """
 }
 

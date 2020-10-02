@@ -237,7 +237,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-windows-2019
     branches:
     - master
-    run_if_changed: "^(images/windows/)"
+    run_if_changed: "^(images/windows/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10

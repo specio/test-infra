@@ -14,7 +14,14 @@ pipeline {
                 }
             }
         }
-
+        stage('RHEL 8 Build RelWithDebInfo') {
+            steps {
+                script {
+                    checkout()
+                    cmake_build_linux("RelWithDebInfo")
+                }
+            }
+        }
         stage('RHEL 8 Build Debug') {
             steps {
                 script {

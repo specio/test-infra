@@ -192,7 +192,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave'"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,TEST_INFRA=false'"
 
   - name: ci-oeedger8r-cpp-windows-2016
     extra_refs:
@@ -207,7 +207,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave'"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,TEST_INFRA=false'"
 
   - name: ci-oeedger8r-cpp-windows-2019
     extra_refs:
@@ -222,4 +222,4 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave'"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,TEST_INFRA=false'"

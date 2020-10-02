@@ -1,7 +1,10 @@
 CTEST_TIMEOUT_SECONDS = 480
+REPO_OWNER = env.REPO_OWNER
+REPO_NAME = env.REPO_NAME
+PULL_NUMBER = env.PULL_NUMBER
 
 pipeline {
-    agent { label 'SGXFLC-Windows-2019-Docker' }
+    agent { label 'ACC-RHEL-8' }
     stages {
         stage('Checkout') {
             steps {
@@ -10,17 +13,36 @@ pipeline {
             }
         }
 
-        stage('Win 2019 Build') {
+        stage('RHEL 8 Build') {
             steps {
                 script {
-                    bat """
-                        vcvars64.bat x64 && \
-                        cmake.exe ${WORKSPACE} -G Ninja && \
-                        ninja -v -j 4 && \
-                        ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
-                        """
+                    checkout()
+                    cmake_build_windows()
                 }
             }
         }
     }
+}
+
+void checkout() {
+    bat """
+        (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
+        git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
+        cd ${REPO_NAME} && \
+        git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/* && \
+        git checkout origin/pr/${PULL_NUMBER}
+        """
+}
+
+void cmake_build_linux() {
+    sh  """
+        cd ${REPO_NAME} && \
+        mkdir build && cd build &&\
+        cmake .. \
+        -G Ninja \
+        ${extra_cmake_args.join(' ')} \
+        -Wdev
+        ninja -v
+        ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
+        """
 }

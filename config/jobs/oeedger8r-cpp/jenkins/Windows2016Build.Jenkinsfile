@@ -11,7 +11,7 @@ pipeline {
                 script {
                     docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                         checkout()
-                        cmake_build()
+                        cmake_build_windows()
                     }
                 }
             }
@@ -29,7 +29,7 @@ void checkout() {
         """
 }
 
-void cmake_build() {
+void cmake_build_windows() {
     bat """
         cd ${REPO_NAME} && \
         mkdir build && cd build &&\

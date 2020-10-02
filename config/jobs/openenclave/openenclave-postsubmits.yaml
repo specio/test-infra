@@ -1,5 +1,5 @@
 postsubmits:
-  openenclave-ci/openenclave:
+  openenclave/openenclave:
   - name: post-openenclave-sim-ubuntu-1604-Release-clang-8-lvi
     branches:
     - master

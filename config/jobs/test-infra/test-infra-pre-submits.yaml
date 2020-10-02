@@ -247,4 +247,4 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job windows2019Build --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN) --parameters PULL_NUMBER=$(echo $PULL_NUMBER)"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN) --parameters PULL_NUMBER=$PULL_NUMBER,REPO_NAME=test-infra,REPO_OWNER=openenclave"

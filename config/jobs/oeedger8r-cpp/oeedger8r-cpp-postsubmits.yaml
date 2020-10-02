@@ -262,7 +262,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=$REPO_NAME,REPO_OWNER=$REPO_OWNER'"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave'"
 
   - name: ci-oeedger8r-cpp-windows-2016
     branches:
@@ -274,7 +274,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=$REPO_NAME,REPO_OWNER=$REPO_OWNER'"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave'"
 
   - name: ci-oeedger8r-cpp-windows-2019
     branches:
@@ -286,4 +286,4 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=$REPO_NAME,REPO_OWNER=$REPO_OWNER'"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters 'PULL_NUMBER=master,REPO_NAME=oeedger8r-cpp,REPO_OWNER=openenclave'"

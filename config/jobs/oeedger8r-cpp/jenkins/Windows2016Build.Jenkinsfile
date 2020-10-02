@@ -4,15 +4,15 @@ REPO_NAME = env.REPO_NAME
 PULL_NUMBER = env.PULL_NUMBER
 
 pipeline {
-    agent { label 'SGXFLC-Windows-2016-Docker' }
+    agent { label 'SGXFLC-Windows-2016-DCAP' }
     stages {
         stage('Win 2016 Build') {
             steps {
                 script {
-                    docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
-                        checkout()
-                        cmake_build_windows()
-                    }
+                    //docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                    checkout()
+                    cmake_build_windows()
+                    //}
                 }
             }
         }

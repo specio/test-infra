@@ -6,18 +6,11 @@ PULL_NUMBER = env.PULL_NUMBER
 pipeline {
     agent { label 'ACC-RHEL-8' }
     stages {
-        stage('Checkout') {
-            steps {
-                cleanWs()
-                checkout scm
-            }
-        }
-
         stage('RHEL 8 Build') {
             steps {
                 script {
                     checkout()
-                    cmake_build_windows()
+                    cmake_build_linux()
                 }
             }
         }
@@ -25,8 +18,8 @@ pipeline {
 }
 
 void checkout() {
-    bat """
-        (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
+    sh  """
+        rm -rf ${REPO_NAME} && \
         git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
         cd ${REPO_NAME} && \
         git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/* && \
@@ -40,7 +33,6 @@ void cmake_build_linux() {
         mkdir build && cd build &&\
         cmake .. \
         -G Ninja \
-        ${extra_cmake_args.join(' ')} \
         -Wdev
         ninja -v
         ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}

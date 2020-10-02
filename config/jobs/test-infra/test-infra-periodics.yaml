@@ -184,3 +184,48 @@ periodics:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job windows2019BuildMaster --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN) --parameters PULL_NUMBER=master,REPO_NAME=test-infra,REPO_OWNER=openenclave"
+
+  - name: ci-openenclave-test-infra-validate-oeedgrg8r-rhel-8
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 12h
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"
+
+  - name: ci-openenclave-test-infra-validate-oeedgrg8r-win-2016
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 12h
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"
+
+  - name: ci-openenclave-test-infra-validate-oeedgrg8r-win-2019
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 12h
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"

@@ -6,11 +6,20 @@ PULL_NUMBER = env.PULL_NUMBER
 pipeline {
     agent { label 'ACC-RHEL-8' }
     stages {
-        stage('RHEL 8 Build') {
+        stage('RHEL 8 Build Release') {
             steps {
                 script {
                     checkout()
-                    cmake_build_linux()
+                    cmake_build_linux("Release")
+                }
+            }
+        }
+
+        stage('RHEL 8 Build Debug') {
+            steps {
+                script {
+                    checkout()
+                    cmake_build_linux("Debug")
                 }
             }
         }
@@ -29,13 +38,11 @@ void checkout() {
         """
 }
 
-void cmake_build_linux() {
+void cmake_build_linux( String buildConfig ) {
     sh  """
         cd ${REPO_NAME} && \
         mkdir build && cd build &&\
-        cmake .. \
-        -G Ninja \
-        -Wdev
+        cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${buildConfig} -Wdev
         ninja -v
         ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
         """

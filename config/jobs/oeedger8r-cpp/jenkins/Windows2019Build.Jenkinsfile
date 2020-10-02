@@ -11,7 +11,7 @@ pipeline {
                 script {
                     docker.image('openenclave/windows-2019:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                         checkout()
-                        cmake_build_windows()
+                        cmake_build_windows("Release")
                     }
                 }
             }
@@ -29,12 +29,12 @@ void checkout() {
         """
 }
 
-void cmake_build_windows() {
+void cmake_build_windows( String buildConfig ) {
     bat """
         cd ${REPO_NAME} && \
         mkdir build && cd build &&\
         vcvars64.bat x64 && \
-        cmake.exe .. -G Ninja && \
+        cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${buildConfig} && \
         ninja -v -j 4 && \
         ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
         """

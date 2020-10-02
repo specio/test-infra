@@ -6,7 +6,7 @@ PULL_NUMBER = env.PULL_NUMBER
 pipeline {
     agent { label 'SGXFLC-Windows-2019-Docker' }
     stages {
-        stage('Win 2016 Build') {
+        stage('Win 2019 Build Release') {
             steps {
                 script {
                     docker.image('openenclave/windows-2019:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
@@ -16,12 +16,12 @@ pipeline {
                 }
             }
         }
-        stage('Win 2019 Build') {
+        stage('Win 2019 Build Debug') {
             steps {
                 script {
                     docker.image('openenclave/windows-2019:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                         checkout()
-                        cmake_build_windows("Release")
+                        cmake_build_windows("Debug")
                     }
                 }
             }

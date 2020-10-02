@@ -12,7 +12,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile --docker_tag openenclave/ubuntu-1604:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
+            - "./images/test/build.sh --docker_path images/ubuntu/1604/Dockerfile --docker_tag openenclave/ubuntu-1604:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
           securityContext:
             privileged: true
           volumeMounts:
@@ -42,7 +42,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1804:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
+            - "./images/test/build.sh --docker_path images/ubuntu/1804/Dockerfile --docker_tag openenclave/ubuntu-1804:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
           securityContext:
             privileged: true
           volumeMounts:
@@ -72,7 +72,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing --docker_tag openenclave/rhel-8.1:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
+            - "./images/test/build.sh --docker_path images/rhel/8.1/Dockerfile --skip_testing --docker_tag openenclave/rhel-8.1:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
           securityContext:
             privileged: true
           volumeMounts:
@@ -96,7 +96,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/bootstap/Dockerfile --skip_testing --docker_tag openenclave/test-infra-did:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
+            - "./images/test/build.sh --docker_path images/bootstap/Dockerfile --skip_testing --docker_tag openenclave/test-infra-did:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
           securityContext:
             privileged: true
           volumeMounts:
@@ -120,7 +120,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing --docker_tag openenclave/centos-7.5:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
+            - "./images/test/build.sh --docker_path images/centos/7.5/Dockerfile --skip_testing --docker_tag openenclave/centos-7.5:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
           securityContext:
             privileged: true
           volumeMounts:
@@ -144,7 +144,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing --docker_tag openenclave/fedora-31:latest --docker_push --docker_user $(echo $DOCKER_USER) --docker_pass $(echo $DOCKER_PASSWORD)"
+            - "./images/test/build.sh --docker_path images/fedora/31/Dockerfile --skip_testing --docker_tag openenclave/fedora-31:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
           securityContext:
             privileged: true
           volumeMounts:
@@ -168,7 +168,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/jenkins-ping --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN)"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/jenkins-ping --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN"
 
   - name: ci-openenclave-test-infra-validate-build-image-windows-2019
     extra_refs:
@@ -183,7 +183,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job windows2019BuildMaster --jenkins-user $(echo $JENKINS_USER) --url $(echo $JENKINS_URL) --jenkins-password $(echo $JENKINS_TOKEN) --parameters PULL_NUMBER=master,REPO_NAME=test-infra,REPO_OWNER=openenclave"
+            - "python /hack/jenkins_bootstrap.py --job windows2019BuildMaster --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,REPO_NAME=test-infra,REPO_OWNER=openenclave"
 
   - name: ci-openenclave-test-infra-validate-oeedgrg8r-rhel-8
     extra_refs:

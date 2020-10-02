@@ -14,7 +14,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation"
 
   - name: pr-openenclave-sim-ubuntu-1604-Release-clang-7
     branches:
@@ -30,7 +30,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7"
 
   - name: pr-openenclave-sim-ubuntu-1604-Release-gcc
     branches:
@@ -46,7 +46,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
 
   - name: pr-openenclave-sim-ubuntu-1604-RelDebInfo-clang-8-lvi
     branches:
@@ -62,7 +62,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation"
 
   - name: pr-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
     branches:
@@ -78,7 +78,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7"
 
   - name: pr-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
     branches:
@@ -94,7 +94,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
 
   - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi
     branches:
@@ -110,7 +110,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation"
 
   - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-7
     branches:
@@ -126,7 +126,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7"
 
   - name: pr-openenclave-sim-ubuntu-1604-Debug-gcc
     branches:
@@ -142,7 +142,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
 
   - name: pr-openenclave-sgx-ubuntu-1604-Release-clang-8-lvi
     branches:
@@ -158,7 +158,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -184,7 +184,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -210,7 +210,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -236,7 +236,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -262,7 +262,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -288,7 +288,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -314,7 +314,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -340,7 +340,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -366,7 +366,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -392,7 +392,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation"
 
   - name: pr-openenclave-sim-ubuntu-1804-Release-clang-7
     branches:
@@ -408,7 +408,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7"
 
   - name: pr-openenclave-sim-ubuntu-1804-Release-gcc
     branches:
@@ -424,7 +424,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
 
   - name: pr-openenclave-sim-ubuntu-1804-RelDebInfo-clang-8-lvi
     branches:
@@ -440,7 +440,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation"
 
   - name: pr-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
     branches:
@@ -456,7 +456,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7"
 
   - name: pr-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
     branches:
@@ -472,7 +472,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
 
   - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi
     branches:
@@ -488,7 +488,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation"
 
   - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-7
     branches:
@@ -504,7 +504,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7"
 
   - name: pr-openenclave-sim-ubuntu-1804-Debug-gcc
     branches:
@@ -520,7 +520,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc'
+        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
 
   - name: pr-openenclave-sgx-ubuntu-1804-Release-clang-8-lvi
     branches:
@@ -536,7 +536,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -562,7 +562,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -588,7 +588,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -614,7 +614,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -640,7 +640,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -666,7 +666,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -692,7 +692,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -718,7 +718,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -744,7 +744,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode'
+          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -770,7 +770,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8-lvi
     branches:
@@ -786,7 +786,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-rhel-8.1-Debug-clang-8-lvi
     branches:
@@ -802,7 +802,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-win-2016-Release-clang-8-lvi
     branches:
@@ -818,7 +818,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-win-2016-RelDebInfo-clang-8-lvi
     branches:
@@ -834,7 +834,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-win-2016-Debug-clang-8-lvi
     branches:
@@ -850,7 +850,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-win-2019-Release-clang-8-lvi
     branches:
@@ -866,7 +866,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-win-2019-RelDebInfo-clang-8-lvi
     branches:
@@ -882,7 +882,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8-lvi"        
 
   - name: pr-openenclave-jenk-win-2019-Debug-clang-8-lvi
     branches:
@@ -898,4 +898,4 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8-lvi"'        
+          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8-lvi"        

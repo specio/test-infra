@@ -11,8 +11,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8"
 
   - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7
     extra_refs:
@@ -26,8 +26,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation"
 
   - name: ci-openenclave-sim-ubuntu-1604-Release-gcc
     extra_refs:
@@ -41,8 +41,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
 
   - name: ci-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
     extra_refs:
@@ -56,8 +56,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation"
 
   - name: ci-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
     extra_refs:
@@ -71,8 +71,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
 
   - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-8
     extra_refs:
@@ -86,8 +86,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8"
 
   - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7
     extra_refs:
@@ -101,8 +101,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation"
 
   - name: ci-openenclave-sim-ubuntu-1604-Debug-gcc
     extra_refs:
@@ -116,8 +116,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
 
   - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-8
     extra_refs:
@@ -131,8 +131,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -156,8 +156,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -181,8 +181,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -206,8 +206,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -231,8 +231,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -256,8 +256,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -281,8 +281,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -306,8 +306,8 @@ periodics:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -331,8 +331,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8"
 
   - name: ci-openenclave-sim-ubuntu-1804-Release-clang-7
     extra_refs:
@@ -346,8 +346,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation"
 
   - name: ci-openenclave-sim-ubuntu-1804-Release-gcc
     extra_refs:
@@ -361,8 +361,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
 
   - name: ci-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
     extra_refs:
@@ -376,8 +376,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation"
 
   - name: ci-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
     extra_refs:
@@ -391,8 +391,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
 
   - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-8
     extra_refs:
@@ -406,8 +406,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8"
 
   - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-7
     extra_refs:
@@ -421,8 +421,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation"
 
   - name: ci-openenclave-sim-ubuntu-1804-Debug-gcc
     extra_refs:
@@ -436,8 +436,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
 
   - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-8
     extra_refs:
@@ -451,8 +451,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -476,8 +476,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --enable_lvi_mitigation --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -501,8 +501,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -526,8 +526,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --enable_lvi_mitigation --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -551,8 +551,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -576,8 +576,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -601,8 +601,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --enable_lvi_mitigation --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -626,8 +626,8 @@ periodics:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode'
+            - "-c"
+            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -651,8 +651,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8'"        
 
   - name: ci-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8
     extra_refs:
@@ -666,8 +666,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8'"        
 
   - name: ci-openenclave-jenk-rhel-8.1-Debug-clang-8
     extra_refs:
@@ -681,8 +681,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8'"        
 
   - name: ci-openenclave-jenk-win-2016-Release-clang-8
     extra_refs:
@@ -696,8 +696,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8'"        
 
   - name: ci-openenclave-jenk-win-2016-RelDebInfo-clang-8
     extra_refs:
@@ -711,8 +711,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8'"        
 
   - name: ci-openenclave-jenk-win-2016-Debug-clang-8
     extra_refs:
@@ -726,8 +726,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8'"        
 
   - name: ci-openenclave-jenk-win-2019-Release-clang-8
     extra_refs:
@@ -741,8 +741,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8'"        
 
   - name: ci-openenclave-jenk-win-2019-RelDebInfo-clang-8
     extra_refs:
@@ -756,8 +756,8 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8'"        
 
   - name: ci-openenclave-jenk-win-2019-Debug-clang-8
     extra_refs:
@@ -771,5 +771,5 @@ periodics:
         - image: openenclave/test-infra-did:latest
           command:
             - sh
-            - '-c'
-            - 'echo "I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8"'        
+            - "-c"
+            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8'"        

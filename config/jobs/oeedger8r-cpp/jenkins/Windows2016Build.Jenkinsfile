@@ -6,18 +6,30 @@ PULL_NUMBER = env.PULL_NUMBER
 pipeline {
     agent { label 'SGXFLC-Windows-2016-DCAP' }
     stages {
-        stage('Win 2016 Build') {
+        stage('Win 2016 Build Release') {
+            steps {
+                script {
+                    // Run in Containers once docker is configured on base machines
+                    //docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                    checkout()
+                    cmake_build_windows("Release")
+                    //}
+                }
+            }
+        }
+        stage('Win 2016 Build Debug') {
             steps {
                 script {
                     //docker.image('openenclave/windows-2016:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                     checkout()
-                    cmake_build_windows()
+                    cmake_build_windows("Debug")
                     //}
                 }
             }
         }
     }
 }
+
 
 void checkout() {
     bat """
@@ -29,12 +41,12 @@ void checkout() {
         """
 }
 
-void cmake_build_windows() {
+void cmake_build_windows( String buildConfig ) {
     bat """
         cd ${REPO_NAME} && \
         mkdir build && cd build &&\
         vcvars64.bat x64 && \
-        cmake.exe .. -G Ninja && \
+        cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${buildConfig} && \
         ninja -v -j 4 && \
         ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
         """

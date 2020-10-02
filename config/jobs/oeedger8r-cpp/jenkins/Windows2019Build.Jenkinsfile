@@ -16,6 +16,16 @@ pipeline {
                 }
             }
         }
+        stage('Win 2019 Build') {
+            steps {
+                script {
+                    docker.image('openenclave/windows-2019:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                        checkout()
+                        cmake_build_windows("Release")
+                    }
+                }
+            }
+        }
     }
 }
 

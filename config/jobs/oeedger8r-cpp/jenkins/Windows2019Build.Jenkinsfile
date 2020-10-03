@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     docker.image('openenclave/windows-2019:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
-                        checkout("openenclave","oeedger8r-cpp")
+                        checkout_windows("openenclave","oeedger8r-cpp")
                         cmake_build_windows("oeedger8r-cpp","Release")
                     }
                 }
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     docker.image('openenclave/windows-2019:0.1').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
-                        checkout("openenclave","oeedger8r-cpp")
+                        checkout_windows("openenclave","oeedger8r-cpp")
                         cmake_build_windows("oeedger8r-cpp","Debug")
                     }
                 }
@@ -29,13 +29,13 @@ pipeline {
     }
 }
 
-void checkout(String REPO_OWNER, String REPO_NAME ) {
+void checkout_windows(String REPO_OWNER, String REPO_NAME ) {
     bat """
         (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
         git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
         cd ${REPO_NAME} && \
         git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-        if NOT ${PULL_NUMBER}==master git checkout origin/pr/${PULL_NUMBER}
+        if NOT ${PULL_NUMBER}==master git checkout_windows origin/pr/${PULL_NUMBER}
         """
 }
 

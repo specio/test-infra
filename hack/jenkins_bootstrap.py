@@ -153,15 +153,14 @@ class Trigger():
                     # We are done
                     print "stream ended"
                     stream_open = False
+                    # Handle output
+                    job_result = job_requests.json().get("result")
+                    if job_result == "FAILURE":
+                        raise Exception("This python exception is raised to trigger the GitHub status as a failure. It is not related to the build failures in any way, it is simply a build check and wrapper function. Please see actual build errors above.")
                 else:
                     # Job is still running
                     check_job_status = 0
             print " View blue ocean @ ", blue_ocean_url
-            
-            # Handle output
-            job_result = requests.get(job_status_url).get("result")
-            if job_result == "FAILURE":
-                raise Exception("This exception is raised to trigger the GitHub status, see actual build errors above!")
 
     def main(self):
         queue_url = self.trigger_build()

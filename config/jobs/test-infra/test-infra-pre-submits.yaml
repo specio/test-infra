@@ -186,7 +186,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "./images/test/build.sh --docker_path images/jenkinsoperator/Dockerfile --skip_testing --docker_tag fedora-31"
+            - "./images/test/build.sh --docker_path images/jenkinsoperator/Dockerfile --skip_testing --docker_tag jenkinsoperator"
           securityContext:
             privileged: true
           volumeMounts:

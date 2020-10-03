@@ -185,3 +185,30 @@ postsubmits:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"
+
+  - name: ci-openenclave-test-infra-validate-build-image-jenkins-op
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/jenkinsoperator/Dockerfile --skip_testing --docker_tag openenclave/jenkinsoperator:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /dev/sgx
+              name: dev-sgx
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never

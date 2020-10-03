@@ -10,7 +10,7 @@ do
     rm -rf ./${repo} || sudo rm -rf ./${repo} 
   fi
 
-  git clone --recursive https://github.com/openenclave/${repo}.git && \
+  git clone --recursive https://github.com/openenclave/${repo}.git  --depth 1 && \
   cd ${repo}
   # Iterate through supported compilers
 

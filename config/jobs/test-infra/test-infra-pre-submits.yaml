@@ -19,7 +19,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-ubuntu-1804
     branches:
     - master
-    run_if_changed: "^(images/ubuntu/1804/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/ubuntu/1804/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -49,7 +49,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-ubuntu-1604
     branches:
     - master
-    run_if_changed: "^(images/ubuntu/1604/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/ubuntu/1604/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -73,7 +73,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-bootstrap-did
     branches:
     - master
-    run_if_changed: "^(images/bootstrap/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/bootstrap/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -97,7 +97,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-rhel-8.1
     branches:
     - master
-    run_if_changed: "^(images/rhel/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/rhel/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -121,7 +121,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-centos-7.5
     branches:
     - master
-    run_if_changed: "^(images/centos/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/centos/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -151,7 +151,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-fedora-31
     branches:
     - master
-    run_if_changed: "^(images/fedora/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/fedora/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -176,7 +176,7 @@ presubmits:
   - name: pr-openenclave-test-infra-validate-build-image-jenkins-op
     branches:
     - master
-    run_if_changed: "^(images/jenkinsoperator/*)|(images/scripts/*)|(images/test/*)|(hack/*)"
+    run_if_changed: "^(images/jenkinsoperator/*)|(images/scripts/*)|(images/test/*)|(testing/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10

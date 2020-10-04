@@ -113,8 +113,8 @@ class Trigger():
 
     def console_output(self, job_number):
         # Get job console till job stops
-        job_url = self.url + "/job/" + self.job + "/" + str(job_number) + "/logText/progressive" + self.encoding
-        blue_ocean_url = self.url + "/blue/organizations/jenkins/" + self.job + "/detail/" + self.job + "/" + str(job_number) + '/pipeline'
+        job_url = self.url + "/job/" + self.job + "/" + str(job_number).encode('utf-8').strip() + "/logText/progressive" + self.encoding
+        blue_ocean_url = self.url + "/blue/organizations/jenkins/" + self.job + "/detail/" + self.job + "/" + str(job_number).encode('utf-8').strip() + '/pipeline'
         print " View blue ocean @ ", blue_ocean_url
         print " Getting Console output @ ", job_url
         start_at = 0
@@ -149,7 +149,7 @@ class Trigger():
 
             # No content for a while lets check if job is still running
             if check_job_status > 1:
-                job_status_url = self.url + "/job/" + self.job + "/" + str(job_number) + "/api/json"
+                job_status_url = self.url + "/job/" + self.job + "/" + str(job_number).encode('utf-8').strip() + "/api/json"
                 job_requests = requests.get(job_status_url)
                 job_bulding = job_requests.json().get("building")
                 if not job_bulding:

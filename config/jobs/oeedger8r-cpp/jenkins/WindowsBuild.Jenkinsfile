@@ -23,10 +23,10 @@ pipeline {
         stage( 'Windows Build') {
             steps {
                 script {
-                    //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                    docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside {
                         checkout("oeedger8r-cpp")
                         cmakeBuild("oeedger8r-cpp","${BUILD_TYPE}")
-                    //}
+                    }
                 }
             }
         }

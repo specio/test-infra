@@ -1,6 +1,6 @@
 postsubmits:
   openenclave-ci/test-infra:
-  - name: post-openenclave-test-infra-push-image-bootstrap-did
+  - name: post-test-infra-push-image-bootstrap-did
     branches:
     - master
     decorate: true
@@ -21,7 +21,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-test-infra-push-build-image-ubuntu-1604
+  - name: post-test-infra-push-build-image-ubuntu-1604
     branches:
     - master
     decorate: true
@@ -48,7 +48,7 @@ postsubmits:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: post-openenclave-test-infra-push-build-image-ubuntu-1804
+  - name: post-test-infra-push-build-image-ubuntu-1804
     branches:
     - master
     decorate: true
@@ -75,7 +75,7 @@ postsubmits:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: post-openenclave-test-infra-push-build-image-rhel-8.1
+  - name: post-test-infra-push-build-image-rhel-8.1
     branches:
     - master
     decorate: true
@@ -96,7 +96,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-test-infra-push-build-image-centos-7.5
+  - name: post-test-infra-push-build-image-centos-7.5
     branches:
     - master
     decorate: true
@@ -117,7 +117,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-test-infra-push-build-image-fedora-31
+  - name: post-test-infra-push-build-image-fedora-31
     branches:
     - master
     decorate: true
@@ -138,7 +138,7 @@ postsubmits:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: post-openenclave-test-infra-validate-build-image-windows-2019
+  - name: post-test-infra-validate-build-image-windows-2019
     branches:
     - master
     decorate: true
@@ -150,7 +150,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2"
 
-  - name: post-openenclave-test-infra-validate-oeedgrg8r-rhel-8
+  - name: post-test-infra-validate-oeedger8r-rhel-8-release
     branches:
     - master
     decorate: true
@@ -160,9 +160,33 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,BUILD_TYPE=Release"
 
-  - name: post-openenclave-test-infra-validate-oeedgrg8r-win-2016
+  - name: post-test-infra-validate-oeedger8r-rhel-8-debug
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,BUILD_TYPE=Debug"
+
+  - name: post-test-infra-validate-oeedger8r-rhel-8-reldebinfo
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
+
+  - name: post-test-infra-validate-oeedger8r-win-2016
     branches:
     - master
     decorate: true
@@ -174,7 +198,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true"
 
-  - name: post-openenclave-test-infra-validate-oeedgrg8r-win-2019
+  - name: post-test-infra-validate-oeedger8r-win-2019
     branches:
     - master
     decorate: true
@@ -186,7 +210,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true"
 
-  - name: ci-openenclave-test-infra-validate-build-image-jenkins-op
+  - name: ci-test-infra-validate-build-image-jenkins-op
     branches:
     - master
     decorate: true
@@ -213,7 +237,7 @@ postsubmits:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: post-openenclave-test-infra-validate-openenclave-host-verify-debug
+  - name: post-test-infra-validate-host-verify-debug
     branches:
     - master
     decorate: true
@@ -225,7 +249,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
 
-  - name: post-openenclave-test-infra-validate-openenclave-host-verify-release
+  - name: post-test-infra-validate-host-verify-release
     branches:
     - master
     decorate: true
@@ -237,7 +261,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
 
-  - name: post-openenclave-test-infra-validate-oe-elf-build-debug-clang-7
+  - name: post-test-infra-validate-oe-elf-build-debug-clang-7
     branches:
     - master
     decorate: true
@@ -249,7 +273,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,COMPILER=clang-7,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
 
-  - name: post-openenclave-test-infra-validate-oe-elf-build-release-gcc
+  - name: post-test-infra-validate-oe-elf-build-release-gcc
     branches:
     - master
     decorate: true
@@ -261,7 +285,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,COMPILER=gcc,LINUX_VERSION=1604,WINDOWS_VERSION=2019,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
 
-  - name: post-openenclave-test-infra-validate-oe-win-build-2016-release
+  - name: post-test-infra-validate-oe-win-build-2016-release
     branches:
     - master
     decorate: true
@@ -273,7 +297,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,TEST_INFRA=true,WINDOWS_VERSION=2016,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
 
-  - name: post-openenclave-test-infra-validate-oe-win-build-2019-debug
+  - name: post-test-infra-validate-oe-win-build-2019-debug
     branches:
     - master
     decorate: true

@@ -17,27 +17,11 @@ BUILD_TYPE = env.BUILD_TYPE ?:"Release"
 pipeline {
     agent { label 'ACC-RHEL-8' }
     stages {
-        stage('RHEL 8 Build Release') {
+        stage('RHEL 8 Build') {
             steps {
                 script {
                     checkout("oeedger8r-cpp")
-                    cmakeBuild("oeedger8r-cpp","Release")
-                }
-            }
-        }
-        stage('RHEL 8 Build RelWithDebInfo') {
-            steps {
-                script {
-                    checkout("oeedger8r-cpp")
-                    cmakeBuild("oeedger8r-cpp","RelWithDebInfo")
-                }
-            }
-        }
-        stage('RHEL 8 Build Debug') {
-            steps {
-                script {
-                    checkout("oeedger8r-cpp")
-                    cmakeBuild("oeedger8r-cpp","Debug")
+                    cmakeBuild("oeedger8r-cpp","${BUILD_TYPE}")
                 }
             }
         }

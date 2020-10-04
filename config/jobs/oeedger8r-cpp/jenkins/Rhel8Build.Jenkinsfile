@@ -1,7 +1,18 @@
-CTEST_TIMEOUT_SECONDS = 480
+// Timeout configs
+GLOBAL_TIMEOUT_MINUTES = 120
+CTEST_TIMEOUT_SECONDS = 1200
+
+// Pull Request Information
 PULL_NUMBER = env.PULL_NUMBER
 TEST_INFRA = env.TEST_INFRA
 TEST_INFRA ? PULL_NUMBER = "master" : null
+
+// OS Version Configuration
+WINDOWS_VERSION = env.WINDOWS_VERSION ?: "2019"
+
+// Some Defaults
+DOCKER_TAG = env.DOCKER_TAG ?: "latest"
+BUILD_TYPE = env.BUILD_TYPE ?:"Release"
 
 pipeline {
     agent { label 'ACC-RHEL-8' }
@@ -10,7 +21,7 @@ pipeline {
             steps {
                 script {
                     checkout("oeedger8r-cpp")
-                    cmake_build_linux("oeedger8r-cpp","Release")
+                    cmakeBuild("oeedger8r-cpp","Release")
                 }
             }
         }
@@ -18,7 +29,7 @@ pipeline {
             steps {
                 script {
                     checkout("oeedger8r-cpp")
-                    cmake_build_linux("oeedger8r-cpp","RelWithDebInfo")
+                    cmakeBuild("oeedger8r-cpp","RelWithDebInfo")
                 }
             }
         }
@@ -26,21 +37,33 @@ pipeline {
             steps {
                 script {
                     checkout("oeedger8r-cpp")
-                    cmake_build_linux("oeedger8r-cpp","Debug")
+                    cmakeBuild("oeedger8r-cpp","Debug")
                 }
             }
         }
     }
 }
 
-void cmake_build_linux( String REPO_NAME, String BUILD_CONFIG ) {
-    sh  """
-        cd ${REPO_NAME} && \
-        mkdir build && cd build &&\
-        cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
-        ninja -v
-        ctest --output-on-failure --timeout ${REPO_NAME}
-        """
+void cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
+
+    if (isUnix()) {
+        sh  """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+            ninja -v
+            ctest --output-on-failure --timeout ${REPO_NAME}
+            """
+    } else {
+        bat """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            vcvars64.bat x64 && \
+            cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
+            ninja -v -j 4 && \
+            ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
+            """
+    }
 }
 
 void checkout( String REPO_NAME ) {

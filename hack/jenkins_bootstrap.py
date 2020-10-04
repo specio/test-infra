@@ -94,7 +94,7 @@ class Trigger():
         while waiting_for_job:
             queue_request = requests.get(queue_url)
             if queue_request.json().get("why") != None:
-                print " . Waiting for job to start because :", queue_request.json().get("why")
+                print " . Waiting for job to start because :", queue_request.json().get("why").encode('utf-8').strip()
                 timer -= 1
                 sleep(self.sleep)
             else:

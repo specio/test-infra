@@ -242,7 +242,6 @@ postsubmits:
     - master
     decorate: true
     spec:
-      cont
       containers:
         - image: openenclave/jenkinsoperator:latest
           command:
@@ -255,7 +254,6 @@ postsubmits:
     - master
     decorate: true
     spec:
-      cont
       containers:
         - image: openenclave/jenkinsoperator:latest
           command:

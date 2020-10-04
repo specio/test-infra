@@ -1,10 +1,13 @@
+// Pull Request Information
+PULL_NUMBER = env.PULL_NUMBER
+
 pipeline {
     agent { label 'SGXFLC-Windows-2019-Docker' }
     stages {
         stage('Build SGX Win 2019 Docker Image') {
             steps {
                 script {
-                    checkout()
+                    checkout("test-infra")
                     docker.build("windows-2019:latest", "-f images/windows/2019/Dockerfile ." )
                 }
             }
@@ -78,12 +81,25 @@ pipeline {
     }
 }
 
-void checkout() {
-    bat """
-        (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
-        git clone https://github.com/${REPO_OWNER}/${REPO_NAME} && \
-        cd ${REPO_NAME} && \
-        git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/* && \
-        if NOT %PULL_NUMBER%==master git checkout origin/pr/${PULL_NUMBER}
-        """
+void checkout( String REPO_NAME ) {
+    if (isUnix()) {
+        sh  """
+            rm -rf ${REPO_NAME} && \
+            git clone --recursive --depth 1 https://github.com/openenclave-ci/${REPO_NAME} && \
+            cd ${REPO_NAME} && \
+            git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
+            if [[ $PULL_NUMBER -ne 'master' ]]; then
+                git checkout origin/pr/${PULL_NUMBER}
+            fi
+            """
+    }
+    else {
+        bat """
+            (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
+            git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
+            cd ${REPO_NAME} && \
+            git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
+            if NOT ${PULL_NUMBER}==master git checkout origin/pr/${PULL_NUMBER}
+            """
+    }
 }

@@ -183,7 +183,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job windows2019BuildMaster --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2,REPO_NAME=test-infra,REPO_OWNER=openenclave"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=2"
 
   - name: ci-openenclave-test-infra-validate-oeedgrg8r-rhel-8
     extra_refs:

@@ -233,7 +233,7 @@ presubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER"
 
-  - name: pr-openenclave-test-infra-validate-oeedgrg8r-rhel-8
+  - name: pr-openenclave-test-infra-validate-oeedgrg8r-rhel-8-release
     branches:
     - master
     run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
@@ -246,7 +246,37 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=true"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=true,BUILD_TYPE=Release"
+
+  - name: pr-openenclave-test-infra-validate-oeedgrg8r-rhel-8-debug
+    branches:
+    - master
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=true,BUILD_TYPE=Debug"
+
+  - name: pr-openenclave-test-infra-validate-oeedgrg8r-rhel-8-reldebinfo
+    branches:
+    - master
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
 
   - name: pr-openenclave-test-infra-validate-oeedgrg8r-win-2016-release
     branches:

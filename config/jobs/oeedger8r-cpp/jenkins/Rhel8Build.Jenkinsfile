@@ -7,11 +7,7 @@ PULL_NUMBER = env.PULL_NUMBER
 TEST_INFRA = env.TEST_INFRA
 TEST_INFRA ? PULL_NUMBER = "master" : null
 
-// OS Version Configuration
-WINDOWS_VERSION = env.WINDOWS_VERSION ?: "2019"
-
 // Some Defaults
-DOCKER_TAG = env.DOCKER_TAG ?: "latest"
 BUILD_TYPE = env.BUILD_TYPE ?:"Release"
 
 pipeline {

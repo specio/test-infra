@@ -16,7 +16,7 @@ DOCKER_TAG = env.DOCKER_TAG ?: "latest"
 BUILD_TYPE = env.BUILD_TYPE ?:"Release"
 
 pipeline {
-    agent { label "ACC-${LINUX_VERSION}" }
+    agent { label "OverWatch" }
     stages {
         /* Compile tests in SGX machine.  This will generate the necessary certs for the
         * host_verify test.

@@ -18,7 +18,7 @@ COMPILER = env.COMPILER ?: "clang-7"
 
 // LVI_mitigation
 LVI_MITIGATION = env.LVI_MITIGATION ?: "None"
-LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS ?: "ONE"
+LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS ?: "OFF"
 
 pipeline {
     agent { label "OverWatch" }

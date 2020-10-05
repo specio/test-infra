@@ -13,14 +13,9 @@ WINDOWS_VERSION = env.WINDOWS_VERSION ?: "2019"
 // Some Defaults
 DOCKER_TAG = env.DOCKER_TAG ?: "latest"
 BUILD_TYPE = env.BUILD_TYPE ?:"Release"
-COMPILER = env.COMPILER ?: "clang-7"
 
 // Some override for build configuration
 EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS ?: ""
-
-// LVI_mitigation
-LVI_MITIGATION = env.LVI_MITIGATION ?: "ControlFlow"
-LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS ?: "OFF"
 
 pipeline {
     agent { label "SGXFLC-Windows-${WINDOWS_VERSION}-Docker" }
@@ -28,9 +23,9 @@ pipeline {
         stage( 'Windows Build') {
             steps {
                 script {
-                    //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                    //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside {
                         checkout("oeedger8r-cpp")
-                        cmake_build_windows("oeedger8r-cpp","${BUILD_TYPE}")
+                        cmakeBuild("oeedger8r-cpp","${BUILD_TYPE}")
                     //}
                 }
             }
@@ -38,15 +33,26 @@ pipeline {
     }
 }
 
-void cmake_build_windows( String REPO_NAME, String BUILD_CONFIG ) {
-    bat """
-        cd ${REPO_NAME} && \
-        mkdir build && cd build &&\
-        vcvars64.bat x64 && \
-        cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
-        ninja -v -j 4 && \
-        ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
-        """
+void cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
+
+    if (isUnix()) {
+        sh  """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+            ninja -v
+            ctest --output-on-failure --timeout ${REPO_NAME}
+            """
+    } else {
+        bat """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            vcvars64.bat x64 && \
+            cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
+            ninja -v -j 4 && \
+            ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
+            """
+    }
 }
 
 void checkout( String REPO_NAME ) {

@@ -21,7 +21,7 @@ def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
     }
 }
 
-def checkout( String REPO_NAME ) {
+void checkout( String REPO_NAME ) {
     if (isUnix()) {
         sh  """
             rm -rf ${REPO_NAME} && \

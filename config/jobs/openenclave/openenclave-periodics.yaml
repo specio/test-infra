@@ -5,7 +5,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -20,7 +20,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -35,7 +35,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -50,7 +50,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -65,7 +65,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -80,7 +80,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -95,7 +95,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -110,7 +110,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -125,7 +125,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -150,7 +150,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -175,7 +175,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -200,7 +200,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -225,7 +225,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -250,7 +250,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -275,7 +275,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -300,7 +300,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -325,7 +325,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -340,7 +340,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -355,7 +355,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -370,7 +370,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -385,7 +385,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -400,7 +400,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -415,7 +415,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -430,7 +430,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -445,7 +445,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -470,7 +470,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -495,7 +495,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -520,7 +520,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -545,7 +545,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -570,7 +570,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -595,7 +595,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -620,7 +620,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -645,7 +645,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -660,7 +660,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -675,7 +675,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -690,7 +690,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -705,7 +705,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -720,7 +720,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -735,7 +735,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -750,7 +750,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -765,7 +765,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h2m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest

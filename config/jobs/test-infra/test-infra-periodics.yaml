@@ -1,11 +1,35 @@
 periodics:
-  - name: ci-test-infra-validate-build-image-ubuntu-1604
+  - name: ci-test-infra-push-image-bootstrap-did
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "docker build . -f images/bootstap/Dockerfile"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+
+  - name: ci-test-infra-push-build-image-ubuntu-1604
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -29,13 +53,13 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-test-infra-validate-build-image-ubuntu-1804
+  - name: ci-test-infra-push-build-image-ubuntu-1804
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -59,13 +83,13 @@ periodics:
           path: /dev/sgx
       restartPolicy: Never
 
-  - name: ci-test-infra-validate-build-image-rhel-8.1
+  - name: ci-test-infra-push-build-image-rhel-8.1
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -83,37 +107,13 @@ periodics:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: ci-test-infra-validate-build-image-bootstrap-did
+  - name: ci-test-infra-push-build-image-centos-7.5
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
-    spec:
-      containers:
-        - image: openenclave/test-infra-did:latest
-          command:
-            - sh
-            - "-c"
-            - "./images/test/build.sh --docker_path images/bootstap/Dockerfile --skip_testing --docker_tag openenclave/test-infra-did:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
-          securityContext:
-            privileged: true
-          volumeMounts:
-            - name: dockersock
-              mountPath: "/var/run/docker.sock"
-      volumes:
-      - name: dockersock
-        hostPath:
-          path: /var/run/docker.sock
-
-  - name: ci-test-infra-validate-build-image-centos-7.5
-    extra_refs:
-    - org: openenclave-ci
-      repo: test-infra
-      base_ref: master
-    decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -131,13 +131,13 @@ periodics:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: ci-test-infra-validate-build-image-fedora-31
+  - name: ci-test-infra-push-build-image-fedora-31
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/test-infra-did:latest
@@ -155,80 +155,153 @@ periodics:
         hostPath:
           path: /var/run/docker.sock
 
-  - name: ci-test-infra-jenkins-ping
-    extra_refs:
-    - org: openenclave-ci
-      repo: test-infra
-      base_ref: master
-    decorate: true
-    interval: 12h1m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/jenkins-ping --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN"
+#### Disabled as it takes 2+ hours, rely on periodic
+#  - name: ci-test-infra-validate-build-image-windows-2019
+#   branches:
+#   - master
+#    decorate: true
+#    spec:
+#      containers:
+#        - image: openenclave/jenkinsoperator:latest
+#          command:
+#            - sh
+#            - "-c"
+#            - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"
 
-  - name: ci-test-infra-validate-build-image-windows-2019
+  - name: ci-test-infra-validate-oeedger8r-rhel-8-release
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/Windows2019DockerBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Release"
 
-  - name: ci-test-infra-validate-oeedgrg8r-rhel-8
+  - name: ci-test-infra-validate-oeedger8r-rhel-8-debug
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Debug"
 
-  - name: ci-test-infra-validate-oeedgrg8r-win-2016
+  - name: ci-test-infra-validate-oeedger8r-rhel-8-reldebinfo
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
 
-  - name: ci-test-infra-validate-oeedgrg8r-win-2019
+  - name: ci-test-infra-validate-oeedger8r-win-2016-release
     extra_refs:
     - org: openenclave-ci
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
+
+  - name: ci-test-infra-validate-oeedger8r-win-2019-debug
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 6h3m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
+
+  - name: ci-test-infra-validate-build-image-jenkins-op
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 6h3m
+    spec:
+      containers:
+        - image: openenclave/test-infra-did:latest
+          command:
+            - sh
+            - "-c"
+            - "./images/test/build.sh --docker_path images/jenkinsoperator/Dockerfile --skip_testing --docker_tag openenclave/jenkinsoperator:latest --docker_push --docker_user $DOCKER_USER --docker_pass $DOCKER_PASSWORD"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /dev/sgx
+              name: dev-sgx
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
+
+  - name: ci-test-infra-validate-host-verify-debug
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 6h3m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
+
+  - name: ci-test-infra-validate-host-verify-release
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 6h3m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
 
   - name: ci-test-infra-validate-oe-elf-build-debug-clang-7
     extra_refs:
@@ -236,7 +309,7 @@ periodics:
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
@@ -251,7 +324,7 @@ periodics:
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
@@ -266,7 +339,7 @@ periodics:
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest
@@ -281,7 +354,7 @@ periodics:
       repo: test-infra
       base_ref: master
     decorate: true
-    interval: 12h1m
+    interval: 6h3m
     spec:
       containers:
         - image: openenclave/jenkinsoperator:latest

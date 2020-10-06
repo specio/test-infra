@@ -1,6 +1,6 @@
 presubmits:
-  openenclave/openenclave-curl:
-  - name: pr-openenclave-curl-jenkins-ping
+  openenclave/openenclave-ci:
+  - name: pr-openenclave-ci-jenkins-ping
     branches:
     - master
     always_run: true

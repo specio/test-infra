@@ -133,6 +133,7 @@ kubectl create configmap job-config \
 --from-file=openenclave-curl-periodics.yaml=$PWD/config/jobs/openenclave-curl/openenclave-curl-periodics.yaml \
 --from-file=openenclave-curl-pre-submits.yaml=$PWD/config/jobs/openenclave-curl/openenclave-curl-pre-submits.yaml \
 --from-file=openenclave-curl-postsubmits.yaml=$PWD/config/jobs/openenclave-curl/openenclave-curl-postsubmits.yaml \
+--from-file=openenclave-ci-pre-submits.yaml=$PWD/config/jobs/openenclave-ci/openenclave-ci-pre-submits.yaml \
 --dry-run=client -o yaml | kubectl replace configmap job-config -f -
 
 # Ending remarks

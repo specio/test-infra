@@ -9,13 +9,21 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-      - image: openenclave/ubuntu-1604:latest
-        command:
-        - /bin/bash
-        args:
-        - -c
-        - "/testing/openenclave-curl/make-build.sh"
-
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - "-c"
+            - "/testing/openenclave-curl/make-build.sh"
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
   - name: pr-openenclave-curl-ubuntu-1804
     branches:
     - master
@@ -25,12 +33,21 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-      - image: openenclave/ubuntu-1804:latest
-        command:
-        - /bin/bash
-        args:
-        - -c
-        - "/testing/openenclave-curl/make-build.sh"
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - "-c"
+            - "/testing/openenclave-curl/make-build.sh"
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
   - name: pr-openenclave-curl-jenkins-ping
     branches:

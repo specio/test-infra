@@ -6,7 +6,7 @@
 ![GitGuardian scan](https://github.com/openenclave-ci/test-infra/workflows/GitGuardian%20scan/badge.svg)
 
 [![Slack Channel](https://img.shields.io/badge/Slack-Join-purple)](https://openenclaveciteam.slack.com/)
-[![Element Channel](https://img.shields.io/badge/Slack-Join-green)](https://matrix.to/#/!iUVElxxPQQMxGLHAJH:openenclave.io?via=openenclave.io)
+[![Element Channel](https://img.shields.io/badge/Matrix-Join-green)](https://matrix.to/#/!iUVElxxPQQMxGLHAJH:openenclave.io?via=openenclave.io)
 
 This repository contains tools and configuration files for the testing and automation needs of the OpenEnclave project.
 

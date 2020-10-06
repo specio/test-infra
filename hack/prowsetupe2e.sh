@@ -123,8 +123,13 @@ kubectl create configmap job-config \
 --from-file=test-infra-pre-submits.yaml=$PWD/config/jobs/test-infra/test-infra-pre-submits.yaml \
 --from-file=oeedger8r-cpp-pre-submits.yaml=$PWD/config/jobs/oeedger8r-cpp/oeedger8r-cpp-pre-submits.yaml \
 --from-file=oeedger8r-cpp-periodics.yaml=$PWD/config/jobs/oeedger8r-cpp/oeedger8r-cpp-periodics.yaml \
+--from-file=oeedger8r-cpp-postsubmits.yaml=$PWD/config/jobs/oeedger8r-cpp/oeedger8r-cpp-postsubmits.yaml \
 --from-file=openenclave-periodics.yaml=$PWD/config/jobs/openenclave/openenclave-periodics.yaml \
 --from-file=openenclave-pre-submits.yaml=$PWD/config/jobs/openenclave/openenclave-pre-submits.yaml \
+--from-file=openenclave-postsubmits.yaml=$PWD/config/jobs/openenclave/openenclave-postsubmits.yaml \
+--from-file=openenclave-mbedtls-periodics.yaml=$PWD/config/jobs/openenclave-mbedtls/openenclave-mbedtls-periodics.yaml \
+--from-file=openenclave-mbedtls-pre-submits.yaml=$PWD/config/jobs/openenclave-mbedtls/openenclave-mbedtls-pre-submits.yaml \
+--from-file=openenclave-mbedtls-postsubmits.yaml=$PWD/config/jobs/openenclave-mbedtls/openenclave-mbedtls-postsubmits.yaml \
 --dry-run=client -o yaml | kubectl replace configmap job-config -f -
 
 # Ending remarks

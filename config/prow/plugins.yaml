@@ -22,6 +22,53 @@ plugins:
   - welcome
   - wip
 
+## Remove the below upon transfer of test-infra to oe from here until...
+  openenclave/openenclave-mbedtls:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
+  openenclave/openenclave-curl:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
   openenclave/oeedger8r-cpp:
   - approve
   - assign
@@ -44,6 +91,8 @@ plugins:
   - verify-owners
   - welcome
   - wip
+
+## .. here. Once again, delete the above.
 
 # Lower bounds in number of lines changed; XS is assumed to be zero.
 size:

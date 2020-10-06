@@ -13,6 +13,16 @@ periodics:
             - sh
             - "-c"
             - "/testing/openenclave-curl/make-build.sh"
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
   - name: ci-openenclave-curl-ubuntu-1804
     extra_refs:
@@ -28,6 +38,16 @@ periodics:
             - sh
             - "-c"
             - "/testing/openenclave-curl/make-build.sh"
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never
 
 #  - name: ci-openenclave-curl-rhel-8
 #    extra_refs:

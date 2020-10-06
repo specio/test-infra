@@ -1,0 +1,37 @@
+postsubmits:
+  openenclave/openenclave-mbedtls:
+  - name: post-openenclave-mbedtls-ubuntu-1604
+    branches:
+    - openenclave-mbedtls-2.16
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - "-c"
+            - "/testing/openenclave-mbedtls/make-build.sh"
+
+  - name: post-openenclave-mbedtls-ubuntu-1804
+    branches:
+    - openenclave-mbedtls-2.16
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - "-c"
+            - "/testing/openenclave-mbedtls/make-build.sh"
+
+# - name: post-openenclave-mbedtls-rhel-8
+#    branches:
+#    - openenclave-mbedtls-2.16
+#    decorate: true
+#    spec:
+#      containers:
+#        - image: openenclave/jenkinsoperator:latest
+#          command:
+#            - sh
+#            - "-c"
+#            - "python /hack/jenkins_bootstrap.py --job openenclave-mbedtls/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=openenclave-mbedtls-2.16,TEST_INFRA=false,BUILD_TYPE=Debug"

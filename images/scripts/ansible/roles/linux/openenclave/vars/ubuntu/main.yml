@@ -43,6 +43,7 @@ apt_arm_packages:
   - "libfdt1"
   - "openssh-client"
   - "sshpass"
+  - "netcat"
 
 validation_distribution_binaries:
   - "/usr/bin/shellcheck"

@@ -1,0 +1,637 @@
+postsubmits:
+  openenclave/openenclave:
+  - name: post-openenclave-ubuntu1604-Release-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-Release-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-Release-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-RelWithDebInfo-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-RelWithDebInfo-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-RelWithDebInfo-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-Debug-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-Debug-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1604-Debug-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sgx-ubuntu1604-Release-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-Release-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-Release-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-RelWithDebInfo-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-RelWithDebInfo-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-RelWithDebInfo-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-Debug-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-Debug-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1604-Debug-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-ubuntu1804-Release-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-Release-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-Release-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-RelWithDebInfo-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-RelWithDebInfo-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-RelWithDebInfo-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-Debug-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-Debug-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-ubuntu1804-Debug-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sgx-ubuntu1804-Release-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-Release-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-Release-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-RelWithDebInfo-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-RelWithDebInfo-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-RelWithDebInfo-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-Debug-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-Debug-clang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu1804-Debug-gcc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-win-2016-Release-msvc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release"        
+  - name: post-openenclave-win-2016-Debug-msvc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug"        
+  - name: post-openenclave-win-2019-Release-msvc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release"        
+  - name: post-openenclave-win-2019-Debug-msvc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"        
+  - name: post-openenclave-8.1-Release-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release"        
+  - name: post-openenclave-8.1-RelWithDebInfo-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo"        
+  - name: post-openenclave-8.1-Debug-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug"        

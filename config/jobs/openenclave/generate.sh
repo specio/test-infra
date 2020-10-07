@@ -7,7 +7,7 @@ echo "Creating config directories if they do not exist.."
 
 # Get all build config types
 build_configs=$(yq r $PWD/config.yml build-configs)
-
+org=openenclave
 i=0
 for build_config in $build_configs
 do
@@ -28,7 +28,7 @@ do
 
         if [ "$build_config" = "pre-submits" ] || [ "$build_config" = "postsubmits" ] 
         then
-            echo "  openenclave/${repo}:" >> $PWD/$repo/$repo-$build_config.yaml
+            echo "  openenclav-ci/${repo}:" >> $PWD/$repo/$repo-$build_config.yaml
         fi
 
         operating_systems=$(yq r $PWD/config.yml $repo.prowjob-operating-systems)
@@ -72,7 +72,7 @@ EOF
         do
             
             build_modes=$(yq r $PWD/config.yml $repo.build-modes)
-            for build_mode in hardware
+            for build_mode in $build_modes
             do
 
                 build_types=$(yq r $PWD/config.yml $repo.build-types-win)
@@ -93,7 +93,7 @@ EOF
         do
             
             build_modes=$(yq r $PWD/config.yml $repo.build-modes)
-            for build_mode in hardware
+            for build_mode in $build_modes
             do
 
                 build_types=$(yq r $PWD/config.yml $repo.build-types-lin)

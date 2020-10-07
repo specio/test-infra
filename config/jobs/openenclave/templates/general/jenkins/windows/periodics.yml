@@ -1,4 +1,4 @@
-  - name: ci-${repo}-win-${windows_version}-${build_type}-msvc
+  - name: ci-${repo}-win-${windows_version}-${build_type}-${build_mode}-msvc
     extra_refs:
     - org: openenclave
       repo: ${repo}
@@ -11,4 +11,4 @@
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job ${repo}/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=${windows_version},BUILD_TYPE=${build_type}"
+            - "python /hack/jenkins_bootstrap.py --job ${repo}/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=${windows_version},BUILD_TYPE=${build_type},BUILD_MODE=${build_mode}"

@@ -1,4 +1,4 @@
-  - name: ci-${repo}-${rhel_version}-${build_type}-clang-8
+  - name: ci-${repo}-${rhel_version}-${build_type}-${build_mode}-clang-8
     extra_refs:
     - org: openenclave
       repo: ${repo}
@@ -11,4 +11,4 @@
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job ${repo}/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=${build_type}"
+            - "python /hack/jenkins_bootstrap.py --job ${repo}/job/Rhel8Build '--jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN' --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=${build_type},BUILD_MODE=${build_mode}"

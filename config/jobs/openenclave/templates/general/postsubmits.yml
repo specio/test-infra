@@ -1,4 +1,4 @@
-  - name: post-${repo}-${operating_system}-${build_type}-${compiler}
+  - name: post-${repo}-sim--${operating_system}-${build_type}-${compiler}
     branches:
     - master
     decorate: true

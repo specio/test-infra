@@ -1,4 +1,4 @@
-  - name: ci-${repo}-${operating_system}-${build_type}-${compiler}
+  - name: ci-${repo}-sim-${operating_system}-${build_type}-${compiler}
     extra_refs:
     - org: ${org}
       repo: ${repo}

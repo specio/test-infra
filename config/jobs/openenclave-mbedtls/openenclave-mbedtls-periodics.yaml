@@ -5,7 +5,7 @@ periodics:
       repo: openenclave-mbedtls
       base_ref: openenclave-mbedtls-2.16
     decorate: true
-    interval: 6h4m
+    interval: 8h1m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -20,7 +20,7 @@ periodics:
       repo: openenclave-mbedtls
       base_ref: openenclave-mbedtls-2.16
     decorate: true
-    interval: 6h4m
+    interval: 8h2m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest

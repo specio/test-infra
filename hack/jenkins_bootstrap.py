@@ -56,9 +56,14 @@ class Trigger():
             self.parameters = False
 
     def trigger_build(self):
-
-        crumb = requests.get(self.url + '/crumbIssuer/api/json',
-                             auth=(self.user, self.password)).json()
+        crumb = ""
+        dns_fail_count = 0
+        while dns_fail_count < 5*60 and crumb == "":
+            try:
+                crumb = requests.get(self.url + '/crumbIssuer/api/json',
+                                auth=(self.user, self.password)).json()
+            except e:
+                dns_fail_count += 1
 
         # Do a build request
         if self.parameters:
@@ -109,6 +114,14 @@ class Trigger():
                         attempts += 1
                         sleep(self.sleep)
                 waiting_for_job = False
+                job_number = ""
+                attempts = 0
+                while attempts < 5*60 and job_number == "":
+                    try:
+                        job_number = queue_request.json().get("executable").get("number")
+                    except e:
+                        attempts += 1
+                        sleep(self.sleep)
                 job_number = queue_request.json().get("executable").get("number")
                 print " Job is being build number: ", job_number
 

@@ -5,7 +5,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h62m
+    interval: 1h66m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -19,7 +19,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h63m
+    interval: 1h67m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -33,7 +33,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h64m
+    interval: 1h68m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -47,7 +47,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h65m
+    interval: 1h69m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -61,7 +61,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h66m
+    interval: 1h70m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -75,7 +75,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h67m
+    interval: 1h71m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -89,7 +89,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h68m
+    interval: 1h72m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -103,7 +103,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h69m
+    interval: 1h73m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -117,7 +117,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h70m
+    interval: 1h74m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -131,7 +131,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h75m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -155,7 +155,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h76m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -179,7 +179,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h77m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -203,7 +203,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h78m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -227,7 +227,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h79m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -251,7 +251,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h80m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -275,7 +275,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h81m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -299,7 +299,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h82m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -323,7 +323,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h83m
     spec:
       containers:
         - image: openenclave/ubuntu-1604:latest
@@ -347,7 +347,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h80m
+    interval: 1h84m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -361,7 +361,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h81m
+    interval: 1h85m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -375,7 +375,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h82m
+    interval: 1h86m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -389,7 +389,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h83m
+    interval: 1h87m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -403,7 +403,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h84m
+    interval: 1h88m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -417,7 +417,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h85m
+    interval: 1h89m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -431,7 +431,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h86m
+    interval: 1h90m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -445,7 +445,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h87m
+    interval: 1h91m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -459,7 +459,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h88m
+    interval: 1h92m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -473,7 +473,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h93m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -497,7 +497,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h94m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -521,7 +521,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h95m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -545,7 +545,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h96m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -569,7 +569,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h97m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -593,7 +593,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h98m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -617,7 +617,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h99m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -641,7 +641,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h100m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -665,7 +665,7 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h101m
     spec:
       containers:
         - image: openenclave/ubuntu-1804:latest
@@ -689,62 +689,6 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h98m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2016-Debug-simulation-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h99m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2016-Release-hardware-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h100m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
-  - name: ci-openenclave-win-2016-Debug-hardware-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h101m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
-  - name: ci-openenclave-win-2019-Release-simulation-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
     interval: 1h102m
     spec:
       containers:
@@ -752,8 +696,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2019-Debug-simulation-msvc
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2016-Debug-simulation-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -766,8 +710,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2019-Release-hardware-msvc
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2016-Release-hardware-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -780,8 +724,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
-  - name: ci-openenclave-win-2019-Debug-hardware-msvc
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: ci-openenclave-win-2016-Debug-hardware-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -794,8 +738,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
-  - name: ci-openenclave-8.1-Release-simulation-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: ci-openenclave-win-2019-Release-simulation-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -808,8 +752,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN       --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
-  - name: ci-openenclave-8.1-RelWithDebInfo-simulation-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2019-Debug-simulation-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -822,8 +766,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN       --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
-  - name: ci-openenclave-8.1-Debug-simulation-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2019-Release-hardware-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -836,8 +780,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN       --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
-  - name: ci-openenclave-8.1-Release-hardware-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: ci-openenclave-win-2019-Debug-hardware-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -850,8 +794,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN       --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
-  - name: ci-openenclave-8.1-RelWithDebInfo-hardware-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: ci-openenclave-8.1-Release-simulation-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -864,8 +808,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN       --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
-  - name: ci-openenclave-8.1-Debug-hardware-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: ci-openenclave-8.1-RelWithDebInfo-simulation-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -878,8 +822,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN       --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
-  - name: ci-openenclave-hostverify-1604-2016-Release
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
+  - name: ci-openenclave-8.1-Debug-simulation-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -892,8 +836,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
-  - name: ci-openenclave-hostverify-1604-2016-RelWithDebInfo
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: ci-openenclave-8.1-Release-hardware-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -906,8 +850,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
-  - name: ci-openenclave-hostverify-1604-2016-Debug
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: ci-openenclave-8.1-RelWithDebInfo-hardware-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -920,8 +864,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
-  - name: ci-openenclave-hostverify-1604-2019-Release
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
+  - name: ci-openenclave-8.1-Debug-hardware-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -934,8 +878,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
-  - name: ci-openenclave-hostverify-1604-2019-RelWithDebInfo
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: ci-openenclave-hostverify-1604-2016-Release
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -948,8 +892,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
-  - name: ci-openenclave-hostverify-1604-2019-Debug
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2016-Debug
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -962,8 +906,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
-  - name: ci-openenclave-hostverify-1804-2016-Release
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2019-Release
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -976,8 +920,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
-  - name: ci-openenclave-hostverify-1804-2016-RelWithDebInfo
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2019-Debug
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -990,8 +934,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
-  - name: ci-openenclave-hostverify-1804-2016-Debug
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1804-2016-Release
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -1004,8 +948,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
-  - name: ci-openenclave-hostverify-1804-2019-Release
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2016-Debug
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -1018,8 +962,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
-  - name: ci-openenclave-hostverify-1804-2019-RelWithDebInfo
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2019-Release
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -1032,7 +976,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
   - name: ci-openenclave-hostverify-1804-2019-Debug
     extra_refs:
     - org: openenclave
@@ -1046,4 +990,116 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: ci-openenclave-linuxelfbuild-1604-2016-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h124m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-linuxelfbuild-1604-2016-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h125m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-linuxelfbuild-1604-2019-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h126m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-linuxelfbuild-1604-2019-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h127m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-linuxelfbuild-1804-2016-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h128m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-linuxelfbuild-1804-2016-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h129m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-linuxelfbuild-1804-2019-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h130m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: ci-openenclave-linuxelfbuild-1804-2019-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h131m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        

@@ -100,7 +100,14 @@ class Trigger():
             else:
                 sleep(self.sleep)
                 # Refresh request to avoid synchronization issues
-                queue_request = requests.get(queue_url)
+                attempts = 0
+                queue_request = "" 
+                while attempts < 5 and queue_request == "":
+                    try:
+                        queue_request = requests.get(queue_url)
+                    except e:
+                        attempts += 1
+                        sleep(self.sleep)
                 waiting_for_job = False
                 job_number = queue_request.json().get("executable").get("number")
                 print " Job is being build number: ", job_number
@@ -120,6 +127,7 @@ class Trigger():
         start_at = 0
         stream_open = True
         check_job_status = 0
+        dns_fail_count = 0
 
         crumb = requests.get(self.url + '/crumbIssuer/api/json',
                              auth=(self.user, self.password)).json()
@@ -132,11 +140,15 @@ class Trigger():
             content_length = int(console_response.headers.get("Content-Length", -1))
 
             if console_response.status_code != 200:
-                print " Uh oh we have an issue ... "
+                print " Uh oh we have an issue ... increment failure count for dns resolution"
                 print console_response.content
                 print console_response.headers
-                exit(1)
-
+                dns_fail_count += 1
+                # Retry for 5 minutes then fail
+                if count >= 5 * 60 /self.sleep:
+                    exit(1)
+                sleep(self.sleep)
+                
             if content_length == 0:
                 sleep(self.sleep)
                 check_job_status += 1

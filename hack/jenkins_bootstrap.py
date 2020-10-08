@@ -120,6 +120,7 @@ class Trigger():
         start_at = 0
         stream_open = True
         check_job_status = 0
+        dns_fail_count = 0
 
         crumb = requests.get(self.url + '/crumbIssuer/api/json',
                              auth=(self.user, self.password)).json()
@@ -132,11 +133,15 @@ class Trigger():
             content_length = int(console_response.headers.get("Content-Length", -1))
 
             if console_response.status_code != 200:
-                print " Uh oh we have an issue ... "
+                print " Uh oh we have an issue ... increment failure count for dns resolution"
                 print console_response.content
                 print console_response.headers
-                exit(1)
-
+                dns_fail_count += 1
+                # Retry for 5 minutes then fail
+                if count >= 5 * 60 /self.sleep:
+                    exit(1)
+                sleep(self.sleep)
+                
             if content_length == 0:
                 sleep(self.sleep)
                 check_job_status += 1

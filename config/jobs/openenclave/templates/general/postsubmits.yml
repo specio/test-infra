@@ -8,7 +8,7 @@
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=${build_type} --compiler=${compiler}'
+            - '/testing/openenclave/cmake-build.sh -b=${build_type} --compiler=${compiler}'
           securityContext:
             privileged: true
           volumeMounts:

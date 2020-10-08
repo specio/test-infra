@@ -1,6 +1,6 @@
 postsubmits:
-  openenclave/openenclave:
-  - name: post-openenclave-sim-ubuntu-1604-Release-clang-8-lvi
+  openenclave-ci/openenclave:
+  - name: post-openenclave-sim--ubuntu-1604-Release-clang-8
     branches:
     - master
     decorate: true
@@ -9,8 +9,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -19,9 +19,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-Release-clang-7
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Release-clang-7
     branches:
     - master
     decorate: true
@@ -30,8 +29,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -40,9 +39,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-Release-gcc
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Release-gcc
     branches:
     - master
     decorate: true
@@ -51,8 +49,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -61,9 +59,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-clang-8-lvi
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-RelWithDebInfo-clang-8
     branches:
     - master
     decorate: true
@@ -72,8 +69,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -82,9 +79,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-RelWithDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -93,8 +89,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -103,9 +99,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-RelWithDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -114,8 +109,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -124,9 +119,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Debug-clang-8
     branches:
     - master
     decorate: true
@@ -135,8 +129,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -145,9 +139,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-Debug-clang-7
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Debug-clang-7
     branches:
     - master
     decorate: true
@@ -156,8 +149,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -166,9 +159,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1604-Debug-gcc
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Debug-gcc
     branches:
     - master
     decorate: true
@@ -177,8 +169,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -187,9 +179,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sgx-ubuntu-1604-Release-clang-8-lvi
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sgx-ubuntu-1604-Release-clang-8
     branches:
     - master
     decorate: true
@@ -198,9 +189,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -210,9 +200,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-Release-gcc
     branches:
     - master
@@ -222,10 +211,9 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8-lvi
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8
     branches:
     - master
     decorate: true
@@ -234,10 +222,9 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-7
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -246,10 +233,9 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1604-RelDebInfo-gcc
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-RelWithDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -258,10 +244,9 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8-lvi
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8
     branches:
     - master
     decorate: true
@@ -270,9 +255,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -282,9 +266,8 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-Debug-gcc
     branches:
     - master
@@ -294,10 +277,9 @@ postsubmits:
         - image: openenclave/ubuntu-1604:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
-
-  - name: post-openenclave-sim-ubuntu-1804-Release-clang-8-lvi
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sim--ubuntu-1804-Release-clang-8
     branches:
     - master
     decorate: true
@@ -306,8 +288,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -316,9 +298,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-Release-clang-7
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Release-clang-7
     branches:
     - master
     decorate: true
@@ -327,8 +308,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -337,9 +318,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-Release-gcc
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Release-gcc
     branches:
     - master
     decorate: true
@@ -348,8 +328,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -358,9 +338,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-clang-8-lvi
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-RelWithDebInfo-clang-8
     branches:
     - master
     decorate: true
@@ -369,8 +348,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -379,9 +358,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-RelWithDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -390,8 +368,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -400,9 +378,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-RelWithDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -411,8 +388,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -421,9 +398,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Debug-clang-8
     branches:
     - master
     decorate: true
@@ -432,8 +408,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'
           securityContext:
             privileged: true
           volumeMounts:
@@ -442,9 +418,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-Debug-clang-7
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Debug-clang-7
     branches:
     - master
     decorate: true
@@ -453,8 +428,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -463,9 +438,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sim-ubuntu-1804-Debug-gcc
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Debug-gcc
     branches:
     - master
     decorate: true
@@ -474,8 +448,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc'
           securityContext:
             privileged: true
           volumeMounts:
@@ -484,9 +458,8 @@ postsubmits:
       volumes:
       - name: dockersock
         hostPath:
-          path: /var/run/docker.sock
-
-  - name: post-openenclave-sgx-ubuntu-1804-Release-clang-8-lvi
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sgx-ubuntu-1804-Release-clang-8
     branches:
     - master
     decorate: true
@@ -495,9 +468,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -507,9 +479,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-Release-gcc
     branches:
     - master
@@ -519,10 +490,9 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8-lvi
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-8
     branches:
     - master
     decorate: true
@@ -531,10 +501,9 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-7
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7
     branches:
     - master
     decorate: true
@@ -543,10 +512,9 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1804-RelDebInfo-gcc
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-gcc
     branches:
     - master
     decorate: true
@@ -555,10 +523,9 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
-
-  - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8-lvi
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8
     branches:
     - master
     decorate: true
@@ -567,9 +534,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -579,9 +545,8 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode"
-
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-Debug-gcc
     branches:
     - master
@@ -591,113 +556,291 @@ postsubmits:
         - image: openenclave/ubuntu-1804:latest
           command:
             - sh
-            - "-c"
-            - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"        
-
-  - name: post-openenclave-jenk-rhel-8.1-Release-clang-8-lvi
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-win-2016-Release-simulation-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: post-openenclave-win-2016-Debug-simulation-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-rhel-8.1-Debug-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: post-openenclave-win-2016-Release-hardware-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-win-2016-Release-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: post-openenclave-win-2016-Debug-hardware-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-win-2016-RelDebInfo-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: post-openenclave-win-2019-Release-simulation-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-win-2016-Debug-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: post-openenclave-win-2019-Debug-simulation-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-win-2019-Release-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: post-openenclave-win-2019-Release-hardware-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-win-2019-RelDebInfo-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: post-openenclave-win-2019-Debug-hardware-msvc
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8-lvi'"        
-
-  - name: post-openenclave-jenk-win-2019-Debug-clang-8-lvi
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: post-openenclave-8.1-Release-simulation-clang-8
     branches:
     - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "echo 'I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8-lvi'"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: post-openenclave-8.1-RelWithDebInfo-simulation-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
+  - name: post-openenclave-8.1-Debug-simulation-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: post-openenclave-8.1-Release-hardware-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: post-openenclave-8.1-RelWithDebInfo-hardware-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
+  - name: post-openenclave-8.1-Debug-hardware-clang-8
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: post-openenclave-hostverify-1604-2016-Release
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: post-openenclave-hostverify-1604-2016-RelWithDebInfo
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: post-openenclave-hostverify-1604-2016-Debug
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: post-openenclave-hostverify-1604-2019-Release
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: post-openenclave-hostverify-1604-2019-RelWithDebInfo
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: post-openenclave-hostverify-1604-2019-Debug
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: post-openenclave-hostverify-1804-2016-Release
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: post-openenclave-hostverify-1804-2016-RelWithDebInfo
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: post-openenclave-hostverify-1804-2016-Debug
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: post-openenclave-hostverify-1804-2019-Release
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: post-openenclave-hostverify-1804-2019-RelWithDebInfo
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: post-openenclave-hostverify-1804-2019-Debug
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        

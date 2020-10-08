@@ -1,6 +1,6 @@
 presubmits:
   openenclave-ci/openenclave:
-  - name: pr-openenclave-sim-ubuntu-1604-Release-clang-8-lvi
+  - name: pr-openenclave-sim-ubuntu-1604-Release-clang-8
     branches:
     - master
     always_run: true
@@ -14,8 +14,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation"
-
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'        
   - name: pr-openenclave-sim-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -30,8 +29,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7"
-
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1604-Release-gcc
     branches:
     - master
@@ -46,9 +44,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
-
-  - name: pr-openenclave-sim-ubuntu-1604-RelDebInfo-clang-8-lvi
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc'        
+  - name: pr-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8
     branches:
     - master
     always_run: true
@@ -62,9 +59,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation"
-
-  - name: pr-openenclave-sim-ubuntu-1604-RelDebInfo-clang-7
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7
     branches:
     - master
     always_run: true
@@ -78,9 +74,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7"
-
-  - name: pr-openenclave-sim-ubuntu-1604-RelDebInfo-gcc
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
+  - name: pr-openenclave-sim-ubuntu-1604-RelWithDebInfo-gcc
     branches:
     - master
     always_run: true
@@ -94,9 +89,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
-
-  - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
+  - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-8
     branches:
     - master
     always_run: true
@@ -110,8 +104,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation"
-
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'        
   - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -126,8 +119,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7"
-
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1604-Debug-gcc
     branches:
     - master
@@ -142,9 +134,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
-
-  - name: pr-openenclave-sgx-ubuntu-1604-Release-clang-8-lvi
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc'        
+  - name: pr-openenclave-sgx-ubuntu-1604-Release-clang-8
     branches:
     - master
     always_run: true
@@ -158,7 +149,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -168,8 +159,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -184,7 +174,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -194,8 +184,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1604-Release-gcc
     branches:
     - master
@@ -210,7 +199,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -220,9 +209,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-8-lvi
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8
     branches:
     - master
     always_run: true
@@ -236,7 +224,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -246,9 +234,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1604-RelDebInfo-clang-7
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7
     branches:
     - master
     always_run: true
@@ -262,7 +249,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -272,9 +259,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1604-RelDebInfo-gcc
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-RelWithDebInfo-gcc
     branches:
     - master
     always_run: true
@@ -288,7 +274,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -298,9 +284,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1604-Debug-clang-8-lvi
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-Debug-clang-8
     branches:
     - master
     always_run: true
@@ -314,7 +299,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -324,8 +309,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -340,7 +324,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -350,8 +334,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1604-Debug-gcc
     branches:
     - master
@@ -366,7 +349,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -376,9 +359,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sim-ubuntu-1804-Release-clang-8-lvi
+      restartPolicy: Never        
+  - name: pr-openenclave-sim-ubuntu-1804-Release-clang-8
     branches:
     - master
     always_run: true
@@ -392,8 +374,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --enable_lvi_mitigation"
-
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'        
   - name: pr-openenclave-sim-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -408,8 +389,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7"
-
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1804-Release-gcc
     branches:
     - master
@@ -424,9 +404,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc"
-
-  - name: pr-openenclave-sim-ubuntu-1804-RelDebInfo-clang-8-lvi
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc'        
+  - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-8
     branches:
     - master
     always_run: true
@@ -440,9 +419,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --enable_lvi_mitigation"
-
-  - name: pr-openenclave-sim-ubuntu-1804-RelDebInfo-clang-7
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7
     branches:
     - master
     always_run: true
@@ -456,9 +434,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7"
-
-  - name: pr-openenclave-sim-ubuntu-1804-RelDebInfo-gcc
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
+  - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-gcc
     branches:
     - master
     always_run: true
@@ -472,9 +449,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc"
-
-  - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
+  - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-8
     branches:
     - master
     always_run: true
@@ -488,8 +464,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --enable_lvi_mitigation"
-
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'        
   - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -504,8 +479,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7"
-
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1804-Debug-gcc
     branches:
     - master
@@ -520,9 +494,8 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc"
-
-  - name: pr-openenclave-sgx-ubuntu-1804-Release-clang-8-lvi
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc'        
+  - name: pr-openenclave-sgx-ubuntu-1804-Release-clang-8
     branches:
     - master
     always_run: true
@@ -536,7 +509,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-8 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -546,8 +519,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -562,7 +534,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=clang-7 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -572,8 +544,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1804-Release-gcc
     branches:
     - master
@@ -588,7 +559,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Release --compiler=gcc --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -598,9 +569,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-8-lvi
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-8
     branches:
     - master
     always_run: true
@@ -614,7 +584,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-8 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -624,9 +594,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1804-RelDebInfo-clang-7
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7
     branches:
     - master
     always_run: true
@@ -640,7 +609,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=clang-7 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -650,9 +619,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1804-RelDebInfo-gcc
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-RelWithDebInfo-gcc
     branches:
     - master
     always_run: true
@@ -666,7 +634,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=RelWithDebInfo --compiler=gcc --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -676,9 +644,8 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
-  - name: pr-openenclave-sgx-ubuntu-1804-Debug-clang-8-lvi
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-Debug-clang-8
     branches:
     - master
     always_run: true
@@ -692,7 +659,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-8 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -702,8 +669,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -718,7 +684,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=clang-7 --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -728,8 +694,7 @@ presubmits:
       - name: dev-sgx
         hostPath:
           path: /dev/sgx
-      restartPolicy: Never
-
+      restartPolicy: Never        
   - name: pr-openenclave-sgx-ubuntu-1804-Debug-gcc
     branches:
     - master
@@ -744,7 +709,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - "/testing/openenclave/cmake-build.sh --build_package -b=Debug --compiler=gcc --hardware_mode"
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -755,8 +720,7 @@ presubmits:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-
-  - name: pr-openenclave-jenk-rhel-8.1-Release-clang-8-lvi
+  - name: pr-openenclave-win-2016-Release-simulation-msvc
     branches:
     - master
     always_run: true
@@ -765,14 +729,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Release-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-rhel-8.1-RelDebInfo-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: pr-openenclave-win-2016-Debug-simulation-msvc
     branches:
     - master
     always_run: true
@@ -781,14 +743,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-RelDebInfo-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-rhel-8.1-Debug-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: pr-openenclave-win-2016-Release-hardware-msvc
     branches:
     - master
     always_run: true
@@ -797,14 +757,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-rhel-8.1-Debug-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-win-2016-Release-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: pr-openenclave-win-2016-Debug-hardware-msvc
     branches:
     - master
     always_run: true
@@ -813,14 +771,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Release-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-win-2016-RelDebInfo-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: pr-openenclave-win-2019-Release-simulation-msvc
     branches:
     - master
     always_run: true
@@ -829,14 +785,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-RelDebInfo-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-win-2016-Debug-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: pr-openenclave-win-2019-Debug-simulation-msvc
     branches:
     - master
     always_run: true
@@ -845,14 +799,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2016-Debug-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-win-2019-Release-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: pr-openenclave-win-2019-Release-hardware-msvc
     branches:
     - master
     always_run: true
@@ -861,14 +813,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Release-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-win-2019-RelDebInfo-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: pr-openenclave-win-2019-Debug-hardware-msvc
     branches:
     - master
     always_run: true
@@ -877,14 +827,12 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-RelDebInfo-clang-8-lvi"        
-
-  - name: pr-openenclave-jenk-win-2019-Debug-clang-8-lvi
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: pr-openenclave-8.1-Release-simulation-clang-8
     branches:
     - master
     always_run: true
@@ -893,9 +841,246 @@ presubmits:
     max_concurrency: 10
     spec:
       containers:
-        - image: openenclave/test-infra-did:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
-          - /bin/bash
-          args:
-          - -c
-          - "echo I am not implemented yet! Thanks for your interest in this project! openenclave-win-2019-Debug-clang-8-lvi"        
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: pr-openenclave-8.1-RelWithDebInfo-simulation-clang-8
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
+  - name: pr-openenclave-8.1-Debug-simulation-clang-8
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: pr-openenclave-8.1-Release-hardware-clang-8
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: pr-openenclave-8.1-RelWithDebInfo-hardware-clang-8
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
+  - name: pr-openenclave-8.1-Debug-hardware-clang-8
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: pr-openenclave-hostverify-1604-2016-Release
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: pr-openenclave-hostverify-1604-2016-RelWithDebInfo
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: pr-openenclave-hostverify-1604-2016-Debug
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: pr-openenclave-hostverify-1604-2019-Release
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: pr-openenclave-hostverify-1604-2019-RelWithDebInfo
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: pr-openenclave-hostverify-1604-2019-Debug
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: pr-openenclave-hostverify-1804-2016-Release
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: pr-openenclave-hostverify-1804-2016-RelWithDebInfo
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: pr-openenclave-hostverify-1804-2016-Debug
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: pr-openenclave-hostverify-1804-2019-Release
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: pr-openenclave-hostverify-1804-2019-RelWithDebInfo
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: pr-openenclave-hostverify-1804-2019-Debug
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        

@@ -12,4 +12,4 @@
         - /bin/bash
         args:
         - -c
-        - '/hack/cmake-build.sh -b=${build_type} --compiler=${compiler}'
+        - '/testing/openenclave/cmake-build.sh -b=${build_type} --compiler=${compiler}'

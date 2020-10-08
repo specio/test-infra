@@ -1,486 +1,264 @@
 periodics:
-  - name: ci-openenclave-sim-ubuntu1604-Release-clang-8
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h50m
+    interval: 1h62m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1604-Release-clang-7
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h51m
+    interval: 1h63m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1604-Release-gcc
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1604-Release-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h52m
+    interval: 1h64m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'        
-  - name: ci-openenclave-sim-ubuntu1604-RelWithDebInfo-clang-8
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h53m
+    interval: 1h65m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1604-RelWithDebInfo-clang-7
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h54m
+    interval: 1h66m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1604-RelWithDebInfo-gcc
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h55m
+    interval: 1h67m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
-  - name: ci-openenclave-sim-ubuntu1604-Debug-clang-8
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-8
     extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h56m
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1604-Debug-clang-7
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h57m
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1604-Debug-gcc
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h58m
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'        
-  - name: ci-openenclave-sgx-ubuntu1604-Release-clang-8
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Release-clang-7
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Release-gcc
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-RelWithDebInfo-clang-8
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-RelWithDebInfo-clang-7
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-RelWithDebInfo-gcc
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Debug-clang-8
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Debug-clang-7
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Debug-gcc
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never        
-  - name: ci-openenclave-sim-ubuntu1804-Release-clang-8
-    extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h68m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1804-Release-clang-7
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h69m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1804-Release-gcc
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h70m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc'        
-  - name: ci-openenclave-sim-ubuntu1804-RelWithDebInfo-clang-8
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc'        
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h71m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1804-RelWithDebInfo-clang-7
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h72m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1804-RelWithDebInfo-gcc
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h73m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
-  - name: ci-openenclave-sim-ubuntu1804-Debug-clang-8
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h74m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1804-Debug-clang-7
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h75m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1804-Debug-gcc
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
     interval: 1h76m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc'        
-  - name: ci-openenclave-sgx-ubuntu1804-Release-clang-8
-    extra_refs:
-    - org: 
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 6h
-    spec:
-      containers:
-        - image: openenclave/ubuntu1804:latest
-          command:
-            - sh
-            - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -491,20 +269,20 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-Release-clang-7
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h77m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -515,20 +293,20 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-Release-gcc
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h78m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -539,20 +317,20 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-RelWithDebInfo-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h79m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -563,20 +341,146 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-RelWithDebInfo-clang-7
+  - name: ci-openenclave-sim-ubuntu-1804-Release-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h80m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1804:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1804-Release-clang-7
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h81m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1804-Release-gcc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h82m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h83m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h84m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-gcc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h85m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h86m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-7
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h87m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-gcc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h88m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc'        
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h89m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -587,20 +491,20 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-RelWithDebInfo-gcc
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h90m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1804:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -611,20 +515,20 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-Debug-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-gcc
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h91m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1804:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -635,20 +539,20 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-Debug-clang-7
+  - name: ci-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-8
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h92m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1804:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -659,20 +563,116 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1804-Debug-gcc
+  - name: ci-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7
     extra_refs:
-    - org: 
+    - org: openenclave
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 6h
+    interval: 1h93m
     spec:
       containers:
-        - image: openenclave/ubuntu1804:latest
+        - image: openenclave/ubuntu-1804:latest
           command:
             - sh
             - '-c'
-            - '/hack/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-RelWithDebInfo-gcc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h94m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h95m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-7
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h96m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-gcc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h97m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=gcc --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -689,174 +689,6 @@ periodics:
       repo: openenclave
       base_ref: master
     decorate: true
-    interval: 1h86m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2016-Debug-simulation-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h87m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2016-Release-hardware-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h88m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
-  - name: ci-openenclave-win-2016-Debug-hardware-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h89m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
-  - name: ci-openenclave-win-2019-Release-simulation-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h90m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2019-Debug-simulation-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h91m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
-  - name: ci-openenclave-win-2019-Release-hardware-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h92m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
-  - name: ci-openenclave-win-2019-Debug-hardware-msvc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h93m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
-  - name: ci-openenclave-8.1-Release-simulation-clang-8
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h94m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
-  - name: ci-openenclave-8.1-RelWithDebInfo-simulation-clang-8
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h95m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
-  - name: ci-openenclave-8.1-Debug-simulation-clang-8
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h96m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
-  - name: ci-openenclave-8.1-Release-hardware-clang-8
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h97m
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
-  - name: ci-openenclave-8.1-RelWithDebInfo-hardware-clang-8
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
     interval: 1h98m
     spec:
       containers:
@@ -864,8 +696,8 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
-  - name: ci-openenclave-8.1-Debug-hardware-clang-8
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2016-Debug-simulation-msvc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -878,4 +710,340 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN  --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2016-Release-hardware-msvc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h100m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: ci-openenclave-win-2016-Debug-hardware-msvc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h101m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: ci-openenclave-win-2019-Release-simulation-msvc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h102m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2019-Debug-simulation-msvc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h103m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: ci-openenclave-win-2019-Release-hardware-msvc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h104m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: ci-openenclave-win-2019-Debug-hardware-msvc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h105m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: ci-openenclave-8.1-Release-simulation-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h106m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+  - name: ci-openenclave-8.1-RelWithDebInfo-simulation-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h107m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
+  - name: ci-openenclave-8.1-Debug-simulation-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h108m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+  - name: ci-openenclave-8.1-Release-hardware-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h109m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+  - name: ci-openenclave-8.1-RelWithDebInfo-hardware-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h110m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
+  - name: ci-openenclave-8.1-Debug-hardware-clang-8
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h111m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+  - name: ci-openenclave-hostverify-1604-2016-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h112m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2016-RelWithDebInfo
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h113m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2016-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h114m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2019-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h115m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2019-RelWithDebInfo
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h116m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1604-2019-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h117m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+  - name: ci-openenclave-hostverify-1804-2016-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h118m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2016-RelWithDebInfo
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h119m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2016-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h120m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2019-Release
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h121m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2019-RelWithDebInfo
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h122m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: ci-openenclave-hostverify-1804-2019-Debug
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h123m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        

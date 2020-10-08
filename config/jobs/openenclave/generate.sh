@@ -28,7 +28,7 @@ do
 
         if [ "$build_config" = "pre-submits" ] || [ "$build_config" = "postsubmits" ] 
         then
-            echo "  openenclav-ci/${repo}:" >> $PWD/$repo/$repo-$build_config.yaml
+            echo "  openenclave-ci/${repo}:" >> $PWD/$repo/$repo-$build_config.yaml
         fi
 
         operating_systems=$(yq r $PWD/config.yml $repo.prowjob-operating-systems)
@@ -102,6 +102,22 @@ EOF
 
 eval "cat <<EOF
 $(<$PWD/templates/general/jenkins/rhel/$build_config.yml)        
+EOF
+" >> $PWD/$repo/$repo-$build_config.yaml
+                i=$((i+1))
+                done
+            done
+        done 
+        for lin_version in 1604 1804
+        do 
+            for win_version in 2016 2019
+            do
+            build_types=$(yq r $PWD/config.yml $repo.build-types-lin)
+            for build_type in $build_types
+            do
+
+eval "cat <<EOF
+$(<$PWD/templates/general/jenkins/complex/host-verify/$build_config.yml)        
 EOF
 " >> $PWD/$repo/$repo-$build_config.yaml
                 i=$((i+1))

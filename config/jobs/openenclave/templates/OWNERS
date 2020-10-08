@@ -1,0 +1,8 @@
+approvers:
+  - BRMcLaren
+  - oe-ci-robot
+reviewers:
+  - BRMcLaren
+  - oe-ci-robot
+labels:
+  - area/templates

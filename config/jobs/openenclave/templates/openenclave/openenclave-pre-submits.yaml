@@ -733,7 +733,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
   - name: pr-openenclave-win-2016-Debug-simulation-msvc
     branches:
     - master
@@ -747,7 +747,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
   - name: pr-openenclave-win-2016-Release-hardware-msvc
     branches:
     - master
@@ -761,7 +761,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
   - name: pr-openenclave-win-2016-Debug-hardware-msvc
     branches:
     - master
@@ -775,7 +775,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
   - name: pr-openenclave-win-2019-Release-simulation-msvc
     branches:
     - master
@@ -789,7 +789,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
   - name: pr-openenclave-win-2019-Debug-simulation-msvc
     branches:
     - master
@@ -803,7 +803,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
   - name: pr-openenclave-win-2019-Release-hardware-msvc
     branches:
     - master
@@ -817,7 +817,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
   - name: pr-openenclave-win-2019-Debug-hardware-msvc
     branches:
     - master
@@ -831,7 +831,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
   - name: pr-openenclave-8.1-Release-simulation-clang-8
     branches:
     - master
@@ -845,7 +845,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
   - name: pr-openenclave-8.1-RelWithDebInfo-simulation-clang-8
     branches:
     - master
@@ -859,7 +859,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
   - name: pr-openenclave-8.1-Debug-simulation-clang-8
     branches:
     - master
@@ -873,7 +873,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
   - name: pr-openenclave-8.1-Release-hardware-clang-8
     branches:
     - master
@@ -887,7 +887,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
   - name: pr-openenclave-8.1-RelWithDebInfo-hardware-clang-8
     branches:
     - master
@@ -901,7 +901,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
   - name: pr-openenclave-8.1-Debug-hardware-clang-8
     branches:
     - master
@@ -915,7 +915,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
   - name: pr-openenclave-hostverify-1604-2016-Release
     branches:
     - master
@@ -929,7 +929,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
   - name: pr-openenclave-hostverify-1604-2016-Debug
     branches:
     - master
@@ -943,7 +943,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
   - name: pr-openenclave-hostverify-1604-2019-Release
     branches:
     - master
@@ -957,7 +957,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
   - name: pr-openenclave-hostverify-1604-2019-Debug
     branches:
     - master
@@ -971,7 +971,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
   - name: pr-openenclave-hostverify-1804-2016-Release
     branches:
     - master
@@ -985,7 +985,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
   - name: pr-openenclave-hostverify-1804-2016-Debug
     branches:
     - master
@@ -999,7 +999,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
   - name: pr-openenclave-hostverify-1804-2019-Release
     branches:
     - master
@@ -1013,7 +1013,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
   - name: pr-openenclave-hostverify-1804-2019-Debug
     branches:
     - master
@@ -1027,7 +1027,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
   - name: pr-openenclave-linuxelfbuild-1604-2016-Release
     branches:
     - master
@@ -1041,7 +1041,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
   - name: pr-openenclave-linuxelfbuild-1604-2016-Debug
     branches:
     - master
@@ -1055,7 +1055,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1604"        
   - name: pr-openenclave-linuxelfbuild-1604-2019-Release
     branches:
     - master
@@ -1069,7 +1069,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
   - name: pr-openenclave-linuxelfbuild-1604-2019-Debug
     branches:
     - master
@@ -1083,7 +1083,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1604"        
   - name: pr-openenclave-linuxelfbuild-1804-2016-Release
     branches:
     - master
@@ -1097,7 +1097,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
   - name: pr-openenclave-linuxelfbuild-1804-2016-Debug
     branches:
     - master
@@ -1111,7 +1111,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2016,LINUX_VERSION=1804"        
   - name: pr-openenclave-linuxelfbuild-1804-2019-Release
     branches:
     - master
@@ -1125,7 +1125,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
   - name: pr-openenclave-linuxelfbuild-1804-2019-Debug
     branches:
     - master
@@ -1139,4 +1139,4 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user  --url  --jenkins-password  --parameters PULL_NUMBER=,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        

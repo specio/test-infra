@@ -100,7 +100,14 @@ class Trigger():
             else:
                 sleep(self.sleep)
                 # Refresh request to avoid synchronization issues
-                queue_request = requests.get(queue_url)
+                attempts = 0
+                queue_request = "" 
+                while attempts < 5 and queue_request == "":
+                    try:
+                        queue_request = requests.get(queue_url)
+                    except e:
+                        attempts += 1
+                        sleep(self.sleep)
                 waiting_for_job = False
                 job_number = queue_request.json().get("executable").get("number")
                 print " Job is being build number: ", job_number

@@ -472,7 +472,8 @@ presubmits:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
-- name: post-test-infra-validate-openenclave-rhel-8-release
+
+  - name: post-test-infra-validate-openenclave-rhel-8-release
     branches:
     - master
     decorate: true

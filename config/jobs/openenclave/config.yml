@@ -8,8 +8,8 @@ repos:
 
 openenclave:
   prowjob-operating-systems:
-    ubuntu1604
-    ubuntu1804
+    ubuntu-1604
+    ubuntu-1804
   win-operating-systems:
     2016
     2019

@@ -1,5 +1,5 @@
 periodics:
-  - name: ci-openenclave-sim-ubuntu1604-Release-clang-8
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -8,12 +8,12 @@ periodics:
     interval: 1h50m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1604-Release-clang-7
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -22,12 +22,12 @@ periodics:
     interval: 1h51m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1604-Release-gcc
+  - name: ci-openenclave-sim-ubuntu-1604-Release-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -36,12 +36,12 @@ periodics:
     interval: 1h52m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=Release --compiler=gcc'        
-  - name: ci-openenclave-sim-ubuntu1604-RelWithDebInfo-clang-8
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -50,12 +50,12 @@ periodics:
     interval: 1h53m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1604-RelWithDebInfo-clang-7
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -64,12 +64,12 @@ periodics:
     interval: 1h54m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1604-RelWithDebInfo-gcc
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -78,12 +78,12 @@ periodics:
     interval: 1h55m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=RelWithDebInfo --compiler=gcc'        
-  - name: ci-openenclave-sim-ubuntu1604-Debug-clang-8
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -92,12 +92,12 @@ periodics:
     interval: 1h56m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=clang-8'        
-  - name: ci-openenclave-sim-ubuntu1604-Debug-clang-7
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -106,12 +106,12 @@ periodics:
     interval: 1h57m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu1604-Debug-gcc
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -120,12 +120,12 @@ periodics:
     interval: 1h58m
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
             - '/hack/cmake-build.sh -b=Debug --compiler=gcc'        
-  - name: ci-openenclave-sgx-ubuntu1604-Release-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -134,7 +134,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -149,7 +149,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Release-clang-7
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -158,7 +158,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -173,7 +173,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Release-gcc
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -182,7 +182,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -197,7 +197,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-RelWithDebInfo-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -206,7 +206,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -221,7 +221,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-RelWithDebInfo-clang-7
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -230,7 +230,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -245,7 +245,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-RelWithDebInfo-gcc
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -254,7 +254,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -269,7 +269,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Debug-clang-8
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-8
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -278,7 +278,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -293,7 +293,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Debug-clang-7
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-7
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -302,7 +302,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'
@@ -317,7 +317,7 @@ periodics:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
-  - name: ci-openenclave-sgx-ubuntu1604-Debug-gcc
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-gcc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -326,7 +326,7 @@ periodics:
     interval: 6h
     spec:
       containers:
-        - image: openenclave/ubuntu1604:latest
+        - image: openenclave/ubuntu-1604:latest
           command:
             - sh
             - '-c'

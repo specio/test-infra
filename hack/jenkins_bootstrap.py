@@ -62,7 +62,7 @@ class Trigger():
             try:
                 crumb = requests.get(self.url + '/crumbIssuer/api/json',
                                 auth=(self.user, self.password)).json()
-            except e:
+            except Exception:
                 dns_fail_count += 1
 
         # Do a build request
@@ -110,7 +110,7 @@ class Trigger():
                 while attempts < 5 and queue_request == "":
                     try:
                         queue_request = requests.get(queue_url)
-                    except e:
+                    except Exception:
                         attempts += 1
                         sleep(self.sleep)
                 waiting_for_job = False
@@ -119,7 +119,7 @@ class Trigger():
                 while attempts < 5*60 and job_number == "":
                     try:
                         job_number = queue_request.json().get("executable").get("number")
-                    except e:
+                    except Exception:
                         attempts += 1
                         sleep(self.sleep)
                 job_number = queue_request.json().get("executable").get("number")

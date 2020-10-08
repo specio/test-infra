@@ -145,7 +145,7 @@ class Trigger():
                 print console_response.headers
                 dns_fail_count += 1
                 # Retry for 5 minutes then fail
-                if count >= 5 * 60 /self.sleep:
+                if dns_fail_count >= 5 * 60 /self.sleep:
                     exit(1)
                 sleep(self.sleep)
                 

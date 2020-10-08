@@ -362,3 +362,18 @@ periodics:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=OFF,LVI_MITIGATION=ControlFlow"
+
+  - name: pr-test-infra-jenkins-ping
+    extra_refs:
+    - org: openenclave-ci
+      repo: test-infra
+      base_ref: master
+    decorate: true
+    interval: 15s
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/jenkins-ping --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN"

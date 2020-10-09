@@ -808,7 +808,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=simulation"        
   - name: ci-openenclave-8.1-RelWithDebInfo-simulation-clang-8
     extra_refs:
     - org: openenclave
@@ -822,7 +822,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=simulation"        
   - name: ci-openenclave-8.1-Debug-simulation-clang-8
     extra_refs:
     - org: openenclave
@@ -836,7 +836,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
   - name: ci-openenclave-8.1-Release-hardware-clang-8
     extra_refs:
     - org: openenclave
@@ -850,7 +850,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Release,BUILD_MODE=hardware"        
   - name: ci-openenclave-8.1-RelWithDebInfo-hardware-clang-8
     extra_refs:
     - org: openenclave
@@ -864,7 +864,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo,BUILD_MODE=hardware"        
   - name: ci-openenclave-8.1-Debug-hardware-clang-8
     extra_refs:
     - org: openenclave
@@ -878,7 +878,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN      --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
   - name: ci-openenclave-hostverify-1604-2016-Release
     extra_refs:
     - org: openenclave

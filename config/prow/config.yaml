@@ -102,7 +102,7 @@ presets:
     value: party
   
   - name: JENKINS_URL
-    value: http://prow-jenkins-test.eastus.cloudapp.azure.com/
+    value: http://prow-jenkins-test.eastus.cloudapp.azure.com
 
   - name: DOCKER_USER
     value: openenclave

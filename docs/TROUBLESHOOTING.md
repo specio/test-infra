@@ -51,6 +51,34 @@ Traceback (most recent call last):
     raise ValueError("No JSON object could be decoded")
 ValueError: No JSON object could be decoded
 ```
-Explaination: A job is being called without the correct parameters, this points at there being a mismatch between the tests being run and the Jenkins job configuration.
+Explaination: A job is being called without the icorrect parameters, this points at there being a mismatch between the tests being run and the Jenkins job configuration.
 
 Resolution: File a bug at openenclave/test-infra with the build log and job name. This should not be possible.
+
+ERROR: 502 gateway
+
+```
+</span>
+ Uh oh we have an issue ... increment failure count for dns resolution
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+{'Content-Length': '150', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Date': 'Sat, 10 Oct 2020 19:27:37 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/html'}
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+```
+
+Explaination: Backend jenkins dns had an issue, upvote : https://github.com/openenclave-ci/test-infra/issues/221 for prioritication
+
+Resolution: retry your job, it's not you it's me :(

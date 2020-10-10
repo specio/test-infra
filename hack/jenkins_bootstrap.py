@@ -151,17 +151,20 @@ class Trigger():
                                                      auth=(self.user, self.password),
                                                      headers={"Jenkins-Crumb": crumb.get('crumb')})
             content_length = int(console_response.headers.get("Content-Length", -1))
-
-            if console_response.status_code != 200:
-                print " Uh oh we have an issue ... increment failure count for dns resolution"
-                print console_response.content
-                print console_response.headers
+            
+            while console_response.status_code != 200 and dns_fail_count <= 5 * 60 /self.sleep:
+                
                 dns_fail_count += 1
-                # Retry for 5 minutes then fail
                 if dns_fail_count >= 5 * 60 /self.sleep:
+                    print "Uh oh we have an issue ..."
+                    print console_response.content
+                    print console_response.headers
                     exit(1)
                 sleep(self.sleep)
-                
+                console_response = console_requests.post(job_url, data={'start': start_at },
+                                                        auth=(self.user, self.password),
+                                                        headers={"Jenkins-Crumb": crumb.get('crumb')})
+
             if content_length == 0:
                 sleep(self.sleep)
                 check_job_status += 1

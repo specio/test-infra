@@ -220,7 +220,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,BUILD_TYPE=Release"
 
   - name: pr-oeedger8r-cpp-rhel8-clang-8-reldebinfo
     branches:
@@ -235,7 +235,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,BUILD_TYPE=RelWithDebInfo"
 
   - name: pr-oeedger8r-cpp-rhel8-clang-8-debug
     branches:
@@ -250,7 +250,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,BUILD_TYPE=Debug"
 
 
   - name: pr-oeedger8r-cpp-windows-2016-release
@@ -266,7 +266,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release"
 
   - name: pr-oeedger8r-cpp-windows-2016-debug
     branches:
@@ -281,7 +281,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug"
 
   - name: pr-oeedger8r-cpp-windows-2019-release
     branches:
@@ -296,7 +296,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
 
   - name: pr-oeedger8r-cpp-windows-2019-debug
     branches:
@@ -311,4 +311,4 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=$PULL_NUMBER,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"

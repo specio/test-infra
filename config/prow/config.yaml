@@ -99,10 +99,10 @@ presets:
         key: jenkins-token
 
   - name: JENKINS_USER
-    value: jenkins-trigger
+    value: party
   
   - name: JENKINS_URL
-    value: http://oe-jenk-master-test.canadacentral.cloudapp.azure.com
+    value: http://prow-jenkins-test.eastus.cloudapp.azure.com/
 
   - name: DOCKER_USER
     value: openenclave

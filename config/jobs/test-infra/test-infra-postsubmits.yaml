@@ -161,7 +161,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Release"
 
   - name: post-test-infra-validate-oeedger8r-rhel-8-debug
     branches:
@@ -173,7 +173,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Debug"
 
   - name: post-test-infra-validate-oeedger8r-rhel-8-reldebinfo
     branches:
@@ -185,7 +185,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
 
   - name: post-test-infra-validate-oeedger8r-win-2016-release
     branches:
@@ -197,7 +197,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
 
   - name: post-test-infra-validate-oeedger8r-win-2019-debug
     branches:
@@ -209,7 +209,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job oeedger8r-cpp/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
 
   - name: ci-test-infra-validate-build-image-jenkins-op
     branches:
@@ -248,7 +248,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug"
 
   - name: post-test-infra-validate-host-verify-release
     branches:
@@ -260,7 +260,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/hostverify --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Release"
 
   - name: post-test-infra-validate-oe-elf-build-debug-clang-7
     branches:
@@ -272,7 +272,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,COMPILER=clang-7,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,COMPILER=clang-7,LINUX_VERSION=1804,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
 
   - name: post-test-infra-validate-oe-elf-build-release-gcc
     branches:
@@ -284,7 +284,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,COMPILER=gcc,LINUX_VERSION=1604,WINDOWS_VERSION=2019,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,COMPILER=gcc,LINUX_VERSION=1604,WINDOWS_VERSION=2019,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
 
   - name: post-test-infra-validate-oe-win-build-2016-release
     branches:
@@ -296,7 +296,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2016,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2016,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=ON,LVI_MITIGATION=None"
 
   - name: post-test-infra-validate-oe-win-build-2019-debug
     branches:
@@ -308,7 +308,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=OFF,LVI_MITIGATION=ControlFlow"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,WINDOWS_VERSION=2019,BUILD_TYPE=Release,LVI_MITIGATION_SKIP_TESTS=OFF,LVI_MITIGATION=ControlFlow"
 
   - name: post-test-infra-validate-openenclave-rhel-8-release
     branches:
@@ -320,7 +320,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Release"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Release"
 
   - name: post-test-infra-validate-openenclave-rhel-8-debug
     branches:
@@ -332,7 +332,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Debug"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=Debug"
 
   - name: post-test-infra-validate-openenclave-rhel-8-reldebinfo
     branches:
@@ -344,4 +344,4 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=$OE_TEST_INFRA_PULL_NUMBER,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=true,BUILD_TYPE=RelWithDebInfo"

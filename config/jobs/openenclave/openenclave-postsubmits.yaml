@@ -10,7 +10,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -70,7 +70,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -130,7 +130,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -190,7 +190,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -223,7 +223,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7
     branches:
     - master
@@ -256,7 +256,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -289,7 +289,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -349,7 +349,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -409,7 +409,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'
           securityContext:
             privileged: true
           volumeMounts:
@@ -469,7 +469,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'        
+            - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -502,7 +502,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+            - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7
     branches:
     - master
@@ -535,7 +535,7 @@ postsubmits:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'        
+            - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'        
   - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-7
     branches:
     - master

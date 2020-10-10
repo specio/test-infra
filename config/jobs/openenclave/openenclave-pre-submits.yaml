@@ -14,7 +14,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'        
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1604-Release-clang-7
     branches:
     - master
@@ -59,7 +59,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7
     branches:
     - master
@@ -104,7 +104,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'        
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-7
     branches:
     - master
@@ -149,7 +149,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -224,7 +224,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -299,7 +299,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -374,7 +374,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8'        
+        - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1804-Release-clang-7
     branches:
     - master
@@ -419,7 +419,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8'        
+        - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7
     branches:
     - master
@@ -464,7 +464,7 @@ presubmits:
         - /bin/bash
         args:
         - -c
-        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8'        
+        - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7'        
   - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-7
     branches:
     - master
@@ -509,7 +509,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-8 --hardware_mode'
+          - '/testing/openenclave/cmake-build.sh -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -584,7 +584,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          - '/testing/openenclave/cmake-build.sh -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -659,7 +659,7 @@ presubmits:
           - /bin/bash
           args:
           - -c
-          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-8 --hardware_mode'
+          - '/testing/openenclave/cmake-build.sh -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx

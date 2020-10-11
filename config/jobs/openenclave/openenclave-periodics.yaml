@@ -1103,3 +1103,592 @@ periodics:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h66m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h67m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1604-Release-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h68m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h69m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h70m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7'        
+      
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h72m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h73m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7'        
+  
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h75m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-Release-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h76m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h78m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h79m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h81m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1604-Debug-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h82m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+     
+  - name: ci-openenclave-sim-ubuntu-1804-Release-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h84m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1804-Release-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h85m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1804-Release-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h86m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h87m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h88m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h89m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=gcc'        
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h90m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8'        
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h91m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7'        
+  - name: ci-openenclave-sim-ubuntu-1804-Debug-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h92m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=gcc'        
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h93m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h94m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Release-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h95m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h96m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h97m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-RelWithDebInfo-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h98m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-8-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h99m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-clang-7-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h100m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: ci-openenclave-sgx-ubuntu-1804-Debug-gcc-snmalloc
+    extra_refs:
+    - org: openenclave
+      repo: openenclave
+      base_ref: master
+    decorate: true
+    interval: 1h101m
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never

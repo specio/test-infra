@@ -888,3 +888,471 @@ postsubmits:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/linuxelfbuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,BUILD_TYPE=Debug,BUILD_MODE=hardware,WINDOWS_VERSION=2019,LINUX_VERSION=1804"        
+  - name: post-openenclave-sim--ubuntu-1604-Release-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Release-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+ 
+  - name: post-openenclave-sim--ubuntu-1604-RelWithDebInfo-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-RelWithDebInfo-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+     
+  - name: post-openenclave-sim--ubuntu-1604-Debug-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1604-Debug-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+    
+  - name: post-openenclave-sgx-ubuntu-1604-Release-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-Release-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1604-Debug-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sim--ubuntu-1804-Release-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Release-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Release-gcc-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-RelWithDebInfo-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-RelWithDebInfo-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-RelWithDebInfo-gcc-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Debug-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Debug-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sim--ubuntu-1804-Debug-gcc-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=gcc'
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock        
+  - name: post-openenclave-sgx-ubuntu-1804-Release-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-Release-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-Release-gcc-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-RelWithDebInfo-gcc-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=gcc --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-8-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-Debug-clang-7-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7 --hardware_mode'        
+  - name: post-openenclave-sgx-ubuntu-1804-Debug-gcc-snmalloc
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+            - sh
+            - '-c'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=gcc --hardware_mode'        

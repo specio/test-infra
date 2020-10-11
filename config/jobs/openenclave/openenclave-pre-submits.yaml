@@ -1746,3 +1746,609 @@ presubmits:
         hostPath:
           path: /dev/sgx
       restartPolicy: Never        
+  - name: pr-openenclave-sim-ubuntu-1604-Release-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1604-Release-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7'        
+     
+  - name: pr-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7'        
+   
+  - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1604-Debug-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1604:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7'        
+    
+  - name: pr-openenclave-sgx-ubuntu-1604-Release-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-Release-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+
+  - name: pr-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-RelWithDebInfo-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+     
+  - name: pr-openenclave-sgx-ubuntu-1604-Debug-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1604-Debug-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1604:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+   
+  - name: pr-openenclave-sim-ubuntu-1804-Release-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1804-Release-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7'        
+  - name: pr-openenclave-sim-ubuntu-1804-Release-gcc-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=gcc'        
+  - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7'        
+  - name: pr-openenclave-sim-ubuntu-1804-RelWithDebInfo-gcc-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=gcc'        
+  - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8'        
+  - name: pr-openenclave-sim-ubuntu-1804-Debug-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7'        
+  - name: pr-openenclave-sim-ubuntu-1804-Debug-gcc-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+      - image: openenclave/ubuntu-1804:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=gcc'        
+  - name: pr-openenclave-sgx-ubuntu-1804-Release-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-Release-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-Release-gcc-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-RelWithDebInfo-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-RelWithDebInfo-gcc-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-Debug-clang-8-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-Debug-clang-7-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7 --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        
+  - name: pr-openenclave-sgx-ubuntu-1804-Debug-gcc-lvi-snmalloc
+    branches:
+    - master
+    always_run: true
+    decorate: true
+    skip_report: false
+    max_concurrency: 10
+    spec:
+      containers:
+        - image: openenclave/ubuntu-1804:latest
+          command:
+          - /bin/bash
+          args:
+          - -c
+          - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=gcc --hardware_mode'
+          volumeMounts:
+          - mountPath: /dev/sgx
+            name: dev-sgx
+          securityContext:
+            privileged: true
+      volumes:
+      - name: dev-sgx
+        hostPath:
+          path: /dev/sgx
+      restartPolicy: Never        

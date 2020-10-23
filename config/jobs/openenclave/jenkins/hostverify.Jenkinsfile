@@ -113,7 +113,7 @@ pipeline {
                     script{
                         cleanWs()
                         checkout("openenclave")
-                        docker.image('openenclave/windows-2019:latest').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                        //docker.image('openenclave/windows-2019:latest').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                             unstash "linux_host_verify-${LINUX_VERSION}-${BUILD_TYPE}-${BUILD_NUMBER}"
                             dir('build') {
                                 bat """
@@ -123,7 +123,7 @@ pipeline {
                                     ctest.exe -V -C ${BUILD_TYPE} -R host_verify --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
                                     """
                             }
-                        }
+                        //}
                     }
                 }
             }

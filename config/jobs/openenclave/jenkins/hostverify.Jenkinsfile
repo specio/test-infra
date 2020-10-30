@@ -3,9 +3,8 @@ GLOBAL_TIMEOUT_MINUTES = 120
 CTEST_TIMEOUT_SECONDS = 1200
 
 // Pull Request Information
-PULL_NUMBER = env.PULL_NUMBER
-TEST_INFRA = env.TEST_INFRA
-TEST_INFRA ? PULL_NUMBER = "master" : null
+OE_PULL_NUMBER = env.OE_PULL_NUMBER
+OE_TEST_INFRA_PULL_NUMBER = env.OE_TEST_INFRA_PULL_NUMBER ? "master" : null
 
 // OS Version Configuration
 LINUX_VERSION = env.LINUX_VERSION ?: "1804"
@@ -40,7 +39,7 @@ pipeline {
                 timeout(GLOBAL_TIMEOUT_MINUTES) {
                     script{
                         cleanWs()
-                        checkout("openenclave")
+                        checkout("openenclave", "${OE_PULL_NUMBER}")
 
                         println("Generating certificates and reports ...")
                         def task = """
@@ -91,7 +90,7 @@ pipeline {
                 timeout(GLOBAL_TIMEOUT_MINUTES) {
                     script{
                         cleanWs()
-                        checkout("openenclave")
+                        checkout("openenclave", "${OE_PULL_NUMBER}")
                         unstash "linux_host_verify-${LINUX_VERSION}-${BUILD_TYPE}-${BUILD_NUMBER}"
                         def task = """
                                 cmake ${WORKSPACE}/openenclave -G Ninja -DBUILD_ENCLAVES=OFF -DHAS_QUOTE_PROVIDER=OFF -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
@@ -112,7 +111,7 @@ pipeline {
                 timeout(GLOBAL_TIMEOUT_MINUTES) {
                     script{
                         cleanWs()
-                        checkout("openenclave")
+                        checkout("openenclave", "${OE_PULL_NUMBER}")
                         //docker.image('openenclave/windows-2019:latest').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                             unstash "linux_host_verify-${LINUX_VERSION}-${BUILD_TYPE}-${BUILD_NUMBER}"
                             dir('build') {
@@ -131,15 +130,15 @@ pipeline {
     }
 }
 
-void checkout( String REPO_NAME ) {
+void checkout( String REPO_NAME , String OE_PULL_NUMBER) {
     if (isUnix()) {
         sh  """
             rm -rf ${REPO_NAME} && \
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if [[ $PULL_NUMBER -ne 'master' ]]; then
-                git checkout origin/pr/${PULL_NUMBER}
+            if [[ ${OE_PULL_NUMBER} -ne 'master' ]]; then
+                git checkout origin/pr/${OE_PULL_NUMBER}
             fi
             """
     }
@@ -149,7 +148,7 @@ void checkout( String REPO_NAME ) {
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if NOT ${PULL_NUMBER}==master git checkout origin/pr/${PULL_NUMBER}
+            if NOT ${OE_PULL_NUMBER}==master git checkout origin/pr/${OE_PULL_NUMBER}
             """
     }
 }

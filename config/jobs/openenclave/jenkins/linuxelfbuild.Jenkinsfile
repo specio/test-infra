@@ -3,9 +3,8 @@ GLOBAL_TIMEOUT_MINUTES = 120
 CTEST_TIMEOUT_SECONDS = 1200
 
 // Pull Request Information
-PULL_NUMBER = env.PULL_NUMBER
-TEST_INFRA = env.TEST_INFRA
-TEST_INFRA ? PULL_NUMBER = "master" : null
+OE_PULL_NUMBER = env.OE_PULL_NUMBER
+OE_TEST_INFRA_PULL_NUMBER = env.OE_TEST_INFRA_PULL_NUMBER ? "master" : null
 
 // OS Version Configuration
 LINUX_VERSION = env.LINUX_VERSION ?: "1804"
@@ -45,7 +44,7 @@ pipeline {
                 timeout(GLOBAL_TIMEOUT_MINUTES) {
                     script{
                         cleanWs()
-                        checkout2("openenclave")
+                        checkout2("openenclave", "${OE_PULL_NUMBER}")
                         def task = """
                                 cmake ${WORKSPACE}/openenclave                               \
                                     -G Ninja                                                 \
@@ -68,7 +67,7 @@ pipeline {
             steps {
                 timeout(GLOBAL_TIMEOUT_MINUTES) {
                     cleanWs()
-                    checkout2("openenclave")
+                    checkout2("openenclave", "${OE_PULL_NUMBER}")
                     unstash "linux-ACC-${LINUX_VERSION}-${COMPILER}-${BUILD_TYPE}-LVI_MITIGATION=${LVI_MITIGATION}-${LINUX_VERSION}-${BUILD_NUMBER}"
                     bat 'move build linuxbin'
                     dir('build') {
@@ -85,15 +84,15 @@ pipeline {
     }
 }
 
-void checkout2( String REPO_NAME ) {
+void checkout2( String REPO_NAME , String OE_PULL_NUMBER) {
     if (isUnix()) {
         sh  """
             rm -rf ${REPO_NAME} && \
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if [[ $PULL_NUMBER -ne 'master' ]]; then
-                git checkout origin/pr/${PULL_NUMBER}
+            if [[ ${OE_PULL_NUMBER} -ne 'master' ]]; then
+                git checkout origin/pr/${OE_PULL_NUMBER}
             fi
             """
     }
@@ -103,7 +102,7 @@ void checkout2( String REPO_NAME ) {
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if NOT ${PULL_NUMBER}==master git checkout origin/pr/${PULL_NUMBER}
+            if NOT ${OE_PULL_NUMBER}==master git checkout origin/pr/${OE_PULL_NUMBER}
             """
     }
 }

@@ -3,9 +3,8 @@ GLOBAL_TIMEOUT_MINUTES = 120
 CTEST_TIMEOUT_SECONDS = 1200
 
 // Pull Request Information
-PULL_NUMBER = env.PULL_NUMBER
-TEST_INFRA = env.TEST_INFRA
-TEST_INFRA ? PULL_NUMBER = "master" : null
+OE_PULL_NUMBER = env.OE_PULL_NUMBER
+OE_TEST_INFRA_PULL_NUMBER = env.OE_TEST_INFRA_PULL_NUMBER ? "master" : null
 
 // OS Version Configuration
 WINDOWS_VERSION = env.WINDOWS_VERSION ?: "2019"
@@ -43,7 +42,7 @@ pipeline {
                     script {
                         //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                             def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
-                            runner.checkout("openenclave")
+                            runner.checkout("openenclave", "${OE_PULL_NUMBER}")
                             runner.cmakeBuildOE("openenclave","${BUILD_TYPE}")
                         //}
                     }

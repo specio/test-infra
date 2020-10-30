@@ -49,7 +49,7 @@ def cmakeBuildOE( String REPO_NAME, String BUILD_CONFIG ) {
         """
 }
 
-def checkout( String REPO_NAME ) {
+def checkout( String REPO_NAME, String OE_PULL_NUMBER) {
     if (isUnix()) {
         sh  """
             git config --global core.compression 0 && \
@@ -57,8 +57,8 @@ def checkout( String REPO_NAME ) {
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if [[ $PULL_NUMBER -ne 'master' ]]; then
-                git checkout origin/pr/${PULL_NUMBER}
+            if [[ ${OE_PULL_NUMBER} -ne 'master' ]]; then
+                git checkout origin/pr/${OE_PULL_NUMBER}
             fi
             """
     }
@@ -69,7 +69,7 @@ def checkout( String REPO_NAME ) {
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if NOT ${PULL_NUMBER}==master git checkout origin/pr/${PULL_NUMBER}
+            if NOT ${OE_PULL_NUMBER}==master git checkout origin/pr/${OE_PULL_NUMBER}
             """
     }
 }

@@ -88,7 +88,7 @@ void checkout2( String REPO_NAME , String OE_PULL_NUMBER) {
     if (isUnix()) {
         sh  """
             rm -rf ${REPO_NAME} && \
-            git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
+            git clone --recursive --depth 1 https://github.com/openenclave-ci/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
             if [[ ${OE_PULL_NUMBER} -ne 'master' ]]; then
@@ -99,7 +99,7 @@ void checkout2( String REPO_NAME , String OE_PULL_NUMBER) {
     else {
         bat """
             (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
-            git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
+            git clone --recursive --depth 1 https://github.com/openenclave-ci/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
             if NOT ${OE_PULL_NUMBER}==master git checkout origin/pr/${OE_PULL_NUMBER}

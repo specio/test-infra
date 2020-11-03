@@ -3,9 +3,8 @@ GLOBAL_TIMEOUT_MINUTES = 120
 CTEST_TIMEOUT_SECONDS = 1200
 
 // Pull Request Information
-PULL_NUMBER = env.PULL_NUMBER
-TEST_INFRA = env.TEST_INFRA
-TEST_INFRA ? PULL_NUMBER = "master" : null
+OE_PULL_NUMBER = env.OE_PULL_NUMBER
+OE_TEST_INFRA_PULL_NUMBER = env.OE_TEST_INFRA_PULL_NUMBER ? "master" : null
 
 // Some Defaults
 BUILD_TYPE = env.BUILD_TYPE ?: "Release"
@@ -31,7 +30,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + '/config/jobs/oeedger8r-cpp/jenkins/common.groovy'
-                    runner.checkout("oeedger8r-cpp")
+                    runner.checkout("oeedger8r-cpp", "${OE_PULL_NUMBER}")
                     runner.cmakeBuild("oeedger8r-cpp","${BUILD_TYPE}")
                     cleanWs()
                 }

@@ -33,7 +33,7 @@ void cleanContainers() {
     }
 }
 
-void checkout( String REPO_NAME ) {
+void checkout( String REPO_NAME, String PULL_NUMBER ) {
     if (isUnix()) {
         sh  """
             git config --global core.compression 0 && \
@@ -41,7 +41,7 @@ void checkout( String REPO_NAME ) {
             git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if [[ $PULL_NUMBER -ne 'master' ]]; then
+            if [[ ${PULL_NUMBER} -ne 'master' ]]; then
                 git checkout origin/pr/${PULL_NUMBER}
             fi
             """

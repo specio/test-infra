@@ -54,7 +54,7 @@ def checkout( String REPO_NAME, String OE_PULL_NUMBER) {
         sh  """
             git config --global core.compression 0 && \
             rm -rf ${REPO_NAME} && \
-            git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
+            git clone --recursive --depth 1 https://github.com/openenclave-ci/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
             if [[ ${OE_PULL_NUMBER} -ne 'master' ]]; then
@@ -66,7 +66,7 @@ def checkout( String REPO_NAME, String OE_PULL_NUMBER) {
         bat """
             git config --global core.compression 0 && \
             (if exist ${REPO_NAME} rmdir /s/q ${REPO_NAME}) && \
-            git clone --recursive --depth 1 https://github.com/openenclave/${REPO_NAME} && \
+            git clone --recursive --depth 1 https://github.com/openenclave-ci/${REPO_NAME} && \
             cd ${REPO_NAME} && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
             if NOT ${OE_PULL_NUMBER}==master git checkout origin/pr/${OE_PULL_NUMBER}

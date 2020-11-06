@@ -6,11 +6,11 @@ CTEST_TIMEOUT_SECONDS = 1200
 OE_PULL_NUMBER=env.OE_PULL_NUMBER?env.OE_PULL_NUMBER:"master"
 
 // OS Version Configuration
-WINDOWS_VERSION = env.WINDOWS_VERSION ?: "2019"
+WINDOWS_VERSION=env.WINDOWS_VERSION?env.WINDOWS_VERSION:"2019"
 
 // Some Defaults
-DOCKER_TAG = env.DOCKER_TAG ?: "latest"
-BUILD_TYPE = env.BUILD_TYPE ?:"Release"
+DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
 COMPILER = env.COMPILER ?: "clang-7"
 
 // Some override for build configuration

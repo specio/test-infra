@@ -14,15 +14,6 @@ pipeline {
     }
     agent { label 'ACC-RHEL-8' }
     stages {
-        // Double Clen Base Environments just in case
-        stage( 'Sanitize Build Environment') {
-            steps {
-                script {
-                    cleanWs()
-                    checkout scm
-                }
-            }
-        }
         stage('RHEL 8 Build') {
             steps {
                 script {
@@ -31,7 +22,6 @@ pipeline {
                     def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
                     runner.checkout("openenclave", "${OE_PULL_NUMBER}")
                     runner.cmakeBuild("openenclave","${BUILD_TYPE}")
-                    cleanWs()
                 }
             }
         }

@@ -27,7 +27,7 @@ pipeline {
                     checkout scm
                     def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}")
+                    runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
                 }
             }
         }

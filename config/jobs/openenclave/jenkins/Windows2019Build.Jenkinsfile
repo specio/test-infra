@@ -26,20 +26,13 @@ pipeline {
     }
     agent { label "SGXFLC-Windows-${WINDOWS_VERSION}-Docker" }
     stages {
-        // Double Clen Base Environments just in case
-        stage( 'Sanitize Build Environment') {
-            steps {
-                script {
-                    cleanWs()
-                    checkout scm
-                }
-            }
-        }
         stage( 'Windows Build') {
             steps {
                 //withEnv(["OE_SIMULATION=1"]) {
                     script {
                         //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
+                            cleanWs()
+                            checkout scm
                             def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
                             runner.checkout("openenclave", "${OE_PULL_NUMBER}")
                             runner.cmakeBuildOE("openenclave","${BUILD_TYPE}")

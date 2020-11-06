@@ -6,7 +6,7 @@ CTEST_TIMEOUT_SECONDS = 1200
 OE_PULL_NUMBER=env.OE_PULL_NUMBER?env.OE_PULL_NUMBER:"master"
 
 // Some Defaults
-BUILD_TYPE = env.BUILD_TYPE ?: "Release"
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
 
 pipeline {
     options {

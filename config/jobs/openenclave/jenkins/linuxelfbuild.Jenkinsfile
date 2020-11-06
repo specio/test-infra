@@ -18,6 +18,9 @@ COMPILER = env.COMPILER?env.COMPILER: "clang-7"
 LVI_MITIGATION = env.LVI_MITIGATION ?: "None"
 LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS ?: "OFF"
 
+// Repo hardcoded
+REPO="openenclave"
+
 pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES') 
@@ -35,7 +38,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
-                    runner.checkout("openenclave", "${OE_PULL_NUMBER}")
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     def task = """
                             cmake ${WORKSPACE}/openenclave                               \
                                 -G Ninja                                                 \
@@ -59,7 +62,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
-                    runner.checkout("openenclave", "${OE_PULL_NUMBER}")
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     unstash "linux-ACC-${LINUX_VERSION}-${COMPILER}-${BUILD_TYPE}-LVI_MITIGATION=${LVI_MITIGATION}-${LINUX_VERSION}-${BUILD_NUMBER}"
                     bat 'move build linuxbin'
                     dir('build') {

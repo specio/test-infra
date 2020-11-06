@@ -11,6 +11,9 @@ BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
 // Some override for build configuration
 EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""
 
+// Repo hardcoded
+REPO="oeedger8r-cpp"
+
 pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES') 
@@ -23,8 +26,8 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + '/config/jobs/oeedger8r-cpp/jenkins/common.groovy'
-                    runner.checkout("oeedger8r-cpp", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("oeedger8r-cpp","${BUILD_TYPE}")
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
                 }
             }
         }

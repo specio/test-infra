@@ -1,9 +1,7 @@
 # Open Enclave Test Infrastructure
 
 
-[![Build status](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-openenclave-test-infra-*)](http://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-openenclave-test-infra-*)
-
-![GitGuardian scan](https://github.com/openenclave-ci/test-infra/workflows/GitGuardian%20scan/badge.svg)
+[![Build status](https://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-test-infra-*)](https://oe-prow-status.uksouth.cloudapp.azure.com/badge.svg?jobs=ci-test-infra-*) ![GitGuardian scan](https://github.com/openenclave-ci/test-infra/workflows/GitGuardian%20scan/badge.svg)
 
 [![Slack Channel](https://img.shields.io/badge/Slack-Join-purple)](https://openenclaveciteam.slack.com/)
 [![Element Channel](https://img.shields.io/badge/Matrix-Join-green)](https://matrix.to/#/!iUVElxxPQQMxGLHAJH:openenclave.io?via=openenclave.io)
@@ -19,4 +17,3 @@ Open Enclave uses a [prow](https://github.com/kubernetes/test-infra/blob/master/
 - [Delete job configs](https://github.com/kubernetes/test-infra/blob/master/config/jobs/README.md#deleting-jobs)
 - [Test job configs locally](https://github.com/kubernetes/test-infra/blob/master/config/jobs/README.md#testing-jobs-locally)
 - [Trigger jobs on PRs using bot commmands](https://go.k8s.io/bot-commands)
-

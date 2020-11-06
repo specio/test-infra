@@ -20,6 +20,9 @@ EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""
 LVI_MITIGATION = env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
 LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKIP_TESTS:"OFF"
 
+// Repo hardcoded
+REPO="openenclave"
+
 pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES') 
@@ -34,8 +37,8 @@ pipeline {
                             cleanWs()
                             checkout scm
                             def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
-                            runner.checkout("openenclave", "${OE_PULL_NUMBER}")
-                            runner.cmakeBuildOE("openenclave","${BUILD_TYPE}")
+                            runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                            runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}")
                         //}
                     }
                 }

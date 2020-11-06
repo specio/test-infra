@@ -11,6 +11,9 @@ BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
 // Some override for build configuration
 EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""
 
+// Repo hardcoded
+REPO="openenclave"
+
 pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES') 
@@ -23,8 +26,8 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
-                    runner.checkout("openenclave", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("openenclave","${BUILD_TYPE}")
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}")
                 }
             }
         }

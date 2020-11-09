@@ -35,7 +35,7 @@ pipeline {
                         checkout scm
                         def runner = load pwd() + "${SHARED_LIBRARY}"
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                        runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
+                        runner.cmakeBuildPackageInstallOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
                     //}
                 }
             }

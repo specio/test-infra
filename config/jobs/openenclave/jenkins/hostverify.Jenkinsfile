@@ -16,6 +16,9 @@ BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
 // Repo hardcoded
 REPO="openenclave"
 
+// Shared library config, check out common.groovy!
+SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
+
 pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES') 
@@ -32,7 +35,7 @@ pipeline {
                 script{
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     println("Generating certificates and reports ...")
                     def task = """
@@ -82,7 +85,7 @@ pipeline {
                 script{
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     unstash "linux_host_verify-${LINUX_VERSION}-${BUILD_TYPE}-${BUILD_NUMBER}"
                     def task = """
@@ -103,7 +106,7 @@ pipeline {
                 script{
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     //docker.image('openenclave/windows-2019:latest').inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                         unstash "linux_host_verify-${LINUX_VERSION}-${BUILD_TYPE}-${BUILD_NUMBER}"

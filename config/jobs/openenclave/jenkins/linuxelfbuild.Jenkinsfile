@@ -21,6 +21,9 @@ LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS ?: "OFF"
 // Repo hardcoded
 REPO="openenclave"
 
+// Shared library config, check out common.groovy!
+SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
+
 pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES') 
@@ -37,7 +40,7 @@ pipeline {
                 script {
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     def task = """
                             cmake ${WORKSPACE}/openenclave                               \
@@ -61,7 +64,7 @@ pipeline {
                 script {
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     unstash "linux-ACC-${LINUX_VERSION}-${COMPILER}-${BUILD_TYPE}-LVI_MITIGATION=${LVI_MITIGATION}-${LINUX_VERSION}-${BUILD_NUMBER}"
                     bat 'move build linuxbin'

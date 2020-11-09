@@ -14,6 +14,9 @@ EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""
 // Repo hardcoded
 REPO="oeedger8r-cpp"
 
+// Shared library config, check out common.groovy!
+SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
+
 pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES') 
@@ -25,7 +28,7 @@ pipeline {
                 script {
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/oeedger8r-cpp/jenkins/common.groovy'
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                     runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
                 }

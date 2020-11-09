@@ -23,6 +23,9 @@ LVI_MITIGATION_SKIP_TESTS = env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKI
 // Repo hardcoded
 REPO="openenclave"
 
+// Shared library config, check out common.groovy!
+SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
+
 pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES') 
@@ -36,7 +39,7 @@ pipeline {
                         //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside('-it --device="class/17eaf82e-e167-4763-b569-5b8273cef6e1"') { c ->
                             cleanWs()
                             checkout scm
-                            def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
+                            def runner = load pwd() + "${SHARED_LIBRARY}"
                             runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                             runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}")
                         //}

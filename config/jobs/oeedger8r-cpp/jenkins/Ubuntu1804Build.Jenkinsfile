@@ -30,7 +30,7 @@ pipeline {
         stage( 'Ubuntu 1804 Build') {
             steps {
                 script {
-                    //docker.image("openenclave/windows-${WINDOWS_VERSION}:${DOCKER_TAG}").inside {
+                    //docker.image("openenclave/windows-${LINUX_VERSION}:${DOCKER_TAG}").inside {
                         cleanWs()
                         checkout scm
                         def runner = load pwd() + "${SHARED_LIBRARY}"

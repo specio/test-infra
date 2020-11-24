@@ -696,7 +696,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=simulation"        
   - name: ci-openenclave-win-2016-Debug-simulation-msvc
     extra_refs:
     - org: openenclave
@@ -710,7 +710,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
   - name: ci-openenclave-win-2016-Release-hardware-msvc
     extra_refs:
     - org: openenclave
@@ -724,7 +724,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Release,BUILD_MODE=hardware"        
   - name: ci-openenclave-win-2016-Debug-hardware-msvc
     extra_refs:
     - org: openenclave
@@ -738,7 +738,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2016,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
   - name: ci-openenclave-win-2019-Release-simulation-msvc
     extra_refs:
     - org: openenclave
@@ -752,7 +752,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=simulation"        
   - name: ci-openenclave-win-2019-Debug-simulation-msvc
     extra_refs:
     - org: openenclave
@@ -766,7 +766,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=simulation"        
   - name: ci-openenclave-win-2019-Release-hardware-msvc
     extra_refs:
     - org: openenclave
@@ -780,7 +780,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Release,BUILD_MODE=hardware"        
   - name: ci-openenclave-win-2019-Debug-hardware-msvc
     extra_refs:
     - org: openenclave
@@ -794,7 +794,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/WindowsBuild --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=master,OE_PULL_NUMBER=master,TEST_INFRA=false,WINDOWS_VERSION=2019,BUILD_TYPE=Debug,BUILD_MODE=hardware"        
   - name: ci-openenclave-8.1-Release-simulation-clang-8
     extra_refs:
     - org: openenclave
@@ -1116,7 +1116,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7-snmalloc
     extra_refs:
     - org: openenclave
@@ -1131,20 +1131,6 @@ periodics:
             - sh
             - '-c'
             - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu-1604-Release-gcc-snmalloc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h68m
-    spec:
-      containers:
-        - image: openenclave/ubuntu-1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=gcc'        
   - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8-snmalloc
     extra_refs:
     - org: openenclave
@@ -1158,7 +1144,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7-snmalloc
     extra_refs:
     - org: openenclave
@@ -1187,7 +1173,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7-snmalloc
     extra_refs:
     - org: openenclave
@@ -1216,7 +1202,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1265,7 +1251,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1314,7 +1300,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1363,7 +1349,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1804-Release-clang-7-snmalloc
     extra_refs:
     - org: openenclave
@@ -1405,7 +1391,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7-snmalloc
     extra_refs:
     - org: openenclave
@@ -1447,7 +1433,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-7-snmalloc
     extra_refs:
     - org: openenclave
@@ -1489,7 +1475,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1561,7 +1547,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1633,7 +1619,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1705,7 +1691,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1604-Release-clang-7-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -1720,20 +1706,6 @@ periodics:
             - sh
             - '-c'
             - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7'        
-  - name: ci-openenclave-sim-ubuntu-1604-Release-gcc-lvi-snmalloc
-    extra_refs:
-    - org: openenclave
-      repo: openenclave
-      base_ref: master
-    decorate: true
-    interval: 1h68m
-    spec:
-      containers:
-        - image: openenclave/ubuntu-1604:latest
-          command:
-            - sh
-            - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=gcc'        
   - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-8-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -1747,7 +1719,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1604-RelWithDebInfo-clang-7-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -1776,7 +1748,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1604-Debug-clang-7-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -1805,7 +1777,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1854,7 +1826,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1903,7 +1875,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -1952,7 +1924,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1804-Release-clang-7-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -1994,7 +1966,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1804-RelWithDebInfo-clang-7-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -2036,7 +2008,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8'        
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7'        
   - name: ci-openenclave-sim-ubuntu-1804-Debug-clang-7-lvi-snmalloc
     extra_refs:
     - org: openenclave
@@ -2078,7 +2050,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Release --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -2150,7 +2122,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=RelWithDebInfo --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx
@@ -2222,7 +2194,7 @@ periodics:
           command:
             - sh
             - '-c'
-            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-8 --hardware_mode'
+            - '/testing/openenclave/cmake-build.sh --enable_snmalloc --enable_lvi_mitigation -b=Debug --compiler=clang-7 --hardware_mode'
           volumeMounts:
           - mountPath: /dev/sgx
             name: dev-sgx

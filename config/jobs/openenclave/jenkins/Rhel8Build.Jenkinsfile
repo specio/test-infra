@@ -3,37 +3,34 @@ GLOBAL_TIMEOUT_MINUTES = 120
 CTEST_TIMEOUT_SECONDS = 1200
 
 // Pull Request Information
-PULL_NUMBER = env.PULL_NUMBER
-TEST_INFRA = env.TEST_INFRA
-TEST_INFRA ? PULL_NUMBER = "master" : null
+OE_PULL_NUMBER=env.OE_PULL_NUMBER?env.OE_PULL_NUMBER:"master"
 
 // Some Defaults
-BUILD_TYPE = env.BUILD_TYPE ?: "Release"
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
+
+// Some override for build configuration
+EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""
+
+// Repo hardcoded
+REPO="openenclave"
+
+// Shared library config, check out common.groovy!
+SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
 
 pipeline {
     options {
-        timeout(time: 30, unit: 'MINUTES') 
+        timeout(time: 60, unit: 'MINUTES') 
     }
     agent { label 'ACC-RHEL-8' }
     stages {
-        // Double Clen Base Environments just in case
-        stage( 'Sanitize Build Environment') {
-            steps {
-                script {
-                    cleanWs()
-                    checkout scm
-                }
-            }
-        }
         stage('RHEL 8 Build') {
             steps {
                 script {
                     cleanWs()
                     checkout scm
-                    def runner = load pwd() + '/config/jobs/openenclave/jenkins/common.groovy'
-                    runner.checkout("openenclave")
-                    runner.cmakeBuild("openenclave","${BUILD_TYPE}")
-                    cleanWs()
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
                 }
             }
         }

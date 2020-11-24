@@ -23,6 +23,28 @@ plugins:
   - wip
 
 ## Remove the below upon transfer of test-infra to oe from here until...
+  openenclave/test-infra:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
   openenclave/openenclave-ci:
   - approve
   - assign

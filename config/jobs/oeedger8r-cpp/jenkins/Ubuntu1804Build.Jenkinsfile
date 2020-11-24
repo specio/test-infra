@@ -5,7 +5,11 @@ CTEST_TIMEOUT_SECONDS = 1200
 // Pull Request Information
 OE_PULL_NUMBER=env.OE_PULL_NUMBER?env.OE_PULL_NUMBER:"master"
 
+// OS Version Configuration
+LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
+
 // Some Defaults
+DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
 
 // Some override for build configuration
@@ -21,16 +25,18 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES') 
     }
-    agent { label 'ACC-RHEL-8' }
+    agent { label "ACC-${LINUX_VERSION}" }
     stages {
-        stage('RHEL 8 Build') {
+        stage( 'Ubuntu 1804 Build') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
+                    //docker.image("openenclave/windows-${LINUX_VERSION}:${DOCKER_TAG}").inside {
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
+                    //}
                 }
             }
         }

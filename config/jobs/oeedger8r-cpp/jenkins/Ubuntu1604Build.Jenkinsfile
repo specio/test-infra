@@ -27,16 +27,36 @@ pipeline {
     }
     agent { label "ACC-${LINUX_VERSION}" }
     stages {
-        stage( 'Ubuntu 1604 Build') {
+        stage( 'Ubuntu 1604 Build Debug') {
             steps {
                 script {
-                    //docker.image("openenclave/windows-${LINUX_VERSION}:${DOCKER_TAG}").inside {
-                        cleanWs()
-                        checkout scm
-                        def runner = load pwd() + "${SHARED_LIBRARY}"
-                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                        runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
-                    //}
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","Debug")
+                }
+            }
+        }
+        stage('Ubuntu 1604 Build Release') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","Release")
+                }
+            }
+        }
+        stage('Ubuntu 1604 Build ReleRelWithDebInfoase') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","RelWithDebInfo")
                 }
             }
         }

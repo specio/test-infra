@@ -1,7 +1,7 @@
-export LOCATION="uksouth"
+export LOCATION="westus2"
 export RESOURCE_GROUP="OpenEnclaveCICD"
-export AKS_CLUSTER_NAME="oe-prow-dev"
-export NODE_SIZE="Standard_DC2s_v2"
+export AKS_CLUSTER_NAME="oe-prow-prod"
+export NODE_SIZE="Standard_D2s_v3"
 export MIN_NODE_COUNT="3"
 export MAX_POD="10"
 export MAX_NODE_COUNT="100"
@@ -69,7 +69,7 @@ kubectl create clusterrolebinding cluster-admin-binding-"${USER}" \
 kubectl create namespace test-pods
 
 # Credentials
-#openssl rand -hex 20 > $PWD/hmac
+openssl rand -hex 20 > $PWD/hmac
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
 kubectl create secret generic oauth-token --from-file=$PWD/oauth
 kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json

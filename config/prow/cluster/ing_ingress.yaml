@@ -5,11 +5,16 @@ metadata:
   namespace: default
   name: ing
 spec:
-  backend: # specify the default backend for `ingress-gce` (https://cloud.google.com/kubernetes-engine/docs/concepts/ingress#default_backend)
+  tls:
+  - hosts:
+    - oe-prow-status.westus2.cloudapp.azure.com
+    secretName: tls-prow-cert
+  backend:
     serviceName: deck
     servicePort: 80
   rules:
-  - http:
+  - host: oe-prow-status.westus2.cloudapp.azure.com
+    http:
       paths:
       - path: /
         backend:

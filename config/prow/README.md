@@ -1,4 +1,4 @@
-# Deploying SGX Prow on AKS
+# Deploying Open Enclave Test Infra
 
 This document will walk you through deploying your own Prow instance to a new AKS Kubernetes cluster.
 
@@ -69,27 +69,28 @@ az account list
 
 ## Set Subscription
 ```
-az account set --subscription "${SUBSCRIPTION_ID}"
+az account set --subscription "${SUBSCRIPTION_NAME}"
 ```
 
 ## Create AKS RBAC Service Principal
 ```
-az ad sp create-for-rbac --skip-assignment --name oeTestInfraServicePrincipal
+az ad sp create-for-rbac --skip-assignment --name "${SERVICE_PRINCIPAL_NAME}"
+export SERVICE_PRINCIPAL= # appid output from above
+export CLIENT_SECRET= # password output from above
 ```
 
 ## Use some default values to get started
 
 ```
-export SUBSCRIPTION_ID="<>"
-export SERVICE_PRINCIPAL="<AppIDFromAbove"
-export CLIENT_SECRET="<PasswordFromAbove>"
-export LOCATION="uksouth"
-export RESOURCE_GROUP="ProwResources"
-export AKS_CLUSTER_NAME="oe-prow"
-export NODE_SIZE="STANDARD_DC2s_v2"
-export MIN_NODE_COUNT="1"
-export MAX_NODE_COUNT="10"
+export LOCATION="westus2"
+export RESOURCE_GROUP="OpenEnclaveCICDProd"
+export AKS_CLUSTER_NAME="oe-prow-prod"
+export NODE_SIZE="Standard_D2s_v3"
+export MIN_NODE_COUNT="3"
+export MAX_POD="10"
+export MAX_NODE_COUNT="100"
 export PATH_KEY="~/.ssh/id_rsa.pub"
+export DNS_LABEL="oe-prow-status"
 ```
 ## Create Resource Group
 ```
@@ -103,7 +104,6 @@ Run the following to create the cluster.
 az aks create --resource-group ${RESOURCE_GROUP} \
     --name ${AKS_CLUSTER_NAME} \
     --node-vm-size ${NODE_SIZE} \
-    --max-count ${MAX_NODE_COUNT} \
     --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --location ${LOCATION} \
@@ -112,22 +112,8 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --client-secret ${CLIENT_SECRET} \
     --min-count ${MIN_NODE_COUNT} \
     --max-count ${MAX_NODE_COUNT} \
-    --ssh-key-value ${PATH_KEY} \
-    --aks-custom-headers "usegen2vm=true"
-```
-
-## add DC series node pool for hybrid cluster
-```
-az extension add --name aks-preview
-
-az aks nodepool add --cluster-name ${AKS_CLUSTER_NAME} \
-    --resource-group ${RESOURCE_GROUP} \
-    --name acclin \
-    --min-count 1 \
-    --max-count 10 \
-    --enable-cluster-autoscaler \
-    --node-vm-size "Standard_DC2s_v2" \
-    --aks-custom-headers "usegen2vm=true"
+    --max-pod ${MAX_POD} \
+    --ssh-key-value ${PATH_KEY} 
 ```
 
 # Configure Cluster
@@ -136,7 +122,7 @@ az aks nodepool add --cluster-name ${AKS_CLUSTER_NAME} \
 
 This will also set up kubectl to point to the new cluster.
 ```
-az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME}
+az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
 ```
 
 ## Create a namespace for your ingress resources
@@ -144,28 +130,36 @@ az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_N
 kubectl create namespace ingress-basic
 ```
 
-## Get Nodes
-```
-kubectl get nodes
-```
 ## Add the official stable repository
 ```
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable
+```
+
+## Assign Public IP
+```
+# Get AKS Resource Group Name
+AKS_RESOURCE_GROUP=$(az aks show --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --query nodeResourceGroup -o tsv)
+echo ${AKS_RESOURCE_GROUP}
+
+# Assign Static IP
+STATIC_IP=$(az network public-ip create --resource-group ${AKS_RESOURCE_GROUP} --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv --dns-name ${DNS_LABEL})
+echo ${STATIC_IP}
+
+#Get FQDN
+az network public-ip list --resource-group ${AKS_RESOURCE_GROUP} --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 ## Use Helm to deploy an NGINX ingress controller
 ```
-helm install nginx-ingress stable/nginx-ingress \
+helm install nginx stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set controller.service.loadBalancerIP="${STATIC_IP}" \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set rbac.create=true
 ```
-## Watch Progress
-```
-kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-controller
-```
+
 ## Create cluster role bindings
 
 As of 1.8 Kubernetes uses Role-Based Access Control (“RBAC”) to drive authorization decisions, allowing cluster-admin to dynamically configure policies. To create cluster resources you need to grant a user cluster-admin role in all namespaces for the cluster.
@@ -188,6 +182,7 @@ You will need two secrets to talk to GitHub. The hmac-token is the token that yo
 openssl rand -hex 20 > $PWD/hmac
 kubectl create secret generic hmac-token --from-file=$PWD/hmac
 ```
+
 The oauth-token is the OAuth2 token you created above for the [GitHub bot account]. If you need to create one, go to https://github.com/settings/tokens.
 
 ```
@@ -202,10 +197,52 @@ Set up can be read about [here](https://github.com/kubernetes/test-infra/blob/ma
 kubectl -n test-pods create secret generic gcs-credentials --from-file=service-account.json
 ```
 
+## Add dummy credentials
+We use Jenkins, slack etc in the backend unless you are using them just set as dummy creds if they have values run the following:
+```
+# Generate a dummy credential even if you are not using Jenkins or else some prow jobs will fail
+kubectl -n test-pods create secret generic jenkins-token --from-file=jenkins-token=$PWD/jenkins-secret
+
+# Generate a dummy credential even if you are not using Docker or else some prow jobs will fail
+kubectl -n test-pods create secret generic docker-password --from-file=docker-password=$PWD/docker-creds
+
+# Generate and configure PR Status
+kubectl create secret generic github-oauth-config --from-file=secret=$PWD/pr-status
+kubectl create secret generic cookie --from-file=secret=$PWD/cookie.txt
+
+# Generate Slack integration
+kubectl create secret generic slack-token --from-literal=token=$PWD/slack-reporter
+```
+
+## Install cert-manager (optional)
+This is needed if TLS needs to be enabled
+```
+# Label the ingress-basic namespace to disable resource validation
+kubectl label namespace ingress-basic cert-manager.io/disable-validation=true
+
+# Add the Jetstack Helm repository
+helm repo add jetstack https://charts.jetstack.io
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Install the cert-manager Helm chart
+helm install \
+  cert-manager \
+  --namespace ingress-basic \
+  --version v0.16.1 \
+  --set installCRDs=true \
+  --set nodeSelector."beta\.kubernetes\.io/os"=linux \
+  jetstack/cert-manager
+```
+
 ## Add the prow components to the cluster
 
-Run the following command to deploy a basic set of prow components.
+Run the following command to deploy a basic set of prow components. Chang the dns at ing_ingress first to your dns label if you need TLS
 ```
+# Deploy TLS cluster issuer and wait for 2 minutes, patience will save you hours of debugging..
+kubectl apply -f config/prow/cluster/cluster-issuer.yaml
+
 kubectl apply -f config/prow/cluster/configs.yaml
 kubectl apply -f config/prow/cluster/hook_deployment.yaml
 kubectl apply -f config/prow/cluster/hook_service.yaml
@@ -226,22 +263,6 @@ kubectl apply -f config/prow/cluster/sinker_rbac.yaml
 kubectl apply -f config/prow/cluster/hook_rbac.yaml
 kubectl apply -f config/prow/cluster/tide_rbac.yaml
 kubectl apply -f config/prow/cluster/statusreconciler_rbac.yaml
-```
-
-After a moment, the cluster components will be running.
-
-```$ kubectl get deployments
-NAME         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deck         2         2         2            2           1m
-hook         2         2         2            2           1m
-horologium   1         1         1            1           1m
-plank        1         1         1            1           1m
-sinker       1         1         1            1           1m
-tide         1         1         1            1           1m
-```
-
-## Add Crier to the cluster for job reporting
-```
 kubectl apply -f config/prow/cluster/crier_rbac.yaml
 kubectl apply -f config/prow/cluster/crier_deployment.yaml
 ```
@@ -251,7 +272,7 @@ kubectl apply -f config/prow/cluster/crier_deployment.yaml
 kubectl get deployments -w
 ```
 
-You should see
+You should see the below after ~10 minutes. The initialization takes some time to pull all the containers.
 ```
 crier              1/1     1            1           127m
 deck               2/2     2            2           128m
@@ -263,44 +284,69 @@ statusreconciler   1/1     1            1           128m
 tide               1/1     1            1           128m
 ```
 
-## Get Ingress IP address
-```
-kubectl get ingress ing
-```
-
-## Get Public IP
-```
-kubectl get service -l app=nginx-ingress --namespace ingress-basic
-```
-
-You should see.
+If this is not the case, and you are stuck on "container creating", I suggest
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
-NAME                            TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-nginx-ingress-controller        LoadBalancer   10.0.184.230   20.49.216.176   80:30284/TCP,443:31856/TCP   129m
-nginx-ingress-default-backend   ClusterIP      10.0.45.250    <none>          80/TCP                       129m
+kubectl describe pods
 ```
 
-## Set DNS
+which will give you the error usually
 
-With the above IP go to the portal and look up your scale set with all the information you have provided and set a DNS to the external IP above.
+```
+Events:
+  Type     Reason       Age                   From               Message
+  ----     ------       ----                  ----               -------
+  Normal   Scheduled    9m47s                 default-scheduler  Successfully assigned default/tide-6dc6784468-w9h5c to aks-nodepool1-42367106-vmss000000
+  Warning  FailedMount  3m11s                 kubelet            Unable to attach or mount volumes: unmounted volumes=[oauth], unattached volumes=[tide-token-hbj9z oauth config job-config]: timed out waiting for the condition
+  Warning  FailedMount  92s (x12 over 9m46s)  kubelet            MountVolume.SetUp failed for volume "oauth" : secret "oauth-token" not found
+  Warning  FailedMount  56s (x3 over 7m43s)   kubelet            Unable to attach or mount volumes: unmounted volumes=[oauth], unattached volumes=[oauth config job-config tide-token-hbj9z]: timed out waiting for the condition
+```
 
-# Add the webhook to GitHub
-* Go to your org or repo and click Settings -> Webhooks, and click Add webhook.
+## Configure plugins and.. well, config!
+```
+kubectl create configmap config --from-file=config.yaml=$PWD/config/prow/config.yaml  --dry-run=client -o yaml | kubectl replace configmap config -f -
+kubectl create configmap plugins --from-file=$PWD/config/prow/plugins.yaml --dry-run=client -o yaml   | kubectl replace configmap plugins -f -
+```
 
-* Change the Payload URL to http://an.ip.addr.ess/hook you are planning to add.
+## Get some jobs going to sanity check
+```
+# Create job config map
+kubectl create configmap job-config \
+--from-file=test-infra-periodics.yaml=$PWD/config/jobs/test-infra/test-infra-periodics.yaml \
+--from-file=test-infra-postsubmits.yaml=$PWD/config/jobs/test-infra/test-infra-postsubmits.yaml \
+--from-file=test-infra-pre-submits.yaml=$PWD/config/jobs/test-infra/test-infra-pre-submits.yaml \
+--from-file=oeedger8r-cpp-pre-submits.yaml=$PWD/config/jobs/oeedger8r-cpp/oeedger8r-cpp-pre-submits.yaml \
+--from-file=oeedger8r-cpp-periodics.yaml=$PWD/config/jobs/oeedger8r-cpp/oeedger8r-cpp-periodics.yaml \
+--from-file=oeedger8r-cpp-postsubmits.yaml=$PWD/config/jobs/oeedger8r-cpp/oeedger8r-cpp-postsubmits.yaml \
+--from-file=openenclave-periodics.yaml=$PWD/config/jobs/openenclave/openenclave-periodics.yaml \
+--from-file=openenclave-pre-submits.yaml=$PWD/config/jobs/openenclave/openenclave-pre-submits.yaml \
+--from-file=openenclave-postsubmits.yaml=$PWD/config/jobs/openenclave/openenclave-postsubmits.yaml \
+--from-file=openenclave-mbedtls-periodics.yaml=$PWD/config/jobs/openenclave-mbedtls/openenclave-mbedtls-periodics.yaml \
+--from-file=openenclave-mbedtls-pre-submits.yaml=$PWD/config/jobs/openenclave-mbedtls/openenclave-mbedtls-pre-submits.yaml \
+--from-file=openenclave-mbedtls-postsubmits.yaml=$PWD/config/jobs/openenclave-mbedtls/openenclave-mbedtls-postsubmits.yaml \
+--from-file=openenclave-curl-periodics.yaml=$PWD/config/jobs/openenclave-curl/openenclave-curl-periodics.yaml \
+--from-file=openenclave-curl-pre-submits.yaml=$PWD/config/jobs/openenclave-curl/openenclave-curl-pre-submits.yaml \
+--from-file=openenclave-curl-postsubmits.yaml=$PWD/config/jobs/openenclave-curl/openenclave-curl-postsubmits.yaml \
+--from-file=openenclave-ci-pre-submits.yaml=$PWD/config/jobs/openenclave-ci/openenclave-ci-pre-submits.yaml \
+--dry-run=client -o yaml | kubectl replace configmap job-config -f -
+```
 
-* Change the Content type to application/json, and change your Secret to the hmac-path secret you created above.
+## Take a coffee break..
 
-* Change the trigger to Send me **everything**.
+Prow will fallover instantly as you just gave it about 200 jobs to run at the same second. That is not an issue, just wait for them to fail the first time and subsequent requests will succeed. You generally need the cluster to be up for 30 minutes before considering it stable due to how GitHubs clone process works wrt api key caching. Watch the progress at your GQDN and you are nearly there, wait until you are not constantly see the below failure before expecting it to work.
 
-* Click Add webhook.
-
-# Next Steps
-
-Follow the remaining steps over at Prow's getting started [page](https://github.com/kubernetes/test-infra/blob/master/prow/getting_started_deploy.md#next-steps) including plugin and config setup.
-
+```
+# FAILED!
+# Cloning openenclave/test-infra at master
+$ mkdir -p /home/prow/go/src/github.com/openenclave/test-infra
+$ git init
+Initialized empty Git repository in /home/prow/go/src/github.com/openenclave/test-infra/.git/
+$ git config user.name ci-robot
+$ git config user.email ci-robot@k8s.io
+$ git fetch https://github.com/openenclave/test-infra.git --tags --prune
+fatal: unable to access 'https://github.com/openenclave/test-infra.git/': Could not resolve host: github.com
+# Error: exit status 128
+```
 
 ## Clean up
 ```

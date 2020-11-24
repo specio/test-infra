@@ -26,33 +26,51 @@ pipeline {
         stage('RHEL 8 Build - Debug') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","Debug")
+                    try {
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","Debug")
+                    } catch (Exception e) {
+                        raise e
+                    } finally {
+                        deleteDir()
+                    }
                 }
             }
         }
         stage('RHEL 8 Build - Release') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","Release")
+                    try {
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","Release")
+                    } catch (Exception e) {
+                        raise e
+                    } finally {
+                        deleteDir()
+                    }
                 }
             }
         }
         stage('RHEL 8 Build - RelWithDebInfo') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","RelWithDebInfo")
+                    try {
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","RelWithDebInfo")
+                    } catch (Exception e) {
+                        raise e
+                    } finally {
+                        deleteDir()
+                    }
                 }
             }
         }

@@ -30,33 +30,51 @@ pipeline {
         stage( 'Ubuntu 1804 Build - Debug') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuildPackageInstallOE("${REPO}","Debug", "${EXTRA_CMAKE_ARGS}")
+                    try{
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuildPackageInstallOE("${REPO}","Debug", "${EXTRA_CMAKE_ARGS}")
+                    } catch (Exception e) {
+                        raise e
+                    } finally {
+                        deleteDir()
+                    }
                 }
             }
         }
         stage( 'Ubuntu 1804 Build - Release') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuildPackageInstallOE("${REPO}","Release", "${EXTRA_CMAKE_ARGS}")
+                    try{
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuildPackageInstallOE("${REPO}","Release", "${EXTRA_CMAKE_ARGS}")
+                    } catch (Exception e) {
+                        raise e
+                    } finally {
+                        deleteDir()
+                    }
                 }
             }
         }
         stage( 'Ubuntu 1804 Build - RelWithDebInfo') {
             steps {
                 script {
-                    cleanWs()
-                    checkout scm
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuildPackageInstallOE("${REPO}","RelWithDebInfo", "${EXTRA_CMAKE_ARGS}")
+                    try {
+                        cleanWs()
+                        checkout scm
+                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuildPackageInstallOE("${REPO}","RelWithDebInfo", "${EXTRA_CMAKE_ARGS}")
+                    } catch (Exception e) {
+                        raise e
+                    } finally {
+                        deleteDir()
+                    }
                 }
             }
         }

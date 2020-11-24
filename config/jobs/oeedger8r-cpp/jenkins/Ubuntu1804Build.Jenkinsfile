@@ -33,30 +33,54 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","Debug")
+                    runner.cleanup("${REPO}")
+                    try{
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","Debug")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
                 }
             }
         }
-        stage('Ubuntu 1804 Build - Release') {
+        stage( 'Ubuntu 1804 Build - Release') {
             steps {
                 script {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","Release")
+                    runner.cleanup("${REPO}")
+                    try{
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","Release")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
                 }
             }
         }
-        stage('Ubuntu 1804 Build - RelWithDebInfoa') {
+        stage( 'Ubuntu 1804 Build - RelWithDebInfo') {
             steps {
                 script {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","RelWithDebInfo")
+                    runner.cleanup("${REPO}")
+                    try {
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","RelWithDebInfo")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
                 }
             }
         }

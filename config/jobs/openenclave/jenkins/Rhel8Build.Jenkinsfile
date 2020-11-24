@@ -26,10 +26,10 @@ pipeline {
         stage('RHEL 8 Build - Debug') {
             steps {
                 script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     try {
-                        cleanWs()
-                        checkout scm
-                        def runner = load pwd() + "${SHARED_LIBRARY}"
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuild("${REPO}","Debug")
                     } catch (Exception e) {
@@ -44,10 +44,10 @@ pipeline {
         stage('RHEL 8 Build - Release') {
             steps {
                 script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     try {
-                        cleanWs()
-                        checkout scm
-                        def runner = load pwd() + "${SHARED_LIBRARY}"
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuild("${REPO}","Release")
                     } catch (Exception e) {
@@ -62,10 +62,10 @@ pipeline {
         stage('RHEL 8 Build - RelWithDebInfo') {
             steps {
                 script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     try {
-                        cleanWs()
-                        checkout scm
-                        def runner = load pwd() + "${SHARED_LIBRARY}"
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuild("${REPO}","RelWithDebInfo")
                     } catch (Exception e) {

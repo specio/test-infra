@@ -29,6 +29,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
                     try {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuild("${REPO}","Debug")
@@ -47,6 +48,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
                     try {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuild("${REPO}","Release")
@@ -65,6 +67,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
                     try {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuild("${REPO}","RelWithDebInfo")

@@ -33,6 +33,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
                     try{
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuildPackageInstallOE("${REPO}","Debug", "${EXTRA_CMAKE_ARGS}")
@@ -51,6 +52,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
                     try{
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuildPackageInstallOE("${REPO}","Release", "${EXTRA_CMAKE_ARGS}")
@@ -69,6 +71,7 @@ pipeline {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
                     try {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuildPackageInstallOE("${REPO}","RelWithDebInfo", "${EXTRA_CMAKE_ARGS}")

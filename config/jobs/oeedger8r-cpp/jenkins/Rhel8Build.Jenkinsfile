@@ -1,15 +1,5 @@
-// Timeout configs
-GLOBAL_TIMEOUT_MINUTES = 120
-CTEST_TIMEOUT_SECONDS = 1200
-
 // Pull Request Information
 OE_PULL_NUMBER=env.OE_PULL_NUMBER?env.OE_PULL_NUMBER:"master"
-
-// Some Defaults
-BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
-
-// Some override for build configuration
-EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""
 
 // Repo hardcoded
 REPO="oeedger8r-cpp"

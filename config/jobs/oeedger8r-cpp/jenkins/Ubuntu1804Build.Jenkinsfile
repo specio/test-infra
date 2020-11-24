@@ -27,7 +27,7 @@ pipeline {
     }
     agent { label "ACC-${LINUX_VERSION}" }
     stages {
-        stage( 'Ubuntu 1804 Build Debug') {
+        stage( 'Ubuntu 1804 Build - Debug') {
             steps {
                 script {
                     cleanWs()
@@ -38,7 +38,7 @@ pipeline {
                 }
             }
         }
-        stage('Ubuntu 1804 Build Release') {
+        stage('Ubuntu 1804 Build - Release') {
             steps {
                 script {
                     cleanWs()
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('Ubuntu 1804 Build ReleRelWithDebInfoase') {
+        stage('Ubuntu 1804 Build - RelWithDebInfoa') {
             steps {
                 script {
                     cleanWs()

@@ -45,7 +45,7 @@ pipeline {
                 }
             }
         }
-        stage('RHEL 8 Build') {
+        stage('RHEL 8 Build - RelWithDebInfo') {
             steps {
                 script {
                     cleanWs()

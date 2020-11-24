@@ -27,16 +27,36 @@ pipeline {
     }
     agent { label "ACC-${LINUX_VERSION}" }
     stages {
-        stage( 'Ubuntu 1604 Build') {
+        stage( 'Ubuntu 1604 Build - Debug') {
             steps {
                 script {
-                    //docker.image("openenclave/windows-${LINUX_VERSION}:${DOCKER_TAG}").inside {
-                        cleanWs()
-                        checkout scm
-                        def runner = load pwd() + "${SHARED_LIBRARY}"
-                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                        runner.cmakeBuildPackageInstallOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
-                    //}
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuildPackageInstallOE("${REPO}","Debug", "${EXTRA_CMAKE_ARGS}")
+                }
+            }
+        }
+        stage( 'Ubuntu 1604 Build - Release') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuildPackageInstallOE("${REPO}","Release", "${EXTRA_CMAKE_ARGS}")
+                }
+            }
+        }
+        stage( 'Ubuntu 1604 Build - RelWithDebInfo') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuildPackageInstallOE("${REPO}","RelWithDebInfo", "${EXTRA_CMAKE_ARGS}")
                 }
             }
         }

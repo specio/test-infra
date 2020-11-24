@@ -23,14 +23,36 @@ pipeline {
     }
     agent { label 'ACC-RHEL-8' }
     stages {
-        stage('RHEL 8 Build') {
+        stage('RHEL 8 Build - Debug') {
             steps {
                 script {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
+                    runner.cmakeBuild("${REPO}","Debug")
+                }
+            }
+        }
+        stage('RHEL 8 Build - Release') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","Release")
+                }
+            }
+        }
+        stage('RHEL 8 Build - RelWithDebInfo') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                    runner.cmakeBuild("${REPO}","RelWithDebInfo")
                 }
             }
         }

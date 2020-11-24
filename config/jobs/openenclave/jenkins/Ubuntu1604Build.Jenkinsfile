@@ -27,16 +27,60 @@ pipeline {
     }
     agent { label "ACC-${LINUX_VERSION}" }
     stages {
-        stage( 'Ubuntu 1604 Build') {
+        stage( 'Ubuntu 1604 Build - Debug') {
             steps {
                 script {
-                    //docker.image("openenclave/windows-${LINUX_VERSION}:${DOCKER_TAG}").inside {
-                        cleanWs()
-                        checkout scm
-                        def runner = load pwd() + "${SHARED_LIBRARY}"
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
+                    try{
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                        runner.cmakeBuildPackageInstallOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
-                    //}
+                        runner.cmakeBuildPackageInstallOE("${REPO}","Debug", "${EXTRA_CMAKE_ARGS}")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
+                }
+            }
+        }
+        stage( 'Ubuntu 1604 Build - Release') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
+                    try{
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuildPackageInstallOE("${REPO}","Release", "${EXTRA_CMAKE_ARGS}")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
+                }
+            }
+        }
+        stage( 'Ubuntu 1604 Build - RelWithDebInfo') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
+                    try {
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuildPackageInstallOE("${REPO}","RelWithDebInfo", "${EXTRA_CMAKE_ARGS}")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
                 }
             }
         }

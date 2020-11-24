@@ -113,7 +113,8 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --min-count ${MIN_NODE_COUNT} \
     --max-count ${MAX_NODE_COUNT} \
     --max-pod ${MAX_POD} \
-    --ssh-key-value ${PATH_KEY} 
+    --ssh-key-value ${PATH_KEY} \
+    --zones 1 2 3
 ```
 
 # Configure Cluster

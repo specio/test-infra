@@ -22,6 +22,23 @@ def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
     }
 }
 
+// Clean up environment, do not fail on error.
+def cleanup( String REPO_NAME) {
+    if (isUnix()) {
+        try {
+                sh  """
+                    set +e
+                    rm -rf ${REPO_NAME}
+                    rm -rf ~/samples
+                    sudo rm -rf /opt/openenclave || rm -rf /opt/openenclave
+                    """
+            } catch (Exception e) {
+                // Do something with the exception 
+                error "Program failed, please read logs..."
+            } 
+        
+    }
+}
 
 def cmakeBuildPackageInstallOE( String REPO_NAME, String BUILD_CONFIG, String EXTRA_CMAKE_ARGS) {
     if (isUnix()) {

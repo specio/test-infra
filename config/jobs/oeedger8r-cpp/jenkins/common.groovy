@@ -33,6 +33,22 @@ void cleanContainers() {
     }
 }
 
+// Clean up environment, do not fail on error.
+def cleanup( String REPO_NAME) {
+    if (isUnix()) {
+        try {
+                sh  """
+                    set +e
+                    rm -rf ${REPO_NAME}
+                    """
+            } catch (Exception e) {
+                // Do something with the exception 
+                error "Program failed, please read logs..."
+            } 
+        
+    }
+}
+
 void checkout( String REPO_NAME, String PULL_NUMBER ) {
     if (isUnix()) {
         sh  """

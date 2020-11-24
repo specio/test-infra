@@ -23,14 +23,60 @@ pipeline {
     }
     agent { label 'ACC-RHEL-8' }
     stages {
-        stage('RHEL 8 Build') {
+        stage('RHEL 8 Build - Debug') {
             steps {
                 script {
                     cleanWs()
                     checkout scm
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                    runner.cmakeBuild("${REPO}","${BUILD_TYPE}")
+                    runner.cleanup("${REPO}")
+                    try {
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","Debug")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
+                }
+            }
+        }
+        stage('RHEL 8 Build - Release') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
+                    try {
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","Release")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
+                }
+            }
+        }
+        stage('RHEL 8 Build - RelWithDebInfo') {
+            steps {
+                script {
+                    cleanWs()
+                    checkout scm
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+                    runner.cleanup("${REPO}")
+                    try {
+                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                        runner.cmakeBuild("${REPO}","RelWithDebInfo")
+                    } catch (Exception e) {
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
+                    } finally {
+                        runner.cleanup("${REPO}")
+                    }
                 }
             }
         }

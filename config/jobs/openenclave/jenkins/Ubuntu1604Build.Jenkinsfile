@@ -37,9 +37,10 @@ pipeline {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuildPackageInstallOE("${REPO}","Debug", "${EXTRA_CMAKE_ARGS}")
                     } catch (Exception e) {
-                        raise e
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
                     } finally {
-                        deleteDir()
+                        runner.cleanup("${REPO}")
                     }
                 }
             }
@@ -54,9 +55,10 @@ pipeline {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuildPackageInstallOE("${REPO}","Release", "${EXTRA_CMAKE_ARGS}")
                     } catch (Exception e) {
-                        raise e
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
                     } finally {
-                        deleteDir()
+                        runner.cleanup("${REPO}")
                     }
                 }
             }
@@ -71,9 +73,10 @@ pipeline {
                         runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                         runner.cmakeBuildPackageInstallOE("${REPO}","RelWithDebInfo", "${EXTRA_CMAKE_ARGS}")
                     } catch (Exception e) {
-                        raise e
+                        // Do something with the exception 
+                        error "Program failed, please read logs..."
                     } finally {
-                        deleteDir()
+                        runner.cleanup("${REPO}")
                     }
                 }
             }

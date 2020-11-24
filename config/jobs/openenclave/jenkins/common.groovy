@@ -21,7 +21,21 @@ def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
             """
     }
 }
-
+def cleanup( String REPO_NAME, String BUILD_CONFIG, String EXTRA_CMAKE_ARGS) {
+    if (isUnix()) {
+        try {
+                sh  """
+                    rm -rf ${REPO_NAME}
+                    rm -rf ~/samples
+                    sudo rm -rf /opt/openenclave
+                    """
+            } catch (Exception e) {
+                // Do something with the exception 
+                error "Program failed, please read logs..."
+            } 
+        
+    }
+}
 
 def cmakeBuildPackageInstallOE( String REPO_NAME, String BUILD_CONFIG, String EXTRA_CMAKE_ARGS) {
     if (isUnix()) {

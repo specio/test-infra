@@ -11,13 +11,13 @@ metadata:
 spec:
   tls:
   - hosts:
-    - oe-prow-status.uksouth.cloudapp.azure.com
+    - oe-prow-status.westus2.cloudapp.azure.com
     secretName: tls-prow-cert
   backend:
     serviceName: deck
     servicePort: 80
   rules:
-  - host: oe-prow-status.uksouth.cloudapp.azure.com
+  - host: oe-prow-status.westus2.cloudapp.azure.com
     http:
       paths:
       - path: /

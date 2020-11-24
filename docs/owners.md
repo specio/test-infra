@@ -146,7 +146,7 @@ aspects of this process may be configured on a per-repo basis.
     opened the PR
   - If the code changes look good to them, a **reviewer** types `/lgtm` in a PR comment or review;
     if they change their mind, they `/lgtm cancel`
-  - Once a **reviewer** has `/lgtm`'ed, [prow](https://oe-prow-status.uksouth.cloudapp.azure.com)
+  - Once a **reviewer** has `/lgtm`'ed, [prow](https://oe-prow-status.westus2.cloudapp.azure.com)
     ([@oe-ci-robot](https://github.com/oe-ci-robot/)) applies an `lgtm` label to the PR
 - Phase 2: Humans approve the PR
   - The PR **author** `/assign`'s all suggested **approvers** to the PR, and optionally notifies
@@ -157,10 +157,10 @@ aspects of this process may be configured on a per-repo basis.
     forwards/backwards compatibility, API and flag definitions, etc
   - If the code changes look good to them, an **approver** types `/approve` in a PR comment or
     review; if they change their mind, they `/approve cancel`
-  - [prow](https://oe-prow-status.uksouth.cloudapp.azure.com) ([@oe-ci-robot](https://github.com/oe-ci-robot/)) updates its
+  - [prow](https://oe-prow-status.westus2.cloudapp.azure.com) ([@oe-ci-robot](https://github.com/oe-ci-robot/)) updates its
     comment in the PR to indicate which **approvers** still need to approve
   - Once all **approvers** (one from each of the previously identified OWNERS files) have approved,
-    [prow](https://oe-prow-status.uksouth.cloudapp.azure.com) ([@oe-ci-robot](https://github.com/oe-ci-robot/)) applies an
+    [prow](https://oe-prow-status.westus2.cloudapp.azure.com) ([@oe-ci-robot](https://github.com/oe-ci-robot/)) applies an
     `approved` label
 - Phase 3: Automation merges the PR:
   - If all of the following are true:

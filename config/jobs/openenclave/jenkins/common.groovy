@@ -30,7 +30,7 @@ def cleanup( String REPO_NAME) {
                     set +e
                     rm -rf ${REPO_NAME}
                     rm -rf ~/samples
-                    sudo rm -rf /opt/openenclave
+                    sudo rm -rf /opt/openenclave || rm -rf /opt/openenclave
                     """
             } catch (Exception e) {
                 // Do something with the exception 

@@ -21,7 +21,7 @@ def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
             """
     }
 }
-def cleanup( String REPO_NAME, String BUILD_CONFIG, String EXTRA_CMAKE_ARGS) {
+def cleanup( String REPO_NAME) {
     if (isUnix()) {
         try {
                 sh  """

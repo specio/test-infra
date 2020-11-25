@@ -22,7 +22,7 @@ SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
 
 pipeline {
     options {
-        timeout(time: 30, unit: 'MINUTES') 
+        timeout(time: 60, unit: 'MINUTES') 
     }
     agent { label "ACC-${LINUX_VERSION}" }
     stages {

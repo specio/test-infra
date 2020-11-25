@@ -51,7 +51,7 @@ def cmakeBuildPackageInstallOE( String REPO_NAME, String BUILD_CONFIG, String EX
                 -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave'           \
                 -DCPACK_GENERATOR=DEB                                    \
                 -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin    \
-                ${EXTRA_CMAKE_ARGS.join(' ')}                            \
+                ${EXTRA_CMAKE_ARGS}                            \
                 -Wdev
             ninja -v
             ninja -v package

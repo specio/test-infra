@@ -1,6 +1,6 @@
 // Common openenclave jenkins functions
 
-def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
+def cmakeBuildOE( String REPO_NAME, String BUILD_CONFIG, String EXTRA_CMAKE_ARGS ) {
 
     if (isUnix()) {
         sh  """

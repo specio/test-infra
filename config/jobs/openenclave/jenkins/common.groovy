@@ -8,7 +8,7 @@ def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
             mkdir build && cd build &&\
             cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
             ninja -v
-            ctest --output-on-failure --timeout ${REPO_NAME}
+            ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
             """
     } else {
         bat """
@@ -51,9 +51,10 @@ def cmakeBuildPackageInstallOE( String REPO_NAME, String BUILD_CONFIG, String EX
                 -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave'           \
                 -DCPACK_GENERATOR=DEB                                    \
                 -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin    \
-                ${EXTRA_CMAKE_ARGS}                            \
+                ${EXTRA_CMAKE_ARGS}                                      \
                 -Wdev
             ninja -v
+            ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
             ninja -v package
             sudo ninja -v install
             cp -r /opt/openenclave/share/openenclave/samples ~/

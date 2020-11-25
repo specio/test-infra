@@ -7,6 +7,7 @@ OE_PULL_NUMBER=env.OE_PULL_NUMBER?env.OE_PULL_NUMBER:"master"
 
 // Some Defaults
 BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
+BUILD_MODE=env.BUILD_MODE?env.BUILD_MODE:"hardware"
 
 // Some override for build configuration
 EXTRA_CMAKE_ARGS = env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:""

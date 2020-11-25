@@ -12,6 +12,7 @@ WINDOWS_VERSION=env.WINDOWS_VERSION?env.WINDOWS_VERSION:"2019"
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Release"
+COMPILER= env.COMPILER?env.COMPILER:"clang-7"
 
 // Repo hardcoded
 REPO="openenclave"

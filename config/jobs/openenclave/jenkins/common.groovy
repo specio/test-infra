@@ -78,7 +78,7 @@ def cmakeBuildPackageInstallOE( String REPO_NAME, String BUILD_CONFIG, String EX
             cd ${REPO_NAME} && \
             mkdir build && cd build &&\
             vcvars64.bat x64 && \
-            cmake.exe ${WORKSPACE}\\${REPO_NAME} -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DLVI_MITIGATION=${LVI_MITIGATION} -DLVI_MITIGATION_SKIP_TESTS=${LVI_MITIGATION_SKIP_TESTS} -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet -Wdev ${EXTRA_CMAKE_ARGS} && \
+            cmake.exe ${WORKSPACE}\\${REPO_NAME} -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet ${EXTRA_CMAKE_ARGS} -Wdev && \
             ninja.exe && \
             ctest.exe -V -C ${BUILD_CONFIG} --timeout ${CTEST_TIMEOUT_SECONDS} && \
             cpack.exe -D CPACK_NUGET_COMPONENT_INSTALL=ON -DCPACK_COMPONENTS_ALL=OEHOSTVERIFY && \

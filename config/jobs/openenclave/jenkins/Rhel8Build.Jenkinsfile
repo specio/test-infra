@@ -41,7 +41,7 @@ pipeline {
                                 runner.cleanup("${REPO}")
                                 try{
                                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                                    runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
+                                    runner.cmakeBuildPackageOESim("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."

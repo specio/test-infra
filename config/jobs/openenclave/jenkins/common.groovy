@@ -100,6 +100,37 @@ def cmakeBuildPackageInstallOE( String REPO_NAME, String BUILD_CONFIG, String EX
     }
 }
 
+// There are a bunch of edgecases, it was easier to have a seperate function for simulation mode.
+// WHY WOULD SOMEONE WANT TO BUILD SNMALLOC LVI SIMULATION MODE WHEN BY DESIGN ONLY HALF THE SAMPELS WOULD WORK?!
+def cmakeBuildPackageOESim( String REPO_NAME, String BUILD_CONFIG, String EXTRA_CMAKE_ARGS) {
+    if (isUnix()) {
+        sh  """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build && \
+            cmake .. \
+                -G Ninja                                                 \
+                -DCMAKE_BUILD_TYPE=RelWithDebInfo                        \
+                -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave'           \
+                -DCPACK_GENERATOR=DEB                                    \
+                -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin    \
+                ${EXTRA_CMAKE_ARGS}                                      \
+                -Wdev
+            ninja -v
+            ctest --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
+            """
+    }
+    else {
+        bat """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            vcvars64.bat x64 && \
+            cmake.exe ${WORKSPACE}\\${REPO_NAME} -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet ${EXTRA_CMAKE_ARGS} -Wdev && \
+            ninja.exe && \
+            ctest.exe -V -C ${BUILD_CONFIG} --timeout ${CTEST_TIMEOUT_SECONDS}
+            """
+    }
+}
+
 def checkout( String REPO_NAME, String OE_PULL_NUMBER) {
     if (isUnix()) {
         sh  """

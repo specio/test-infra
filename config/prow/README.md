@@ -349,6 +349,10 @@ fatal: unable to access 'https://github.com/openenclave/test-infra.git/': Could 
 # Error: exit status 128
 ```
 
+## Configure
+
+Take a look over at config options [options](row-config-documented.yaml) for the spread of all available options.
+
 ## Clean up
 ```
 az group delete --name ${RESOURCE_GROUP} --yes

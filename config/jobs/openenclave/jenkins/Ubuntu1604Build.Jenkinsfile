@@ -44,7 +44,7 @@ pipeline {
                                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
                                     if("${OE_SIMULATION}" == "1" ){
                                         withEnv(["OE_SIMULATION=${OE_SIMULATION}"]) {
-                                            runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
+                                            runner.cmakeBuildPackageOESim("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
                                         }
                                     }else{
                                         runner.cmakeBuildPackageInstallOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")

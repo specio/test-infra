@@ -34,22 +34,26 @@ pipeline {
             steps{
                 script{
                     for(BUILD_TYPE in BUILD_TYPES){
-                        stage("Ubuntu 1604 Build - ${BUILD_TYPE}"){
+                        stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
                             script {
-                                withEnv(["OE_SIMULATION=${OE_SIMULATION}"]) {
-                                    cleanWs()
-                                    checkout scm
-                                    def runner = load pwd() + "${SHARED_LIBRARY}"
-                                    runner.cleanup("${REPO}")
-                                    try{
-                                        runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                                cleanWs()
+                                checkout scm
+                                def runner = load pwd() + "${SHARED_LIBRARY}"
+                                runner.cleanup("${REPO}")
+                                try{
+                                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
+                                    if("${OE_SIMULATION}" == "1" ){
+                                        withEnv(["OE_SIMULATION=${OE_SIMULATION}"]) {
+                                            runner.cmakeBuildOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
+                                        }
+                                    }else{
                                         runner.cmakeBuildPackageInstallOE("${REPO}","${BUILD_TYPE}", "${EXTRA_CMAKE_ARGS}")
-                                    } catch (Exception e) {
-                                        // Do something with the exception 
-                                        error "Program failed, please read logs..."
-                                    } finally {
-                                        runner.cleanup("${REPO}")
                                     }
+                                } catch (Exception e) {
+                                    // Do something with the exception 
+                                    error "Program failed, please read logs..."
+                                } finally {
+                                    runner.cleanup("${REPO}")
                                 }
                             }
                         }

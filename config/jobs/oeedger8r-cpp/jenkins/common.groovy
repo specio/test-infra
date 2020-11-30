@@ -1,14 +1,38 @@
 // Common oeedger8r-cpp jenkins functions
 
-def cmakeBuildoeedger8r(String REPO_NAME, String BUILD_CONFIG) {
+def cmakeBuildoeedger8r(String REPO_NAME, String BUILD_CONFIG, String COMPILER) {
     if (isUnix()) {
-        sh  """
-            cd ${REPO_NAME} && \
-            mkdir build && cd build &&\
-            cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
-            ninja -v
-            ctest --output-on-failure --timeout ${REPO_NAME}
-            """
+        def c_compiler
+        def cpp_compiler
+        switch(COMPILER) {
+            case "clang-7":
+                c_compiler = "clang"
+                cpp_compiler = "clang++"
+                compiler_version = "7"
+                break
+            case "gcc":
+                c_compiler = "gcc"
+                cpp_compiler = "g++"
+                break
+            default:
+                c_compiler = "clang"
+                cpp_compiler = "clang++"
+                compiler_version = "7"
+        }
+        if (compiler_version) {
+            c_compiler += "-${compiler_version}"
+            cpp_compiler += "-${compiler_version}"
+        }
+        withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+            sh  """
+                cd ${REPO_NAME} && \
+                mkdir build && cd build &&\
+                cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+                ninja -v
+                ctest --output-on-failure --timeout ${REPO_NAME}
+                """
+        }
+        
     } else {
         bat """
             cd ${REPO_NAME} && \

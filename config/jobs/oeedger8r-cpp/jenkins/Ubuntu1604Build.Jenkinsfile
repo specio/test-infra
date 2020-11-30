@@ -6,6 +6,7 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1604"
 
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
+COMPILER=env.COMPILER?env.COMPILER:"clang-7"
 String[] BUILD_TYPES = ['Debug', 'RelWithDebInfo', 'Release']
 
 // Repo hardcoded
@@ -33,7 +34,7 @@ pipeline {
                                 runner.cleanup("${REPO}")
                                 try{
                                     runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                                    runner.cmakeBuildoeedger8r("${REPO}","${BUILD_TYPE}")
+                                    runner.cmakeBuildoeedger8r("${REPO}","${BUILD_TYPE}","${COMPILER}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."

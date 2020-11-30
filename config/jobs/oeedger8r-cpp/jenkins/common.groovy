@@ -1,4 +1,26 @@
 // Common oeedger8r-cpp jenkins functions
+
+def cmakeBuildoeedger8r(String REPO_NAME, String BUILD_CONFIG) {
+    if (isUnix()) {
+        sh  """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+            ninja -v
+            ctest --output-on-failure --timeout ${REPO_NAME}
+            """
+    } else {
+        bat """
+            cd ${REPO_NAME} && \
+            mkdir build && cd build &&\
+            vcvars64.bat x64 && \
+            cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
+            ninja -v -j 4 && \
+            ctest.exe -V --output-on-failure --timeout ${CTEST_TIMEOUT_SECONDS}
+            """
+    }
+}
+
 def cmakeBuild( String REPO_NAME, String BUILD_CONFIG ) {
 
     if (isUnix()) {

@@ -6,7 +6,7 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
 
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
-COMPILER=env.COMPILER?env.COMPILER:"gcc"
+COMPILER=env.COMPILER?env.COMPILER:"clang-7"
 String[] BUILD_TYPES = ['Debug', 'RelWithDebInfo', 'Release']
 
 // Repo hardcoded

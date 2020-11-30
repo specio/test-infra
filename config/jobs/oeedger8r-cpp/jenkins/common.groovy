@@ -25,6 +25,7 @@ def cmakeBuildoeedger8r(String REPO_NAME, String BUILD_CONFIG, String COMPILER) 
         }
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
+                echo HERE CC=${c_compiler}","CXX=${cpp_compiler}
                 cd ${REPO_NAME} && \
                 mkdir build && cd build &&\
                 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev

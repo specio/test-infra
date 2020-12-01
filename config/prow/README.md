@@ -86,7 +86,7 @@ export LOCATION="westus2"
 export RESOURCE_GROUP="OpenEnclaveCICDProd"
 export AKS_CLUSTER_NAME="oe-prow-prod"
 export NODE_SIZE="Standard_D2s_v3"
-export MIN_NODE_COUNT="3"
+export MIN_NODE_COUNT="15"
 export MAX_POD="10"
 export MAX_NODE_COUNT="100"
 export PATH_KEY="~/.ssh/id_rsa.pub"
@@ -111,8 +111,10 @@ az aks create --resource-group ${RESOURCE_GROUP} \
     --service-principal ${SERVICE_PRINCIPAL} \
     --client-secret ${CLIENT_SECRET} \
     --min-count ${MIN_NODE_COUNT} \
+    --node-count ${MIN_NODE_COUNT} \
     --max-count ${MAX_NODE_COUNT} \
     --max-pod ${MAX_POD} \
+    --network-plugin azure \
     --ssh-key-value ${PATH_KEY} \
     --zones 1 2 3
 ```
@@ -154,7 +156,7 @@ az network public-ip list --resource-group ${AKS_RESOURCE_GROUP} --query "[?name
 ```
 helm install nginx stable/nginx-ingress \
     --namespace ingress-basic \
-    --set controller.replicaCount=2 \
+    --set controller.replicaCount=5 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="${STATIC_IP}" \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \

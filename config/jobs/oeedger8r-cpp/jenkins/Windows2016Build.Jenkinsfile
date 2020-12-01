@@ -7,7 +7,7 @@ WINDOWS_VERSION=env.WINDOWS_VERSION?env.WINDOWS_VERSION:"2016"
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 COMPILER=env.COMPILER?env.COMPILER:"clang-7"
-String[] BUILD_TYPES = ['Debug', 'RelWithDebInfo', 'Release']
+String[] BUILD_TYPES=['Debug', 'RelWithDebInfo', 'Release']
 
 // Repo hardcoded
 REPO="oeedger8r-cpp"

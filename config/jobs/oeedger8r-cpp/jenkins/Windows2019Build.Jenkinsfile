@@ -9,11 +9,8 @@ DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 COMPILER=env.COMPILER?env.COMPILER:"clang-7"
 String[] BUILD_TYPES=['Debug', 'RelWithDebInfo', 'Release']
 
-// Repo hardcoded
-REPO="oeedger8r-cpp"
-
 // Shared library config, check out common.groovy!
-SHARED_LIBRARY="/config/jobs/"+"${REPO}"+"/jenkins/common.groovy"
+SHARED_LIBRARY="/config/jobs/oeedger8r-cpp/jenkins/common.groovy"
 
 pipeline {
     options {
@@ -31,15 +28,15 @@ pipeline {
                                 cleanWs()
                                 checkout scm
                                 def runner = load pwd() + "${SHARED_LIBRARY}"
-                                runner.cleanup("${REPO}")
+                                runner.cleanup()
                                 try{
-                                    runner.checkout("${REPO}", "${OE_PULL_NUMBER}")
-                                    runner.cmakeBuildoeedger8r("${REPO}","${BUILD_TYPE}","${COMPILER}")
+                                    runner.checkout("${OE_PULL_NUMBER}")
+                                    runner.cmakeBuildoeedger8r("${BUILD_TYPE}","${COMPILER}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."
                                 } finally {
-                                    runner.cleanup("${REPO}")
+                                    runner.cleanup()
                                 }
                             }
                         }

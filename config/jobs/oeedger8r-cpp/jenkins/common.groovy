@@ -4,7 +4,7 @@
   * as this is being ran as a validation of master or as a reverse integration test on the test-infra repo.
 **/
 
-void checkout( String PULL_NUMBER ) {
+void checkout( String PULL_NUMBER="master" ) {
     if (isUnix()) {
         sh  """
             git config --global core.compression 0 && \
@@ -33,7 +33,7 @@ void checkout( String PULL_NUMBER ) {
   * TODO: Add container support
   * TODO: Add a switch for compiler and set to env, pass compiler anyways to validate current workflow
 **/
-def cmakeBuildoeedger8r( String BUILD_CONFIG, String COMPILER) {
+def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7" ) {
     dir ('oeedger8r-cpp/build') {
         if (isUnix()) {
             sh  """

@@ -19,17 +19,21 @@ pipeline {
     agent { label "SGXFLC-Windows-${WINDOWS_VERSION}-Docker" }
 
     stages {
+        stage('Checkout'){
+            steps{
+                cleanWs()
+                checkout scm
+            }
+        }
         stage('Build'){
             steps{
                 script{
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     for(BUILD_TYPE in BUILD_TYPES){
                         stage("Windows ${WINDOWS_VERSION} Build - ${BUILD_TYPE}"){
                             script {
-                                cleanWs()
-                                checkout scm
-                                def runner = load pwd() + "${SHARED_LIBRARY}"
-                                runner.cleanup()
                                 try{
+                                    runner.cleanup()
                                     runner.checkout("${OE_PULL_NUMBER}")
                                     runner.cmakeBuildoeedger8r("${BUILD_TYPE}","${COMPILER}")
                                 } catch (Exception e) {
@@ -43,6 +47,11 @@ pipeline {
                     }
                 }
             }
+        }
+    }
+    post ('Clean Up'){
+        always{
+            cleanWs()
         }
     }
 }

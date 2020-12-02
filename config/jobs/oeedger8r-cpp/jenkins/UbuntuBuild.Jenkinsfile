@@ -19,30 +19,37 @@ pipeline {
     agent { label "ACC-${LINUX_VERSION}" }
 
     stages {
+        stage('Checkout'){
+            steps{
+                cleanWs()
+                checkout scm
+            }
+        }
         stage('Build'){
             steps{
                 script{
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
                     for(BUILD_TYPE in BUILD_TYPES){
                         stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
-                            script {
-                                cleanWs()
-                                checkout scm
-                                def runner = load pwd() + "${SHARED_LIBRARY}"
+                            try{
                                 runner.cleanup()
-                                try{
-                                    runner.checkout("${OE_PULL_NUMBER}")
-                                    runner.cmakeBuildoeedger8r("${BUILD_TYPE}","${COMPILER}")
-                                } catch (Exception e) {
-                                    // Do something with the exception 
-                                    error "Program failed, please read logs..."
-                                } finally {
-                                    runner.cleanup()
-                                }
+                                runner.checkout("${OE_PULL_NUMBER}")
+                                runner.cmakeBuildoeedger8r("${BUILD_TYPE}","${COMPILER}")
+                            } catch (Exception e) {
+                                // Do something with the exception 
+                                error "Program failed, please read logs..."
+                            } finally {
+                                runner.cleanup()
                             }
                         }
                     }
                 }
             }
+        }
+    }
+    post ('Clean Up'){
+        always{
+            cleanWs()
         }
     }
 }

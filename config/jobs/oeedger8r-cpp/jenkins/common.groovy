@@ -34,23 +34,21 @@ void checkout( String PULL_NUMBER ) {
   * TODO: Add a switch for compiler and set to env, pass compiler anyways to validate current workflow
 **/
 def cmakeBuildoeedger8r( String BUILD_CONFIG, String COMPILER) {
-    if (isUnix()) {
-        sh  """
-            cd oeedger8r-cpp && \
-            mkdir build && cd build &&\
-            cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
-            ninja -v
-            ctest --output-on-failure --timeout
-            """
-    } else {
-        bat """
-            cd oeedger8r-cpp && \
-            mkdir build && cd build &&\
-            vcvars64.bat x64 && \
-            cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
-            ninja -v -j 4 && \
-            ctest.exe -V --output-on-failure
-            """
+    dir ('oeedger8r-cpp/build') {
+        if (isUnix()) {
+            sh  """
+                cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+                ninja -v
+                ctest --output-on-failure --timeout
+                """
+        } else {
+            bat """
+                vcvars64.bat x64 && \
+                cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
+                ninja -v -j 4 && \
+                ctest.exe -V --output-on-failure
+                """
+        }
     }
 }
 

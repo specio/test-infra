@@ -36,11 +36,41 @@ void checkout( String PULL_NUMBER="master" ) {
 def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7" ) {
     dir ('oeedger8r-cpp/build') {
         if (isUnix()) {
-            sh  """
-                cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
-                ninja -v
-                ctest --output-on-failure --timeout
-                """
+            def c_compiler
+            def cpp_compiler
+            switch(compiler) {
+                case "cross":
+                    // In this case, the compiler is set by the CMake toolchain file. As
+                    // such, it is not necessary to specify anything in the environment.
+                    runTask(task)
+                    return
+                case "clang-7":
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "7"
+                    break
+                case "gcc":
+                    c_compiler = "gcc"
+                    cpp_compiler = "g++"
+                    break
+                default:
+                    // This is needed for backwards compatibility with the old
+                    // implementation of the method.
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "8"
+            }
+            if (compiler_version) {
+                c_compiler += "-${compiler_version}"
+                cpp_compiler += "-${compiler_version}"
+            }
+            //withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+                sh  """
+                    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+                    ninja -v
+                    ctest --output-on-failure --timeout
+                    """
+            //}
         } else {
             bat """
                 vcvars64.bat x64 && \

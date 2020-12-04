@@ -65,13 +65,13 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
                 c_compiler += "-${compiler_version}"
                 cpp_compiler += "-${compiler_version}"
             }
-            //withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+            withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
                 sh  """
                     cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
                     ninja -v
                     ctest --output-on-failure --timeout
                     """
-            //}
+            }
         } else {
             bat """
                 vcvars64.bat x64 && \

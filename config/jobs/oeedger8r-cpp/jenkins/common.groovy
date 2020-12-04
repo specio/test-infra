@@ -4,7 +4,7 @@
   * as this is being ran as a validation of master or as a reverse integration test on the test-infra repo.
 **/
 
-void checkout( String PULL_NUMBER ) {
+void checkout( String PULL_NUMBER="master" ) {
     if (isUnix()) {
         sh  """
             git config --global core.compression 0 && \
@@ -33,14 +33,39 @@ void checkout( String PULL_NUMBER ) {
   * TODO: Add container support
   * TODO: Add a switch for compiler and set to env, pass compiler anyways to validate current workflow
 **/
-def cmakeBuildoeedger8r( String BUILD_CONFIG, String COMPILER) {
+def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7" ) {
     dir ('oeedger8r-cpp/build') {
         if (isUnix()) {
-            sh  """
-                cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
-                ninja -v
-                ctest --output-on-failure --timeout
-                """
+            def c_compiler
+            def cpp_compiler
+            switch(COMPILER) {
+                case "clang-7":
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "7"
+                    break
+                case "gcc":
+                    c_compiler = "gcc"
+                    cpp_compiler = "g++"
+                    break
+                default:
+                    // This is needed for backwards compatibility with the old
+                    // implementation of the method.
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "7"
+            }
+            if (compiler_version) {
+                c_compiler += "-${compiler_version}"
+                cpp_compiler += "-${compiler_version}"
+            }
+            //withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+                sh  """
+                    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
+                    ninja -v
+                    ctest --output-on-failure --timeout
+                    """
+            //}
         } else {
             bat """
                 vcvars64.bat x64 && \
@@ -58,7 +83,7 @@ def cleanup() {
         try {
                 sh  """
                     set +e
-                    rm -rf oeedger8r-cpp
+                    sudo rm -rf oeedger8r-cpp || rm -rf oeedger8r-cpp || echo 'Workspace is clean'
                     """
             } catch (Exception e) {
                 // Do something with the exception 

@@ -36,8 +36,13 @@ void checkout( String PULL_NUMBER="master" ) {
 def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7" ) {
     dir ('oeedger8r-cpp/build') {
         if (isUnix()) {
+
+            sh  """
+                echo COMPILER IS ${COMPILER}
+                """
             def c_compiler
             def cpp_compiler
+            def compiler_version
             switch(COMPILER) {
                 case "clang-7":
                     c_compiler = "clang"
@@ -47,6 +52,7 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
                 case "gcc":
                     c_compiler = "gcc"
                     cpp_compiler = "g++"
+
                     break
                 default:
                     // This is needed for backwards compatibility with the old
@@ -82,7 +88,6 @@ def cleanup() {
     if (isUnix()) {
         try {
                 sh  """
-                    set +e
                     sudo rm -rf oeedger8r-cpp || rm -rf oeedger8r-cpp || echo 'Workspace is clean'
                     """
             } catch (Exception e) {

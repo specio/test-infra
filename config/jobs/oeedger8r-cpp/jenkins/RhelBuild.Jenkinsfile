@@ -6,7 +6,7 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"8"
 
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
-COMPILER=env.COMPILER?env.COMPILER:"clang-7"
+COMPILER=env.COMPILER?env.COMPILER:"gcc"
 String[] BUILD_TYPES=['Debug', 'RelWithDebInfo', 'Release']
 
 // Shared library config, check out common.groovy!

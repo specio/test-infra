@@ -38,12 +38,7 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
         if (isUnix()) {
             def c_compiler
             def cpp_compiler
-            switch(compiler) {
-                case "cross":
-                    // In this case, the compiler is set by the CMake toolchain file. As
-                    // such, it is not necessary to specify anything in the environment.
-                    runTask(task)
-                    return
+            switch(COMPILER) {
                 case "clang-7":
                     c_compiler = "clang"
                     cpp_compiler = "clang++"
@@ -58,7 +53,7 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
                     // implementation of the method.
                     c_compiler = "clang"
                     cpp_compiler = "clang++"
-                    compiler_version = "8"
+                    compiler_version = "7"
             }
             if (compiler_version) {
                 c_compiler += "-${compiler_version}"
@@ -88,7 +83,7 @@ def cleanup() {
         try {
                 sh  """
                     set +e
-                    rm -rf oeedger8r-cpp
+                    sudo rm -rf oeedger8r-cpp || rm -rf oeedger8r-cpp || echo 'Workspace is clean'
                     """
             } catch (Exception e) {
                 // Do something with the exception 

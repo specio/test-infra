@@ -6,13 +6,14 @@ build-configs:
 #Test-infra needs to be first due to the inverse integrations
 repos:
   test-infra
-  openenclave-curl
+  oeedger8r-cpp
   openenclave
   openenclave-ci
   openenclave-mbedtls
+  openenclave-curl
 
 pipelines:
-  openenclave-curl:
+  oeedger8r-cpp:
     Rhel8BuildClang-8
     Rhel8BuildGCC
     Ubuntu1604BuildClang-7

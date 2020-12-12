@@ -1,9 +1,10 @@
+# Do not change build-configs, these are the 3 types of builds we build for
 build-configs:
   postsubmits
   periodics
   pre-submits
 
-#Test-infra needs to be first due to the inverse integrations
+# Test-infra needs to be first due to the inverse integrations, rest in any order
 repos:
   test-infra
   gperftools
@@ -17,6 +18,7 @@ repos:
   openenclave-template
   public-talks
 
+# These corrrespond to the pipelines each repo has and are stored in the <Job DSL> directory
 pipelines:
   oeedger8r-cpp:
     Rhel8BuildClang-8

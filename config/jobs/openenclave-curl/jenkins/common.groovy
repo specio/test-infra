@@ -17,16 +17,6 @@ void checkout( String PULL_NUMBER="master" ) {
             fi
             """
     }
-    else {
-        bat """
-            git config --global core.compression 0 && \
-            (if exist openenclave-curl rmdir /s/q openenclave-curl) && \
-            git clone --recursive --depth 1 https://github.com/openenclave/openenclave-curl && \
-            cd openenclave-curl && \
-            git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if NOT ${PULL_NUMBER}==master git checkout origin/pr/${PULL_NUMBER}
-            """
-    }
 }
 
 /** Build oeedgr8r based on build config, compiler and platform
@@ -71,18 +61,12 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
             }
             withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
                 sh  """
-                    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -Wdev
-                    ninja -v
-                    ctest --output-on-failure --timeout
+                    sudo apt-get install open-enclave -y
+                    . /opt/openenclave/share/openenclave/openenclaverc
+                    cmake ..
+                    make
                     """
             }
-        } else {
-            bat """
-                vcvars64.bat x64 && \
-                cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} && \
-                ninja -v -j 4 && \
-                ctest.exe -V --output-on-failure
-                """
         }
     }
 }

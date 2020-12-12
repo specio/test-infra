@@ -3,11 +3,14 @@ build-configs:
   periodics
   pre-submits
 
+#Test-infra needs to be first due to the inverse integrations
 repos:
+  test-infra
   oeedger8r-cpp
+  openenclave
 
-oeedger8r-cpp:
-  pipelines:
+pipelines:
+  oeedger8r-cpp:
     Rhel8BuildClang-8
     Rhel8BuildGCC
     Ubuntu1604BuildClang-7
@@ -16,3 +19,15 @@ oeedger8r-cpp:
     Ubuntu1804BuildGCC
     Windows2016Build
     Windows2019Build
+  openenclave:
+    Rhel8BuildClang-8
+    Rhel8BuildGCC
+    Ubuntu1604BuildClang-7
+    Ubuntu1604BuildGCC
+    Ubuntu1804BuildClang-7
+    Ubuntu1804BuildGCC
+    Windows2016BuildRel
+    Windows2016BuildDebug
+    Windows2019BuildRel
+    Windows2019BuildDebug
+    

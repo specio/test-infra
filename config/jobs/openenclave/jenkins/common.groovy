@@ -32,7 +32,7 @@ void checkout( String PULL_NUMBER="master" ) {
 /** Build openenclave based on build config, compiler and platform
   * TODO: Add container support
 **/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7" ) {
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
     dir ('openenclave/build') {
         if (isUnix()) {
 

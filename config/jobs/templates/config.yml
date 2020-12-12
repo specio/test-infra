@@ -6,11 +6,16 @@ build-configs:
 #Test-infra needs to be first due to the inverse integrations
 repos:
   test-infra
+  gperftools
   oeedger8r-cpp
   openenclave
+  openenclave-build
   openenclave-ci
-  openenclave-mbedtls
   openenclave-curl
+  openenclave-mbedtls
+  openenclave-site
+  openenclave-template
+  public-talks
 
 pipelines:
   oeedger8r-cpp:

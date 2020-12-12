@@ -217,6 +217,30 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Windows2019BuildDebug --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
 
+  - name: post-test-infra-openenclave-curl-Ubuntu1604BuildClang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1604BuildClang-7 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
+
+  - name: post-test-infra-openenclave-curl-Ubuntu1804BuildClang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1804BuildClang-7 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
+
   - name: post-test-infra-openenclave-mbedtls-Rhel8BuildClang-8
     branches:
     - master
@@ -312,27 +336,3 @@ postsubmits:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave-mbedtls/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
-
-  - name: post-test-infra-openenclave-curl-Ubuntu1604BuildClang-7
-    branches:
-    - master
-    decorate: true
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1604BuildClang-7 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
-
-  - name: post-test-infra-openenclave-curl-Ubuntu1804BuildClang-7
-    branches:
-    - master
-    decorate: true
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1804BuildClang-7 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        

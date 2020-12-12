@@ -31,7 +31,6 @@ void checkout( String PULL_NUMBER="master" ) {
 
 /** Build oeedgr8r based on build config, compiler and platform
   * TODO: Add container support
-  * TODO: Add a switch for compiler and set to env, pass compiler anyways to validate current workflow
 **/
 def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7" ) {
     dir ('oeedger8r-cpp/build') {

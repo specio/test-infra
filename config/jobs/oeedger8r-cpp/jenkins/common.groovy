@@ -44,6 +44,11 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
             def cpp_compiler
             def compiler_version
             switch(COMPILER) {
+                case "clang-8":
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "8"
+                    break
                 case "clang-7":
                     c_compiler = "clang"
                     cpp_compiler = "clang++"
@@ -59,7 +64,7 @@ def cmakeBuildoeedger8r( String BUILD_CONFIG="Release", String COMPILER="clang-7
                     // implementation of the method.
                     c_compiler = "clang"
                     cpp_compiler = "clang++"
-                    compiler_version = "7"
+                    compiler_version = "8"
             }
             if (compiler_version) {
                 c_compiler += "-${compiler_version}"

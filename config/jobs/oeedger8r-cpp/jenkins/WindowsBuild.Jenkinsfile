@@ -6,8 +6,8 @@ WINDOWS_VERSION=env.WINDOWS_VERSION?env.WINDOWS_VERSION:"2019"
 
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
-COMPILER=env.COMPILER?env.COMPILER:"clang-7"
-String[] BUILD_TYPES=['Debug', 'RelWithDebInfo', 'Release']
+COMPILER=env.COMPILER?env.COMPILER:"MSVC"
+String[] BUILD_TYPES=['Debug', 'Release']
 
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/oeedger8r-cpp/jenkins/common.groovy"

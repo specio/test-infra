@@ -10,6 +10,7 @@ repos:
   openenclave
   openenclave-ci
   openenclave-mbedtls
+  openenclave-curl
 
 pipelines:
   oeedger8r-cpp:
@@ -30,6 +31,9 @@ pipelines:
     Ubuntu1804BuildGCC
     Windows2016Build
     Windows2019Build
+  openenclave-curl:
+    Ubuntu1604BuildClang-7
+    Ubuntu1804BuildClang-7
   openenclave:
     Rhel8BuildClang-8
     Rhel8BuildGCC

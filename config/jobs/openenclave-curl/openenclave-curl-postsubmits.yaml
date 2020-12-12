@@ -1,57 +1,98 @@
 postsubmits:
   openenclave/openenclave-curl:
-  - name: post-openenclave-curl-ubuntu-1604
+
+  - name: post-openenclave-curl-Rhel8BuildClang-8
     branches:
-    - openenclave-curl
+    - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/ubuntu-1604:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "/testing/openenclave-curl/make-build.sh"
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Rhel8BuildClang-8 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
 
-  - name: post-openenclave-curl-ubuntu-1804
+  - name: post-openenclave-curl-Rhel8BuildGCC
     branches:
-    - openenclave-curl
+    - master
     decorate: true
     spec:
       containers:
-        - image: openenclave/ubuntu-1804:latest
+        - image: openenclave/jenkinsoperator:latest
           command:
             - sh
             - "-c"
-            - "/testing/openenclave-curl/make-build.sh"
-          volumeMounts:
-          - mountPath: /dev/sgx
-            name: dev-sgx
-          securityContext:
-            privileged: true
-      volumes:
-      - name: dev-sgx
-        hostPath:
-          path: /dev/sgx
-      restartPolicy: Never
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Rhel8BuildGCC --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
 
-# - name: post-openenclave-curl-rhel-8
-#    branches:
-#    - openenclave-curl
-#    decorate: true
-#    spec:
-#      containers:
-#        - image: openenclave/jenkinsoperator:latest
-#          command:
-#            - sh
-#            - "-c"
-#            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Rhel8Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=openenclave-curl,TEST_INFRA=false,BUILD_TYPE=Debug"
+  - name: post-openenclave-curl-Ubuntu1604BuildClang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1604BuildClang-7 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-curl-Ubuntu1604BuildGCC
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1604BuildGCC --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-curl-Ubuntu1804BuildClang-7
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1804BuildClang-7 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-curl-Ubuntu1804BuildGCC
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Ubuntu1804BuildGCC --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-curl-Windows2016Build
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Windows2016Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-curl-Windows2019Build
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/Windows2019Build --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        

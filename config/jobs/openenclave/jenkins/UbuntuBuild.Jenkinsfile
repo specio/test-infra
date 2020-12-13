@@ -7,7 +7,7 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 COMPILER=env.COMPILER?env.COMPILER:"clang-7"
-String[] BUILD_TYPES=['Debug', 'RelWithDebInfo', 'Release']
+BUILD_TYPES=env.COMPILER?env.COMPILER:'Debug'
 
 // Some override for build configuration
 LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
@@ -43,7 +43,7 @@ pipeline {
             steps{
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    for(BUILD_TYPE in BUILD_TYPES){
+                    //for(BUILD_TYPE in BUILD_TYPES){
                         stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
                             try{
                                 runner.cleanup()
@@ -67,7 +67,7 @@ pipeline {
                                 }
                             }
                         }
-                    }
+                    //}
                 }
             }
         }

@@ -36,6 +36,7 @@ pipeline {
     agent { label "ACC-${LINUX_VERSION}" }
 
     stages {
+        // Check out test infra repo as need shared libs
         stage('Checkout'){
             steps{
                 cleanWs()

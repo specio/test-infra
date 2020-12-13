@@ -1,6 +1,18 @@
 postsubmits:
   openenclave/openenclave-mbedtls:
 
+  - name: post-openenclave-mbedtls-ping
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-mbedtls/job/ping --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
   - name: post-openenclave-mbedtls-Rhel8BuildClang-8
     branches:
     - master

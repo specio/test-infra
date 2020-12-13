@@ -1,14 +1,2 @@
 postsubmits:
   openenclave/openenclave-build:
-
-  - name: post-openenclave-build-ping
-    branches:
-    - master
-    decorate: true
-    spec:
-      containers:
-        - image: openenclave/jenkinsoperator:latest
-          command:
-            - sh
-            - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave-build/job/ping --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        

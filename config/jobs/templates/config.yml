@@ -39,7 +39,7 @@ pipelines:
     Ubuntu1604DebugClang-7
     Ubuntu1604ReleaseClang-7
     Ubuntu1604RelWithDebInfoClang-7
-    Ubuntu1804BuildGCC
+    Ubuntu1604BuildGCC
     Ubuntu1804DebugClang-7
     Ubuntu1804ReleaseClang-7
     Ubuntu1804RelWithDebInfoClang-7

@@ -1,5 +1,20 @@
 periodics:
 
+  - name: ci-openenclave-curl-ping
+    extra_refs:
+    - org: openenclave
+      repo: openenclave-curl
+      base_ref: master
+    decorate: true
+    interval: 60m
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave-curl/job/ping --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        
+
   - name: ci-openenclave-curl-Ubuntu1604BuildClang-7
     extra_refs:
     - org: openenclave

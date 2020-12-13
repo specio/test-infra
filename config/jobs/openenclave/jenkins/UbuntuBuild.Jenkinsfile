@@ -7,7 +7,7 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 COMPILER=env.COMPILER?env.COMPILER:"clang-7"
-BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Debug"
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"RelWithDebInfo"
 
 // Hardware and simulation build modes. 1 is simulation, 0 is hardware
 String[] SIMULATION_MODES=[0,1]
@@ -51,7 +51,7 @@ pipeline {
                             echo BRETT HERRREEE ${SIMULATION_MODE}
                             """
                         withEnv(['OE_SIMULATION=${SIMULATION_MODE}']) {
-                            stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE} Simulation =${SIMULATION_MODE}"){
+                            stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE} Simulation=${SIMULATION_MODE}"){
                                 try{
                                     runner.cleanup()
                                     runner.checkout("${PULL_NUMBER}")

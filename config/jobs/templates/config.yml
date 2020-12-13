@@ -36,9 +36,13 @@ pipelines:
     ping
     Rhel8BuildClang-8
     Rhel8BuildGCC
-    Ubuntu1604BuildClang-7
-    Ubuntu1604BuildGCC
-    Ubuntu1804BuildClang-7
+    Ubuntu1604DebugClang-7
+    Ubuntu1604ReleaseClang-7
+    Ubuntu1604RelWithDebInfoClang-7
+    Ubuntu1804BuildGCC
+    Ubuntu1804DebugClang-7
+    Ubuntu1804ReleaseClang-7
+    Ubuntu1804RelWithDebInfoClang-7
     Ubuntu1804BuildGCC
     Windows2016BuildRel
     Windows2016BuildDebug

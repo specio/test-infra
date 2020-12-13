@@ -34,8 +34,12 @@ pipelines:
     Windows2019Build
   openenclave:
     ping
-    Rhel8BuildClang-8
-    Rhel8BuildGCC
+    Rhel8RelWithDebInfoClang-8
+    Rhel8RelWithDebInfoGCC
+    Rhel8DebugClang-8
+    Rhel8DebugGCC
+    Rhel8ReleaseClang-8
+    Rhel8ReleaseGCC
     Ubuntu1604DebugClang-7
     Ubuntu1604ReleaseClang-7
     Ubuntu1604RelWithDebInfoClang-7

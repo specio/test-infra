@@ -47,9 +47,6 @@ pipeline {
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
                     for(SIMULATION_MODE in SIMULATION_MODES){
-                        sh """
-                            echo BRETT HERRREEE ${SIMULATION_MODE}
-                            """
                         withEnv(['OE_SIMULATION=${SIMULATION_MODE}']) {
                             stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE} Simulation=${SIMULATION_MODE}"){
                                 try{

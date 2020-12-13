@@ -42,34 +42,48 @@ pipeline {
                 checkout scm
             }
         }
+        // Go through Build stages
         stage('Build'){
             steps{
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    for(SIMULATION_MODE in SIMULATION_MODES){
-                        withEnv(["OE_SIMULATION=${SIMULATION_MODE}"]) {
-                            stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE} Simulation=${SIMULATION_MODE}"){
-                                try{
-                                    runner.cleanup()
-                                    runner.checkout("${PULL_NUMBER}")
-                                    runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
-                                } catch (Exception e) {
-                                    // Do something with the exception 
-                                    error "Program failed, please read logs..."
-                                }
-                            }
 
-                            if(SIMULATION_MODE == 0){
-                                stage("Ubuntu ${LINUX_VERSION} Package - ${BUILD_TYPE}"){
-                                    try{
-                                        runner.openenclavepackageInstall("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
-                                    } catch (Exception e) {
-                                        // Do something with the exception 
-                                        error "Program failed, please read logs..."
-                                    } finally {
-                                        runner.cleanup()
-                                    }
-                                }
+                    // Build and test in Hardware mode, do not clean up as we will package
+                    stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
+                        try{
+                            runner.cleanup()
+                            runner.checkout("${PULL_NUMBER}")
+                            runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
+                        } catch (Exception e) {
+                            // Do something with the exception 
+                            error "Program failed, please read logs..."
+                        }
+                    }
+
+                    // Build package and test installation work flows, clean up after
+                    stage("Ubuntu ${LINUX_VERSION} Package - ${BUILD_TYPE}"){
+                        try{
+                            runner.openenclavepackageInstall("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
+                        } catch (Exception e) {
+                            // Do something with the exception 
+                            error "Program failed, please read logs..."
+                        } finally {
+                            runner.cleanup()
+                        }
+                    }
+
+                    // Build in simulation mode 
+                    stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE} Simulation"){
+                        withEnv(["OE_SIMULATION=1"]) {
+                            try{
+                                runner.cleanup()
+                                runner.checkout("${PULL_NUMBER}")
+                                runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
+                            } catch (Exception e) {
+                                // Do something with the exception 
+                                error "Program failed, please read logs..."
+                            } finally {
+                                runner.cleanup()
                             }
                         }
                     }

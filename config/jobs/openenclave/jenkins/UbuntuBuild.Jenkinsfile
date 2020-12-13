@@ -7,7 +7,10 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
 // Some Defaults
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
 COMPILER=env.COMPILER?env.COMPILER:"clang-7"
-BUILD_TYPES=env.COMPILER?env.COMPILER:'Debug'
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"Debug"
+
+// Hardware and simulation build modes. 1 is simulation, 0 is hardware
+String[] SIMULATION_MODES=[0,1]
 
 // Some override for build configuration
 LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
@@ -43,31 +46,36 @@ pipeline {
             steps{
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-                    //for(BUILD_TYPE in BUILD_TYPES){
-                        stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
-                            try{
-                                runner.cleanup()
-                                runner.checkout("${PULL_NUMBER}")
-                                runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
-                            } catch (Exception e) {
-                                // Do something with the exception 
-                                error "Program failed, please read logs..."
-                            }
-                        }
-
-                        if("${PACKAGE}" == "ON" ){
-                            stage("Ubuntu ${LINUX_VERSION} Package - ${BUILD_TYPE}"){
+                    for(SIMULATION_MODE in SIMULATION_MODES){
+                        sh """
+                            echo BRETT HERRREEE ${SIMULATION_MODE}
+                            """
+                        withEnv(['OE_SIMULATION=${SIMULATION_MODE}']) {
+                            stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE} Simulation =${SIMULATION_MODE}"){
                                 try{
-                                    runner.openenclavepackageInstall("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
+                                    runner.cleanup()
+                                    runner.checkout("${PULL_NUMBER}")
+                                    runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."
-                                } finally {
-                                    runner.cleanup()
+                                }
+                            }
+
+                            if(SIMULATION_MODE == 0){
+                                stage("Ubuntu ${LINUX_VERSION} Package - ${BUILD_TYPE}"){
+                                    try{
+                                        runner.openenclavepackageInstall("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
+                                    } catch (Exception e) {
+                                        // Do something with the exception 
+                                        error "Program failed, please read logs..."
+                                    } finally {
+                                        runner.cleanup()
+                                    }
                                 }
                             }
                         }
-                    //}
+                    }
                 }
             }
         }

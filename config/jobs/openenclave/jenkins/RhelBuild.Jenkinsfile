@@ -10,6 +10,8 @@ COMPILER=env.COMPILER?env.COMPILER:"gcc"
 //String[] BUILD_TYPES=['Debug', 'RelWithDebInfo', 'Release']
 String[] BUILD_TYPES=['Debug', 'Release']
 
+EXTRA_CMAKE_ARGS=""
+
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/openenclave/jenkins/common.groovy"
 
@@ -35,7 +37,7 @@ pipeline {
                             try{
                                 runner.cleanup()
                                 runner.checkout("${PULL_NUMBER}")
-                                runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}")
+                                runner.cmakeBuildopenenclave("${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
                             } catch (Exception e) {
                                 // Do something with the exception 
                                 error "Program failed, please read logs..."

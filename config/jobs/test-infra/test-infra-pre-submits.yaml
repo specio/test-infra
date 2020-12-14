@@ -4,7 +4,7 @@ presubmits:
   - name: pr-test-infra-gperftools-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/gperftools/jenkins/*)"
+    run_if_changed: "^(config/jobs/gperftools/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -19,7 +19,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -34,7 +34,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Rhel8BuildClang-8
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -49,7 +49,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Rhel8BuildGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -64,7 +64,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Ubuntu1604BuildClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -79,7 +79,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Ubuntu1604BuildGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -94,7 +94,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Ubuntu1804BuildClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -109,7 +109,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Ubuntu1804BuildGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -124,7 +124,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Windows2016Build
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -139,7 +139,7 @@ presubmits:
   - name: pr-test-infra-oeedger8r-cpp-Windows2019Build
     branches:
     - master
-    run_if_changed: "^(config/jobs/oeedger8r-cpp/jenkins/*)"
+    run_if_changed: "^(config/jobs/oeedger8r-cpp/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -154,7 +154,7 @@ presubmits:
   - name: pr-test-infra-openenclave-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -169,7 +169,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8DebugClang-8
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -184,7 +184,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8DebugClang-8Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -199,7 +199,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8DebugGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -214,7 +214,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8DebugGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -229,7 +229,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8RelWithDebInfoGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -244,7 +244,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8RelWithDebInfoGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -259,7 +259,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8ReleaseClang-8
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -274,7 +274,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8ReleaseClang-8Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -289,7 +289,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8ReleaseGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -304,7 +304,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Rhel8ReleaseGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -319,7 +319,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604DebugClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -334,7 +334,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604DebugClang-7Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -349,7 +349,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604DebugGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -364,7 +364,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604DebugGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -379,7 +379,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604RelWithDebInfoClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -394,7 +394,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604RelWithDebInfoClang-7Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -409,7 +409,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604RelWithDebInfoGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -424,7 +424,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604RelWithDebInfoGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -439,7 +439,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604ReleaseClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -454,7 +454,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604ReleaseClang-7Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -469,7 +469,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604ReleaseGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -484,7 +484,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1604ReleaseGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -499,7 +499,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804DebugClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -514,7 +514,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804DebugClang-7Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -529,7 +529,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804DebugGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -544,7 +544,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804DebugGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -559,7 +559,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804RelWithDebInfoClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -574,7 +574,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804RelWithDebInfoClang-7Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -589,7 +589,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804RelWithDebInfoGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -604,7 +604,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804RelWithDebInfoGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -619,7 +619,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804ReleaseClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -634,7 +634,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804ReleaseClang-7Snmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -649,7 +649,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804ReleaseGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -664,7 +664,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Ubuntu1804ReleaseGCCSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -679,7 +679,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2016Debug
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -694,7 +694,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2016DebugSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -709,7 +709,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2016Release
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -724,7 +724,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2016ReleaseSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -739,7 +739,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2019Debug
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -754,7 +754,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2019DebugSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -769,7 +769,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2019Release
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -784,7 +784,7 @@ presubmits:
   - name: pr-test-infra-openenclave-Win2019ReleaseSnmalloc
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -799,7 +799,7 @@ presubmits:
   - name: pr-test-infra-openenclave-build-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-build/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-build/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -814,7 +814,7 @@ presubmits:
   - name: pr-test-infra-openenclave-ci-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-ci/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-ci/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -829,7 +829,7 @@ presubmits:
   - name: pr-test-infra-openenclave-curl-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-curl/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-curl/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -844,7 +844,7 @@ presubmits:
   - name: pr-test-infra-openenclave-curl-Ubuntu1604BuildClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-curl/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-curl/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -859,7 +859,7 @@ presubmits:
   - name: pr-test-infra-openenclave-curl-Ubuntu1804BuildClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-curl/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-curl/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -874,7 +874,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -889,7 +889,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Rhel8BuildClang-8
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -904,7 +904,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Rhel8BuildGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -919,7 +919,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Ubuntu1604BuildClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -934,7 +934,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Ubuntu1604BuildGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -949,7 +949,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Ubuntu1804BuildClang-7
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -964,7 +964,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Ubuntu1804BuildGCC
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -979,7 +979,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Windows2016Build
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -994,7 +994,7 @@ presubmits:
   - name: pr-test-infra-openenclave-mbedtls-Windows2019Build
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-mbedtls/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-mbedtls/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -1009,7 +1009,7 @@ presubmits:
   - name: pr-test-infra-openenclave-site-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-site/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-site/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -1024,7 +1024,7 @@ presubmits:
   - name: pr-test-infra-openenclave-template-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/openenclave-template/jenkins/*)"
+    run_if_changed: "^(config/jobs/openenclave-template/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10
@@ -1039,7 +1039,7 @@ presubmits:
   - name: pr-test-infra-public-talks-ping
     branches:
     - master
-    run_if_changed: "^(config/jobs/public-talks/jenkins/*)"
+    run_if_changed: "^(config/jobs/public-talks/*)"
     decorate: true
     skip_report: false
     max_concurrency: 10

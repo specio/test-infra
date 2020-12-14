@@ -721,7 +721,7 @@ presubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Win2016Release --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=$PULL_NUMBER"        
 
-  - name: pr-test-infra-openenclave-Win2016ReleaseSnmalloc
+  - name: pr-test-infra-openenclave-Win2016RelSnmalloc
     branches:
     - master
     run_if_changed: "^(config/jobs/openenclave/*)"
@@ -734,7 +734,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Win2016ReleaseSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=$PULL_NUMBER"        
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Win2016RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=$PULL_NUMBER"        
 
   - name: pr-test-infra-openenclave-Win2019Debug
     branches:
@@ -781,7 +781,7 @@ presubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Win2019Release --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=$PULL_NUMBER"        
 
-  - name: pr-test-infra-openenclave-Win2019ReleaseSnmalloc
+  - name: pr-test-infra-openenclave-Win2019RelSnmalloc
     branches:
     - master
     run_if_changed: "^(config/jobs/openenclave/*)"
@@ -794,7 +794,7 @@ presubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Win2019ReleaseSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=$PULL_NUMBER"        
+            - "python /hack/jenkins_bootstrap.py --job test-infra/job/openenclave/job/Win2019RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters OE_TEST_INFRA_PULL_NUMBER=$PULL_NUMBER"        
 
   - name: pr-test-infra-openenclave-build-ping
     branches:

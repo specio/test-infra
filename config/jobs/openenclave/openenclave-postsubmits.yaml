@@ -457,7 +457,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2016Release --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
 
-  - name: post-openenclave-Win2016ReleaseSnmalloc
+  - name: post-openenclave-Win2016RelSnmalloc
     branches:
     - master
     decorate: true
@@ -467,7 +467,7 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2016ReleaseSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2016RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
 
   - name: post-openenclave-Win2019Debug
     branches:
@@ -505,7 +505,7 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019Release --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
 
-  - name: post-openenclave-Win2019ReleaseSnmalloc
+  - name: post-openenclave-Win2019RelSnmalloc
     branches:
     - master
     decorate: true
@@ -515,4 +515,4 @@ postsubmits:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019ReleaseSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        

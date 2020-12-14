@@ -570,7 +570,7 @@ periodics:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2016Release --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        
 
-  - name: ci-openenclave-Win2016ReleaseSnmalloc
+  - name: ci-openenclave-Win2016RelSnmalloc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -583,7 +583,7 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2016ReleaseSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2016RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        
 
   - name: ci-openenclave-Win2019Debug
     extra_refs:
@@ -630,7 +630,7 @@ periodics:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019Release --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        
 
-  - name: ci-openenclave-Win2019ReleaseSnmalloc
+  - name: ci-openenclave-Win2019RelSnmalloc
     extra_refs:
     - org: openenclave
       repo: openenclave
@@ -643,4 +643,4 @@ periodics:
           command:
             - sh
             - "-c"
-            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019ReleaseSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters PULL_NUMBER=master"        

@@ -2,9 +2,9 @@
 jobs:
   - script: |
         folder("oeedger8r-cpp") {
-            displayName("eedger8r-cpp")
+            displayName("oeedger8r-cpp")
         }
-        pipelineJob("oeedger8r-cpp/Ubuntu1804BuildClang-7) {
+        pipelineJob("oeedger8r-cpp/Ubuntu1804BuildClang-7") {
             description()
             keepDependencies(false)
             parameters {

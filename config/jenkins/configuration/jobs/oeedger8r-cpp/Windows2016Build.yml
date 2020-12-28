@@ -20,12 +20,6 @@ jobs:
                     description("")
                     trim(true)
                 }
-                stringParam {
-                    name("EXTRA_CMAKE_ARGS")
-                    defaultValue("")
-                    description("")
-                    trim(true)
-                }
             } 
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {

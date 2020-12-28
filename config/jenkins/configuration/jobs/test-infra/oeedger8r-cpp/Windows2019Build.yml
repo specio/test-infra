@@ -1,15 +1,18 @@
 ---
 jobs:
   - script: |
-        folder("oeedger8r-cpp") {
-            displayName("oeedger8r-cpp")
+        folder("test-infra") {
+            displayName("test-infra")
         }
-        pipelineJob("oeedger8r-cpp/Windows2019Build") {
+        folder("test-infra/oeedger8r-cpp") {
+            displayName("test-infra/oeedger8r-cpp")
+        }
+        pipelineJob("test-infra/oeedger8r-cpp/Windows2019Build") {
             description()
             keepDependencies(false)
             parameters {
                 stringParam {
-                    name("PULL_NUMBER")
+                    name("OE_TEST_INFRA_PULL_NUMBER")
                     defaultValue("master")
                     description("")
                     trim(true)
@@ -29,7 +32,7 @@ jobs:
                             remote {
                                 github("openenclave/test-infra", "https")
                             }
-                            branch('*/master')
+                            branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()
@@ -54,7 +57,7 @@ jobs:
                             }
                         }
                     }
-                    scriptPath("config/jobs/oeedger8r-cpp/jenkins/WindowsBuild.Jenkinsfile")
+                    scriptPath("config/jobs/oeedger8r-cpp/jenkins/UbuntuBuild.Jenkinsfile")
                 }
             }
             disabled(false)

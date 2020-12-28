@@ -1,0 +1,116 @@
+---
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - azure:
+          azureEnvironmentName: "Azure"
+          clientId: "<AZURE_SP_CLIENT_ID>"
+          clientSecret: "<AZURE_SP_SECRET>"
+          id: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
+          scope: SYSTEM
+          subscriptionId: "<AZURE_SP_SUBSCRIPTION_ID>"
+          tenant: "<AZURE_SP_TENANT_ID>"
+      - usernamePassword:
+          id: "JenkinsOEAdminAgents"
+          password: "<OEADMIN_PASSWORD>"
+          scope: SYSTEM
+          username: "oeadmin"
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: true
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  labelAtoms:
+  - name: "master"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 0
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+        - id: "jenkinsadmin"
+          password: "<JENKINSADMIN_PASSWORD>"
+  slaveAgentPort: 50000
+  systemMessage: |
+    Welcome to our build server.
+
+    Config is now mostly handled by the 'Jenkins Configuration as Code' (JCasC) plugin.
+    JCasC config can be found in the jenkins.yaml file in the $JENKINS_HOME/configuration folder.
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  sSHD:
+    port: -1
+  scriptApproval:
+    approvedSignatures:
+      - "staticMethod io.jenkins.plugins.casc.ConfigurationAsCode get"
+      - "method io.jenkins.plugins.casc.ConfigurationAsCode configure"
+unclassified:
+  azureKeyVault:
+    credentialID: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
+    keyVaultURL: "<AZURE_KEYVAULT_URL>"
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  defaultFolderConfiguration:
+    healthMetrics:
+    - worstChildHealthMetric:
+        recursive: true
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitSCM:
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "<JENKINSADMIN_EMAIL>"
+    url: "https://<DNS_LABAEL>.<AZURE_LOCATION>.cloudapp.azure.com/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pollSCM:
+    pollingThreadCount: 10
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"

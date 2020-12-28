@@ -1,0 +1,50 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    # Let's Encrypt url for staging: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: <LETSENCRYPT_EMAIL>
+    privateKeySecretRef:
+      name: letsencrypt-production
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+          podTemplate:
+            spec:
+              nodeSelector:
+                "kubernetes.io/os": linux
+---
+# See https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jenkins-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-allow-headers: Authorization, origin, accept
+    nginx.ingress.kubernetes.io/cors-allow-methods: GET, OPTIONS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: '360s'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '360s'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '360s'
+    nginx.ingress.kubernetes.io/proxy-ssl-protocols: 'TLSv1.2 TLSv1.3'
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  tls:
+  - hosts:
+    - <DNS_LABEL>.<AZURE_LOCATION>.cloudapp.azure.com
+    secretName: tls-secret
+  rules:
+  - host: <DNS_LABEL>.<AZURE_LOCATION>.cloudapp.azure.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jenkins-master-nodeport
+          servicePort: 8080

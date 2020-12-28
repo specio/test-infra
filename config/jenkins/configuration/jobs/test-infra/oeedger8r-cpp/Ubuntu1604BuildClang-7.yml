@@ -7,7 +7,7 @@ jobs:
         folder("test-infra/oeedger8r-cpp") {
             displayName("test-infra/oeedger8r-cpp")
         }
-        pipelineJob("test-infra/oeedger8r-cpp/Ubuntu1804BuildClang-7) {
+        pipelineJob("test-infra/oeedger8r-cpp/Ubuntu1604BuildClang-7") {
             description()
             keepDependencies(false)
             parameters {
@@ -19,7 +19,7 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("1804")
+                    defaultValue("1604")
                     description("")
                     trim(true)
                 }

@@ -637,6 +637,54 @@ postsubmits:
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
 
+  - name: post-test-infra-openenclave-HostVerify16042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/HostVerify16042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
+
+  - name: post-test-infra-openenclave-HostVerify18042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/HostVerify18042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
+
+  - name: post-test-infra-openenclave-LinuxElf18042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/LinuxElf18042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
+
+  - name: post-test-infra-openenclave-LinuxElf16042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/LinuxElf16042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  OE_TEST_INFRA_PULL_NUMBER=master"        
+
   - name: post-test-infra-openenclave-build-ping
     branches:
     - master

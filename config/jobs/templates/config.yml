@@ -76,6 +76,10 @@ pipelines:
     Win2019DebugSnmalloc
     Win2019Release
     Win2019RelSnmalloc
+    HostVerify16042019
+    HostVerify18042019
+    LinuxElf18042019
+    LinuxElf16042019
   openenclave-build:
     ping
   openenclave-ci:

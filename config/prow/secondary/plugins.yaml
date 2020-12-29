@@ -1,0 +1,170 @@
+plugins:
+  openenclave-ci:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
+## Remove the below upon transfer of test-infra to oe from here until...
+  openenclave/test-infra:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+  openenclave/openenclave-ci:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
+  openenclave/openenclave-mbedtls:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
+  openenclave/openenclave-curl:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
+  openenclave/oeedger8r-cpp:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+
+## .. here. Once again, delete the above.
+
+# Lower bounds in number of lines changed; XS is assumed to be zero.
+size:
+  s:   10
+  m:   30
+  l:   100
+  xl:  500
+  xxl: 1000
+
+label:
+  additional_labels:
+    - api-review
+    - community/discussion
+    - community/maintenance
+    - community/question
+    - platform/azure
+    - platform/other
+    - tide/merge-method-merge
+    - tide/merge-method-rebase
+    - tide/merge-method-squash
+
+config_updater:
+  maps:
+    config/prow/secondary/config.yaml:
+      name: config
+    config/prow/secondary/plugins.yaml:
+      name: plugins
+    config/jobs/**/*.yml:
+      name: job-config
+      gzip: true

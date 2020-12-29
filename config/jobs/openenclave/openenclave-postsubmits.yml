@@ -516,3 +516,99 @@ postsubmits:
             - sh
             - "-c"
             - "python /hack/jenkins_bootstrap.py --job openenclave/job/Win2019RelSnmalloc --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-HostVerifyRel16042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/HostVerifyRel16042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-HostVerifyRel18042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/HostVerifyRel18042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-HostVerifyDeb16042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/HostVerifyDeb16042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-HostVerifyDeb18042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/HostVerifyDeb18042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-LinuxElfRel18042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/LinuxElfRel18042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-LinuxElfRel16042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/LinuxElfRel16042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-LinuxElfDeb18042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/LinuxElfDeb18042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        
+
+  - name: post-openenclave-LinuxElfDeb16042019
+    branches:
+    - master
+    decorate: true
+    spec:
+      containers:
+        - image: openenclave/jenkinsoperator:latest
+          command:
+            - sh
+            - "-c"
+            - "python /hack/jenkins_bootstrap.py --job openenclave/job/LinuxElfDeb16042019 --jenkins-user $JENKINS_USER --url $JENKINS_URL --jenkins-password $JENKINS_TOKEN --parameters  PULL_NUMBER=master"        

@@ -173,7 +173,6 @@ def openenclavepackageInstall( String BUILD_CONFIG="Release", String COMPILER="c
     }
 }
 
-
 // Clean up environment, do not fail on error.
 def cleanup() {
     if (isUnix()) {
@@ -188,6 +187,62 @@ def cleanup() {
                 error "Program failed, please read logs..."
             } 
         
+    }
+}
+
+/// This is copy and pasted from the deprecated openenclave-ci repo and is used for multiphase tests, we should consider cleaning this up and refactoring 
+def ContainerRun(String imageName, String compiler, String task, String runArgs="") {
+    def image = docker.image(imageName)
+    image.pull()
+    image.inside(runArgs) {
+        dir("${WORKSPACE}/openenclave/build") {
+            Run(compiler, task)
+        }
+    }
+}
+
+def runTask(String task) {
+    dir("${WORKSPACE}/build") {
+        sh """#!/usr/bin/env bash
+                set -o errexit
+                set -o pipefail
+                source /etc/profile
+                ${task}
+            """
+    }
+}
+
+def Run(String compiler, String task, String compiler_version = "") {
+    def c_compiler
+    def cpp_compiler
+    switch(compiler) {
+        case "cross":
+            // In this case, the compiler is set by the CMake toolchain file. As
+            // such, it is not necessary to specify anything in the environment.
+            runTask(task)
+            return
+        case "clang-7":
+            c_compiler = "clang"
+            cpp_compiler = "clang++"
+            compiler_version = "7"
+            break
+        case "gcc":
+            c_compiler = "gcc"
+            cpp_compiler = "g++"
+            break
+        default:
+            // This is needed for backwards compatibility with the old
+            // implementation of the method.
+            c_compiler = "clang"
+            cpp_compiler = "clang++"
+            compiler_version = "8"
+    }
+    if (compiler_version) {
+        c_compiler += "-${compiler_version}"
+        cpp_compiler += "-${compiler_version}"
+    }
+    withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+        runTask(task);
     }
 }
 

@@ -4,7 +4,7 @@ jobs:
         folder("test-infra") {
             displayName("test-infra")
         }
-        ffolder("test-infra/oeedger8r-cpp") {
+        folder("test-infra/oeedger8r-cpp") {
             displayName("oeedger8r-cpp")
         }
         pipelineJob("test-infra/oeedger8r-cpp/Rhel8BuildGCC") {

@@ -53,11 +53,14 @@ readonly AKS_KUBERNETES_VERSION=1.18.8
 # Name the new resource group that will contain your Virtual Machines
 # Not to be confused with your AKS Resource Group
 # Create this manually if you do not want to grant your Jenkins Service Principal the
-# permissions to create new resource groups in the subscription. Otherwise this 
-# resource group will be automatically created by Jenkins.
+#   permissions to create new resource groups in the subscription. Otherwise this 
+#   resource group will be automatically created by Jenkins.
+# Note: Each region needs their own resource group, so the region is appended to the end. See configuration/cloud.yml for details
+#       E.g. <AZURE_VM_RESOURCE_GROUP>-uksouth
 readonly AZURE_VM_RESOURCE_GROUP=""
 
-# Location used for all your Azure VMs. See cloud.yml for more fine grained control if necessary.
+# If not configuration/cloud.yml is not manually configured, then use this to control the location used for all your Azure VMs
+# See cloud.yml for more fine grained control if necessary.
 # This uses the common name of regions. Example: "East US", "Canada Central", "UK South"
 # To list all region codes use: `az account list-locations -o table`
 readonly AZURE_VM_LOCATION=""

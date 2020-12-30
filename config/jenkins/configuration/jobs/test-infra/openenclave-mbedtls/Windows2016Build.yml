@@ -5,7 +5,7 @@ jobs:
             displayName("test-infra")
         }
         folder("test-infra/openenclave-mbedtls") {
-            displayName("test-infra/openenclave-mbedtls")
+            displayName("openenclave-mbedtls")
         }
         pipelineJob("test-infra/openenclave-mbedtls/Windows2016Build") {
             description()

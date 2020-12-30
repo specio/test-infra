@@ -6,7 +6,7 @@ jenkins:
       cloudName: "AzureVMAgentsUKSouth"
       configurationStatus: "pass"
       deploymentTimeout: 1200
-      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>"
+      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-uksouth"
       maxVirtualMachinesLimit: 10
       resourceGroupReferenceType: "new"
       vmTemplates:
@@ -33,7 +33,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1804"
-        location: "uksouth"
+        location: "UK South"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -72,7 +72,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1604"
-        location: "uksouth"
+        location: "UK South"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -119,7 +119,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-RHEL-8"
-        location: "uksouth"
+        location: "UK South"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Linux"
@@ -157,7 +157,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2016-Docker"
-        location: "uksouth"
+        location: "UK South"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -196,7 +196,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2019-Docker"
-        location: "uksouth"
+        location: "UK South"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -229,7 +229,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
-        location: "uksouth"
+        location: "UK South"
         noOfParallelJobs: 4
         osDiskSize: 0
         osType: "Linux"
@@ -247,10 +247,10 @@ jenkins:
         virtualMachineSize: "Standard_D4_v2"
   - azureVM:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
-      cloudName: "AzureVMAgentsWestUs"
+      cloudName: "AzureVMAgentsEastUs"
       configurationStatus: "pass"
       deploymentTimeout: 1200
-      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>"
+      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-westus"
       maxVirtualMachinesLimit: 10
       resourceGroupReferenceType: "new"
       vmTemplates:
@@ -277,7 +277,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1804"
-        location: "eastus"
+        location: "East US"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -316,7 +316,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1604"
-        location: "uksouth"
+        location: "East US"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -363,7 +363,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-RHEL-8"
-        location: "eastus"
+        location: "East US"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Linux"
@@ -401,7 +401,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2016-Docker"
-        location: "eastus"
+        location: "East US"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -440,7 +440,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2019-Docker"
-        location: "eastus"
+        location: "East US"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -473,7 +473,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
-        location: "eastus"
+        location: "East US"
         noOfParallelJobs: 4
         osDiskSize: 0
         osType: "Linux"
@@ -491,10 +491,10 @@ jenkins:
         virtualMachineSize: "Standard_D4_v2"
   - azureVM:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
-      cloudName: "AzureVMAgentsEastUS"
+      cloudName: "AzureVMAgentsWestUS"
       configurationStatus: "pass"
       deploymentTimeout: 1200
-      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>"
+      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-wastus"
       maxVirtualMachinesLimit: 10
       resourceGroupReferenceType: "new"
       vmTemplates:
@@ -521,7 +521,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1804"
-        location: "westus2"
+        location: "West US 2"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -560,7 +560,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1604"
-        location: "westus2"
+        location: "West US 2"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -607,7 +607,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-RHEL-8"
-        location: "westus2"
+        location: "West US 2"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Linux"
@@ -645,7 +645,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2016-Docker"
-        location: "westus2"
+        location: "West US 2"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -684,7 +684,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2019-Docker"
-        location: "westus2"
+        location: "West US 2"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -717,7 +717,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
-        location: "westus2"
+        location: "West US 2"
         noOfParallelJobs: 4
         osDiskSize: 0
         osType: "Linux"

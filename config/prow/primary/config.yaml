@@ -109,10 +109,10 @@ presets:
         key: jenkins-token
 
   - name: JENKINS_USER
-    value: party
+    value: prowuser
   
   - name: JENKINS_URL
-    value: https://oe-prow-jenk-testing.eastus2.cloudapp.azure.com
+    value: https://chris-preprod-jenkins-2.canadacentral.cloudapp.azure.com
 
   - name: DOCKER_USER
     value: openenclave

@@ -4,10 +4,10 @@ jobs:
         folder("test-infra") {
             displayName("test-infra")
         }
-        folder("test-infra/oeedger8r-cpp") {
-            displayName("test-infra/oeedger8r-cpp")
+        folder("test-infra/openenclave-mbedtls") {
+            displayName("test-infra/openenclave-mbedtls")
         }
-        pipelineJob("test-infra/oeedger8r-cpp/Ubuntu1804Build") {
+        pipelineJob("test-infra/openenclave-mbedtls/Windows2019Build") {
             description()
             keepDependencies(false)
             parameters {
@@ -18,26 +18,8 @@ jobs:
                     trim(true)
                 }
                 stringParam {
-                    name("LINUX_VERSION")
-                    defaultValue("1804")
-                    description("")
-                    trim(true)
-                }
-                stringParam {
-                    name("BUILD_TYPE")
-                    defaultValue("Debug")
-                    description("")
-                    trim(true)
-                }
-                stringParam{
-                    name("EXTRA_CMAKE_ARGS")
-                    defaultValue("")
-                    description("")
-                    trim(true)
-                }
-                stringParam {
-                    name("COMPILER")
-                    defaultValue("clang-7")
+                    name("WINDOWS_VERSION")
+                    defaultValue("2019")
                     description("")
                     trim(true)
                 }
@@ -75,7 +57,7 @@ jobs:
                             }
                         }
                     }
-                    scriptPath("config/jobs/oeedger8r-cpp/jenkins/UbuntuBuild.Jenkinsfile")
+                    scriptPath("config/jobs/openenclave-mbedtls/jenkins/UbuntuBuild.Jenkinsfile")
                 }
             }
             disabled(false)

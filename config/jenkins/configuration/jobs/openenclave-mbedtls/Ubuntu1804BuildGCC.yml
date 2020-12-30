@@ -1,15 +1,15 @@
 ---
 jobs:
   - script: |
-        folder("oeedger8r-cpp") {
-            displayName("oeedger8r-cpp")
+        folder("openenclave-mbedtls") {
+            displayName("openenclave-mbedtls")
         }
-        pipelineJob("oeedger8r-cpp/Ubuntu1804Build") {
+        pipelineJob("openenclave-mbedtls/Ubuntu1804BuildGCC") {
             description()
             keepDependencies(false)
             parameters {
                 stringParam {
-                    name("OE_PULL_NUMBER")
+                    name("PULL_NUMBER")
                     defaultValue("master")
                     description("")
                     trim(true)
@@ -21,20 +21,8 @@ jobs:
                     trim(true)
                 }
                 stringParam {
-                    name("BUILD_TYPE")
-                    defaultValue("Debug")
-                    description("")
-                    trim(true)
-                }
-                stringParam{
-                    name("EXTRA_CMAKE_ARGS")
-                    defaultValue("")
-                    description("")
-                    trim(true)
-                }
-                stringParam {
                     name("COMPILER")
-                    defaultValue("clang-7")
+                    defaultValue("gcc")
                     description("")
                     trim(true)
                 }
@@ -47,7 +35,7 @@ jobs:
                             remote {
                                 github("openenclave/test-infra", "https")
                             }
-                            branch("*/master")
+                            branch('*/master')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()
@@ -72,7 +60,7 @@ jobs:
                             }
                         }
                     }
-                    scriptPath("config/jobs/oeedger8r-cpp/jenkins/UbuntuBuild.Jenkinsfile")
+                    scriptPath("config/jobs/openenclave-mbedtls/jenkins/UbuntuBuild.Jenkinsfile")
                 }
             }
             disabled(false)
@@ -85,8 +73,5 @@ jobs:
                         'artifactNumToKeep'('-1')
                     }
                 }
-            }
-            triggers {
-                cron("H * * * *")
             }
         }

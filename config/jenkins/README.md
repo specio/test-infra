@@ -69,8 +69,28 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | sud
 
 ## Updating Jenkins Configuration
 1. Update `configuration/jenkins.yml` or if you want to keep it separate from core configuration you can add a new YAML file in `configuration/`.
-2. Run `./deploy_jenkins.sh -c` to deploy the new configuration to the Jenkins master.
-3. Configuration changes can be picked up by restarting Jenkins (during a new Jenkins setup) or by running the 'Master/reload-configuration' job on Jenkins.
+2. Create a pull request into the master branch of openenclave/test-infra
+3. Once merged, Jenkins will automatically update, usually within 5-15 min. If it does not update within an extended period, there may be an error with the configuration.
+
+### Creating new secrets or updating existing secrets
+Note: You will need access to the AKS cluster to do this.
+1. Ensure the new secrets or changes are appropriately added in deploy_jenkins.sh, configuration-update.sh, and kubernetes/configuration-update.yml 
+2. Commit your changes and open a pull request into the master branch of openenclave/test-infra
+3. Shortly before the pull request is merged, turn off configuration updates on Jenkins with `kubectl delete cronjob configuration-update`
+4. Once merged, you can patch existing Jenkins with your changes by creating the secret manually, apply the new Kubernetes manifest, and run `./deploy_jenkins.sh -c`.
+5. Reapply configuration updates with `kubectl apply -f kubernetes/configuration-update.yml`
+6. Wait for the configuration-update job to complete with `kubectl get pods -w`
+7. Reload Jenkins configuration in Manage Jenkins > Configuration as Code
+
+### Change value of existing secrets
+Note: You will need access to the AKS cluster to do this.
+1. Manually update the secret in the AKS Cluster. The new secrets will be automatically used on the next configuration update run.
+2. Wait for a configuration update run (when new changes make its way to openenclave/test-infra master branch). There are no convenient options to force a run at this time.
+
+### Updating configuration-update.sh
+Note: You will need access to the AKS cluster to do this.
+1. Make the desired updates and open a pull request into the master branch of openenclave/test-infra
+2. Once merged, you can patch existing Jenkins with your changes by creating the secret manually, apply the new Kubernetes manifest, and run `./deploy_jenkins.sh -c`. The new changes will be used in the next configuration update.
 
 _For more information, see https://github.com/jenkinsci/configuration-as-code-plugin_ 
 

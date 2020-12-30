@@ -33,7 +33,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1804"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -72,7 +72,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1604"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -119,7 +119,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-RHEL-8"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Linux"
@@ -157,7 +157,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2016-Docker"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -196,7 +196,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2019-Docker"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -229,7 +229,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 4
         osDiskSize: 0
         osType: "Linux"
@@ -277,7 +277,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1804"
-        location: "<AZURE_VM_LOCATION>"
+        location: "eastus"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -316,7 +316,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1604"
-        location: "<AZURE_VM_LOCATION>"
+        location: "uksouth"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -363,7 +363,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-RHEL-8"
-        location: "<AZURE_VM_LOCATION>"
+        location: "eastus"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Linux"
@@ -401,7 +401,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2016-Docker"
-        location: "<AZURE_VM_LOCATION>"
+        location: "eastus"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -440,7 +440,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2019-Docker"
-        location: "<AZURE_VM_LOCATION>"
+        location: "eastus"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -473,7 +473,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
-        location: "<AZURE_VM_LOCATION>"
+        location: "eastus"
         noOfParallelJobs: 4
         osDiskSize: 0
         osType: "Linux"
@@ -521,7 +521,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1804"
-        location: "<AZURE_VM_LOCATION>"
+        location: "westus2"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -560,7 +560,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-1604"
-        location: "<AZURE_VM_LOCATION>"
+        location: "westus2"
         noOfParallelJobs: 1
         osDiskSize: 0
         osType: "Linux"
@@ -607,7 +607,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "ACC-RHEL-8"
-        location: "<AZURE_VM_LOCATION>"
+        location: "westus2"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Linux"
@@ -645,7 +645,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2016-Docker"
-        location: "<AZURE_VM_LOCATION>"
+        location: "westus2"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -684,7 +684,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "SGXFLC-Windows-2019-Docker"
-        location: "<AZURE_VM_LOCATION>"
+        location: "westus2"
         noOfParallelJobs: 1
         osDiskSize: 200
         osType: "Windows"
@@ -717,7 +717,7 @@ jenkins:
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
-        location: "<AZURE_VM_LOCATION>"
+        location: "westus2"
         noOfParallelJobs: 4
         osDiskSize: 0
         osType: "Linux"

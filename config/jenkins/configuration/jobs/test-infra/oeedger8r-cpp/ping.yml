@@ -1,0 +1,42 @@
+---
+jobs:
+  - script: |
+        folder("test-infra") {
+            displayName("test-infra")
+        }
+        folder("test-infra/oeedger8r-cpp") {
+            displayName("test-infra/oeedger8r-cpp")
+        }
+        job("test-infra/oeedger8r-cpp/ping") {
+            description()
+            keepDependencies(false)
+            parameters {
+                stringParam {
+                    name("OE_TEST_INFRA_PULL_NUMBER")
+                    defaultValue("PULL_NUMBER")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("PULL_NUMBER")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+            } 
+            authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
+            steps {
+                shell("echo 'pong'")
+            }
+            disabled(false)
+            configure {
+                it / 'properties' / 'jenkins.model.BuildDiscarderProperty' {
+                    strategy {
+                        'daysToKeep'('2')
+                        'numToKeep'('100')
+                        'artifactDaysToKeep'('-1')
+                        'artifactNumToKeep'('-1')
+                    }
+                }
+            }
+        }

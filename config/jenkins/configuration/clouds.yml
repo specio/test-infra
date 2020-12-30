@@ -250,7 +250,7 @@ jenkins:
       cloudName: "AzureVMAgentsEastUs"
       configurationStatus: "pass"
       deploymentTimeout: 1200
-      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-westus"
+      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-eastus"
       maxVirtualMachinesLimit: 10
       resourceGroupReferenceType: "new"
       vmTemplates:
@@ -494,7 +494,7 @@ jenkins:
       cloudName: "AzureVMAgentsWestUS"
       configurationStatus: "pass"
       deploymentTimeout: 1200
-      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-wastus"
+      newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-westus2"
       maxVirtualMachinesLimit: 10
       resourceGroupReferenceType: "new"
       vmTemplates:

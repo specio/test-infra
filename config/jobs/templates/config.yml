@@ -127,6 +127,13 @@ pipelines:
     ping
   public-talks:
     ping
+
+jobs:
+  RhelBuild
+  UbuntuBuild
+  WindowsBuild
+  hostverify
+  linuxelfbuild
 jobmaps:
   RhelBuild:
     Rhel8BuildClang-8

@@ -5,6 +5,7 @@ jobs:
             displayName("openenclave-site")
         }
         job("openenclave-site/ping") {
+            label('OverWatch')
             description()
             keepDependencies(false)
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')

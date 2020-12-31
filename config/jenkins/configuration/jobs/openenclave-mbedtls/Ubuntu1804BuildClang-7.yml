@@ -16,7 +16,7 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("1804")
+                    defaultValue("1604")
                     description("")
                     trim(true)
                 }
@@ -74,4 +74,4 @@ jobs:
                     }
                 }
             }
-        }
+        }        

@@ -19,13 +19,13 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("1804")
+                    defaultValue("1604")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("clang-7")
+                    defaultValue("gcc")
                     description("")
                     trim(true)
                 }
@@ -38,7 +38,7 @@ jobs:
                             remote {
                                 github("openenclave/test-infra", "https")
                             }
-                            branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
+                            branch('origin/pr/')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()
@@ -77,4 +77,4 @@ jobs:
                     }
                 }
             }
-        }
+        }           

@@ -1,7 +1,7 @@
 ---
 jobs:
   - script: |
-        folder("oeedger8r-cpp") {
+        folder("{repo}") {
             displayName("${repo}")
         }
         folder("test-infra/${repo}") {

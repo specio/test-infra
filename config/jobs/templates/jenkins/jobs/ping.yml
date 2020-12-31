@@ -1,10 +1,10 @@
 ---
 jobs:
   - script: |
-        folder("oeedger8r-cpp") {
+        folder("${repo}") {
             displayName("${repo}")
         }
-        job("${repo}/ping") {
+        job("${repo}/${pipeline}") {
             description()
             keepDependencies(false)
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')

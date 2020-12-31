@@ -16,13 +16,13 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("1804")
+                    defaultValue("1604")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("gcc")
+                    defaultValue("clang-7")
                     description("")
                     trim(true)
                 }
@@ -74,4 +74,4 @@ jobs:
                     }
                 }
             }
-        }
+        }        

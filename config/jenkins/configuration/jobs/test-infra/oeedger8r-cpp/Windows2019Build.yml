@@ -19,7 +19,7 @@ jobs:
                 }
                 stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("2019")
+                    defaultValue("2016")
                     description("")
                     trim(true)
                 }
@@ -32,7 +32,7 @@ jobs:
                             remote {
                                 github("openenclave/test-infra", "https")
                             }
-                            branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
+                            branch('origin/pr/')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()
@@ -71,4 +71,4 @@ jobs:
                     }
                 }
             }
-        }
+        }           

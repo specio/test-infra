@@ -6,6 +6,27 @@ repos=$(yq r $PWD/config.yml repos)
 
 build_configs=$(yq r $PWD/config.yml build-configs)
 
+# Load up job map
+
+#!/bin/bash 
+set +x
+
+# Get repo name
+jobs=$(yq r $PWD/config.yml jobs)
+
+declare -A jobmap
+
+for job in $jobs
+do
+    jobmaps=$(yq r $PWD/config.yml jobmaps.$job)
+    for jobkey in $jobmaps
+    do
+        jobmap["$jobkey"]="$job"
+        echo "$jobkey maps to - > ${jobmap[$jobkey]}"
+    done
+done
+
+
 for repo in $repos
 do
     # Create folders if DNE
@@ -49,23 +70,21 @@ EOF
 echo "generating $repo $build_config $pipeline template"
             # New line seems to not work 100% of the time, just for readability
             mkdir -p $PWD/../../jenkins/configuration/jobs/${repo}
-            rm $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yaml
-            echo $'' >> $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yaml
+            rm $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yml
             # Badly indexed due to weird evaluation..
 eval "cat <<EOF
-$(<$PWD/../templates/jenkins/jobs/ping.yml)        
+$(<$PWD/jenkins/jobs/${jobmap[$pipeline]}.yml)        
 EOF
-" >> $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yaml
+" >> $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yml
 
 ############ Generating Test-infra DSLS
             mkdir -p $PWD/../../jenkins/configuration/jobs/test-infra/${repo}
-            rm $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yaml
-            echo $'' >> $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yaml
+            rm $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yml
             # Badly indexed due to weird evaluation..
 eval "cat <<EOF
-$(<$PWD/../templates/jenkins/jobs/test-infra/ping.yml)           
+$(<$PWD/jenkins/jobs/test-infra/${jobmap[$pipeline]}.yml)           
 EOF
-" >> $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yaml
+" >> $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yml
         done
     done
 done

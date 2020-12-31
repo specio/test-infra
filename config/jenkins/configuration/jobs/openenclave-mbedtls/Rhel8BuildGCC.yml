@@ -22,7 +22,7 @@ jobs:
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("gcc")
+                    defaultValue("clang-8")
                     description("")
                     trim(true)
                 }
@@ -74,4 +74,4 @@ jobs:
                     }
                 }
             }
-        }
+        }        

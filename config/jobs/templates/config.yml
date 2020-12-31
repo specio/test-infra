@@ -134,7 +134,10 @@ jobs:
   WindowsBuild
   hostverify
   linuxelfbuild
+  ping
 jobmaps:
+  ping:
+    ping
   RhelBuild:
     Rhel8BuildClang-8
     Rhel8BuildGCC

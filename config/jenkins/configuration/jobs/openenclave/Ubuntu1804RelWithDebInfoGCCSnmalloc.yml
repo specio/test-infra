@@ -16,13 +16,19 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("1604")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("WINDOWS_VERSION")
+                    defaultValue("")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("clang-7")
+                    defaultValue("gcc")
                     description("")
                     trim(true)
                 }

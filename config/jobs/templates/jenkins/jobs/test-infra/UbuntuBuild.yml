@@ -19,17 +19,23 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("1604")
+                    defaultValue("${linux_version}")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("WINDOWS_VERSION")
+                    defaultValue("${windows_version}")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("gcc")
+                    defaultValue("${compilermap[${pipeline}]}")
                     description("")
                     trim(true)
                 }
-            } 
+            }
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {

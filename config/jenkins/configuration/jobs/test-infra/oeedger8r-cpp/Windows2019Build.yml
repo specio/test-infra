@@ -18,12 +18,24 @@ jobs:
                     trim(true)
                 }
                 stringParam {
-                    name("WINDOWS_VERSION")
-                    defaultValue("2016")
+                    name("LINUX_VERSION")
+                    defaultValue("")
                     description("")
                     trim(true)
                 }
-            } 
+                stringParam {
+                    name("WINDOWS_VERSION")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("COMPILER")
+                    defaultValue("clang-8")
+                    description("")
+                    trim(true)
+                }
+            }
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {

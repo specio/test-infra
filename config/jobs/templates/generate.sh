@@ -6,16 +6,9 @@ repos=$(yq r $PWD/config.yml repos)
 
 build_configs=$(yq r $PWD/config.yml build-configs)
 
-# Load up job map
-
-#!/bin/bash 
-set +x
-
-# Get repo name
+# load jobmap into memory
 jobs=$(yq r $PWD/config.yml jobs)
-
 declare -A jobmap
-
 for job in $jobs
 do
     jobmaps=$(yq r $PWD/config.yml jobmaps.$job)
@@ -26,6 +19,18 @@ do
     done
 done
 
+# load compilermap into memory
+compilers=$(yq r $PWD/config.yml compilers)
+declare -A compilermap
+for compiler in $compilers
+do
+    compilermaps=$(yq r $PWD/config.yml compilermap.$compiler)
+    echo $compilermaps
+    for compilerkey in $compilermaps
+    do
+        compilermap["$compilerkey"]="$compiler"
+    done
+done
 
 for repo in $repos
 do
@@ -88,4 +93,3 @@ EOF
         done
     done
 done
-

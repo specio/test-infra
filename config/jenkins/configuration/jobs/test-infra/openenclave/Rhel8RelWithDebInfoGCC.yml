@@ -19,7 +19,7 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("")
+                    defaultValue("8")
                     description("")
                     trim(true)
                 }

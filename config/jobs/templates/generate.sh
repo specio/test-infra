@@ -25,10 +25,23 @@ declare -A compilermap
 for compiler in $compilers
 do
     compilermaps=$(yq r $PWD/config.yml compilermap.$compiler)
-    echo $compilermaps
     for compilerkey in $compilermaps
     do
         compilermap["$compilerkey"]="$compiler"
+        echo "$compilerkey maps to - > ${compilermap[$compilerkey]}"
+    done
+done
+
+# load linuxversionmap into memory
+linuxversions=$(yq r $PWD/config.yml linuxversions)
+declare -A linuxversionmap
+for linuxversion in $linuxversions
+do
+    linuxversionsmap=$(yq r $PWD/config.yml linuxversionsmap.$linuxversion)
+    for linuxversionkey in $linuxversionsmap
+    do
+        linuxversionmap["$linuxversionkey"]="$linuxversion"
+        echo "$linuxversionkey maps to - > ${linuxversionmap[$linuxversionkey]}"
     done
 done
 

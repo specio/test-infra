@@ -16,7 +16,7 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("${linux_version}")
+                    defaultValue("${linuxversionmap[${pipeline}]}")
                     description("")
                     trim(true)
                 }

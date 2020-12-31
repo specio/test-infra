@@ -8,6 +8,14 @@ jobs:
             description()
             keepDependencies(false)
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
+            parameters {
+                stringParam {
+                    name("PULL_NUMBER")
+                    defaultValue("master")
+                    description("")
+                    trim(true)
+                }
+            }
             steps {
                 shell("echo 'pong'")
             }

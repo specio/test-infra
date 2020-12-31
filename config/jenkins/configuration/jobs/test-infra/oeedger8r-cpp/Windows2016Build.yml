@@ -18,12 +18,24 @@ jobs:
                     trim(true)
                 }
                 stringParam {
-                    name("WINDOWS_VERSION")
-                    defaultValue("2016")
+                    name("LINUX_VERSION")
+                    defaultValue("")
                     description("")
                     trim(true)
                 }
-            } 
+                stringParam {
+                    name("WINDOWS_VERSION")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("COMPILER")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+            }
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {
@@ -32,7 +44,7 @@ jobs:
                             remote {
                                 github("openenclave/test-infra", "https")
                             }
-                            branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
+                            branch('origin/pr/')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()
@@ -71,4 +83,4 @@ jobs:
                     }
                 }
             }
-        }
+        }           

@@ -15,8 +15,20 @@ jobs:
                     trim(true)
                 }
                 stringParam {
+                    name("LINUX_VERSION")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("2019")
+                    defaultValue("")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("COMPILER")
+                    defaultValue("")
                     description("")
                     trim(true)
                 }
@@ -68,4 +80,4 @@ jobs:
                     }
                 }
             }
-        }
+        }        

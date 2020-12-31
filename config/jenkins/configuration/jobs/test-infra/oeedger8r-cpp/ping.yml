@@ -1,8 +1,8 @@
 ---
 jobs:
   - script: |
-        folder("test-infra") {
-            displayName("test-infra")
+        folder("{repo}") {
+            displayName("oeedger8r-cpp")
         }
         folder("test-infra/oeedger8r-cpp") {
             displayName("oeedger8r-cpp")
@@ -25,4 +25,4 @@ jobs:
                     }
                 }
             }
-        }
+        }           

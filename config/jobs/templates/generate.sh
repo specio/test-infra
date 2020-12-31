@@ -6,6 +6,58 @@ repos=$(yq r $PWD/config.yml repos)
 
 build_configs=$(yq r $PWD/config.yml build-configs)
 
+# load jobmap into memory
+jobs=$(yq r $PWD/config.yml jobs)
+declare -A jobmap
+for job in $jobs
+do
+    jobmaps=$(yq r $PWD/config.yml jobmaps.$job)
+    for jobkey in $jobmaps
+    do
+        jobmap["$jobkey"]="$job"
+        echo "$jobkey maps to - > ${jobmap[$jobkey]}"
+    done
+done
+
+# load compilermap into memory
+compilers=$(yq r $PWD/config.yml compilers)
+declare -A compilermap
+for compiler in $compilers
+do
+    compilermaps=$(yq r $PWD/config.yml compilermap.$compiler)
+    for compilerkey in $compilermaps
+    do
+        compilermap["$compilerkey"]="$compiler"
+        echo "$compilerkey maps to - > ${compilermap[$compilerkey]}"
+    done
+done
+
+# load linuxversionmap into memory
+linuxversions=$(yq r $PWD/config.yml linuxversions)
+declare -A linuxversionmap
+for linuxversion in $linuxversions
+do
+    linuxversionsmap=$(yq r $PWD/config.yml linuxversionsmap.$linuxversion)
+    for linuxversionkey in $linuxversionsmap
+    do
+        linuxversionmap["$linuxversionkey"]="$linuxversion"
+        echo "$linuxversionkey maps to - > ${linuxversionmap[$linuxversionkey]}"
+    done
+done
+
+# load linuxversionmap into memory
+windowsversions=$(yq r $PWD/config.yml windowsversions)
+declare -A windowsversionmap
+for windowsversion in $windowsversions
+do
+    windowsversionsmap=$(yq r $PWD/config.yml windowsversionsmap.$windowsversion)
+    for windowsversionkey in $windowsversionsmap
+    do
+        windowsversionmap["$windowsversionkey"]="$windowsversion"
+        echo "$windowsversionkey maps to - > ${windowsversionmap[$windowsversionkey]}"
+    done
+done
+
 for repo in $repos
 do
     # Create folders if DNE
@@ -44,7 +96,26 @@ eval "cat <<EOF
 $(<$PWD/../templates/test-infra/$build_config.yml)        
 EOF
 " >> $PWD/../test-infra/test-infra-$build_config.yaml
+
+############ Generating DSLS
+echo "generating $repo $build_config $pipeline template"
+            # New line seems to not work 100% of the time, just for readability
+            mkdir -p $PWD/../../jenkins/configuration/jobs/${repo}
+            rm $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yml
+            # Badly indexed due to weird evaluation..
+eval "cat <<EOF
+$(<$PWD/jenkins/jobs/${jobmap[$pipeline]}.yml)        
+EOF
+" >> $PWD/../../jenkins/configuration/jobs/${repo}/${pipeline}.yml
+
+############ Generating Test-infra DSLS
+            mkdir -p $PWD/../../jenkins/configuration/jobs/test-infra/${repo}
+            rm $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yml
+            # Badly indexed due to weird evaluation..
+eval "cat <<EOF
+$(<$PWD/jenkins/jobs/test-infra/${jobmap[$pipeline]}.yml)           
+EOF
+" >> $PWD/../../jenkins/configuration/jobs/test-infra/${repo}/${pipeline}.yml
         done
     done
 done
-

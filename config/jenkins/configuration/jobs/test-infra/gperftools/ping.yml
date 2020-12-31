@@ -1,7 +1,7 @@
 ---
 jobs:
   - script: |
-        folder("gperftools") {
+        folder("{repo}") {
             displayName("gperftools")
         }
         folder("test-infra/gperftools") {
@@ -25,4 +25,4 @@ jobs:
                     }
                 }
             }
-        }
+        }           

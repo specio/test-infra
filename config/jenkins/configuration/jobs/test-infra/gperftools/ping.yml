@@ -8,6 +8,7 @@ jobs:
             displayName("gperftools")
         }
         job("test-infra/gperftools/ping") {
+            label('OverWatch')
             description()
             keepDependencies(false)
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')

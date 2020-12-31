@@ -5,6 +5,7 @@ jobs:
             displayName("${repo}")
         }
         job("${repo}/${pipeline}") {
+            label('OverWatch')
             description()
             keepDependencies(false)
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')

@@ -31,7 +31,7 @@ jobs:
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("")
+                    defaultValue("gcc")
                     description("")
                     trim(true)
                 }

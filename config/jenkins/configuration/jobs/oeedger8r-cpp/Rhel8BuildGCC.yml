@@ -28,11 +28,11 @@ jobs:
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("")
+                    defaultValue("gcc")
                     description("")
                     trim(true)
                 }
-            }
+            } 
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {

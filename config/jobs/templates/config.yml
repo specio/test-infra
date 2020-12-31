@@ -128,6 +128,26 @@ pipelines:
   public-talks:
     ping
 
+windowsversions:
+  2016
+  2019
+windowsversions:
+  2016:
+    Win2016Debug
+    Win2016DebugSnmalloc
+    Win2016DebugSnmallocE2E
+    Win2016RelSnmalloc
+    Win2016RelSnmallocE2E
+    Win2016Release
+    Windows2016Build
+  2019:
+    Windows2019Build
+    Win2019Debug
+    Win2019DebugSnmalloc
+    Win2019DebugSnmallocE2E
+    Win2019RelSnmalloc
+    Win2019RelSnmallocE2E
+    Win2019Release
 linuxversions:
   1604
   1804
@@ -199,6 +219,7 @@ compilermap:
   gcc:
     Ubuntu1604BuildGCC
     Ubuntu1804BuildGCC
+    Rhel8BuildGCC
     Rhel8DebugGCC
     Rhel8DebugGCCSnmalloc
     Rhel8RelWithDebInfoGCC

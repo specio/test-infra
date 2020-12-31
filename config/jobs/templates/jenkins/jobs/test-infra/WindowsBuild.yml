@@ -19,19 +19,19 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("${linux_version}")
+                    defaultValue("${linuxversionmap[${pipeline}]}")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("${windows_version}")
+                    defaultValue("${windowsversionmap[${pipeline}]}")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("${compiler}")
+                    defaultValue("${compilermap[${pipeline}]}")
                     description("")
                     trim(true)
                 }

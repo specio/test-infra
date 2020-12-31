@@ -22,7 +22,7 @@ jobs:
                 }
                 stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("${windows_version}")
+                    defaultValue("${windowsversionmap[${pipeline}]}")
                     description("")
                     trim(true)
                 }

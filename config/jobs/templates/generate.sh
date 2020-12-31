@@ -45,6 +45,19 @@ do
     done
 done
 
+# load linuxversionmap into memory
+windowsversions=$(yq r $PWD/config.yml windowsversions)
+declare -A windowsversionmap
+for windowsversion in $windowsversions
+do
+    windowsversionsmap=$(yq r $PWD/config.yml windowsversionsmap.$windowsversion)
+    for windowsversionkey in $windowsversionsmap
+    do
+        windowsversionmap["$windowsversionkey"]="$windowsversion"
+        echo "$windowsversionkey maps to - > ${windowsversionmap[$windowsversionkey]}"
+    done
+done
+
 for repo in $repos
 do
     # Create folders if DNE

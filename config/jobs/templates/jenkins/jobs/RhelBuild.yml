@@ -22,7 +22,7 @@ jobs:
                 }
                 stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("${windows_version}")
+                    defaultValue("${windowsversionmap[${pipeline}]}")
                     description("")
                     trim(true)
                 }
@@ -32,7 +32,7 @@ jobs:
                     description("")
                     trim(true)
                 }
-            }
+            } 
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {

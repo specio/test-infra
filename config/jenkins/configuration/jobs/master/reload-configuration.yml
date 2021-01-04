@@ -4,6 +4,7 @@ jobs:
             displayName("Master")
         }
         job("Master/reload-configuration") {
+            quietPeriod(0)
             description("Reload Jenkins configuration")
             steps {
                 systemGroovyCommand("""

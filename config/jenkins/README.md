@@ -108,7 +108,7 @@ az aks upgrade \
     --name myAKSCluster \
     --kubernetes-version KUBERNETES_VERSION
 ```
-_For more information, see https://docs.microsoft.com/en-us/azure/aks/upgrade-cluster
+_For more information, see https://docs.microsoft.com/en-us/azure/aks/upgrade-cluster_
 
 ## Updating Jenkins Jobs
 1. Update the relevant job in `configuration/jobs/` or add your own job. The jobs shown in this directory uses the [job-dsl-plugin](https://plugins.jenkins.io/job-dsl/) which is usually made up of a combination of YAML, Groovy, Jenkins Pipeline syntax. For examples, see [the demos from Jenkins CasC](https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos/jobs).

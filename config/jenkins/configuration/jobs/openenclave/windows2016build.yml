@@ -4,6 +4,7 @@ jobs:
             displayName("OpenEnclave")
         }
         pipelineJob("OpenEnclave/Windows2016Build") {
+            quietPeriod(0)
             description()
             keepDependencies(false)
             parameters {

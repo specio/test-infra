@@ -72,6 +72,8 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | sud
 2. Create a pull request into the master branch of openenclave/test-infra
 3. Once merged, Jenkins will automatically update, usually within 5-15 min. If it does not update within an extended period, there may be an error with the configuration.
 
+_For more information, see https://github.com/jenkinsci/configuration-as-code-plugin_ 
+
 ### Creating new secrets or updating existing secrets
 Note: You will need access to the AKS cluster to do this.
 1. Ensure the new secrets or changes are appropriately added in deploy_jenkins.sh, configuration-update.sh, and kubernetes/configuration-update.yml 
@@ -92,7 +94,21 @@ Note: You will need access to the AKS cluster to do this.
 1. Make the desired updates and open a pull request into the master branch of openenclave/test-infra
 2. Once merged, you can patch existing Jenkins with your changes by creating the secret manually, apply the new Kubernetes manifest, and run `./deploy_jenkins.sh -c`. The new changes will be used in the next configuration update.
 
-_For more information, see https://github.com/jenkinsci/configuration-as-code-plugin_ 
+### Upgrading Kubernetes version
+Note: You will need access to the AKS cluster to do this.
+1. Check the available Kubernetes versions
+```
+az aks show --resource-group myResourceGroup --name myAKSCluster --output table
+```
+2. See the release notes and deprecations for Kubernetes to ensure compatibility: https://kubernetes.io/docs/setup/release/
+3. Upgrade your AKS cluster
+```
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
+```
+_For more information, see https://docs.microsoft.com/en-us/azure/aks/upgrade-cluster
 
 ## Updating Jenkins Jobs
 1. Update the relevant job in `configuration/jobs/` or add your own job. The jobs shown in this directory uses the [job-dsl-plugin](https://plugins.jenkins.io/job-dsl/) which is usually made up of a combination of YAML, Groovy, Jenkins Pipeline syntax. For examples, see [the demos from Jenkins CasC](https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos/jobs).
@@ -100,6 +116,8 @@ _For more information, see https://github.com/jenkinsci/configuration-as-code-pl
 3. Configuration changes can be picked up by restarting Jenkins (during a new Jenkins setup) or by running the 'Master/reload-configuration' job on Jenkins.
 
 _Job DSL API Reference: https://jenkinsci.github.io/job-dsl-plugin/_
+
+Note: you cannot delete jobs by deleting the job DSL. You will have to delete the job DSL and the job in Jenkins.
 
 ## AKS Cluster Service Principal
 The Service Principal used to create the AKS cluster will expire in 1 year. Before that expiry, you will need to update your AKS cluster with new credentials. Refer to this guide for more information: https://docs.microsoft.com/en-us/azure/aks/update-credentials

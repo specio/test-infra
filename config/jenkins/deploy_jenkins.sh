@@ -322,7 +322,7 @@ install_jenkins_plugins () {
         # This creates a new pod and terminates the currently running pod, so plugins are reloaded.
         echo "Waiting for first pod to be ready to avoid conflicts..."
         kubectl wait --for=condition=ready pod -l app=jenkins-master --timeout=30m
-        kubectl patch deployment jenkins-master -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date +%s)\"}}}}}"
+        kubectl rollout restart deployment/jenkins-master
     fi
 }
 

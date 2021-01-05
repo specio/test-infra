@@ -125,14 +125,6 @@ deploy_aks () {
 
     az account set --subscription ${AZURE_SERVICE_PRINCIPAL_SUBSCRIPTION_ID}
 
-    # Create a service principal
-    AKS_SP_ID=$(az ad sp create-for-rbac --name http://${AKS_CLUSTER_NAME}-sp --query appId | sed 's/"//g')
-    echo ${AKS_SP_ID}
-
-    # Retrieve service principal secret
-    AKS_SP_SECRET=$(az ad sp credential reset --name http://${AKS_CLUSTER_NAME}-sp --query password | sed 's/"//g')
-    echo ${AKS_SP_SECRET}
-    
     # Delete resource group if exists
     if [[ $(az group show --name ${AZURE_RESOURCE_GROUP}) ]]; then
         read -p "Resource group "${AZURE_RESOURCE_GROUP}" exists. Are you ready to delete it and recreate? (y/n): " -n 1 -r
@@ -147,6 +139,12 @@ deploy_aks () {
 
     # Create resource group
     az group create --location ${AZURE_LOCATION} --name ${AZURE_RESOURCE_GROUP}
+
+    # Create a service principal
+    AKS_SP_ID=$(az ad sp create-for-rbac --name http://${AKS_CLUSTER_NAME}-sp --query appId | sed 's/"//g')
+
+    # Retrieve service principal secret
+    AKS_SP_SECRET=$(az ad sp credential reset --name http://${AKS_CLUSTER_NAME}-sp --query password | sed 's/"//g')
 
     # Create AKS Cluster
     az aks create \
@@ -324,7 +322,7 @@ install_jenkins_plugins () {
         # This creates a new pod and terminates the currently running pod, so plugins are reloaded.
         echo "Waiting for first pod to be ready to avoid conflicts..."
         kubectl wait --for=condition=ready pod -l app=jenkins-master --timeout=30m
-        kubectl rollout restart deployment/jenkins-master
+        kubectl patch deployment jenkins-master -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date +%s)\"}}}}}"
     fi
 }
 

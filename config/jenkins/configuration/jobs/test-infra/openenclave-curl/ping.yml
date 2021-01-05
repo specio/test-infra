@@ -1,8 +1,8 @@
 ---
 jobs:
   - script: |
-        folder("{repo}") {
-            displayName("openenclave-curl")
+        folder("test-infra") {
+            displayName("test-infra")
         }
         folder("test-infra/openenclave-curl") {
             displayName("openenclave-curl")

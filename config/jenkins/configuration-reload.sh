@@ -85,6 +85,7 @@ git -C ${JENKINS_HOME}/test-infra/ diff --name-only ${LOCAL} ${REMOTE} -- config
 
     # Pull in new commits
     git -C ${JENKINS_HOME}/test-infra/ clean -dfx
+    git -C ${JENKINS_HOME}/test-infra/ checkout -- config/jenkins
     git -C ${JENKINS_HOME}/test-infra/ reset --hard origin/${BRANCH}
 
     # Copy over new configuration to Jenkins

@@ -1,8 +1,8 @@
 ---
 jobs:
   - script: |
-        folder("{repo}") {
-            displayName("public-talks")
+        folder("test-infra") {
+            displayName("test-infra")
         }
         folder("test-infra/public-talks") {
             displayName("public-talks")

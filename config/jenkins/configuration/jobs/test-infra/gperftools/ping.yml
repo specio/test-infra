@@ -1,8 +1,8 @@
 ---
 jobs:
   - script: |
-        folder("{repo}") {
-            displayName("gperftools")
+        folder("test-infra") {
+            displayName("test-infra")
         }
         folder("test-infra/gperftools") {
             displayName("gperftools")

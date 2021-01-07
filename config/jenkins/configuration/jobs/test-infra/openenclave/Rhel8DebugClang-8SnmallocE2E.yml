@@ -50,7 +50,7 @@ jobs:
                 }
                 stringParam {
                     name("LVI_MITIGATION")
-                    defaultValue("ControlFlow")
+                    defaultValue("NONE")
                     description("")
                     trim(true)
                 }

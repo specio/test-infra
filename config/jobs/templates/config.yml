@@ -217,12 +217,6 @@ buildtypemap:
 
 lvioptionsmaps:
   ControlFlow:
-    Rhel8DebugClang-8
-    Rhel8DebugClang-8Snmalloc
-    Rhel8DebugClang-8SnmallocE2E
-    Rhel8ReleaseClang-8
-    Rhel8ReleaseClang-8Snmalloc
-    Rhel8ReleaseClang-8SnmallocE2E
     Ubuntu1604DebugClang-7
     Ubuntu1604DebugClang-7Snmalloc
     Ubuntu1604DebugClang-7SnmallocE2E

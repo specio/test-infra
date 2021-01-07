@@ -113,7 +113,6 @@ readonly AZURE_SERVICE_PRINCIPAL_NAME=""
 readonly AZURE_SERVICE_PRINCIPAL_CLIENT_ID=""
 readonly AZURE_SERVICE_PRINCIPAL_SUBSCRIPTION_ID=""
 readonly AZURE_SERVICE_PRINCIPAL_TENANT_ID=""
-readonly AZURE_SERVICE_PRINCIPAL_SECRET=$(cat /proc/sys/kernel/random/uuid)
 
 # ------------END-CONFIGURATION------------
 
@@ -141,10 +140,10 @@ deploy_aks () {
     az group create --location ${AZURE_LOCATION} --name ${AZURE_RESOURCE_GROUP}
 
     # Create a service principal
-    AKS_SP_ID=$(az ad sp create-for-rbac --name http://${AKS_CLUSTER_NAME}-sp --query appId | sed 's/"//g')
+    readonly AKS_SP_ID=$(az ad sp create-for-rbac --name http://${AKS_CLUSTER_NAME}-sp --query appId | sed 's/"//g')
 
     # Retrieve service principal secret
-    AKS_SP_SECRET=$(az ad sp credential reset --name http://${AKS_CLUSTER_NAME}-sp --query password | sed 's/"//g')
+    readonly AKS_SP_SECRET=$(az ad sp credential reset --name http://${AKS_CLUSTER_NAME}-sp --query password | sed 's/"//g')
 
     # Create AKS Cluster
     az aks create \
@@ -245,7 +244,7 @@ deploy_jenkins () {
     # Apply Key Vault Service Principal
     if ! kubectl get secret jenkinssp; then
         # Set secret. If it fails to change the SP, make sure it exists and you have permissions to manage it.
-        az ad sp credential reset --name "${AZURE_SERVICE_PRINCIPAL_NAME}" --password "${AZURE_SERVICE_PRINCIPAL_SECRET}"
+        readonly AZURE_SERVICE_PRINCIPAL_SECRET=$(az ad sp credential reset --name ${AZURE_SERVICE_PRINCIPAL_NAME} --query password | sed 's/"//g')
         kubectl create secret generic jenkinssp \
             --from-literal=clientid="${AZURE_SERVICE_PRINCIPAL_CLIENT_ID}" \
             --from-literal=subscriptionid="${AZURE_SERVICE_PRINCIPAL_SUBSCRIPTION_ID}" \

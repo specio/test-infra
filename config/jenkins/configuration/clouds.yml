@@ -44,11 +44,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "ubuntu1804"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
@@ -83,11 +85,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "ubuntu1604"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -130,11 +135,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "rhel8"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -168,12 +175,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDesc: "ACC-Windows-2016"
         templateDisabled: false
         templateName: "ws16"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -207,12 +216,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDesc: "ACC-Windows-2019"
         templateDisabled: false
         templateName: "ws19"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
@@ -240,11 +251,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "overwatch"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_D4_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
   - azureVM:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
       cloudName: "AzureVMAgentsEastUs"
@@ -288,11 +301,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "ubuntu1804"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
@@ -327,11 +342,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "ubuntu1604"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -374,11 +391,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "rhel8"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -412,12 +431,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDesc: "ACC-Windows-2016"
         templateDisabled: false
         templateName: "ws16"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -451,12 +472,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDesc: "ACC-Windows-2019"
         templateDisabled: false
         templateName: "ws19"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
@@ -484,11 +507,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "overwatch"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_D4_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
   - azureVM:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
       cloudName: "AzureVMAgentsWestUS"
@@ -532,11 +557,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "ubuntu1804"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
@@ -571,11 +598,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "ubuntu1604"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -618,11 +647,13 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "rhel8"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC2s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -656,12 +687,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDesc: "ACC-Windows-2016"
         templateDisabled: false
         templateName: "ws16"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -695,12 +728,14 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDesc: "ACC-Windows-2019"
         templateDisabled: false
         templateName: "ws19"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
@@ -728,8 +763,10 @@ jenkins:
         shutdownOnIdle: false
         storageAccountNameReferenceType: "new"
         storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
         templateDisabled: false
         templateName: "overwatch"
         usageMode: "Only build jobs with label expressions matching this node"
-        usePrivateIP: false
+        usePrivateIP: true
         virtualMachineSize: "Standard_D4_v2"
+        virtualNetworkName: "jenkinsarm-vnet"

@@ -7,7 +7,7 @@ jenkins:
       configurationStatus: "pass"
       deploymentTimeout: 1200
       newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-uksouth"
-      maxVirtualMachinesLimit: 10
+      maxVirtualMachinesLimit: 100
       resourceGroupReferenceType: "new"
       vmTemplates:
       - agentLaunchMethod: "SSH"
@@ -251,7 +251,7 @@ jenkins:
       configurationStatus: "pass"
       deploymentTimeout: 1200
       newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-eastus"
-      maxVirtualMachinesLimit: 10
+      maxVirtualMachinesLimit: 100
       resourceGroupReferenceType: "new"
       vmTemplates:
       - agentLaunchMethod: "SSH"
@@ -495,7 +495,7 @@ jenkins:
       configurationStatus: "pass"
       deploymentTimeout: 1200
       newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-westus2"
-      maxVirtualMachinesLimit: 10
+      maxVirtualMachinesLimit: 100
       resourceGroupReferenceType: "new"
       vmTemplates:
       - agentLaunchMethod: "SSH"

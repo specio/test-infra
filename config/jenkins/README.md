@@ -61,9 +61,20 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | sud
 6. When deployment is complete, note down the password and url.
 7. Visit the url and log in with the credentials noted down earlier.
 
+#### Using Private Azure VM Agents
+If using the Azure VM Agents plugin and you want to make the VMs private (e.g. not open to public), there is additional network configuration needed. Usually this is necessary if there are automated network security groups applied to your network adapters.
+
+1. Note down the network range of your AKS cluster by viewing the Virtual Network's properties. Usually this is in the resource group that starts with "MC_" and ends with your AKS cluster name and region. 
+2. Jenkins should create all the VM Agent resource groups and virtual networks when VM Agents is loaded. You can see this by browsing to the VM agent resource groups that are created.
+3. Ensure the virtual network and subnet of every VM Agent resource group do not overlap with your AKS cluster and each other.
+4. Peer each virtual network to your AKS cluster's virtual network. Ensure communication is allowed, and no gateway changes are necessary.
+5. In configuration/clouds.yml, ensure that `usePrivateIP` is set to `true`, and that both `subnetName` and `virtualNetworkName` is set to the same value as you did for each VM Agent resource group.
+
+If you are not using private IPs, ensure that in configuration/clouds.yml `usePrivateIP` is set to `false`, and that both `subnetName` and `virtualNetworkName` are not set (removed from the config).
+
 # Upgrades and Maintenance
 
-## Updating Jenkin Plugins
+## Updating Jenkins Plugins
 * It is recommended to update the plugins through the Jenkins UI
 * Alternatively, you can update the plugins list in plugins.txt and run `./deploy_jenkins.sh -p`
 

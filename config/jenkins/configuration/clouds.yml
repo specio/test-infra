@@ -173,7 +173,7 @@ jenkins:
         templateName: "ws16"
         usageMode: "Only build jobs with label expressions matching this node"
         usePrivateIP: false
-        virtualMachineSize: "Standard_DC2s_v2"
+        virtualMachineSize: "Standard_DC4s_v2"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -417,7 +417,7 @@ jenkins:
         templateName: "ws16"
         usageMode: "Only build jobs with label expressions matching this node"
         usePrivateIP: false
-        virtualMachineSize: "Standard_DC2s_v2"
+        virtualMachineSize: "Standard_DC4s_v2"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"
@@ -661,7 +661,7 @@ jenkins:
         templateName: "ws16"
         usageMode: "Only build jobs with label expressions matching this node"
         usePrivateIP: false
-        virtualMachineSize: "Standard_DC2s_v2"
+        virtualMachineSize: "Standard_DC4s_v2"
       - agentLaunchMethod: "SSH"
         builtInImage: "Windows Server 2016"
         credentialsId: "JenkinsOEAdminAgents"

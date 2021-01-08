@@ -9,6 +9,7 @@ jobs:
         }
         job("test-infra/openenclave-build/ping") {
             quietPeriod(0)
+            concurrentBuild(true)
             label('OverWatch')
             description()
             keepDependencies(false)

@@ -74,9 +74,9 @@ jobs:
                         git {
                             remote {
                                 github("openenclave/test-infra", "https")
+                                refSpec("+refs/pull/*/merge:refs/remotes/origin/pr/*")
                             }
                             branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
-                            refSpec("+refs/pull/*/merge:refs/remotes/origin/pr/*")
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()

@@ -263,7 +263,7 @@ jenkins:
         templateName: "overwatch"
         usageMode: "Only build jobs with label expressions matching this node"
         usePrivateIP: true
-        virtualMachineSize: "Standard_D4_v2"
+        virtualMachineSize: "Standard_D4s_v3"
         virtualNetworkName: "jenkinsarm-vnet"
   - azureVM:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
@@ -526,7 +526,7 @@ jenkins:
         templateName: "overwatch"
         usageMode: "Only build jobs with label expressions matching this node"
         usePrivateIP: true
-        virtualMachineSize: "Standard_D4_v2"
+        virtualMachineSize: "Standard_D4s_v3"
         virtualNetworkName: "jenkinsarm-vnet"
   - azureVM:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
@@ -789,5 +789,5 @@ jenkins:
         templateName: "overwatch"
         usageMode: "Only build jobs with label expressions matching this node"
         usePrivateIP: true
-        virtualMachineSize: "Standard_D4_v2"
+        virtualMachineSize: "Standard_D4s_v3"
         virtualNetworkName: "jenkinsarm-vnet"

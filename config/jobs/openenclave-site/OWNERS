@@ -1,0 +1,11 @@
+approvers:
+  - openenclave-site-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - openenclave-site-maintainers
+  - test-infra-oncall
+reviewers:
+  - openenclave-site-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/openenclave-site

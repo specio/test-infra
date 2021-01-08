@@ -1,0 +1,13 @@
+approvers:
+  - oeedger8r-cpp-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - oeedger8r-cpp-maintainers
+  - test-infra-oncall
+reviewers:
+  - oeedger8r-cpp-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/oeedger8r-cpp
+
+  

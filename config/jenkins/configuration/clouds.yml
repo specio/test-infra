@@ -234,9 +234,16 @@ jenkins:
         ephemeralOSDisk: false
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
-        imageTopLevelType: "basic"
-        installDocker: true
-        installGit: true
+        imageReference:
+          galleryImageDefinition: "ubuntu-18.04"
+          galleryImageVersion: "latest"
+          galleryName: "<AZURE_VM_GALLERY_NAME>"
+          galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
+          gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
+        imageTopLevelType: "advanced"
+        initScript: "gpasswd -a oeadmin docker \nchmod g+rw /var/run/docker.sock"
+        installDocker: false
+        installGit: false
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
@@ -490,9 +497,16 @@ jenkins:
         ephemeralOSDisk: false
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
-        imageTopLevelType: "basic"
-        installDocker: true
-        installGit: true
+        imageReference:
+          galleryImageDefinition: "ubuntu-18.04"
+          galleryImageVersion: "latest"
+          galleryName: "<AZURE_VM_GALLERY_NAME>"
+          galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
+          gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
+        imageTopLevelType: "advanced"
+        initScript: "gpasswd -a oeadmin docker \nchmod g+rw /var/run/docker.sock"
+        installDocker: false
+        installGit: false
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"
@@ -746,9 +760,16 @@ jenkins:
         ephemeralOSDisk: false
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
-        imageTopLevelType: "basic"
-        installDocker: true
-        installGit: true
+        imageReference:
+          galleryImageDefinition: "ubuntu-18.04"
+          galleryImageVersion: "latest"
+          galleryName: "<AZURE_VM_GALLERY_NAME>"
+          galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
+          gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
+        imageTopLevelType: "advanced"
+        initScript: "gpasswd -a oeadmin docker \nchmod g+rw /var/run/docker.sock"
+        installDocker: false
+        installGit: false
         installMaven: false
         javaPath: "java"
         labels: "OverWatch"

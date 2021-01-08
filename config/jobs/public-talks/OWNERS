@@ -1,0 +1,11 @@
+approvers:
+  - openenclave-public-talks-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - openenclave-public-talks-maintainers
+  - test-infra-oncall
+reviewers:
+  - openenclave-public-talks-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/openenclave-public-talks

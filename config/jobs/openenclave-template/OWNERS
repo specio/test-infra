@@ -1,0 +1,11 @@
+approvers:
+  - openenclave-template-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - openenclave-template-maintainers
+  - test-infra-oncall
+reviewers:
+  - openenclave-template-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/openenclave-template

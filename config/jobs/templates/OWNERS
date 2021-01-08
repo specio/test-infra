@@ -1,0 +1,8 @@
+approvers:
+  - test-infra-oncall
+required_reviewers:
+  - test-infra-oncall
+reviewers:
+  - test-infra-oncall
+labels:
+ - config/jobs/templates

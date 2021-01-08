@@ -1,0 +1,11 @@
+approvers:
+  - openenclave-curl-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - openenclave-curl-maintainers
+  - test-infra-oncall
+reviewers:
+  - openenclave-curl-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/openenclave-curl

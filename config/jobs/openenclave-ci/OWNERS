@@ -1,11 +1,11 @@
 approvers:
-  - openenclave-build-maintainers
+  - openenclave-ci-maintainers
   - test-infra-oncall
 required_reviewers:
-  - openenclave-build-maintainers
+  - openenclave-ci-maintainers
   - test-infra-oncall
 reviewers:
-  - openenclave-build-maintainers
+  - openenclave-ci-maintainers
   - test-infra-oncall
 labels:
  - config/jobs/openenclave-ci  

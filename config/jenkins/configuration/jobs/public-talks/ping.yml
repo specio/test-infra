@@ -6,6 +6,7 @@ jobs:
         }
         job("public-talks/ping") {
             quietPeriod(0)
+            concurrentBuild(true)
             label('OverWatch')
             description()
             keepDependencies(false)

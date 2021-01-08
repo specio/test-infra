@@ -9,6 +9,7 @@ jobs:
         }
         job("test-infra/oeedger8r-cpp/ping") {
             quietPeriod(0)
+            concurrentBuild(true)
             label('OverWatch')
             description()
             keepDependencies(false)

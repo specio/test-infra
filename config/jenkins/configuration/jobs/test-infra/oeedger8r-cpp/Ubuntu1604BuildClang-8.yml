@@ -4,10 +4,10 @@ jobs:
         folder("test-infra") {
             displayName("test-infra")
         }
-        folder("test-infra/openenclave") {
-            displayName("openenclave")
+        folder("test-infra/oeedger8r-cpp") {
+            displayName("oeedger8r-cpp")
         }
-        pipelineJob("test-infra/openenclave/HostVerifyRel18042019") {
+        pipelineJob("test-infra/oeedger8r-cpp/Ubuntu1604BuildClang-8") {
             quietPeriod(0)
             description()
             keepDependencies(false)
@@ -20,13 +20,13 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("Ubuntu-1804")
+                    defaultValue("Ubuntu-1604")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("Windows-2019")
+                    defaultValue("")
                     description("")
                     trim(true)
                 }
@@ -38,7 +38,7 @@ jobs:
                 }
                 stringParam {
                     name("COMPILER")
-                    defaultValue("")
+                    defaultValue("clang-8")
                     description("")
                     trim(true)
                 }
@@ -62,7 +62,7 @@ jobs:
                 }
                 stringParam {
                     name("OE_SIMULATION")
-                    defaultValue("0")
+                    defaultValue("1")
                     description("")
                     trim(true)
                 }
@@ -101,7 +101,7 @@ jobs:
                             }
                         }
                     }
-                    scriptPath("config/jobs/openenclave/jenkins/HostVerify.Jenkinsfile")
+                    scriptPath("config/jobs/oeedger8r-cpp/jenkins/UbuntuBuild.Jenkinsfile")
                 }
             }
             disabled(false)

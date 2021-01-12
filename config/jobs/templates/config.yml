@@ -27,6 +27,8 @@ pipelines:
     Rhel8BuildClang-8
     Ubuntu1604BuildClang-7
     Ubuntu1804BuildClang-7
+    Ubuntu1604BuildClang-8
+    Ubuntu1804BuildClang-8
     Windows2016Build
     Windows2019Build
   openenclave:
@@ -173,6 +175,14 @@ buildmodesmap:
     Win2019RelSnmalloc
     Win2019RelSnmallocE2E
     Win2019Release
+    HostVerifyDeb16042019
+    HostVerifyDeb18042019
+    HostVerifyRel16042019
+    HostVerifyRel18042019
+    LinuxElfDeb16042019
+    LinuxElfDeb18042019
+    LinuxElfRel16042019
+    LinuxElfRel18042019
 
 buildtypemap:
   Debug:
@@ -309,6 +319,7 @@ windowsversionsmap:
     LinuxElfRel18042019
 linuxversionsmap:
   Ubuntu-1604:
+    Ubuntu1604BuildClang-8
     Ubuntu1604BuildClang-7
     Ubuntu1604DebugClang-7
     Ubuntu1604DebugClang-7Snmalloc
@@ -324,6 +335,7 @@ linuxversionsmap:
     LinuxElfDeb16042019
     LinuxElfRel16042019
   Ubuntu-1804:
+    Ubuntu1804BuildClang-8
     HostVerifyDeb18042019
     HostVerifyRel18042019
     LinuxElfDeb18042019
@@ -379,6 +391,8 @@ compilermap:
     Rhel8ReleaseClang-8
     Rhel8ReleaseClang-8Snmalloc
     Rhel8ReleaseClang-8SnmallocE2E
+    Ubuntu1604BuildClang-8
+    Ubuntu1804BuildClang-8
 
 # Map each JenkinsFile type to to builds that use them
 jobs:
@@ -421,6 +435,9 @@ jobmaps:
     Ubuntu1804ReleaseClang-7
     Ubuntu1804ReleaseClang-7Snmalloc
     Ubuntu1804ReleaseClang-7SnmallocE2E
+    Ubuntu1604BuildClang-8
+    Ubuntu1804BuildClang-8
+
   WindowsBuild:
     Win2016Debug
     Win2016DebugSnmalloc

@@ -175,6 +175,14 @@ buildmodesmap:
     Win2019RelSnmalloc
     Win2019RelSnmallocE2E
     Win2019Release
+    HostVerifyDeb16042019
+    HostVerifyDeb18042019
+    HostVerifyRel16042019
+    HostVerifyRel18042019
+    LinuxElfDeb16042019
+    LinuxElfDeb18042019
+    LinuxElfRel16042019
+    LinuxElfRel18042019
 
 buildtypemap:
   Debug:

@@ -158,11 +158,22 @@ deploy_aks () {
         --enable-cluster-autoscaler \
         --min-count ${AKS_MIN_NODE_COUNT} \
         --max-count ${AKS_MAX_NODE_COUNT} \
-        --no-ssh-key \
+        --generate-ssh-key \
         --kubernetes-version ${AKS_KUBERNETES_VERSION}
 
     # Get AKS Credentials
     az aks get-credentials --resource-group ${AZURE_RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
+
+    # Add dedicated nodepool for Ingress
+    az aks nodepool add \
+        --resource-group ${AZURE_RESOURCE_GROUP} \
+        --cluster-name ${AKS_CLUSTER_NAME} \
+        --name ingresspool \
+        --node-vm-size Standard_F2s_v2 \
+        --labels role=ingress \
+        --enable-cluster-autoscaler \
+        --min-count 1 \
+        --max-count 10
 }
 
 
@@ -194,11 +205,9 @@ deploy_jenkins_ingress () {
     # Node labels for controller and backend pod assignment
     # Ref: https://kubernetes.io/docs/user-guide/node-selection/
     helm install nginx ingress-nginx/ingress-nginx \
-            --namespace ingress \
-            --set controller.replicaCount=2 \
-            --set controller.service.loadBalancerIP="${STATIC_IP}" \
-            --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-            --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+        --namespace ingress \
+        --values ${BASEDIR}/kubernetes/ingress-nginx-values.yml \
+        --set controller.service.loadBalancerIP="${STATIC_IP}"
 
     # Label the cert-manager namespace to disable resource validation
     kubectl label namespace ingress cert-manager.io/disable-validation=true

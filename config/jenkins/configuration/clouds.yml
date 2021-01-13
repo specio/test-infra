@@ -153,7 +153,7 @@ jenkins:
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
         imageReference:
-          galleryImageDefinition: "ws2016-SGX"
+          galleryImageDefinition: "ws2016-SGX-DCAP"
           galleryImageVersion: "latest"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
@@ -194,7 +194,7 @@ jenkins:
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
         imageReference:
-          galleryImageDefinition: "ws2019-SGX"
+          galleryImageDefinition: "ws2019-SGX-DCAP"
           galleryImageVersion: "latest"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
@@ -416,7 +416,7 @@ jenkins:
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
         imageReference:
-          galleryImageDefinition: "ws2016-SGX"
+          galleryImageDefinition: "ws2016-SGX-DCAP"
           galleryImageVersion: "latest"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
@@ -457,7 +457,7 @@ jenkins:
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
         imageReference:
-          galleryImageDefinition: "ws2019-SGX"
+          galleryImageDefinition: "ws2019-SGX-DCAP"
           galleryImageVersion: "latest"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
@@ -679,7 +679,7 @@ jenkins:
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
         imageReference:
-          galleryImageDefinition: "ws2016-SGX"
+          galleryImageDefinition: "ws2016-SGX-DCAP"
           galleryImageVersion: "latest"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
@@ -720,7 +720,7 @@ jenkins:
         executeInitScriptAsRoot: true
         existingStorageAccountName: ""
         imageReference:
-          galleryImageDefinition: "ws2019-SGX"
+          galleryImageDefinition: "ws2019-SGX-DCAP"
           galleryImageVersion: "latest"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"

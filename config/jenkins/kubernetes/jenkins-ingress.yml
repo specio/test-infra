@@ -34,6 +34,9 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-send-timeout: '360s'
     nginx.ingress.kubernetes.io/proxy-read-timeout: '360s'
     nginx.ingress.kubernetes.io/proxy-ssl-protocols: 'TLSv1.2 TLSv1.3'
+    nginx.ingress.kubernetes.io/client_max_body_size: '5M'
+    nginx.ingress.kubernetes.io/client_body_buffer_size: '5M'
+    nginx.ingress.kubernetes.io/proxy_buffers: '8 5M'
     cert-manager.io/cluster-issuer: "letsencrypt-production"
 spec:
   tls:
@@ -47,4 +50,4 @@ spec:
       - path: /
         backend:
           serviceName: jenkins-master-nodeport
-          servicePort: 8080
+          servicePort: 80

@@ -225,6 +225,47 @@ jenkins:
         virtualMachineSize: "Standard_DC4s_v2"
         virtualNetworkName: "jenkinsarm-vnet"
       - agentLaunchMethod: "SSH"
+        builtInImage: "Windows Server 2016"
+        credentialsId: "JenkinsOEAdminAgents"
+        diskType: "managed"
+        doNotUseMachineIfInitFails: true
+        enableMSI: false
+        enableUAMI: false
+        ephemeralOSDisk: false
+        executeInitScriptAsRoot: true
+        existingStorageAccountName: ""
+        imageReference:
+          galleryImageDefinition: "win-2019-dockersgx"
+          galleryImageVersion: "latest"
+          galleryName: "<AZURE_VM_GALLERY_NAME>"
+          galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
+          gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
+        imageTopLevelType: "advanced"
+        installDocker: false
+        installGit: false
+        installMaven: false
+        javaPath: "java"
+        labels: "ACC-Windows-2019-Docker"
+        location: "UK South"
+        noOfParallelJobs: 1
+        osDiskSize: 200
+        osType: "Windows"
+        preInstallSsh: true
+        retentionStrategy:
+          azureVMCloudRetentionStrategy:
+            idleTerminationMinutes: 60
+        shutdownOnIdle: false
+        storageAccountNameReferenceType: "new"
+        storageAccountType: "Standard_LRS"
+        subnetName: "jenkinsarm-snet"
+        templateDesc: "ACC-Windows-2019-Docker"
+        templateDisabled: false
+        templateName: "ws19d"
+        usageMode: "Only build jobs with label expressions matching this node"
+        usePrivateIP: true
+        virtualMachineSize: "Standard_DC4s_v2"
+        virtualNetworkName: "jenkinsarm-vnet"  
+      - agentLaunchMethod: "SSH"
         builtInImage: "Ubuntu 16.04 LTS"
         credentialsId: "JenkinsOEAdminAgents"
         diskType: "managed"

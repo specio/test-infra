@@ -1,3 +1,6 @@
+import java.time.*
+import java.time.format.DateTimeFormatter
+
 String dockerImage(String tag, String dockerfile = ".jenkins/Dockerfile", String buildArgs = "") {
     return docker.build(tag, "${buildArgs} -f ${dockerfile} .")
 }

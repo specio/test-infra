@@ -1,23 +1,17 @@
-// OS Version Configuration
-LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"Ubuntu-1804"
-UBUNTU_VERSION=expression { return LINUX_VERSION == 'Ubuntu-1804'}?18.04:16.04
-DOCKER_REPO=expression { return LINUX_VERSION == 'Ubuntu-1804'}?1804:1604
-
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/test-infra-images/jenkins/common.groovy"
-
-// DevKits
-DEVKITS_URI="https://tcpsbuild.blob.core.windows.net/tcsp-build/OE-CI-devkits-dd4c992d.tar.gz"
 
 // Docker tag
 DOCKER_TAG="latest"
 
+
 pipeline {
     options {
-        timeout(time: 60, unit: 'MINUTES') 
+        timeout(time: 180, unit: 'MINUTES') 
     }
-    agent { label "ACC-${LINUX_VERSION}" }
+    agent { label 'ACC-Windows-2019-Docker' }
 
+    
     stages {
         stage('Checkout'){
             steps{
@@ -25,30 +19,14 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Docker Build Image'){
-            steps{
-                script{
+        stage('Build SGX Win 2019 Docker Image') {
+            steps {
+                script {
                     def builder = load pwd() + "${SHARED_LIBRARY}"
-                    customImage  = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${DOCKER_TAG}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
+                    customImage  = builder.dockerImage("openenclave/windows-2019:${DOCKER_TAG}", "images/windows/Dockerfile")
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credential_id') {
                         customImage.push("${env.BUILD_NUMBER}")
                     }
-                }
-            }
-        }
-
-        stage('Docker Test Image'){
-            steps{
-                script{
-                    sh 'echo "Tests passed"' 
-                }
-            }
-        }
-
-        stage('Docker Push Image'){
-            steps{
-                script{
-                    sh 'echo "Push Image! "' 
                 }
             }
         }

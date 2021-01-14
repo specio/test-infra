@@ -1,5 +1,0 @@
----
-validation_binaries:
-  - "/usr/bin/docker"
-  - "/usr/bin/dockerd"
-  - "/usr/bin/git"

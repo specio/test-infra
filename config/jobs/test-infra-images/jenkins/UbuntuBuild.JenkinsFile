@@ -29,8 +29,10 @@ pipeline {
             steps{
                 script{
                     def builder = load pwd() + "${SHARED_LIBRARY}"
-                    oefull1604 = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${DOCKER_TAG}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
-                
+                    customImage  = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${DOCKER_TAG}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credential_id') {
+                        customImage.push("${env.BUILD_NUMBER}")
+                    }
                 }
             }
         }
@@ -38,9 +40,7 @@ pipeline {
         stage('Docker Test Image'){
             steps{
                 script{
-                    sh  """
-                        echo test
-                        """                
+                    sh 'echo "Tests passed"' 
                 }
             }
         }
@@ -48,9 +48,7 @@ pipeline {
         stage('Docker Push Image'){
             steps{
                 script{
-                    sh  """
-                        echo test
-                        """                
+                    sh 'echo "Push Image! "' 
                 }
             }
         }

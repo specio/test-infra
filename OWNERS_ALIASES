@@ -17,3 +17,13 @@ aliases:
   sig-testing:
   sig-tools:
   sig-website:
+  oeedger8r-cpp-maintainers:
+  openenclave-maintainers:
+  gperftools-maintainers:
+  openenclave-build-maintainers:
+  openenclave-ci-maintainers:
+  openenclave-curl-maintainers:
+  openenclave-mbedtls-maintainers:
+  openenclave-site-maintainers:
+  openenclave-template-maintainers:
+  openenclave-public-talks-maintainers:

@@ -1,0 +1,11 @@
+approvers:
+  - gperftools-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - gperftools-maintainers
+  - test-infra-oncall
+reviewers:
+  - gperftools-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/gperftools  

@@ -1,0 +1,11 @@
+approvers:
+  - openenclave-mbedtls-maintainers
+  - test-infra-oncall
+required_reviewers:
+  - openenclave-mbedtls-maintainers
+  - test-infra-oncall
+reviewers:
+  - openenclave-mbedtls-maintainers
+  - test-infra-oncall
+labels:
+ - config/jobs/openenclave-mbedtls

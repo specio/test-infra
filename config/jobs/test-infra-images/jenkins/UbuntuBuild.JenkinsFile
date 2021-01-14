@@ -29,9 +29,10 @@ pipeline {
             steps{
                 script{
                     def builder = load pwd() + "${SHARED_LIBRARY}"
-                    customImage  = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${DOCKER_TAG}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
+                    def tag = builder.get_image_id()
+                    customImage  = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${tag}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credential_id') {
-                        customImage.push("${env.BUILD_NUMBER}")
+                        customImage.push()
                     }
                 }
             }

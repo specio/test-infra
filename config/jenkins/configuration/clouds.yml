@@ -241,6 +241,7 @@ jenkins:
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
         imageTopLevelType: "advanced"
+        initScript: "Start-Service Docker"
         installDocker: false
         installGit: false
         installMaven: false

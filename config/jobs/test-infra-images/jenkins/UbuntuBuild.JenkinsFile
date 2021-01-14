@@ -3,8 +3,6 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"Ubuntu-1804"
 UBUNTU_VERSION=expression { return LINUX_VERSION == 'Ubuntu-1804'}?18.04:16.04
 DOCKER_REPO=expression { return LINUX_VERSION == 'Ubuntu-1804'}?1804:1604
 
-LINUX_VERSION="1804"
-
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/test-infra-images/jenkins/common.groovy"
 
@@ -21,18 +19,23 @@ pipeline {
     agent { label "ACC-${LINUX_VERSION}" }
 
     stages {
+
         stage('Checkout'){
             steps{
                 cleanWs()
                 checkout scm
             }
         }
+
         stage('Docker Build Image'){
             steps{
                 script{
                     def builder = load pwd() + "${SHARED_LIBRARY}"
-                    oefull1604 = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${DOCKER_TAG}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
-                
+                    def tag = builder.get_image_id()
+                    customImage  = builder.dockerImage("openenclave/ubuntu-${DOCKER_REPO}:${tag}", "images/ubuntu/Dockerfile", "--build-arg ubuntu_version=${UBUNTU_VERSION} --build-arg devkits_uri=${DEVKITS_URI}")
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credential_id') {
+                        customImage.push()
+                    }
                 }
             }
         }
@@ -40,9 +43,7 @@ pipeline {
         stage('Docker Test Image'){
             steps{
                 script{
-                    sh  """
-                        echo test
-                        """                
+                    sh 'echo "Tests passed"' 
                 }
             }
         }
@@ -50,13 +51,12 @@ pipeline {
         stage('Docker Push Image'){
             steps{
                 script{
-                    sh  """
-                        echo test
-                        """                
+                    sh 'echo "Push Image! "' 
                 }
             }
         }
     }
+
     post ('Clean Up'){
         always{
             cleanWs()

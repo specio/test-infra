@@ -46,9 +46,7 @@ void installOpenEnclavePrereqs() {
                 """
         }
         else {
-            // Not implemented yes
-            bat """
-                """
+            powershell returnStatus: true, script: '.\\scripts\\install-windows-prereqs.ps1 -InstallPath C:/oe_prereqs -LaunchConfiguration SGX1FLC -DCAPClientType Azure'
         }
     }
 }

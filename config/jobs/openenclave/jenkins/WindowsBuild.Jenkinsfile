@@ -32,6 +32,26 @@ pipeline {
                 checkout scm
             }
         }
+
+        // Temporarily run always as e2e
+        stage('Install Prereqs (Optional)'){
+            steps{
+                script{
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+
+                    stage("${WINDOWS_VERSION} Setup"){
+                        try{
+                            runner.cleanup()
+                            runner.checkout("${PULL_NUMBER}")
+                            runner.installOpenEnclavePrereqs()
+                        } catch (Exception e) {
+                            // Do something with the exception 
+                            error "Program failed, please read logs..."
+                        }
+                    }
+                }
+            }
+        }
         stage('Build'){
             steps{
                 script{

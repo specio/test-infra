@@ -17,7 +17,8 @@ RUN apt-get install -y git curl
 
 # Copy over build tools
 COPY ./ /
-RUN images/scripts/setup.sh
+# Sets up containers, really just runs the ansible scripts
+RUN scripts/container-setup.sh
 
 # Install latest released version of open-enclave, this is sourced by some repositories 
 RUN apt-get install -y open-enclave

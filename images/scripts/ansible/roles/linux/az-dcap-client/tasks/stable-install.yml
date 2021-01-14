@@ -1,3 +1,0 @@
----
-- name: Install Azure DCAP Client for {{ ansible_distribution }}
-  include_tasks: "{{ ansible_distribution | lower }}/stable-install.yml"

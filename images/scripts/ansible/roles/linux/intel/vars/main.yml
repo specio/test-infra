@@ -1,5 +1,0 @@
----
-intel_sgx_directory: "/opt/intel"
-
-driver_validation_directories:
-  - "{{ intel_sgx_directory }}/sgxdriver"

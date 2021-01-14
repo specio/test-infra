@@ -1,15 +1,11 @@
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/test-infra-images/jenkins/common.groovy"
 
-// Docker tag
-DOCKER_TAG="latest"
-
-
 pipeline {
     options {
-        timeout(time: 180, unit: 'MINUTES') 
+        timeout(time: 60, unit: 'MINUTES') 
     }
-    agent { label 'ACC-Windows-2019-Docker' }
+    agent { label "ACC-${LINUX_VERSION}" }
 
     stages {
 
@@ -20,11 +16,12 @@ pipeline {
             }
         }
 
-        stage('Build SGX Win 2019 Docker Image') {
-            steps {
-                script {
+        stage('Docker Build Image'){
+            steps{
+                script{
                     def builder = load pwd() + "${SHARED_LIBRARY}"
-                    customImage  = builder.dockerImage("openenclave/windows-2019:${DOCKER_TAG}", "images/windows/Dockerfile")
+                    def tag = builder.get_image_id()
+                    customImage  = builder.dockerImage("openenclave/jenkinsoperator:${tag}", "images/jenkinsoperator/Dockerfile")
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credential_id') {
                         customImage.push()
                     }

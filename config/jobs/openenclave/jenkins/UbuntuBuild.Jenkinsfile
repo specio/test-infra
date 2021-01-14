@@ -23,6 +23,9 @@ EXTRA_CMAKE_ARGS=env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:"-DLVI_MITIGATION=${L
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/openenclave/jenkins/common.groovy"
 
+// Wherther to run as an e2e test
+E2E=env.E2E?env.E2E:"OFF"
+
 pipeline {
     options {
         timeout(time: 180, unit: 'MINUTES') 
@@ -43,15 +46,16 @@ pipeline {
             steps{
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-
-                    stage("${LINUX_VERSION} Setup"){
-                        try{
-                            runner.cleanup()
-                            runner.checkout("${PULL_NUMBER}")
-                            runner.installOpenEnclavePrereqs()
-                        } catch (Exception e) {
-                            // Do something with the exception 
-                            error "Program failed, please read logs..."
+                    if("${E2E}" == "ON"){
+                        stage("${LINUX_VERSION} Setup"){
+                            try{
+                                runner.cleanup()
+                                runner.checkout("${PULL_NUMBER}")
+                                runner.installOpenEnclavePrereqs()
+                            } catch (Exception e) {
+                                // Do something with the exception 
+                                error "Program failed, please read logs..."
+                            }
                         }
                     }
                 }

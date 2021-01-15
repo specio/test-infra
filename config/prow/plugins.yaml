@@ -1,28 +1,5 @@
 plugins:
-  openenclave-ci:
-  - approve
-  - assign
-  - blunderbuss
-  - config-updater
-  - dco
-  - goose
-  - help
-  - hold
-  - invalidcommitmsg
-  - label
-  - lifecycle
-  - lgtm
-  - owners-label
-  - override
-  - retitle
-  - size
-  - shrug
-  - trigger
-  - verify-owners
-  - welcome
-  - wip
-
-## Remove the below upon transfer of test-infra to oe from here until...
+  ## Remove the below upon transfer giving oe-ci-robot an openeneclave org webhook token
   openenclave/test-infra:
   - approve
   - assign
@@ -137,7 +114,30 @@ plugins:
   - welcome
   - wip
 
-## .. here. Once again, delete the above.
+## untl.. here. Once again, delete the above. Leave the below
+
+  openenclave:
+  - approve
+  - assign
+  - blunderbuss
+  - config-updater
+  - dco
+  - goose
+  - help
+  - hold
+  - invalidcommitmsg
+  - label
+  - lifecycle
+  - lgtm
+  - owners-label
+  - override
+  - retitle
+  - size
+  - shrug
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
 
 # Lower bounds in number of lines changed; XS is assumed to be zero.
 size:
@@ -161,10 +161,15 @@ label:
 
 config_updater:
   maps:
-    config/prow/secondary/config.yaml:
+    config/prow/config.yaml:
       name: config
-    config/prow/secondary/plugins.yaml:
+    config/prow/plugins.yaml:
       name: plugins
     config/jobs/**/*.yaml:
       name: job-config
       gzip: true
+
+welcome:
+- repos:
+  - openenclave
+  message_template: "Welcome @{{.AuthorLogin}}! <br><br>It looks like this is your first PR to <a href='https://github.com/{{.Org}}/{{.Repo}}'>{{.Org}}/{{.Repo}}</a> 🎉🎉. Please refer to our [pull request process documentation](https://github.com/openenclave/test-infra/blob/master/docs/owners.md#the-code-review-process) to help your PR have a smooth ride to approval. <br><br>You will be prompted by a bot to use commands during the review process. Do not be afraid to follow the prompts! It is okay to experiment. [Here is the bot commands documentation](https://go.k8s.io/bot-commands). <br><br>You can also check if {{.Org}}/{{.Repo}} has [its own contribution guidelines](https://github.com/{{.Org}}/{{.Repo}}/tree/master/CONTRIBUTING.md). <br><br>Thank you, and welcome to openenclave. :smiley:"

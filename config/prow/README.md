@@ -305,8 +305,8 @@ Events:
 
 ## Configure plugins and.. well, config!
 ```
-kubectl create configmap config --from-file=config.yaml=$PWD/config/prow/primary/config.yaml  --dry-run=client -o yaml | kubectl replace configmap config -f -
-kubectl create configmap plugins --from-file=$PWD/config/prow/primary/plugins.yaml --dry-run=client -o yaml   | kubectl replace configmap plugins -f -
+kubectl create configmap config --from-file=config.yaml=$PWD/config/prow/config.yaml  --dry-run=client -o yaml | kubectl replace configmap config -f -
+kubectl create configmap plugins --from-file=$PWD/config/prow/plugins.yaml --dry-run=client -o yaml   | kubectl replace configmap plugins -f -
 ```
 
 ## Get some jobs going to sanity check

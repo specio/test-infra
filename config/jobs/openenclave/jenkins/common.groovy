@@ -7,12 +7,15 @@
 void checkout( String PULL_NUMBER="master" ) {
     if (isUnix()) {
         sh  """
+            echo HEREEEEEEEEE
+            echo ${PULL_NUMBER}
             git config --global core.compression 0 && \
             rm -rf openenclave && \
             git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \
             cd openenclave && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
             if [[ ${PULL_NUMBER} -ne 'master' ]]; then
+                echo 'checking out  ${PULL_NUMBER}'
                 git checkout origin/pr/${PULL_NUMBER}
             fi
             """

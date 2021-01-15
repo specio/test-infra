@@ -106,7 +106,7 @@ deck:
           highlight_regexes:
           - timed out
           - 'ERROR:'
-          - (FAIL|Failure \[)\b
+          - (FAIL|Failure|FAILURE| \[)\b
           - panic\b
           - ^E\d{4} \d\d:\d\d:\d\d\.\d\d\d]
           # Gateway Issues
@@ -114,6 +114,8 @@ deck:
           - 502 Bad Gateway
           - 504 Gateway Time-out
           - nginx
+          # Info
+          - Job URL
       required_files:
       - ^build-log\.txt$
     - lens:

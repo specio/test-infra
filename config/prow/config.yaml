@@ -5,29 +5,7 @@ tide:
   sync_period: 1m
   queries:
     - orgs:
-        - openenclave-ci
-      labels:
-        - lgtm
-        - approved
-      missingLabels:
-        - do-not-merge
-        - do-not-merge/hold
-        - do-not-merge/invalid-owners-file
-        - do-not-merge/work-in-progress
-        - needs-rebases
-    - repos:
-        - openenclave/oeedger8r-cpp
-      labels:
-        - lgtm
-        - approved
-      missingLabels:
-        - do-not-merge
-        - do-not-merge/hold
-        - do-not-merge/invalid-owners-file
-        - do-not-merge/work-in-progress
-        - needs-rebases
-    - repos:
-        - openenclave/test-infra
+        - openenclave
       labels:
         - lgtm
         - approved
@@ -47,15 +25,14 @@ tide:
   merge_label: tide/merge-method-merge
 plank:
   job_url_template: 'https://storage.googleapis.com/oe-prow-artifacts/{{if eq .Spec.Type "presubmit"}}pr-logs/pull{{else if eq .Spec.Type "batch"}}pr-logs/pull{{else}}logs{{end}}{{if eq .Spec.Type "presubmit"}}/{{.Spec.Refs.Org}}_{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}{{else if eq .Spec.Type "batch"}}/batch{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}/build-log.txt'
-  #TODO Fix Prow Config Report Template
   report_templates:
     '*': '[Full PR test history](https://oe-prow-status.westus2.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](https://oe-prow-status.westus2.cloudapp.azure.com/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by opening an issue when you hit one in your PR.'
-  pod_pending_timeout: 30m
-  pod_unscheduled_timeout: 30m
+  pod_pending_timeout: 1h
+  pod_unscheduled_timeout: 1h
   default_decoration_configs:
     '*':
       timeout: 2h
-      grace_period: 15m
+      grace_period: 30m
       utility_images:
         clonerefs: "gcr.io/k8s-prow/clonerefs:v20200710-7fa016752a"
         initupload: "gcr.io/k8s-prow/initupload:v20200710-7fa016752a"
@@ -109,6 +86,10 @@ deck:
         favicon: 'https://openenclave.io/assets/images/OpenEnclave.png'
         header_color: 'DodgerBlue'
         logo: 'https://openenclave.io/assets/images/OpenEnclave.png'
+
+    # HiddenRepos is a list of orgs and/or repos that should not be displayed by Deck.
+    hidden_repos:
+      - "openenclave-security"
 
 presets:
 - env:

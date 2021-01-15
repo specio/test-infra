@@ -114,6 +114,8 @@ deck:
           - 502 Bad Gateway
           - 504 Gateway Time-out
           - nginx
+          # Info
+          - Job URL
       required_files:
       - ^build-log\.txt$
     - lens:

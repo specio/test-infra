@@ -89,8 +89,11 @@ fi
 # Determine current commit
 if [[ -f ${JENKINS_HOME}/configuration/jenkins.yml ]]; then
     LOCAL=$(grep "Jenkins Master is currently on commit:" /var/jenkins_home/configuration/jenkins.yml | cut -d ':' -f 2 | sed 's/ //g')
-else
-    LOCAL=$(git -C ${JENKINS_HOME}/test-infra rev-parse ${BRANCH})
+    # Catch edge case where if commit is somehow unset, make sure all variables and secrets are applied
+    if [[ ${LOCAL} == "<GIT_COMMIT>" ]]; then
+        apply_secrets
+        exit 0
+    fi
 fi
 
 # Determine if there are new commits on master

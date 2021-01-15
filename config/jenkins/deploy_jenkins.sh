@@ -311,6 +311,9 @@ configure_jenkins () {
     kubectl cp configuration ${JENKINS_MASTER_POD}:${JENKINS_HOME}/configuration
     kubectl exec ${JENKINS_MASTER_POD} -- sed -i "s@<JENKINS_HOME>@${JENKINS_HOME}@" ${JENKINS_HOME}/configuration-reload.sh
     kubectl exec ${JENKINS_MASTER_POD} -- chmod 755 ${JENKINS_HOME}/configuration-reload.sh
+
+    # Trigger initial configuration
+    kubectl create job --from=cronjob/configuration-update initial-configuration
 }
 
 

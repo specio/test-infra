@@ -83,13 +83,11 @@ deck:
     branding:
         # BackgroundColor is the color of the background.
         background_color: 'white'
-        favicon: 'https://openenclave.io/assets/images/OpenEnclave.png'
         header_color: 'DodgerBlue'
         logo: 'https://openenclave.io/assets/images/OpenEnclave.png'
 
     # HiddenRepos is a list of orgs and/or repos that should not be displayed by Deck.
     hidden_repos:
-      - "openenclave-security"
 
 presets:
 - env:

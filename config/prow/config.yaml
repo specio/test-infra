@@ -1,8 +1,22 @@
+# ProwJobNamespace is the namespace in the cluster that prow
+# components will use for looking up ProwJobs. The namespace
+# needs to exist and will not be created by prow.
 prowjob_namespace: default
+
+# PodNamespace is the namespace in the cluster that prow
+# components will use for looking up Pods owned by ProwJobs.
+# The namespace needs to exist and will not be created by prow.
 pod_namespace: test-pods
+
+# LogLevel enables dynamically updating the log level of the
+# standard logger that is used by all prow components.
+# Valid values:
+# "debug", "info", "warn", "warning", "error", "fatal", "panic"
 log_level: debug
 tide:
   sync_period: 1m
+  # Queries represents a list of GitHub search queries that collectively
+  # specify the set of PRs that meet merge requirements.
   queries:
     - orgs:
         - openenclave
@@ -15,22 +29,45 @@ tide:
         - do-not-merge/invalid-owners-file
         - do-not-merge/work-in-progress
         - needs-rebases
+  # A key/value pair of an org/repo as the key and merge method to override
+  # the default method of merge. Valid options are squash, rebase, and merge.
   merge_method:
-    openenclave-ci/openenclave: merge
     openenclave/test-infra: merge
     openenclave/oeedger8r: merge
+
+  # BlockerLabel is an optional label that is used to identify merge blocking
+  # GitHub issues.
   blocker_label: tide/merge-blocker
+
+  # SquashLabel is an optional label that is used to identify PRs that should
+  # always be squash merged.
   squash_label: tide/merge-method-squash
+
+  # RebaseLabel is an optional label that is used to identify PRs that should
+  # always be rebased and merged.
   rebase_label: tide/merge-method-rebase
+
   merge_label: tide/merge-method-merge
 plank:
+  # JobURLPrefixConfig is the host and path prefix under which job details
+  # will be viewable. Use `org/repo`, `org` or `*`as key and an url as value
   job_url_prefix_config:
     '*': 'https://oe-prow-status.westus2.cloudapp.azure.com/view/gcs/'
+
+  # JobURLTemplateString compiles into JobURLTemplate at load time.
   job_url_template: 'https://oe-prow-status.westus2.cloudapp.azure.com/view/gcs/{{if eq .Spec.Type "presubmit"}}pr-logs/pull{{else if eq .Spec.Type "batch"}}pr-logs/pull{{else}}logs{{end}}{{if eq .Spec.Type "presubmit"}}/{{.Spec.Refs.Org}}_{{.Spec.Refs.Repo}}/{{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}{{else if eq .Spec.Type "batch"}}/batch{{end}}/{{.Spec.Job}}/{{.Status.BuildID}}/'
+
+  # ReportTemplateStrings is a mapping of template comments.
+  # Use `org/repo`, `org` or `*` as a key.
   report_templates:
     '*': '[Full PR test history](https://oe-prow-status.westus2.cloudapp.azure.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](https://oe-prow-status.westus2.cloudapp.azure.com/pr?query=is%3Apr%20state%3Aopen%20author%3{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by opening an issue when you hit one in your PR.'
   pod_pending_timeout: 1h
   pod_unscheduled_timeout: 1h
+
+  # DefaultDecorationConfigs holds the default decoration config for specific values.
+  # This config will be used on each Presubmit and Postsubmit's corresponding org/repo, and on Periodics
+  # if extraRefs[0] exists.
+  # Use `org/repo`, `org` or `*` as a key.
   default_decoration_configs:
     '*':
       timeout: 2h
@@ -57,15 +94,28 @@ plank:
         sidecar:
           requests:
             cpu: 100m
+
 github_reporter:
-  job_types_to_report:
-    - presubmit
-    - postsubmit
+    # JobTypesToReport is used to determine which type of prowjob
+    # should be reported to github
+    job_types_to_report:
+      - presubmit
+      - postsubmit
+
 sinker:
+  # ResyncPeriod is how often the controller will perform a garbage
   resync_period: 1m
+
+  # MaxProwJobAge is how old a ProwJob can be before it is garbage-collected.
   max_prowjob_age: 48h
+
+  # MaxPodAge is how old a Pod can be before it is garbage-collected.
   max_pod_age: 48h
+
+  # TerminatedPodTTL is how long a Pod can live after termination before it is
+  # garbage collected.
   terminated_pod_ttl: 30m
+
 slack_reporter_configs:
   # Wildcard (i.e. catch-all) slack config
   "*":
@@ -85,16 +135,26 @@ deck:
   branding:
       # BackgroundColor is the color of the background.
       background_color: 'white'
+
+      # Favicon is the location of the favicon that will be loaded in deck.
+      favicon: ' '
+
+      # HeaderColor is the color of the header.
       header_color: 'DodgerBlue'
+
+      # Logo is the location of the logo that will be loaded in deck.
       logo: 'https://openenclave.io/assets/images/OpenEnclave.png'
 
   # HiddenRepos is a list of orgs and/or repos that should not be displayed by Deck.
   hidden_repos:
 
+  # Spyglass specifies which viewers will be used for which artifacts when viewing a job in Deck
   spyglass:
     size_limit: 100000000  # 100 MB
+
+    # Lenses is a list of lens configurations.
     lenses:
-    - lens:
+    - lens: 
         name: metadata
       required_files:
       - ^(?:started|finished)\.json$
@@ -126,6 +186,16 @@ deck:
         name: podinfo
       required_files:
         - ^podinfo\.json$
+
+# ManagedWebhooks contains information about all github repositories and organizations which are using
+# non-global Hmac token.
+managed_webhooks:
+    org_repo_config:
+        "":
+            token_created_after: "0001-01-01T00:00:00Z"
+    respect_legacy_global_token: false
+
+# Preset environmental configs given to test pods.
 presets:
 - env:
   - name: JENKINS_TOKEN

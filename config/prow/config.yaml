@@ -172,6 +172,7 @@ deck:
           # Gateway Issues
           - Your build somehow failed
           - 502 Bad Gateway
+          - 503 Service Temporarily Unavailable
           - 504 Gateway Time-out
           - nginx
           # Info

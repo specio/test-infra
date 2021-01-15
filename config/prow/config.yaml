@@ -164,19 +164,21 @@ deck:
         name: buildlog
         config:
           highlight_regexes:
-          - timed out
+          - 'timed out'
           - 'ERROR:'
           - (FAIL|Failure|FAILURE| \[)\b
           - panic\b
           - ^E\d{4} \d\d:\d\d:\d\d\.\d\d\d]
           # Gateway Issues
-          - Your build somehow failed
-          - 502 Bad Gateway
-          - 503 Service Temporarily Unavailable
-          - 504 Gateway Time-out
-          - nginx
+          - 'Your build somehow failed'
+          - '502 Bad Gateway'
+          - '503 Service Temporarily Unavailable'
+          - '504 Gateway Time-out'
+          - 'nginx'
           # Info
-          - Job URL
+          - 'Job URL'
+          - 'cmake .. -G Ninja -DCMAKE_BUILD_TYPE='
+          - '% tests passed, '
       required_files:
       - ^build-log\.txt$
     - lens:

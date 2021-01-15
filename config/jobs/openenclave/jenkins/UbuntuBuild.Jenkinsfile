@@ -12,6 +12,7 @@ BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"RelWithDebInfo"
 // Some override for build configuration
 LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
 LVI_MITIGATION_SKIP_TESTS=env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKIP_TESTS:"OFF"
+LVI_MITIGATION_BINDIR=env.DLVI_MITIGATION_BINDIR?env.DLVI_MITIGATION_BINDIR:"/usr/local/lvi-mitigation/bin "
 USE_SNMALLOC=env.USE_SNMALLOC?env.USE_SNMALLOC:"ON"
 
 // Edge casee, snmalloc will not work on old gcc versions and 1604 default is old. Remove after 1604 deprecation.

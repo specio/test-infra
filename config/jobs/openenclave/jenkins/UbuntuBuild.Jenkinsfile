@@ -12,7 +12,10 @@ BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"RelWithDebInfo"
 // Some override for build configuration
 LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
 LVI_MITIGATION_SKIP_TESTS=env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKIP_TESTS:"OFF"
+LVI_MITIGATION_BINDIR=env.DLVI_MITIGATION_BINDIR?env.DLVI_MITIGATION_BINDIR:"/usr/local/lvi-mitigation/bin "
 USE_SNMALLOC=env.USE_SNMALLOC?env.USE_SNMALLOC:"ON"
+// Hack to disable environment lvi
+env.LVI_MITIGATION=""
 
 // Edge casee, snmalloc will not work on old gcc versions and 1604 default is old. Remove after 1604 deprecation.
 USE_SNMALLOC=expression { return COMPILER == 'gcc' && LINUX_VERSION =='1604'}?"OFF":USE_SNMALLOC
@@ -22,6 +25,9 @@ EXTRA_CMAKE_ARGS=env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:"-DLVI_MITIGATION=${L
 
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/openenclave/jenkins/common.groovy"
+
+// Wherther to run as an e2e test
+E2E=env.E2E?env.E2E:"OFF"
 
 pipeline {
     options {
@@ -43,15 +49,16 @@ pipeline {
             steps{
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
-
-                    stage("${LINUX_VERSION} Setup"){
-                        try{
-                            runner.cleanup()
-                            runner.checkout("${PULL_NUMBER}")
-                            runner.installOpenEnclavePrereqs()
-                        } catch (Exception e) {
-                            // Do something with the exception 
-                            error "Program failed, please read logs..."
+                    if("${E2E}" == "ON"){
+                        stage("${LINUX_VERSION} Setup"){
+                            try{
+                                runner.cleanup()
+                                runner.checkout("${PULL_NUMBER}")
+                                runner.installOpenEnclavePrereqs()
+                            } catch (Exception e) {
+                                // Do something with the exception 
+                                error "Program failed, please read logs..."
+                            }
                         }
                     }
                 }

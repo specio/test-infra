@@ -14,6 +14,8 @@ LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
 LVI_MITIGATION_SKIP_TESTS=env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKIP_TESTS:"OFF"
 LVI_MITIGATION_BINDIR=env.DLVI_MITIGATION_BINDIR?env.DLVI_MITIGATION_BINDIR:"/usr/local/lvi-mitigation/bin "
 USE_SNMALLOC=env.USE_SNMALLOC?env.USE_SNMALLOC:"ON"
+// Hack to disable environment lvi
+env.LVI_MITIGATION=""
 
 // Edge casee, snmalloc will not work on old gcc versions and 1604 default is old. Remove after 1604 deprecation.
 USE_SNMALLOC=expression { return COMPILER == 'gcc' && LINUX_VERSION =='1604'}?"OFF":USE_SNMALLOC

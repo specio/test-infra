@@ -100,6 +100,16 @@ slack_reporter_configs:
     channel: test-failures
     # The template shown below is the default
     report_template: "Job {{.Spec.Job}} of type {{.Spec.Type}} ended with state {{.Status.State}}. <{{.Status.URL}}|View logs>"
+
+deck:
+    # Branding of the frontend
+    branding:
+        # BackgroundColor is the color of the background.
+        background_color: 'white'
+        favicon: 'https://openenclave.io/assets/images/OpenEnclave.png'
+        header_color: 'DodgerBlue'
+        logo: 'https://openenclave.io/assets/images/OpenEnclave.png'
+
 presets:
 - env:
   - name: JENKINS_TOKEN
@@ -113,12 +123,3 @@ presets:
   
   - name: JENKINS_URL
     value: https://openenclave-jenkins.eastus.cloudapp.azure.com
-
-  - name: DOCKER_USER
-    value: openenclave
-
-  - name: DOCKER_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: docker-password
-        key: docker-password

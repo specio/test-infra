@@ -196,14 +196,6 @@ deck:
       required_files:
         - ^podinfo\.json$
 
-# ManagedWebhooks contains information about all github repositories and organizations which are using
-# non-global Hmac token.
-managed_webhooks:
-    org_repo_config:
-        "":
-            token_created_after: "0001-01-01T00:00:00Z"
-    respect_legacy_global_token: false
-
 # Preset environmental configs given to test pods.
 presets:
 - env:

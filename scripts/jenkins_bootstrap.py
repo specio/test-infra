@@ -80,7 +80,7 @@ class Trigger:
             try:
                 self.parameters = dict(u.split("=") for u in arguments['--parameters'][0].split(","))
             except ValueError as err:
-                raise Exception("Your parameters should be in key=value format separated by ; for multi value i.e. x=1,b=2") from err
+                raise Exception("Your parameters should be in key=value format separated by , for multi value i.e. x=1,b=2") from err
         else:
             self.parameters = {}
 

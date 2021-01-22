@@ -36,10 +36,30 @@ pipeline {
     agent { label "TEST" }
 
     stages {
-        // Check out test infra repo as need shared libs
         stage('Checkout'){
             steps{
-                echo "Siema"
+                cleanWs()
+                checkout scm
+            }
+        }
+        // Go through Build stages
+        stage('Build'){
+            steps{
+                script{
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+
+                    // Build and test in Hardware mode, do not clean up as we will package
+                    stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
+                        try{
+                            runner.cleanup()
+                            runner.checkout("${PULL_NUMBER}")
+                            ls -la
+                        } catch (Exception e) {
+                            // Do something with the exception 
+                            error "Program failed, please read logs..."
+                        }
+                    }
+                }
             }
         }
     }

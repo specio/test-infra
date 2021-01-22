@@ -27,13 +27,13 @@ pipeline {
     stages {
         stage('Checkout'){
             steps{
+                echo "SIemka"
                 cleanWs()
                 checkout scm
             }
         }
         // Go through Build stages
         stage('Build'){
-            whoami
             steps{
                 script{
                     def task = """

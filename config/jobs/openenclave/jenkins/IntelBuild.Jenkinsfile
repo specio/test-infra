@@ -35,9 +35,6 @@ pipeline {
         stage('Build'){
             steps{
                 script{
-                    sh """#!/usr/bin/env bash
-                    echo $(whoami)
-                    """
                     def task = """
                                whoami
                                pwd

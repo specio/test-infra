@@ -29,11 +29,11 @@ pipeline {
             steps{
                 cleanWs()
                 checkout scm
-                whoami
             }
         }
         // Go through Build stages
         stage('Build'){
+            whoami
             steps{
                 script{
                     def task = """

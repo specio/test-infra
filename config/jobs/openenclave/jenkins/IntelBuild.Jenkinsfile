@@ -27,8 +27,7 @@ pipeline {
     stages {
         stage('Checkout'){
             steps{
-                echo "SIemka"
-                whoami
+                echo $(whoami)
                 cleanWs()
                 checkout scm
             }

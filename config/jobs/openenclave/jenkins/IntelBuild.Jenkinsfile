@@ -35,6 +35,8 @@ pipeline {
         stage('Build'){
             steps{
                 script{
+                    echo starting
+                    whoami
                     def task = """
                                whoami
                                pwd

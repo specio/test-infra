@@ -29,6 +29,7 @@ pipeline {
             steps{
                 cleanWs()
                 checkout scm
+                whoami
             }
         }
         // Go through Build stages

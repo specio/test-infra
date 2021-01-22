@@ -30,6 +30,9 @@ pipeline {
                 sh '''
                     #!/bin/bash
                     echo "hello world"
+                    whoami
+                    pwd
+                    ls -la
                 '''
                 cleanWs()
                 checkout scm

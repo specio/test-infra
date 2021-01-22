@@ -34,8 +34,7 @@ pipeline {
         // Go through Build stages
         stage('Build'){
         steps{
-                cleanWs()
-                checkout scm
+            script{
                 def task = """
                            whoami
                            pwd

@@ -27,7 +27,7 @@ pipeline {
     stages {
         stage('Checkout'){
             steps{
-                echo $(whoami)
+            echo "witay: $(whoami)"
                 cleanWs()
                 checkout scm
             }

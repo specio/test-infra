@@ -27,6 +27,10 @@ pipeline {
     stages {
         stage('Checkout'){
             steps{
+                sh '''
+                    #!/bin/bash
+                    echo "hello world"
+                '''
                 cleanWs()
                 checkout scm
             }

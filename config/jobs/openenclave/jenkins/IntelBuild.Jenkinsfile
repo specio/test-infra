@@ -34,7 +34,6 @@ pipeline {
         // Go through Build stages
         stage('Build'){
             steps{
-                echo whoami
                 script{
                     def task = """
                                whoami

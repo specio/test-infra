@@ -33,14 +33,15 @@ pipeline {
         }
         // Go through Build stages
         stage('Build'){
-        steps{
-            script{
-                def task = """
-                           whoami
-                           pwd
-                           ls -la
-                           """
-                ContainerRun("oetools-full-18.04:${DOCKER_TAG}", "clang-7", task, "--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost")      
+            steps{
+                script{
+                    def task = """
+                               whoami
+                               pwd
+                               ls -la
+                               """
+                    ContainerRun("oetools-full-18.04:${DOCKER_TAG}", "clang-7", task, "--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost")      
+                }
             }
         }
     }

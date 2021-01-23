@@ -8,7 +8,7 @@ pipeline {
     parameters {
         string(name: 'LOCATION', defaultValue: 'uksouth', description: 'Azure Region')
         string(name: 'SGX', defaultValue: 'SGX', description: 'SGX enabled')
-        string(name: 'LINUX_VERSION', defaultValue: 'Ubuntu_1804_LTS_Gen2', description: 'Linux version to build ')
+        string(name: 'LINUX_VERSION', defaultValue: 'Ubuntu_1804_LTS_Gen2', description: 'Linux version to build')
     }
     environment {
         BUILD_ID = "${currentBuild.number}"

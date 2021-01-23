@@ -3,14 +3,12 @@ pipeline {
         timeout(time: 60, unit: 'MINUTES')
     }
 
-    /* Parameters are set at job config level, do not set here or it will overwrite
     parameters {
-        string(name: 'LINUX_VERSION', defaultValue: 'Ubuntu-1804', description: 'Linux version to build')
-        string(name: 'COMPILER', defaultValue: params.COMPILER ?:'clang-7')
-        string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Docker image version')
-        string(name: 'PULL_NUMBER', defaultValue: 'master', description: 'Branch/PR to build')
+        string(name: 'LINUX_VERSION', defaultValue: params.LINUX_VERSION ?:'Ubuntu-1804', description: 'Linux version to build')
+        string(name: 'COMPILER', defaultValue: params.COMPILER ?:'clang-7', description: 'Compiler version')
+        string(name: 'DOCKER_TAG', defaultValue: params.DOCKER_TAG ?:'latest', description: 'Docker image version')
+        string(name: 'PULL_NUMBER', defaultValue: params.PULL_NUMBER ?:'master',  description: 'Branch/PR to build')
     }
-    */
 
     environment {
         SHARED_LIBRARY="/config/jobs/oeedger8r-cpp/jenkins/common.groovy"

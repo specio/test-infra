@@ -4,9 +4,10 @@ pipeline {
     }
 
     parameters {
-        string(name: 'LINUX_VERSION', defaultValue: 'RHEL-8', description: 'Linux version to build')
-        string(name: 'COMPILER', defaultValue: params.COMPILER ?:'clang-8')
-        string(name: 'PULL_NUMBER', defaultValue: 'master', description: 'Branch/PR to build')
+        string(name: 'LINUX_VERSION', defaultValue: params.LINUX_VERSION ?:'RHEL-8', description: 'Linux version to build')
+        string(name: 'COMPILER', defaultValue: params.COMPILER ?:'clang-8', description: 'Compiler version')
+        string(name: 'DOCKER_TAG', defaultValue: params.DOCKER_TAG ?:'latest', description: 'Docker image version')
+        string(name: 'PULL_NUMBER', defaultValue: params.PULL_NUMBER ?:'master',  description: 'Branch/PR to build')
     }
     environment {
         SHARED_LIBRARY="/config/jobs/oeedger8r-cpp/jenkins/common.groovy"

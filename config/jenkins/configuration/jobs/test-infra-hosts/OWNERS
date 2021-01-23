@@ -1,0 +1,17 @@
+approvers:
+  - BRMcLaren
+  - rs--
+  - CyanDevs 
+  - test-infra-oncall
+required_reviewers:
+  - BRMcLaren
+  - rs--
+  - CyanDevs 
+  - test-infra-oncall
+reviewers:
+  - BRMcLaren
+  - rs--
+  - CyanDevs 
+  - test-infra-oncall
+labels:
+ - config/jenkins/configuration/jobs/test-infra-hosts

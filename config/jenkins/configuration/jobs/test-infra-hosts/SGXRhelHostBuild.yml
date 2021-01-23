@@ -4,7 +4,7 @@ jobs:
         folder("test-infra-hosts") {
             displayName("test-infra-hosts")
         }
-        pipelineJob("test-infra-hosts/RhelHostBuild") {
+        pipelineJob("test-infra-hosts/SGXRhelHostBuild") {
             quietPeriod(0)
             description()
             keepDependencies(false)

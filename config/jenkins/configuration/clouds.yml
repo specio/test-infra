@@ -35,7 +35,7 @@ jenkins:
         labels: "ACC-Ubuntu-1804"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -76,7 +76,7 @@ jenkins:
         labels: "ACC-Ubuntu-1604"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -291,7 +291,7 @@ jenkins:
         labels: "OverWatch"
         location: "UK South"
         noOfParallelJobs: 4
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -341,7 +341,7 @@ jenkins:
         labels: "ACC-Ubuntu-1804"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -382,7 +382,7 @@ jenkins:
         labels: "ACC-Ubuntu-1604"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -554,7 +554,7 @@ jenkins:
         labels: "OverWatch"
         location: "East US"
         noOfParallelJobs: 4
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -604,7 +604,7 @@ jenkins:
         labels: "ACC-Ubuntu-1804"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -645,7 +645,7 @@ jenkins:
         labels: "ACC-Ubuntu-1604"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -817,7 +817,7 @@ jenkins:
         labels: "OverWatch"
         location: "West US 2"
         noOfParallelJobs: 4
-        osDiskSize: 0
+        osDiskSize: 128
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:

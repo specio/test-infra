@@ -8,6 +8,7 @@ jobs:
             quietPeriod(0)
             description()
             keepDependencies(false)
+            disableConcurrentBuilds()
             parameters {
                 stringParam {
                     name("PULL_NUMBER")

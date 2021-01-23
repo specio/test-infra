@@ -19,6 +19,7 @@ pipeline {
         PUBLISHER = "${params.SGX}-${params.LINUX_VERSION}"
         OFFER = "${params.SGX}-${params.LINUX_VERSION}"
         SKU = "${params.SGX}-${params.LINUX_VERSION}"
+        GALLERY_NAME = "ACC_Images"
     }
     stages {
         stage('Checkout') {
@@ -170,7 +171,7 @@ pipeline {
 
                         az sig image-definition create \
                             --resource-group ACC-Images \
-                            --gallery-name ACC_Images \
+                            --gallery-name ${GALLERY_NAME} \
                             --gallery-image-definition ${GALLERY_DEFN} \
                             --publisher ${PUBLISHER} \
                             --offer ${OFFER} \
@@ -184,7 +185,6 @@ pipeline {
                         MM=$(date +%m)
 
                         GALLERY_IMAGE_VERSION="$YY.$MM.$DD${BUILD_ID}"
-                        GALLERY_NAME="ACC_Images"
 
                         az sig image-version delete \
                             --resource-group "ACC-Images" \

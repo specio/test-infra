@@ -1,0 +1,75 @@
+---
+jobs:
+  - script: |
+        folder("test-infra") {
+            displayName("test-infra")
+        }
+        folder("test-infra/test-infra-hosts") {
+            displayName("test-infra-hosts")
+        }
+        pipelineJob("test-infra/test-infra-hosts/RhelHostBuild") {
+            quietPeriod(0)
+            description()
+            keepDependencies(false)
+            parameters {
+                stringParam {
+                    name("LINUX_VERSION")
+                    defaultValue("RHEL_8_Gen2")
+                    description("Linux version to build")
+                    trim(true)
+                }
+                stringParam {
+                    name("SGX")
+                    defaultValue("SGX")
+                    description("SGX enabled")
+                    trim(true)
+                }
+            } 
+            authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
+            definition {
+                cpsScm {
+                    scm {
+                        git {
+                            remote {
+                                github("openenclave/test-infra", "https")
+                            }
+                            branch('*/master')
+                            extensions {
+                                cleanBeforeCheckout()
+                                cleanAfterCheckout()
+                                cloneOptions {
+                                    depth(1)
+                                    honorRefspec(false)
+                                    noTags(false)
+                                    reference("")
+                                    shallow(true)
+                                    timeout(10)
+                                }
+                                pruneBranches()
+                                submoduleOptions {
+                                    disable(false)
+                                    parentCredentials(false)
+                                    recursive(true)
+                                    reference("")
+                                    timeout(10)
+                                    tracking(false)
+                                }
+                                wipeOutWorkspace()
+                            }
+                        }
+                    }
+                    scriptPath("config/jobs/test-infra-hosts/jenkins/LinuxHostBuild.Jenkinsfile")
+                }
+            }
+            disabled(false)
+            configure {
+                it / 'properties' / 'jenkins.model.BuildDiscarderProperty' {
+                    strategy {
+                        'daysToKeep'('2')
+                        'numToKeep'('100')
+                        'artifactDaysToKeep'('-1')
+                        'artifactNumToKeep'('-1')
+                    }
+                }
+            }
+        }           

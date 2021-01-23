@@ -1,13 +1,10 @@
 ---
 jobs:
   - script: |
-        folder("test-infra") {
-            displayName("test-infra")
-        }
-        folder("test-infra/test-infra-hosts") {
+        folder("test-infra-hosts") {
             displayName("test-infra-hosts")
         }
-        pipelineJob("test-infra/test-infra-hosts/Ubuntu1604HostBuild") {
+        pipelineJob("test-infra-hosts/Ubuntu1604HostBuild") {
             quietPeriod(0)
             description()
             keepDependencies(false)

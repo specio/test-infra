@@ -4,14 +4,14 @@ jobs:
         folder("test-infra-hosts") {
             displayName("test-infra-hosts")
         }
-        pipelineJob("test-infra-hosts/Ubuntu1804HostBuild") {
+        pipelineJob("test-infra-hosts/SGXUbuntu1604HostBuild") {
             quietPeriod(0)
             description()
             keepDependencies(false)
             parameters {
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("Ubuntu_1804_LTS_Gen2")
+                    defaultValue("Ubuntu_1604_LTS_Gen2")
                     description("Linux version to build")
                     trim(true)
                 }

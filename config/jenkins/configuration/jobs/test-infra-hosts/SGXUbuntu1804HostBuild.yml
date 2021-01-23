@@ -7,7 +7,6 @@ jobs:
         pipelineJob("test-infra-hosts/SGXUbuntu1804HostBuild") {
             quietPeriod(0)
             description()
-            periodic(1440)
             keepDependencies(false)
             parameters {
                 stringParam {

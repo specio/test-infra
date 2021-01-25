@@ -57,7 +57,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
 
         sh  """
             pwd
-            ls -la
+            ls -la /
             echo COMPILER IS ${COMPILER}
             """
         def c_compiler

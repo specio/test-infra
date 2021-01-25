@@ -3,12 +3,6 @@ pipeline {
         timeout(time: 60, unit: 'MINUTES')
     }
 
-    parameters {
-        string(name: 'WINDOWS_VERSION', defaultValue: params.WINDOWS_VERSION ?:'Windows-2016', description: 'Windows version to build')
-        string(name: 'COMPILER', defaultValue: params.COMPILER ?:'MSVC', description: 'Compiler version')
-        string(name: 'DOCKER_TAG', defaultValue: params.DOCKER_TAG ?:'latest', description: 'Docker image version')
-        string(name: 'PULL_NUMBER', defaultValue: params.PULL_NUMBER ?:'master',  description: 'Branch/PR to build')
-    }
     environment {
         SHARED_LIBRARY="/config/jobs/oeedger8r-cpp/jenkins/common.groovy"
     }
@@ -28,8 +22,8 @@ pipeline {
                 script{
                     def runner = load pwd() + "${SHARED_LIBRARY}"
                     String[] BUILD_TYPES=['Debug', 'Release']
-                    for(BUILD_TYPE in BUILD_TYPES){
-                        stage("${params.WINDOWS_VERSION} Build - ${BUILD_TYPE}"){
+                    for(BUILD_TYPE in BUILD_TYPES) {
+                        stage("${params.WINDOWS_VERSION} Build - ${BUILD_TYPE}") {
                             try{
                                 runner.cleanup()
                                 runner.checkout("${params.PULL_NUMBER}")
@@ -46,7 +40,7 @@ pipeline {
             }
         }
     }
-    post ('Clean Up'){
+    post ('Clean Up') {
         always{
             cleanWs()
         }

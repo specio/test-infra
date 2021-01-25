@@ -401,6 +401,10 @@ compilermap:
     Ubuntu1804ReleaseClang-7
     Ubuntu1804ReleaseClang-7Snmalloc
     Ubuntu1804ReleaseClang-7SnmallocE2E
+    AArch64GNU1604Release
+    AArch64GNU1804Release
+    AArch64GNU1604Debug
+    AArch64GNU1804Debug
   clang-8:
     Rhel8BuildClang-8
     Rhel8DebugClang-8

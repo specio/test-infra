@@ -53,7 +53,7 @@ def runTask(String task) {
   * TODO: Add container support
 **/
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
-    dir("${WORKSPACE}/build"){
+    dir("${WORKSPACE}/openenclave"){
         if (isUnix()) {
 
             sh  """
@@ -102,7 +102,8 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                     whoami
                     pwd
                     ls -la
-                    cmake . -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
+                    cd ./build
+                    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
                     ninja -v
                     ctest --output-on-failure --timeout
                     """

@@ -45,7 +45,7 @@ class Trigger:
             try:
                 self.parameters = dict(u.split("=") for u in arguments['--parameters'][0].split(","))
             except ValueError:
-                print("Your parameters should be in key=value format separated by ; for multi value i.e. x=1,b=2")
+                print("Your parameters should be in key=value format separated by , for multi value i.e. x=1,b=2")
                 exit(1)
         else:
             self.parameters = {}

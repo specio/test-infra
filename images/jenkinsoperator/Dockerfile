@@ -17,9 +17,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     procps \
     python \
+    python3 \
     python-dev \
     python-openssl \
     python-pip \
+    python3-pip \
     rsync \
     unzip \
     wget \
@@ -31,6 +33,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install python modules for jenkins controller
 RUN pip install requests docopt
+RUN pip3 install --upgrade pip setuptools
+RUN pip3 install requests docopt urllib3
 
 # Copy over build tools
 COPY ./ /

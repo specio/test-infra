@@ -32,14 +32,14 @@ jobs:
                     trim(true)
                 }
                 stringParam {
-                    name("BUILD_TYPE")
-                    defaultValue("${buildtypemap[${pipeline}]}")
+                    name("WINDOWS_VERSION")
+                    defaultValue("${windowsversionmap[${pipeline}]}")
                     description("")
                     trim(true)
                 }
                 stringParam {
-                    name("WINDOWS_VERSION")
-                    defaultValue("${windowsversionmap[${pipeline}]}")
+                    name("BUILD_TYPE")
+                    defaultValue("${buildtypemap[${pipeline}]}")
                     description("")
                     trim(true)
                 }
@@ -73,7 +73,7 @@ jobs:
                     description("")
                     trim(true)
                 }
-            } 
+            }
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {
@@ -81,6 +81,7 @@ jobs:
                         git {
                             remote {
                                 github("openenclave/test-infra", "https")
+                                refspec("+refs/pull/*/merge:refs/remotes/origin/pr/*")
                             }
                             branch('origin/pr/\$OE_TEST_INFRA_PULL_NUMBER')
                             extensions {

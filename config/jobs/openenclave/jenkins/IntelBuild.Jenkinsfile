@@ -27,8 +27,6 @@ pipeline {
     options {
         timeout(time: 180, unit: 'MINUTES') 
     }
-    agent { label "TEST" }
-
     stages {
         // Check out test infra repo as need shared libs
         stage('Checkout'){
@@ -40,19 +38,20 @@ pipeline {
         // Go through Build stages
         stage('PR-Check: SGX1-FLC'){
             node(AGENTS_LABELS[DOCKERSGX1&&FLC]) {
-            steps{
-                script{
-                    def PLATFORM_TYPE = "SGX1-FLC"
-                    // Build and test in Hardware mode, do not clean up as we will package
-                    stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
-                        try{
-                            def runner = load pwd() + "${SHARED_LIBRARY}"
-                            runner.cleanup()
-                            runner.checkout("${PULL_NUMBER}")
-                            runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}")
-                        } catch (Exception e) {
-                            // Do something with the exception 
-                            error "Program failed, please read logs..."
+                steps{
+                    script{
+                        def PLATFORM_TYPE = "SGX1-FLC"
+                        // Build and test in Hardware mode, do not clean up as we will package
+                        stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
+                            try{
+                                def runner = load pwd() + "${SHARED_LIBRARY}"
+                                runner.cleanup()
+                                runner.checkout("${PULL_NUMBER}")
+                                runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}")
+                            } catch (Exception e) {
+                                // Do something with the exception 
+                                error "Program failed, please read logs..."
+                            }
                         }
                     }
                 }

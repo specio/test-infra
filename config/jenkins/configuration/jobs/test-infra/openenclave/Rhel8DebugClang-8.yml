@@ -20,6 +20,12 @@ jobs:
                     trim(true)
                 }
                 stringParam {
+                    name("PULL_NUMBER")
+                    defaultValue("master")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
                     name("LINUX_VERSION")
                     defaultValue("RHEL-8")
                     description("")

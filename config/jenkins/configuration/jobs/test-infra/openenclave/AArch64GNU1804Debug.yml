@@ -14,6 +14,12 @@ jobs:
             concurrentBuild(false)
             parameters {
                 stringParam {
+                    name("OE_TEST_INFRA_PULL_NUMBER")
+                    defaultValue("master")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
                     name("PULL_NUMBER")
                     defaultValue("master")
                     description("")
@@ -76,7 +82,7 @@ jobs:
                             remote {
                                 github("openenclave/test-infra", "https")
                             }
-                            branch('*/master')
+                            branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()

@@ -95,8 +95,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 whoami
                 pwd
                 ls -la
-                cd /openenclave
-                ls -la
                 """
             sh  """
                 whoami

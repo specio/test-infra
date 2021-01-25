@@ -33,73 +33,71 @@ void checkout( String PULL_NUMBER="master" ) {
   * TODO: Add container support
 **/
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
-    dir("${WORKSPACE}/openenclave"){
-        if (isUnix()) {
+    if (isUnix()) {
 
-            sh """#!/usr/bin/env bash
-                set -o errexit
-                set -o pipefail
-                echo "======================================================================="
-                echo "Running:     $STAGE_NAME"
-                echo "-----------------------------------------------------------------------"
-                echo "User:        \$(whoami)"
-                echo "Agent:       $NODE_NAME - Hostname( \$(hostname) )"
-                echo "http_proxy:  $http_proxy"
-                echo "https_proxy: $https_proxy"
-                echo "no_proxy:    $no_proxy"
-                echo "-----------------------------------------------------------------------"
-                echo "Configuration:     ${BUILD_CONFIG}"
-                echo "Using compiler:    ${COMPILER}"
-                echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
-                echo "======================================================================="
-                """
-            def c_compiler
-            def cpp_compiler
-            def compiler_version
-            switch(COMPILER) {
-                case "clang-8":
-                    c_compiler = "clang"
-                    cpp_compiler = "clang++"
-                    compiler_version = "8"
-                    break
-                case "clang-7":
-                    c_compiler = "clang"
-                    cpp_compiler = "clang++"
-                    compiler_version = "7"
-                    break
-                case "gcc":
-                    c_compiler = "gcc"
-                    cpp_compiler = "g++"
+        sh """#!/usr/bin/env bash
+            set -o errexit
+            set -o pipefail
+            echo "======================================================================="
+            echo "Running:     $STAGE_NAME"
+            echo "-----------------------------------------------------------------------"
+            echo "User:        \$(whoami)"
+            echo "Agent:       $NODE_NAME - Hostname( \$(hostname) )"
+            echo "http_proxy:  $http_proxy"
+            echo "https_proxy: $https_proxy"
+            echo "no_proxy:    $no_proxy"
+            echo "-----------------------------------------------------------------------"
+            echo "Configuration:     ${BUILD_CONFIG}"
+            echo "Using compiler:    ${COMPILER}"
+            echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
+            echo "======================================================================="
+            """
+        def c_compiler
+        def cpp_compiler
+        def compiler_version
+        switch(COMPILER) {
+            case "clang-8":
+                c_compiler = "clang"
+                cpp_compiler = "clang++"
+                compiler_version = "8"
+                break
+            case "clang-7":
+                c_compiler = "clang"
+                cpp_compiler = "clang++"
+                compiler_version = "7"
+                break
+            case "gcc":
+                c_compiler = "gcc"
+                cpp_compiler = "g++"
 
-                    break
-                default:
-                    // This is needed for backwards compatibility with the old
-                    // implementation of the method.
-                    c_compiler = "clang"
-                    cpp_compiler = "clang++"
-                    compiler_version = "8"
-            }
-            if (compiler_version) {
-                c_compiler += "-${compiler_version}"
-                cpp_compiler += "-${compiler_version}"
-            }
-            withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
-                sh  """
-                    mkdir build
-                    cd ./build
-                    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
-                    ninja -v
-                    ctest --output-on-failure --timeout
-                    """
-            }
-        } else {
-            bat """
-                vcvars64.bat x64 && \
-                cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet ${EXTRA_CMAKE_ARGS} -Wdev && \
-                ninja.exe && \
-                ctest.exe -V -C ${BUILD_CONFIG} --output-on-failure
+                break
+            default:
+                // This is needed for backwards compatibility with the old
+                // implementation of the method.
+                c_compiler = "clang"
+                cpp_compiler = "clang++"
+                compiler_version = "8"
+        }
+        if (compiler_version) {
+            c_compiler += "-${compiler_version}"
+            cpp_compiler += "-${compiler_version}"
+        }
+        withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+            sh  """
+                mkdir build
+                cd ./build
+                cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
+                ninja -v
+                ctest --output-on-failure --timeout
                 """
         }
+    } else {
+        bat """
+            vcvars64.bat x64 && \
+            cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet ${EXTRA_CMAKE_ARGS} -Wdev && \
+            ninja.exe && \
+            ctest.exe -V -C ${BUILD_CONFIG} --output-on-failure
+            """
     }
 }
 
@@ -108,7 +106,11 @@ def ContainerBuild(String imageName, String buildType, String compiler, String r
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
-            cmakeBuildopenenclave(buildType,compiler,buildArgs)
+            dir("${WORKSPACE}/openenclave"){
+                cleanup()
+                checkout(pullNumber)
+                cmakeBuildopenenclave(buildType,compiler,buildArgs)
+            }
         }
     }
 }

@@ -83,11 +83,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             }
             withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
                 sh  """
-                    whoami
-                    pwd
-                    ls -la
-                    """
-                sh  """
                     mkdir build
                     cd ./build
                     cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
@@ -111,9 +106,7 @@ def ContainerBuild(String imageName, String buildType, String compiler, String r
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
-            dir("${WORKSPACE}/build") {
-                cmakeBuildopenenclave(buildType,compiler,buildArgs)
-            }
+            cmakeBuildopenenclave(buildType,compiler,buildArgs)
         }
     }
 }

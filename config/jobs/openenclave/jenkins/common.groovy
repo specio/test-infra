@@ -46,9 +46,9 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 echo "https_proxy: $https_proxy"
                 echo "no_proxy:    $no_proxy"
                 echo "-----------------------------------------------------------------------"
-                echo "Configuration:     ${BUILD_CONFIG}
-                echo "Using compiler:    ${COMPILER}
-                echo "Compilator Params: ${EXTRA_CMAKE_ARGS}
+                echo "Configuration:     ${BUILD_CONFIG}"
+                echo "Using compiler:    ${COMPILER}"
+                echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
                 echo "======================================================================="
                 """
             def c_compiler

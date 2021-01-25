@@ -107,13 +107,13 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
     }
 }
 
-def ContainerBuild(String imageName, String buildType, String compiler, String runArgs="") {
+def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs) {
     docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/build") {
-                cmakeBuildopenenclave(buildType,compiler,runArgs)
+                cmakeBuildopenenclave(buildType,compiler,buildArgs)
             }
         }
     }

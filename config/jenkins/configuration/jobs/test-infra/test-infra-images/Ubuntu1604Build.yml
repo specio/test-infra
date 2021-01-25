@@ -103,7 +103,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/test-infra-images/jenkins/UbuntuBuild.Jenkinsfile")
-                    lightweight(true)
+                    lightWeight(true)
                 }
             }
             disabled(false)

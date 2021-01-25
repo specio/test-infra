@@ -53,65 +53,67 @@ def runTask(String task) {
   * TODO: Add container support
 **/
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
-    if (isUnix()) {
+    dir("${WORKSPACE}/build")
+        if (isUnix()) {
 
-        sh  """
-            pwd
-            ls -la /
-            echo COMPILER IS ${COMPILER}
-            """
-        def c_compiler
-        def cpp_compiler
-        def compiler_version
-        switch(COMPILER) {
-            case "clang-8":
-                c_compiler = "clang"
-                cpp_compiler = "clang++"
-                compiler_version = "8"
-                break
-            case "clang-7":
-                c_compiler = "clang"
-                cpp_compiler = "clang++"
-                compiler_version = "7"
-                break
-            case "gcc":
-                c_compiler = "gcc"
-                cpp_compiler = "g++"
+            sh  """
+                pwd
+                ls -la /
+                echo COMPILER IS ${COMPILER}
+                """
+            def c_compiler
+            def cpp_compiler
+            def compiler_version
+            switch(COMPILER) {
+                case "clang-8":
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "8"
+                    break
+                case "clang-7":
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "7"
+                    break
+                case "gcc":
+                    c_compiler = "gcc"
+                    cpp_compiler = "g++"
 
-                break
-            default:
-                // This is needed for backwards compatibility with the old
-                // implementation of the method.
-                c_compiler = "clang"
-                cpp_compiler = "clang++"
-                compiler_version = "8"
-        }
-        if (compiler_version) {
-            c_compiler += "-${compiler_version}"
-            cpp_compiler += "-${compiler_version}"
-        }
-        withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
-            sh  """
-                whoami
-                pwd
-                ls -la
+                    break
+                default:
+                    // This is needed for backwards compatibility with the old
+                    // implementation of the method.
+                    c_compiler = "clang"
+                    cpp_compiler = "clang++"
+                    compiler_version = "8"
+            }
+            if (compiler_version) {
+                c_compiler += "-${compiler_version}"
+                cpp_compiler += "-${compiler_version}"
+            }
+            withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
+                sh  """
+                    whoami
+                    pwd
+                    ls -la
+                    """
+                sh  """
+                    whoami
+                    pwd
+                    ls -la
+                    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
+                    ninja -v
+                    ctest --output-on-failure --timeout
+                    """
+            }
+        } else {
+            bat """
+                vcvars64.bat x64 && \
+                cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet ${EXTRA_CMAKE_ARGS} -Wdev && \
+                ninja.exe && \
+                ctest.exe -V -C ${BUILD_CONFIG} --output-on-failure
                 """
-            sh  """
-                whoami
-                pwd
-                ls -la
-                cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
-                ninja -v
-                ctest --output-on-failure --timeout
-                """
         }
-    } else {
-        bat """
-            vcvars64.bat x64 && \
-            cmake.exe .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} -DBUILD_ENCLAVES=ON -DNUGET_PACKAGE_PATH=C:/oe_prereqs -DCPACK_GENERATOR=NuGet ${EXTRA_CMAKE_ARGS} -Wdev && \
-            ninja.exe && \
-            ctest.exe -V -C ${BUILD_CONFIG} --output-on-failure
-            """
     }
 }
 

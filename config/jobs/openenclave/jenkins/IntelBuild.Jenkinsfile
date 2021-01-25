@@ -41,11 +41,11 @@ pipeline {
         stage('Build'){
             steps{
                 script{
-                    def runner = load pwd() + "${SHARED_LIBRARY}"
-
+                    def PLATFORM_TYPE = "SGX1-FLC"
                     // Build and test in Hardware mode, do not clean up as we will package
-                    stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
+                    stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                         try{
+                            def runner = load pwd() + "${SHARED_LIBRARY}"
                             runner.cleanup()
                             runner.checkout("${PULL_NUMBER}")
                             runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}")

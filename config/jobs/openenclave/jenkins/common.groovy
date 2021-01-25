@@ -29,6 +29,26 @@ void checkout( String PULL_NUMBER="master" ) {
     }
 }
 
+def runTask(String task) {
+    dir("${WORKSPACE}/build") {
+        sh """#!/usr/bin/env bash
+                set -o errexit
+                set -o pipefail
+                source /etc/profile
+                echo "======================================================================="
+                echo "Running:     $STAGE_NAME"
+                echo "-----------------------------------------------------------------------"
+                echo "User:        \$(whoami)"
+                echo "Agent:       $NODE_NAME - Hostname( \$(hostname) )"
+                echo "http_proxy:  $http_proxy"
+                echo "https_proxy: $https_proxy"
+                echo "no_proxy:    $no_proxy"
+                echo "======================================================================="
+                ${task}
+            """
+    }
+}
+
 /** Build openenclave based on build config, compiler and platform
   * TODO: Add container support
 **/
@@ -87,6 +107,17 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
     }
 }
 
+def ContainerBuild(String imageName, String buildType, String compiler, String runArgs="") {
+    docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
+        def image = docker.image(imageName)
+        image.pull()
+        image.inside(runArgs) {
+            dir("${WORKSPACE}/build") {
+                cmakeBuildopenenclave(buildType,compiler,runArgs)
+            }
+        }
+    }
+}
 // Common build and package functionality. WIP
 
 def openenclavepackageInstall( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {

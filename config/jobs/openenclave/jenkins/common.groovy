@@ -53,7 +53,7 @@ def runTask(String task) {
   * TODO: Add container support
 **/
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
-    dir ('openenclave/build') {
+    dir ('/openenclave') {
         if (isUnix()) {
 
             sh  """

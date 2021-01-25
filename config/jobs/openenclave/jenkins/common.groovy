@@ -187,7 +187,7 @@ def openenclavepackageInstall( String BUILD_CONFIG="Release", String COMPILER="c
                 setlocal enabledelayedexpansion && \
                 for /d %%i in (*) do (
                     cd C:\\oe\\open-enclave\\openenclave\\share\\openenclave\\samples\\"%%i"
-                    mkdir build
+                    mkdir -m 775 build
                     cd build
                     cmake .. -G Ninja -DNUGET_PACKAGE_PATH=C:\\oe_prereqs -DLVI_MITIGATION=OFF || exit /b %errorlevel%
                     ninja || exit /b %errorlevel%

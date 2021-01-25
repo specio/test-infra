@@ -38,7 +38,8 @@ pipeline {
             }
         }
         // Go through Build stages
-        stage('Build'){
+        stage('PR-Check: SGX1-FLC'){
+            node(AGENTS_LABELS[DOCKERSGX1&&FLC]) {
             steps{
                 script{
                     def PLATFORM_TYPE = "SGX1-FLC"

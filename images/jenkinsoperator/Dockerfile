@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install python modules for jenkins controller
 RUN pip install requests docopt
-RUN pip3 install --upgrade pip3
+RUN pip3 install --upgrade pip setuptools
 RUN pip3 install requests docopt urllib3
 
 # Copy over build tools

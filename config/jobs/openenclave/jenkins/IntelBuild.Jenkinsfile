@@ -32,7 +32,7 @@ pipeline {
         // Go through Build stages
         stage('PR-Check'){
             parallel{
-                stage('PR-Check: SGX1-FLC'){
+                stage('SGX1-FLC'){
                     agent { label 'DOCKER && SGX1 && FLC' }
                     steps{
                         cleanWs()
@@ -54,7 +54,7 @@ pipeline {
                         }
                     }
                 }
-                stage('PR-Check: SGX1'){
+                stage('SGX1'){
                     agent { label 'DOCKER && SGX1 && !FLC' }
                     steps{
                         cleanWs()

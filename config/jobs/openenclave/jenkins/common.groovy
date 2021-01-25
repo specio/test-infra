@@ -29,9 +29,15 @@ void checkout( String PULL_NUMBER="master" ) {
     }
 }
 
-def runTask(String task) {
-    dir("${WORKSPACE}/build") {
-        sh """#!/usr/bin/env bash
+/** Build openenclave based on build config, compiler and platform
+  * TODO: Add container support
+**/
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
+    dir("${WORKSPACE}/openenclave"){
+        if (isUnix()) {
+
+            sh  """
+                        sh """#!/usr/bin/env bash
                 set -o errexit
                 set -o pipefail
                 source /etc/profile
@@ -43,23 +49,11 @@ def runTask(String task) {
                 echo "http_proxy:  $http_proxy"
                 echo "https_proxy: $https_proxy"
                 echo "no_proxy:    $no_proxy"
+                echo "-----------------------------------------------------------------------"
+                echo "Configuration:     ${BUILD_CONFIG}
+                echo "Using compiler:    ${COMPILER}
+                echo "Compilator Params: ${EXTRA_CMAKE_ARGS}
                 echo "======================================================================="
-                ${task}
-            """
-    }
-}
-
-/** Build openenclave based on build config, compiler and platform
-  * TODO: Add container support
-**/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
-    dir("${WORKSPACE}/openenclave"){
-        if (isUnix()) {
-
-            sh  """
-                pwd
-                ls -la /
-                echo COMPILER IS ${COMPILER}
                 """
             def c_compiler
             def cpp_compiler

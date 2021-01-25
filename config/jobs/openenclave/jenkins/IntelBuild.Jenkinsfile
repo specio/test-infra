@@ -1,75 +1,27 @@
 // Pull Request Information
 PULL_NUMBER=env.PULL_NUMBER?env.PULL_NUMBER:"master"
 
+// OS Version Configuration
+LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
+
+// Some Defaults for general build info
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
+COMPILER=env.COMPILER?env.COMPILER:"clang-7"
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"RelWithDebInfo"
+
+// Some override for build configuration
+LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
+LVI_MITIGATION_SKIP_TESTS=env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKIP_TESTS:"OFF"
+USE_SNMALLOC=env.USE_SNMALLOC?env.USE_SNMALLOC:"ON"
+
+// Edge casee, snmalloc will not work on old gcc versions and 1604 default is old. Remove after 1604 deprecation.
+USE_SNMALLOC=expression { return COMPILER == 'gcc' && LINUX_VERSION =='1604'}?"OFF":USE_SNMALLOC
+
+// Openenclave extra build configs 
+EXTRA_CMAKE_ARGS=env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:"-DLVI_MITIGATION=${LVI_MITIGATION} -DLVI_MITIGATION_SKIP_TESTS=${LVI_MITIGATION_SKIP_TESTS} -DUSE_SNMALLOC=${USE_SNMALLOC}"
 
 // Shared library config, check out common.groovy!
 SHARED_LIBRARY="/config/jobs/openenclave/jenkins/common.groovy"
-
-def runTask(String task) {
-    dir("${WORKSPACE}/build") {
-        sh """#!/usr/bin/env bash
-                set -o errexit
-                set -o pipefail
-                source /etc/profile
-                echo "======================================================================="
-                echo "Running:     $STAGE_NAME"
-                echo "-----------------------------------------------------------------------"
-                echo "User:        \$(whoami)"
-                echo "Agent:       $NODE_NAME - Hostname( \$(hostname) )"
-                echo "http_proxy:  $http_proxy"
-                echo "https_proxy: $https_proxy"
-                echo "no_proxy:    $no_proxy"
-                echo "======================================================================="
-                ${task}
-            """
-    }
-}
-
-def Run(String compiler, String task, String compiler_version = "") {
-    def c_compiler
-    def cpp_compiler
-    switch(compiler) {
-        case "cross":
-            // In this case, the compiler is set by the CMake toolchain file. As
-            // such, it is not necessary to specify anything in the environment.
-            runTask(task)
-            return
-        case "clang":
-            c_compiler = "clang"
-            cpp_compiler = "clang++"
-            break
-        case "gcc":
-            c_compiler = "gcc"
-            cpp_compiler = "g++"
-            break
-        default:
-            // This is needed for backwards compatibility with the old
-            // implementation of the method.
-            c_compiler = "clang"
-            cpp_compiler = "clang++"
-            compiler_version = "7"
-    }
-    if (compiler_version) {
-        c_compiler += "-${compiler_version}"
-        cpp_compiler += "-${compiler_version}"
-    }
-    withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
-        runTask(task);
-    }
-}
-
-def ContainerRun(String imageName, String compiler, String task, String runArgs="") {
-    docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
-        def image = docker.image(imageName)
-        image.pull()
-        image.inside(runArgs) {
-            dir("${WORKSPACE}/build") {
-                Run(compiler, task)
-            }
-        }
-    }
-}
 
 pipeline {
     options {
@@ -78,15 +30,9 @@ pipeline {
     agent { label "TEST" }
 
     stages {
+        // Check out test infra repo as need shared libs
         stage('Checkout'){
             steps{
-                sh '''
-                    #!/bin/bash
-                    echo "hello world"
-                    whoami
-                    pwd
-                    ls -la
-                '''
                 cleanWs()
                 checkout scm
             }
@@ -95,12 +41,19 @@ pipeline {
         stage('Build'){
             steps{
                 script{
-                    def task = """
-                               whoami
-                               pwd
-                               ls -la
-                               """
-                    ContainerRun("oetools-full-18.04:${DOCKER_TAG}", "clang-7", task, "--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost")      
+                    def runner = load pwd() + "${SHARED_LIBRARY}"
+
+                    // Build and test in Hardware mode, do not clean up as we will package
+                    stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
+                        try{
+                            runner.cleanup()
+                            runner.checkout("${PULL_NUMBER}")
+                            runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","${EXTRA_CMAKE_ARGS}")
+                        } catch (Exception e) {
+                            // Do something with the exception 
+                            error "Program failed, please read logs..."
+                        }
+                    }
                 }
             }
         }

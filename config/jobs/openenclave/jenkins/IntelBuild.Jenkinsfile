@@ -29,17 +29,12 @@ pipeline {
     }
     agent none
     stages {
-        // Check out test infra repo as need shared libs
-        stage('Checkout'){
-            steps{
-                cleanWs()
-                checkout scm
-            }
-        }
         // Go through Build stages
         stage('PR-Check: SGX1-FLC'){
             agent { label 'DOCKERSGX1&&FLC' }
             steps{
+                cleanWs()
+                checkout scm
                 script{
                     def PLATFORM_TYPE = "SGX1-FLC"
                     // Build and test in Hardware mode, do not clean up as we will package

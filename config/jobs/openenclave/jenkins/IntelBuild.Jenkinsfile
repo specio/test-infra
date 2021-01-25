@@ -46,9 +46,7 @@ pipeline {
                     // Build and test in Hardware mode, do not clean up as we will package
                     stage("Ubuntu ${LINUX_VERSION} Build - ${BUILD_TYPE}"){
                         try{
-                            runner.cleanup()
-                            runner.checkout("${PULL_NUMBER}")
-                            runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost","${EXTRA_CMAKE_ARGS}")
+                            runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}")
                         } catch (Exception e) {
                             // Do something with the exception 
                             error "Program failed, please read logs..."

@@ -103,7 +103,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/oeedger8r-cpp/jenkins/RhelBuild.Jenkinsfile")
-                    lightweight(true)
+                    lightWeight(true)
                 }
             }
             disabled(false)

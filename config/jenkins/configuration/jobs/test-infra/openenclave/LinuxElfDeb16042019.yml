@@ -103,7 +103,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/openenclave/jenkins/LinuxElfBuild.Jenkinsfile")
-                    lightweight(true)
+                    lightWeight(true)
                 }
             }
             disabled(false)

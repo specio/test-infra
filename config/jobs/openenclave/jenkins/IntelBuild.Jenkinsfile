@@ -27,6 +27,7 @@ pipeline {
     options {
         timeout(time: 180, unit: 'MINUTES') 
     }
+    agent { label "TEST" }
     stages {
         // Check out test infra repo as need shared libs
         stage('Checkout'){

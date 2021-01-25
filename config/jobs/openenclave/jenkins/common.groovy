@@ -116,7 +116,6 @@ def ContainerBuild(String imageName, String buildType, String compiler, String r
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/build") {
-                checkout(pullNumber)
                 cmakeBuildopenenclave(buildType,compiler,buildArgs)
             }
         }

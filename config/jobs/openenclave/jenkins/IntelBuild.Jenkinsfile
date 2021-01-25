@@ -31,7 +31,7 @@ pipeline {
     stages {
         // Go through Build stages
         stage('PR-Check: SGX1-FLC'){
-            agent { label 'DOCKERSGX1&&FLC' }
+            agent { label 'DOCKER && SGX1 && FLC' }
             steps{
                 cleanWs()
                 checkout scm

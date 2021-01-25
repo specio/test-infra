@@ -55,7 +55,7 @@ pipeline {
                     }
                 }
                 stage('PR-Check: SGX1'){
-                    agent { label 'DOCKER && SGX1' }
+                    agent { label 'DOCKER && SGX1 && !FLC' }
                     steps{
                         cleanWs()
                         checkout scm

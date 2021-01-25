@@ -57,6 +57,8 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         if (isUnix()) {
 
             sh  """
+                pwd
+                ls -la /
                 echo COMPILER IS ${COMPILER}
                 """
             def c_compiler

@@ -37,10 +37,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         if (isUnix()) {
 
             sh  """
-                        sh """#!/usr/bin/env bash
-                set -o errexit
-                set -o pipefail
-                source /etc/profile
                 echo "======================================================================="
                 echo "Running:     $STAGE_NAME"
                 echo "-----------------------------------------------------------------------"

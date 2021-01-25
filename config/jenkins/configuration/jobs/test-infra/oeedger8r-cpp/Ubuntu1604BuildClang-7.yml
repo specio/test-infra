@@ -103,6 +103,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/oeedger8r-cpp/jenkins/UbuntuBuild.Jenkinsfile")
+                    lightweight(true)
                 }
             }
             disabled(false)

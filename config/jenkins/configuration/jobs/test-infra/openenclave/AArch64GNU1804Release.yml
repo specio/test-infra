@@ -102,6 +102,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/openenclave/jenkins/ArchLinux.Jenkinsfile")
+                    lightweight(true)
                 }
             }
             disabled(false)

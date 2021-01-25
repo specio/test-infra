@@ -103,7 +103,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/${repo}/jenkins/${jobmap[$pipeline]}.Jenkinsfile")
-                    lightWeight(true)
+                    lightweight(true)
                 }
             }
             disabled(false)

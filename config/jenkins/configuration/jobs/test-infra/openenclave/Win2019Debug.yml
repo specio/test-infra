@@ -103,7 +103,7 @@ jobs:
                         }
                     }
                     scriptPath("config/jobs/openenclave/jenkins/WindowsBuild.Jenkinsfile")
-                    lightWeight(true)
+                    lightweight(true)
                 }
             }
             disabled(false)

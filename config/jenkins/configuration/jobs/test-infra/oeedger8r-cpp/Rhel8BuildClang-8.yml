@@ -11,7 +11,6 @@ jobs:
             quietPeriod(0)
             description()
             keepDependencies(false)
-            concurrentBuild(false)
             parameters {
                 stringParam {
                     name("OE_TEST_INFRA_PULL_NUMBER")

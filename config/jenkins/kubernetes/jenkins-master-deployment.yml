@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: jenkins-master
-        image: jenkins/jenkins:lts
+        image: jenkins/jenkins:2.263.3-lts
         imagePullPolicy: Always
         env:
         - name: JAVA_OPTS

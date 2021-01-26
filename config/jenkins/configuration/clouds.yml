@@ -22,7 +22,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-18.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -105,7 +105,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "rhel-8"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -154,7 +154,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2016-SGX-DCAP"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -195,7 +195,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2019-SGX-DCAP"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -236,7 +236,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "win-2019-dockersgx"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "1.0.0"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -278,7 +278,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-18.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -328,7 +328,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-18.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -369,7 +369,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-16.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -410,7 +410,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "rhel-8"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -459,7 +459,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2016-SGX-DCAP"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -500,7 +500,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2019-SGX-DCAP"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -541,7 +541,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-18.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -591,7 +591,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-18.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -632,7 +632,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-16.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -673,7 +673,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "rhel-8"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -722,7 +722,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2016-SGX-DCAP"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -763,7 +763,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2019-SGX-DCAP"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -804,7 +804,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ubuntu-18.04"
-          galleryImageVersion: "latest"
+          galleryImageVersion: "2020.12.03"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"

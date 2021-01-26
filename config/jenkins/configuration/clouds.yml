@@ -5,7 +5,7 @@ jenkins:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
       cloudName: "AzureVMAgentsUKSouth"
       configurationStatus: "pass"
-      deploymentTimeout: 1200
+      deploymentTimeout: 1256
       newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-uksouth"
       maxVirtualMachinesLimit: 100
       resourceGroupReferenceType: "new"
@@ -35,7 +35,7 @@ jenkins:
         labels: "ACC-Ubuntu-1804"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -76,7 +76,7 @@ jenkins:
         labels: "ACC-Ubuntu-1604"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -126,7 +126,7 @@ jenkins:
         labels: "ACC-RHEL-8"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -166,7 +166,7 @@ jenkins:
         labels: "ACC-Windows-2016"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -207,7 +207,7 @@ jenkins:
         labels: "ACC-Windows-2019"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -249,7 +249,7 @@ jenkins:
         labels: "ACC-Windows-2019-Docker"
         location: "UK South"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -291,7 +291,7 @@ jenkins:
         labels: "OverWatch"
         location: "UK South"
         noOfParallelJobs: 4
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -311,7 +311,7 @@ jenkins:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
       cloudName: "AzureVMAgentsEastUs"
       configurationStatus: "pass"
-      deploymentTimeout: 1200
+      deploymentTimeout: 1256
       newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-eastus"
       maxVirtualMachinesLimit: 100
       resourceGroupReferenceType: "new"
@@ -341,7 +341,7 @@ jenkins:
         labels: "ACC-Ubuntu-1804"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -382,7 +382,7 @@ jenkins:
         labels: "ACC-Ubuntu-1604"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -431,7 +431,7 @@ jenkins:
         labels: "ACC-RHEL-8"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -471,7 +471,7 @@ jenkins:
         labels: "ACC-Windows-2016"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -512,7 +512,7 @@ jenkins:
         labels: "ACC-Windows-2019"
         location: "East US"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -554,7 +554,7 @@ jenkins:
         labels: "OverWatch"
         location: "East US"
         noOfParallelJobs: 4
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -574,7 +574,7 @@ jenkins:
       azureCredentialsId: "9e713c35-c19b-4ddd-8cd5-110c2733c2e5"
       cloudName: "AzureVMAgentsWestUS"
       configurationStatus: "pass"
-      deploymentTimeout: 1200
+      deploymentTimeout: 1256
       newResourceGroupName: "<AZURE_VM_RESOURCE_GROUP>-westus2"
       maxVirtualMachinesLimit: 100
       resourceGroupReferenceType: "new"
@@ -604,7 +604,7 @@ jenkins:
         labels: "ACC-Ubuntu-1804"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -645,7 +645,7 @@ jenkins:
         labels: "ACC-Ubuntu-1604"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -694,7 +694,7 @@ jenkins:
         labels: "ACC-RHEL-8"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:
@@ -734,7 +734,7 @@ jenkins:
         labels: "ACC-Windows-2016"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -775,7 +775,7 @@ jenkins:
         labels: "ACC-Windows-2019"
         location: "West US 2"
         noOfParallelJobs: 1
-        osDiskSize: 200
+        osDiskSize: 256
         osType: "Windows"
         preInstallSsh: true
         retentionStrategy:
@@ -817,7 +817,7 @@ jenkins:
         labels: "OverWatch"
         location: "West US 2"
         noOfParallelJobs: 4
-        osDiskSize: 128
+        osDiskSize: 256
         osType: "Linux"
         preInstallSsh: true
         retentionStrategy:

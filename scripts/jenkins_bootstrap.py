@@ -114,6 +114,16 @@ class Trigger:
     def trigger_build(self):
         """Trigger a build via Jenkins API"""
 
+        def fail_trigger(reason):
+            """ Fail the build trigger with a reason """
+
+            raise ValueError(
+                f"Build trigger failed!\n"
+                f"Response status: {build_response.status_code}\n"
+                f'Reason: {reason}\n'
+                f'Content: {build_response.content}'
+            )
+
         # Do a build request
         if self.parameters:
             build_url = f'{self.url}/job/{self.job}/buildWithParameters'
@@ -132,53 +142,65 @@ class Trigger:
 
             # Get queue url to get queue updates
             queue_url = f"{build_response.headers.get('location')}api/json"
-            # Edge case where queue url in response is not fully qualified
-            if queue_url.startswith('/'):
-                queue_url = f"{self.url}{queue_url}"           
-            print(f'Build is queued @ {queue_url}')
+            if queue_url:
+                # Edge case where queue url in response is not fully qualified
+                if queue_url.startswith('/'):
+                    queue_url = f"{self.url}{queue_url}"
+                print(f'Build is queued @ {queue_url}')
 
-            # Set a handler to cancel the Job if this script exits
-            atexit.register(self.handler_abort_job, queue_url)
+                # Set a handler to cancel the Job if this script exits
+                atexit.register(self.handler_abort_job, queue_url)
 
-        elif build_response.status_code == 401:
-            raise ValueError(
-                f"Build trigger failed!\n"
-                f"Response status: {build_response.status_code}\n"
-                f'Reason: Invalid user/password provided'
-            )
+                return queue_url
 
+        # Account for the some of the many ways a build trigger can fail
+        # Note that some connection errors will be automatically retried as part of the HTTPAdapter
         elif build_response.status_code == 400:
-            raise ValueError(
-                f"Build trigger failed!\n"
-                f"Response status: {build_response.status_code}\n"
-                f'Reason: Bad request. Likely build trigger is missing parameters to build with\n'
-                f'Content: {build_response.content}'
-            )
-
-        return queue_url
+            fail_trigger("Bad request. Likely build trigger is missing parameters to build with")
+        elif build_response.status_code == 401:
+            fail_trigger("Invalid user/password provided")
+        elif build_response.status_code == 404:
+            fail_trigger("This job does not exist. Please check your job name and url")
+        elif build_response.status_code == 409:
+            fail_trigger("This job seems to be disabled")
+        else:
+            fail_trigger("Failed to trigger build. Please see response content for causes.")
 
     def waiting_for_job_to_start(self, queue_url):
         """Query if a Jenkins job starts building"""
-        
-        for retry in range(self.retries):
+      
+        # Increase number of retries by 5 to ensure enough time is spent waiting in queue
+        max_retries = self.retries + 5
+        for retry in range(max_retries):
 
             # Check if job url is available yet
-            print(f'Waiting for {queue_url} to start (#{retry+1}/{self.retries})')
+            print(f'Checking job status at {queue_url} (#{retry+1}/{max_retries})')
             queue_json = self.return_json(queue_url)
 
             if queue_json.get('executable') and queue_json.get("executable").get("url"):
                 job_url = queue_json.get("executable").get("url")
                 print(f'Job is executing: {job_url}')
-
                 return job_url
             
             elif queue_json.get('why'):
-                print(f"Waiting for job to start because: {queue_json.get('why')}")
+                print(f"Job is in queue because: {queue_json.get('why')}")
             
-            # Binary backoff before next attempt
-            next_sleep = binary_backoff(retry)
-            print(f'Sleeping for {next_sleep}s...')
-            sleep(next_sleep)
+            elif queue_json.get('cancelled'):
+                print(f"Job is cancelled. Exiting...")
+                exit(1)
+
+            elif self.debug:
+                print(queue_json)
+
+            # Do not sleep for last loop
+            if retry + 1 < max_retries:
+                # Binary backoff before next attempt, but have a ceiling of 256 seconds
+                # to account for Jenkins queue items being garbage collected every 5 min
+                next_sleep = min(binary_backoff(retry), 256)
+                print(f'Sleeping for {next_sleep}s...')
+                sleep(next_sleep)
+
+        raise TimeoutError("Exceeded timeout waiting for queue item to start")
 
     def check_job_status(self, job_url):
         """
@@ -308,10 +330,14 @@ class Trigger:
                 else:
                     sleep(binary_backoff(retry))
             elif '/queue/' in url:
-                # Queue item started between initial exit and abort request. Abort Job instead
+                # Queue item stop response will return a 500 if it is no longer in queue
                 if stop_response.status_code == 500:
+                    print("Job has left queue.")
+                    # Check status of Job
                     job_url = self.waiting_for_job_to_start(url)
+                    # If queue item started between initial exit and abort request, abort Job instead
                     if job_url:
+                        print("Job is already building. Killing build instead.")
                         self.handler_abort_job(job_url)
 
     def main(self):

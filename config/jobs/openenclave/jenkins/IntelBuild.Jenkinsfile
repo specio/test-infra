@@ -66,7 +66,7 @@ pipeline {
                         }
                     }
                 }
-                /*
+                ///*
                 stage('SGX1'){
                     agent { label 'DOCKER && SGX1 && !FLC' }
                     steps{
@@ -89,7 +89,7 @@ pipeline {
                         }
                     }
                 }
-                */
+                //*/
             }
         }
     }

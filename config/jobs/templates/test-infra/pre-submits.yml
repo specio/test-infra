@@ -1,7 +1,7 @@
   - name: pr-test-infra-${repo}-${pipeline}
     branches:
     - master
-    run_if_changed: "^(config/jobs/${repo}//jenkins/*)"
+    run_if_changed: "^(config/jobs/${repo}//*)"
     decorate: true
     skip_report: false
     max_concurrency: 1

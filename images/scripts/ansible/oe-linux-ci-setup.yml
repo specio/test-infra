@@ -3,27 +3,13 @@
   any_errors_fatal: true
   gather_facts: true
   become: yes
-  tasks:
-    - import_role:
-        name: linux/openenclave
-        tasks_from: environment-setup.yml
-
+  tasks:     
     - import_role:
         name: linux/intel
-        tasks_from: sgx-packages.yml
-
+        tasks_from: docker.yml
+        
     - import_role:
-        name: linux/az-dcap-client
-        tasks_from: stable-install.yml
-
-#    - import_role:
-#        name: linux/openenclave
-#        tasks_from: validation.yml
-
-#    - import_role:
-#        name: linux/intel
-#        tasks_from: packages-validation.yml
-
-#    - import_role:
-#        name: linux/az-dcap-client
-#        tasks_from: validation.yml
+        name: linux/intel
+        tasks_from: sgx-driver.yml
+  vars:
+    flc_enabled: false

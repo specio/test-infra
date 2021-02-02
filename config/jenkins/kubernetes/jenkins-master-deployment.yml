@@ -70,8 +70,10 @@ spec:
         - name: CASC_JENKINS_CONFIG
           value: /var/jenkins_home/configuration/
         volumeMounts:
-        - name: volume
+        - name: jenkins-home
           mountPath: "/var/jenkins_home"
+        - name: jenkins-war
+          mountPath: "/var/jenkins_home/war"
         livenessProbe:
           httpGet:
             path: /login
@@ -95,6 +97,8 @@ spec:
             cpu: "8"
             memory: 30Gi
       volumes:
-      - name: volume
+      - name: jenkins-home
         persistentVolumeClaim:
           claimName: jenkins-master-volume
+      - name: jenkins-war
++       emptyDir: {}

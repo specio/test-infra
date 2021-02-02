@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  any_errors_fatal: true
+  gather_facts: true
+  become: yes
+  tasks:     
+    - import_role:
+        name: linux/intel
+        tasks_from: docker.yml
+        
+    - import_role:
+        name: linux/intel
+        tasks_from: sgx-driver.yml
+  vars:
+    flc_enabled: true

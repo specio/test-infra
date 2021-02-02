@@ -44,7 +44,7 @@ pipeline {
                                 checkout scm
                                 //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave")
                             }
-                                 // Build and test in Hardware mode, do not clean up as we will package
+                            /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
@@ -54,7 +54,7 @@ pipeline {
                                     error "Program failed, please read logs..."
                                 }
                             }
-                                 //Build and test in Hardware mode, do not clean up as we will package
+                            */     //Build and test in Hardware mode, do not clean up as we will package
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
@@ -68,7 +68,7 @@ pipeline {
                     }
                 }
                 //*/
-                /*
+                ///*
                 stage('SGX1'){
                     agent { label 'DOCKER && SGX1 && !FLC' }
                     steps{
@@ -95,7 +95,7 @@ pipeline {
                         }
                     }
                 }
-                */
+                //*/
             }
         }
     }

@@ -48,7 +48,7 @@ pipeline {
                             stage("CheckCI"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","","${PULL_NUMBER}")
+                                    //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","","${PULL_NUMBER}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."

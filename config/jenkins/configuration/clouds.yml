@@ -195,7 +195,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2016-SGX-DCAP"
-          galleryImageVersion: "2021.01.27"
+          galleryImageVersion: "2021.01.28"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -582,7 +582,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2016-SGX-DCAP"
-          galleryImageVersion: "2021.01.27"
+          galleryImageVersion: "2021.01.28"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"
@@ -927,7 +927,7 @@ jenkins:
         existingStorageAccountName: ""
         imageReference:
           galleryImageDefinition: "ws2016-SGX-DCAP"
-          galleryImageVersion: "2021.01.27"
+          galleryImageVersion: "2021.01.28"
           galleryName: "<AZURE_VM_GALLERY_NAME>"
           galleryResourceGroup: "<AZURE_VM_GALLERY_RESOURCE_GROUP>"
           gallerySubscriptionId: "<AZURE_VM_GALLERY_SUBSCRIPTION_ID>"

@@ -4,7 +4,7 @@ jobs:
         folder("openenclave") {
             displayName("openenclave")
         }
-        pipelineJob("openenclave/Win2016Debug") {
+        pipelineJob("openenclave/Docker1604DebugClang-8SnmallocE2E") {
             quietPeriod(0)
             description()
             keepDependencies(false)
@@ -17,7 +17,7 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
-                    defaultValue("")
+                    defaultValue("Ubuntu-1604")
                     description("")
                     trim(true)
                 }
@@ -29,25 +29,25 @@ jobs:
                 }
                 stringParam {
                     name("WINDOWS_VERSION")
-                    defaultValue("Windows-2016")
-                    description("")
-                    trim(true)
-                }
-                stringParam {
-                    name("COMPILER")
                     defaultValue("")
                     description("")
                     trim(true)
                 }
                 stringParam {
+                    name("COMPILER")
+                    defaultValue("clang-8")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
                     name("USE_SNMALLOC")
-                    defaultValue("OFF")
+                    defaultValue("ON")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("LVI_MITIGATION")
-                    defaultValue("ControlFlow")
+                    defaultValue("NONE")
                     description("")
                     trim(true)
                 }
@@ -59,7 +59,7 @@ jobs:
                 }
                 stringParam {
                     name("SIMULATION")
-                    defaultValue("0")
+                    defaultValue("1")
                     description("")
                     trim(true)
                 }
@@ -97,7 +97,7 @@ jobs:
                             }
                         }
                     }
-                    scriptPath("config/jobs/openenclave/jenkins/WindowsBuild.Jenkinsfile")
+                    scriptPath("config/jobs/openenclave/jenkins/UbuntuContainerBuild.Jenkinsfile")
                     lightweight(true)
                 }
             }

@@ -1,14 +1,23 @@
 ---
 jobs:
   - script: |
-        folder("openenclave") {
+        folder("test-infra") {
+            displayName("test-infra")
+        }
+        folder("test-infra/openenclave") {
             displayName("openenclave")
         }
-        pipelineJob("openenclave/Win2016Debug") {
+        pipelineJob("test-infra/openenclave/Docker1604DebugClang-8SnmallocE2E") {
             quietPeriod(0)
             description()
             keepDependencies(false)
             parameters {
+                stringParam {
+                    name("OE_TEST_INFRA_PULL_NUMBER")
+                    defaultValue("master")
+                    description("")
+                    trim(true)
+                }
                 stringParam {
                     name("PULL_NUMBER")
                     defaultValue("master")
@@ -17,6 +26,12 @@ jobs:
                 }
                 stringParam {
                     name("LINUX_VERSION")
+                    defaultValue("Ubuntu-1604")
+                    description("")
+                    trim(true)
+                }
+                stringParam {
+                    name("WINDOWS_VERSION")
                     defaultValue("")
                     description("")
                     trim(true)
@@ -28,26 +43,20 @@ jobs:
                     trim(true)
                 }
                 stringParam {
-                    name("WINDOWS_VERSION")
-                    defaultValue("Windows-2016")
-                    description("")
-                    trim(true)
-                }
-                stringParam {
                     name("COMPILER")
-                    defaultValue("")
+                    defaultValue("clang-8")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("USE_SNMALLOC")
-                    defaultValue("OFF")
+                    defaultValue("ON")
                     description("")
                     trim(true)
                 }
                 stringParam {
                     name("LVI_MITIGATION")
-                    defaultValue("ControlFlow")
+                    defaultValue("NONE")
                     description("")
                     trim(true)
                 }
@@ -59,11 +68,11 @@ jobs:
                 }
                 stringParam {
                     name("SIMULATION")
-                    defaultValue("0")
+                    defaultValue("1")
                     description("")
                     trim(true)
                 }
-            } 
+            }
             authenticationToken('<JENKINS_REMOTE_TRIGGER_TOKEN>')
             definition {
                 cpsScm {
@@ -71,8 +80,9 @@ jobs:
                         git {
                             remote {
                                 github("openenclave/test-infra", "https")
+                                refspec("+refs/pull/*/merge:refs/remotes/origin/pr/*")
                             }
-                            branch('*/master')
+                            branch('origin/pr/$OE_TEST_INFRA_PULL_NUMBER')
                             extensions {
                                 cleanBeforeCheckout()
                                 cleanAfterCheckout()
@@ -97,7 +107,7 @@ jobs:
                             }
                         }
                     }
-                    scriptPath("config/jobs/openenclave/jenkins/WindowsBuild.Jenkinsfile")
+                    scriptPath("config/jobs/openenclave/jenkins/UbuntuContainerBuild.Jenkinsfile")
                     lightweight(true)
                 }
             }
@@ -112,4 +122,4 @@ jobs:
                     }
                 }
             }
-        }        
+        }           

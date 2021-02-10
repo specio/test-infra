@@ -81,15 +81,12 @@ pipelines:
     Win2019RelSnmallocE2E
     Win2019Release
     Docker1604DebugClang-8Snmalloc
-    Docker1604DebugClang-8SnmallocE2E
     Docker1604RelWithDebInfoClang-8
     Docker1604RelWithDebInfoClang-8Snmalloc
     Docker1604ReleaseClang-8
     Docker1604ReleaseClang-8Snmalloc
-    Docker1604ReleaseClang-8SnmallocE2E
     Docker1804DebugClang-8
     Docker1804DebugClang-8Snmalloc
-    Docker1804DebugClang-8SnmallocE2E
     Docker1804RelWithDebInfoClang-8
     Docker1804RelWithDebInfoClang-8Snmalloc
     Docker1804ReleaseClang-8
@@ -227,7 +224,6 @@ buildtypemap:
     AArch64GNU1804Debug
     Docker1604DebugClang-8
     Docker1604DebugClang-8Snmalloc
-    Docker1604DebugClang-8SnmallocE2E
     Docker1804DebugClang-8
     Docker1804DebugClang-8Snmalloc
 
@@ -332,7 +328,6 @@ snmallocmap:
     Win2019RelSnmalloc
     Win2019RelSnmallocE2E
     Docker1604DebugClang-8Snmalloc
-    Docker1604DebugClang-8SnmallocE2E
     Docker1604RelWithDebInfoClang-8Snmalloc
     Docker1604ReleaseClang-8Snmalloc
     Docker1804DebugClang-8Snmalloc
@@ -389,7 +384,6 @@ linuxversionsmap:
     Docker1604BuildClang-8
     Docker1604DebugClang-8
     Docker1604DebugClang-8Snmalloc
-    Docker1604DebugClang-8SnmallocE2E
     Docker1604RelWithDebInfoClang-8
     Docker1604RelWithDebInfoClang-8Snmalloc
     Docker1604ReleaseClang-8
@@ -482,16 +476,13 @@ compilermap:
     Docker1604BuildClang-8
     Docker1604DebugClang-8
     Docker1604DebugClang-8Snmalloc
-    Docker1604DebugClang-8SnmallocE2E
     Docker1604RelWithDebInfoClang-8
     Docker1604RelWithDebInfoClang-8Snmalloc
     Docker1604ReleaseClang-8
     Docker1604ReleaseClang-8Snmalloc
-    Docker1604ReleaseClang-8SnmallocE2E
     Docker1804BuildClang-8
     Docker1804DebugClang-8
     Docker1804DebugClang-8Snmalloc
-    Docker1804DebugClang-8SnmallocE2E
     Docker1804RelWithDebInfoClang-8
     Docker1804RelWithDebInfoClang-8Snmalloc
     Docker1804ReleaseClang-8
@@ -557,7 +548,6 @@ jobmaps:
     Docker1604BuildClang-8
     Docker1604DebugClang-8
     Docker1604DebugClang-8Snmalloc
-    Docker1604DebugClang-8SnmallocE2E
     Docker1604RelWithDebInfoClang-8
     Docker1604RelWithDebInfoClang-8Snmalloc
     Docker1604ReleaseClang-8

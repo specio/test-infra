@@ -34,7 +34,7 @@ pipeline {
             parallel{
             ///*
                 stage('SGX1-FLC'){
-                    agent { label 'DOCKER && SGX1 && FLC && !KSS' }
+                    agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
                     steps{
                         script{
                             def PLATFORM_TYPE = "SGX1-FLC"
@@ -70,7 +70,7 @@ pipeline {
                 //*/
                 ///*
                 stage('SGX1-FLC-KSS'){
-                    agent { label 'DOCKER && SGX1 && FLC && KSS' }
+                    agent { label 'DOCKER && SGX1 && FLC && KSS && !OFF' }
                     steps{
                         script{
                             def PLATFORM_TYPE = "SGX1-FLC"
@@ -106,7 +106,7 @@ pipeline {
                 //*/
                 ///*
                 stage('SGX1'){
-                    agent { label 'DOCKER && SGX1 && !FLC' }
+                    agent { label 'DOCKER && SGX1 && !FLC && !OFF' }
                     steps{
                         cleanWs()
                         checkout scm

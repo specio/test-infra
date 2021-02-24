@@ -90,11 +90,11 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 ls -la
                 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
                 ninja -v
-                ctest --output-on-failure --timeout
+                apt-get install -y strace
+                strace ctest --output-on-failure --timeout
                 pwd
                 ls -la
                 cd samples/attestation
-                apt-get install -y strace
                 strace ./host/attestation_host ./enclave/enclave.signed 1>./tLog.txt 2>&1
                 cd ../..
                 """

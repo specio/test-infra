@@ -95,6 +95,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 ls -la
                 cd samples/attestation
                 apt-get install -y strace
+                strace ./host/attestation_host ./enclave/enclave.signed 1>./tLog.txt 2>&1
                 cd ../..
                 """
         }

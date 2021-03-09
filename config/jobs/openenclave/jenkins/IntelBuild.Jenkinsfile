@@ -6,7 +6,7 @@ LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
 
 // Some Defaults for general build info
 DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
-COMPILER=env.COMPILER?env.COMPILER:"clang-7"
+COMPILER=env.COMPILER?env.COMPILER:"clang-8"
 BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"RelWithDebInfo"
 
 // Some override for build configuration

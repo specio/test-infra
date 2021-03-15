@@ -9,6 +9,11 @@ void checkout( String PULL_NUMBER="master" ) {
         sh  """
             git config --global core.compression 0 && \
             rm -rf openenclave && \
+            ls -la && \
+            echo $(pwd)/test-infra/config/git-protocol-socks-wrapper && \
+            cat $(pwd)/test-infra/config/git-protocol-socks-wrapper && \
+            chmod +x $(pwd)/test-infra/config/git-protocol-socks-wrapper
+            export GIT_PROXY_COMMAND=$(pwd)/test-infra/config/git-protocol-socks-wrapper
             git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \
             cd openenclave && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*

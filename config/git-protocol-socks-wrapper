@@ -1,0 +1,2 @@
+#!/bin/bash
+nc -xproxy-dmz.intel.com:1080 -X5 $*

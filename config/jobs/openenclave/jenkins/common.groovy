@@ -89,6 +89,10 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         }
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
+                pm2 status
+                echo "N" | ./opt/intel/sgx-dcap-pccs/install.sh
+                sleep 10
+                pm2 status
                 mkdir build
                 cd ./build
                 pwd

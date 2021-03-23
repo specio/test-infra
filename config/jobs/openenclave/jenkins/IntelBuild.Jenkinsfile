@@ -36,11 +36,13 @@ pipeline {
                 stage('SGX1-FLC'){
                     agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
                     //when {
-                    //    expression { return params.SGX_FLC == "true" }
+                    //    expression { return params.SGX1_FLC == "true" }
                     //}
                     steps{
                         script{
                             echo 'hello'
+                            echo '$(PULL_NUMBER)
+                            echo $(SGX1_FLC)
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
                             stage("Clean"){

@@ -41,7 +41,7 @@ pipeline {
                     steps{
                         script{
                             echo 'hello'
-                            echo '$(PULL_NUMBER)
+                            echo $(PULL_NUMBER)
                             echo $(SGX1_FLC)
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def runner = load pwd() + "${SHARED_LIBRARY}"

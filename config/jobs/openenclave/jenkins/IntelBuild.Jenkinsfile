@@ -35,11 +35,12 @@ pipeline {
             ///*
                 stage('SGX1-FLC'){
                     agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
-                    when {
-                        expression { return params.SGX_FLC == "true" }
-                    }
+                    //when {
+                    //    expression { return params.SGX_FLC == "true" }
+                    //}
                     steps{
                         script{
+                            echo 'hello'
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
                             stage("Clean"){
@@ -57,7 +58,7 @@ pipeline {
                                     error "Program failed, please read logs..."
                                 }
                             }
-                            */     //Build and test in Hardware mode, do not clean up as we will package
+                            //*/     //Build and test in Hardware mode, do not clean up as we will package
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
@@ -67,6 +68,7 @@ pipeline {
                                     error "Program failed, please read logs..."
                                 }
                             }
+                            */
                         }
                     }
                 }

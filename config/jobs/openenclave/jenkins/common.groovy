@@ -93,6 +93,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 echo "N" | /opt/intel/sgx-dcap-pccs/install.sh
                 sleep 10
                 pm2 status
+                apt-get install libsgx-quote-ex -y
                 mkdir build
                 cd ./build
                 pwd

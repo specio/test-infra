@@ -58,7 +58,7 @@ pipeline {
                                     error "Program failed, please read logs..."
                                 }
                             }
-                            //*/     //Build and test in Hardware mode, do not clean up as we will package
+                            */     //Build and test in Hardware mode, do not clean up as we will package
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
@@ -68,7 +68,6 @@ pipeline {
                                     error "Program failed, please read logs..."
                                 }
                             }
-                            */
                         }
                     }
                 }

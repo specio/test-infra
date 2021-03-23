@@ -36,7 +36,7 @@ pipeline {
                 stage('SGX1-FLC'){
                     agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
                     when {
-                        expression { return env.SGX_FLC ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/ }
+                        expression { return params.SGX_FLC == "true" }
                     }
                     steps{
                         script{

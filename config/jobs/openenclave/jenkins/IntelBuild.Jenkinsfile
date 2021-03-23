@@ -35,9 +35,9 @@ pipeline {
             ///*
                 stage('SGX1-FLC'){
                     agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
-                    //when {
-                    //    expression { return params.SGX1_FLC == "true" }
-                    //}
+                    when {
+                        expression { return params.SGX1_FLC != "false" }
+                    }
                     steps{
                         script{
                             echo 'hello'

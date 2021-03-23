@@ -78,7 +78,7 @@ pipeline {
                 stage('SGX1-FLC-KSS'){
                     agent { label 'DOCKER && SGX1 && FLC && KSS && !OFF' }
                     when {
-                        expression { return env.SGX_FLC_KSS ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/ }
+                        expression { return env.SGX1_FLC_KSS != "false" }
                     }
                     steps{
                         script{
@@ -117,7 +117,7 @@ pipeline {
                 stage('SGX1'){
                     agent { label 'DOCKER && SGX1 && !FLC && !OFF' }
                     when {
-                        expression { return env.SGX_LLC ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/ }
+                        expression { return env.SGX1_LLC != "false" }
                     }
                     steps{
                         cleanWs()

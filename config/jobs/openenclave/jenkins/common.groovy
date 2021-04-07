@@ -10,10 +10,6 @@ void checkout( String PULL_NUMBER="master" ) {
             git config --global core.compression 0 && \
             rm -rf openenclave && \
             ls -la && \
-            echo ${WORKSPACE}/test-infra/config/git-protocol-socks-wrapper && \
-            cat ${WORKSPACE}/test-infra/config/git-protocol-socks-wrapper && \
-            chmod +x ${WORKSPACE}/test-infra/config/git-protocol-socks-wrapper && \
-            export GIT_PROXY_COMMAND=${WORKSPACE}/test-infra/config/git-protocol-socks-wrapper && \
             git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \
             cd openenclave && \
             git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
@@ -89,10 +85,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         }
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
-                pm2 status
-                echo "N" | /opt/intel/sgx-dcap-pccs/install.sh
-                sleep 10
-                pm2 status
                 mkdir build
                 cd ./build
                 pwd

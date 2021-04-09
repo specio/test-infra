@@ -52,6 +52,9 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Using compiler:    ${COMPILER}"
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
             echo "======================================================================="
+            node --version
+            [ $? -eq 0 ] && pm2 resurrect || echo "Skipping pm2 resurrect"
+            curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"
             """
         def c_compiler
         def cpp_compiler
@@ -85,8 +88,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         }
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
-                node --version
-                [ $? -eq 0 ] && pm2 resurrect || echo "Skipping pm2 resurrect"
                 mkdir build
                 cd ./build
                 pwd

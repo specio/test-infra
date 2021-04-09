@@ -52,7 +52,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Using compiler:    ${COMPILER}"
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
             echo "======================================================================="
-            node --version &> /dev/null
+            node --version || true
             [ \$? -eq 0 ] && pm2 resurrect || echo "Skipping pm2 resurrect"
             sleep 5
             pm2 status

@@ -85,6 +85,8 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         }
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
+                node --version
+                [ $? -eq 0 ] && pm2 resurrect || echo "Skipping pm2 resurrect"
                 mkdir build
                 cd ./build
                 pwd

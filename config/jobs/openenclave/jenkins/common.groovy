@@ -97,10 +97,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 ninja -v
                 apt-get install -y strace
                 ctest --output-on-failure --timeout
-                pwd
-                cd install/opt/openenclave/share/openenclave/samples/attestation
-                ls -la
-                ./host/attestation_host sgxlocal ./enclave_a/enclave_a.signed ./enclave_b/enclave_b.signed
                 """
         }
     } else {

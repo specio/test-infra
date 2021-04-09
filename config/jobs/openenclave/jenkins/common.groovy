@@ -53,7 +53,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
             echo "======================================================================="
             node --version
-            [ $? -eq 0 ] && pm2 resurrect || echo "Skipping pm2 resurrect"
+            [ \$? -eq 0 ] && pm2 resurrect || echo "Skipping pm2 resurrect"
             curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"
             """
         def c_compiler

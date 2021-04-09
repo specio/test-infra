@@ -82,7 +82,7 @@ pipeline {
                     }
                     steps{
                         script{
-                            def PLATFORM_TYPE = "SGX1-FLC"
+                            def PLATFORM_TYPE = "SGX1-FLC-KSS"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
                             stage("Clean"){
                                 cleanWs()

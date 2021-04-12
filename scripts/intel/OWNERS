@@ -1,0 +1,18 @@
+approvers:
+  - BRMcLaren
+  - rs--
+  - CyanDevs 
+  - test-infra-oncall
+required_reviewers:
+  - BRMcLaren
+  - rs--
+  - CyanDevs 
+  - test-infra-oncall
+reviewers:
+  - BRMcLaren
+  - rs--
+  - CyanDevs 
+  - test-infra-oncall
+labels:
+  - sig/ci
+  - sig/testing

@@ -33,7 +33,7 @@ void checkout( String PULL_NUMBER="master" ) {
 /** Build openenclave based on build config, compiler and platform
   * TODO: Add container support
 **/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String CTEST_VERBOSE ="false", String SPEC_TEST="ALL") {
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
 
         sh """#!/usr/bin/env bash
@@ -51,7 +51,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Configuration:     ${BUILD_CONFIG}"
             echo "Using compiler:    ${COMPILER}"
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
-            echo "CTest verbose:     ${CTEST_VERBOSE}"
+            echo "OE Log level:      ${OE_LOG_LEVEL}"
             echo "CTest test regex:  ${SPEC_TEST}"
             echo "======================================================================="
             sudo apt install cpuid -y
@@ -89,8 +89,8 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             cpp_compiler += "-${compiler_version}"
         }
         def ctest_cmd = "ctest"
-        if(CTEST_VERBOSE != "false"){
-            ctest_cmd = "OE_LOG_LEVEL=VERBOSE ctest -V"
+        if(OE_LOG_LEVEL != ""){
+         ctest_cmd = "OE_LOG_LEVEL=${OE_LOG_LEVEL} ctest -V"
         }
         def ctest_regex = ""
         if(SPEC_TEST != "ALL" && SPEC_TEST != "" ){
@@ -132,13 +132,13 @@ def ContainerClean(String imageName, String runArgs) {
     }
 }
 
-def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber, String ctestVerbose, String specifiedTest) {
+def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber, String oeLogLevel, String specifiedTest) {
     docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/openenclave"){
-                cmakeBuildopenenclave(buildType,compiler,buildArgs,ctestVerbose, specifiedTest)
+                cmakeBuildopenenclave(buildType,compiler,buildArgs,oeLogLevel, specifiedTest)
             }
         }
     }

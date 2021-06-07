@@ -33,7 +33,7 @@ void checkout( String PULL_NUMBER="master" ) {
 /** Build openenclave based on build config, compiler and platform
   * TODO: Add container support
 **/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String VERBOSE ="false") {
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String CTEST_VERBOSE ="false") {
     if (isUnix()) {
 
         sh """#!/usr/bin/env bash
@@ -51,7 +51,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Configuration:     ${BUILD_CONFIG}"
             echo "Using compiler:    ${COMPILER}"
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
-            echo "CTest verbose:     ${VERBOSE}"
+            echo "CTest verbose:     ${CTEST_VERBOSE}"
             echo "======================================================================="
             sudo apt install cpuid -y
             if [[ \$(cpuid | grep "SGX launch") == *"true"* ]]; then sudo pm2 resurrect && sleep 5 && sudo pm2 status && curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"; else echo "Legacy Launch Control detected..."; fi
@@ -88,7 +88,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             cpp_compiler += "-${compiler_version}"
         }
         def ctest_cmd = "ctest"
-        if(VERBOSE != "false"){
+        if(CTEST_VERBOSE != "false"){
             ctest_cmd = "OE_LOG_LEVEL=VERBOSE ctest -V"
         }
         
@@ -127,13 +127,13 @@ def ContainerClean(String imageName, String runArgs) {
     }
 }
 
-def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber) {
+def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber, String ctestVerbose) {
     docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/openenclave"){
-                cmakeBuildopenenclave(buildType,compiler,buildArgs)
+                cmakeBuildopenenclave(buildType,compiler,buildArgs,ctestVerbose)
             }
         }
     }

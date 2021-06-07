@@ -94,7 +94,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         }
         def ctest_regex = ""
         if(SPEC_TEST != "ALL" && SPEC_TEST != "" ){
-            ctest_regex = SPEC_TEST
+            ctest_regex = "-R " + SPEC_TEST
         }
      
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {

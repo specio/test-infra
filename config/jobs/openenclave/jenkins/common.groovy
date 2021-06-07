@@ -94,7 +94,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
-                echo Running: ${ctest_cmd}
                 mkdir build
                 cd ./build
                 pwd

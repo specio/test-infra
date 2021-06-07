@@ -33,7 +33,7 @@ void checkout( String PULL_NUMBER="master" ) {
 /** Build openenclave based on build config, compiler and platform
   * TODO: Add container support
 **/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="") {
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String VERBOSE ="false") {
     if (isUnix()) {
 
         sh """#!/usr/bin/env bash
@@ -51,6 +51,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Configuration:     ${BUILD_CONFIG}"
             echo "Using compiler:    ${COMPILER}"
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
+            echo "CTest verbose:     ${VERBOSE}"
             echo "======================================================================="
             sudo apt install cpuid -y
             if [[ \$(cpuid | grep "SGX launch") == *"true"* ]]; then sudo pm2 resurrect && sleep 5 && sudo pm2 status && curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"; else echo "Legacy Launch Control detected..."; fi
@@ -86,8 +87,14 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             c_compiler += "-${compiler_version}"
             cpp_compiler += "-${compiler_version}"
         }
+        def ctest_cmd = "ctest"
+        if(VERBOSE){
+            ctest_cmd = "OE_LOG_LEVEL=VERBOSE ctest -V"
+        }
+        
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
+                echo Running: ${ctest_cmd}
                 mkdir build
                 cd ./build
                 pwd
@@ -95,7 +102,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
                 ninja -v
                 apt-get install -y strace
-                OE_LOG_LEVEL=VERBOSE ctest -V --output-on-failure --timeout 480
+                ${ctest_cmd} --output-on-failure --timeout 480
                 """
         }
     } else {

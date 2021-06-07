@@ -88,7 +88,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             cpp_compiler += "-${compiler_version}"
         }
         def ctest_cmd = "ctest"
-        if(VERBOSE){
+        if(VERBOSE != "false"){
             ctest_cmd = "OE_LOG_LEVEL=VERBOSE ctest -V"
         }
         

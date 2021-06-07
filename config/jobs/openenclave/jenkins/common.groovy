@@ -88,10 +88,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             c_compiler += "-${compiler_version}"
             cpp_compiler += "-${compiler_version}"
         }
-        def ctest_cmd = "ctest"
-        if(OE_LOG_LEVEL != ""){
-         ctest_cmd = "OE_LOG_LEVEL=${OE_LOG_LEVEL} ctest -V"
-        }
+        
         def ctest_regex = ""
         if(SPEC_TEST != "ALL" && SPEC_TEST != "" ){
             ctest_regex = "-R " + SPEC_TEST
@@ -107,7 +104,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
                 ninja -v
                 apt-get install -y strace
-                ${ctest_cmd} ${ctest_regex} --output-on-failure --timeout 480
+                ctest ${ctest_regex} --output-on-failure --timeout 480
                 """
         }
     } else {

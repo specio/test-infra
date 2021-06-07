@@ -33,7 +33,7 @@ void checkout( String PULL_NUMBER="master" ) {
 /** Build openenclave based on build config, compiler and platform
   * TODO: Add container support
 **/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String CTEST_VERBOSE ="false") {
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String CTEST_VERBOSE ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
 
         sh """#!/usr/bin/env bash
@@ -52,6 +52,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "Using compiler:    ${COMPILER}"
             echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
             echo "CTest verbose:     ${CTEST_VERBOSE}"
+            echo "CTest test regex:  ${SPEC_TEST}"
             echo "======================================================================="
             sudo apt install cpuid -y
             if [[ \$(cpuid | grep "SGX launch") == *"true"* ]]; then sudo pm2 resurrect && sleep 5 && sudo pm2 status && curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"; else echo "Legacy Launch Control detected..."; fi
@@ -91,9 +92,14 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         if(CTEST_VERBOSE != "false"){
             ctest_cmd = "OE_LOG_LEVEL=VERBOSE ctest -V"
         }
-        
+        def ctest_regex = ""
+        if(SPEC_TEST != "ALL" && SPEC_TEST != "" ){
+            ctest_regex = SPEC_TEST
+        }
+     
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
+                echo REX: ${ctest_regex}
                 mkdir build
                 cd ./build
                 pwd
@@ -101,7 +107,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
                 ninja -v
                 apt-get install -y strace
-                ${ctest_cmd} --output-on-failure --timeout 480
+                ${ctest_cmd} ${ctest_regex} --output-on-failure --timeout 480
                 """
         }
     } else {
@@ -126,13 +132,13 @@ def ContainerClean(String imageName, String runArgs) {
     }
 }
 
-def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber, String ctestVerbose) {
+def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber, String ctestVerbose, String specifiedTest) {
     docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/openenclave"){
-                cmakeBuildopenenclave(buildType,compiler,buildArgs,ctestVerbose)
+                cmakeBuildopenenclave(buildType,compiler,buildArgs,ctestVerbose, specifiedTest)
             }
         }
     }

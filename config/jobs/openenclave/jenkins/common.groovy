@@ -95,7 +95,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_CONFIG} ${EXTRA_CMAKE_ARGS} -DLVI_MITIGATION_BINDIR=/usr/local/lvi-mitigation/bin -DCMAKE_INSTALL_PREFIX:PATH='/opt/openenclave' -DCPACK_GENERATOR=DEB -Wdev
                 ninja -v
                 apt-get install -y strace
-                ctest --output-on-failure --timeout 480
+                OE_LOG_LEVEL=VERBOSE ctest -V --output-on-failure --timeout 480
                 """
         }
     } else {

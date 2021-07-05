@@ -13,7 +13,7 @@ pipeline {
     }
 
     environment {
-        SHARED_LIBRARY="/config/jobs/openenclave-intel/jenkins/common.groovy"
+        SHARED_LIBRARY="/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"
     }
 
     agent none

@@ -129,9 +129,9 @@ def cleanup() {
     if (isUnix()) {
         try {
                 sh  """
+                    ls -la
                     sudo rm -rf openenclave || rm -rf openenclave || echo 'Workspace is clean'
-                    sudo rm -rf /opt/openenclave || rm -rf /opt/openenclave || echo 'Workspace is clean'
-                    sudo rm -rf ~/samples || rm -rf ~/samples || echo 'Workspace is clean'
+                    ls -la
                     """
             } catch (Exception e) {
                 // Do something with the exception 

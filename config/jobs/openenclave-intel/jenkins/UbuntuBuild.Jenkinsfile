@@ -29,16 +29,13 @@ pipeline {
                     }
                     steps{
                         script{
-                            echo 'hello'
-                            echo "Testing PR: ${PULL_NUMBER}"
-                            echo "S1: ${SGX1_FLC}"
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def BUILD_TYPE = "RelWithDebInfo"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
                             stage("Clean"){
                                 cleanWs()
                                 checkout scm
-                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
+                                runner.ContainerClean("oetools-full-18.04:${DOCKER_TsAG}","--cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
                             }
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){

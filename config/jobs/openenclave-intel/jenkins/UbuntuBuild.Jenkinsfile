@@ -43,21 +43,23 @@ pipeline {
                     }
                     steps{
                         script{
-                            echo 'hello'
+
                             echo "Testing PR: ${PULL_NUMBER}"
                             echo "S1: ${SGX1_FLC}"
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
+                            echo 'PreClean'
                             stage("Clean"){
                                 cleanWs()
                                 checkout scm
-                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave")
+                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
                             }
+							echo 'precheckCI'
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","","${PULL_NUMBER}")
+                                    //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","","${PULL_NUMBER}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."
@@ -67,7 +69,7 @@ pipeline {
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
+                                    runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."
@@ -90,13 +92,13 @@ pipeline {
                             stage("Clean"){
                                 cleanWs()
                                 checkout scm
-                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave")
+                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
                             }
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","","${PULL_NUMBER}")
+                                    //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","","${PULL_NUMBER}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."
@@ -106,7 +108,7 @@ pipeline {
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
+                                    runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."
@@ -131,13 +133,13 @@ pipeline {
                             stage("Clean"){
                                 cleanWs()
                                 checkout scm
-                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave")
+                                //runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--device /dev/sgx --device /dev/mei0 --cap-add=SYS_PTRACE --user=jenkins --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
                             }
                             // Build and test in Hardware mode, do not clean up as we will package
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    runner.ContainerBuild("oetools-sgx1-llc-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/isgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
+                                    runner.ContainerBuild("oetools-sgx1-llc-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/isgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."

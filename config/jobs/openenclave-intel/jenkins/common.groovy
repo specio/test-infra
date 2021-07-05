@@ -129,6 +129,9 @@ def cleanup() {
     if (isUnix()) {
         try {
                 sh  """
+                    hostname
+                    whoami
+                    pwd
                     ls -la
                     sudo rm -rf openenclave || rm -rf openenclave || echo 'Workspace is clean'
                     ls -la

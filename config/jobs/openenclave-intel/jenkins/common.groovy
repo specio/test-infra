@@ -105,7 +105,7 @@ def ContainerClean(String imageName, String runArgs) {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
-            dir("${WORKSPACE}/openenclave"){
+            dir("${WORKSPACE}"){
                 cleanup()
             }
         }

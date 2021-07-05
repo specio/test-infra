@@ -33,6 +33,7 @@ pipeline {
                             echo "Testing PR: ${PULL_NUMBER}"
                             echo "S1: ${SGX1_FLC}"
                             def PLATFORM_TYPE = "SGX1-FLC"
+                            def BUILD_TYPE = "RelWithDebInfo"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
                             stage("Clean"){
                                 cleanWs()

@@ -24,7 +24,7 @@ USE_SNMALLOC=expression { return COMPILER == 'gcc' && LINUX_VERSION =='1604'}?"O
 EXTRA_CMAKE_ARGS=env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:"-DLVI_MITIGATION=${LVI_MITIGATION} -DLVI_MITIGATION_SKIP_TESTS=${LVI_MITIGATION_SKIP_TESTS} -DUSE_SNMALLOC=${USE_SNMALLOC}"
 
 // Shared library config, check out common.groovy!
-SHARED_LIBRARY="/test-infra/config/jobs/openenclave/jenkins/common.groovy"
+SHARED_LIBRARY="/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"
 
 pipeline {
     options {

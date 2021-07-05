@@ -1,21 +1,35 @@
+// Pull Request Information
+PULL_NUMBER=env.PULL_NUMBER?env.PULL_NUMBER:"master"
+OE_LOG_LEVEL=env.OE_LOG_LEVEL?env.OE_LOG_LEVEL:"ERROR"
+SPEC_TEST=env.SPEC_TEST?env.SPEC_TEST:"ALL"
+
+
+// OS Version Configuration
+LINUX_VERSION=env.LINUX_VERSION?env.LINUX_VERSION:"1804"
+
+// Some Defaults for general build info
+DOCKER_TAG=env.DOCKER_TAG?env.DOCKER_TAG:"latest"
+COMPILER=env.COMPILER?env.COMPILER:"clang-8"
+BUILD_TYPE=env.BUILD_TYPE?env.BUILD_TYPE:"RelWithDebInfo"
+
+// Some override for build configuration
+LVI_MITIGATION=env.LVI_MITIGATION?env.LVI_MITIGATION:"ControlFlow"
+LVI_MITIGATION_SKIP_TESTS=env.LVI_MITIGATION_SKIP_TESTS?env.LVI_MITIGATION_SKIP_TESTS:"OFF"
+USE_SNMALLOC=env.USE_SNMALLOC?env.USE_SNMALLOC:"ON"
+
+// Edge casee, snmalloc will not work on old gcc versions and 1604 default is old. Remove after 1604 deprecation.
+USE_SNMALLOC=expression { return COMPILER == 'gcc' && LINUX_VERSION =='1604'}?"OFF":USE_SNMALLOC
+
+// Openenclave extra build configs 
+EXTRA_CMAKE_ARGS=env.EXTRA_CMAKE_ARGS?env.EXTRA_CMAKE_ARGS:"-DLVI_MITIGATION=${LVI_MITIGATION} -DLVI_MITIGATION_SKIP_TESTS=${LVI_MITIGATION_SKIP_TESTS} -DUSE_SNMALLOC=${USE_SNMALLOC}"
+
+// Shared library config, check out common.groovy!
+SHARED_LIBRARY="/test-infra/config/jobs/openenclave/jenkins/common.groovy"
+
 pipeline {
     options {
-        timeout(time: 60, unit: 'MINUTES')
+        timeout(time: 180, unit: 'MINUTES') 
     }
-
-    parameters {
-        string(name: 'LINUX_VERSION', defaultValue: params.LINUX_VERSION ?:'Ubuntu-1804', description: 'Linux version to build')
-        string(name: 'COMPILER', defaultValue: params.COMPILER ?:'clang-8', description: 'Compiler version')
-        string(name: 'DOCKER_TAG', defaultValue: params.DOCKER_TAG ?:'latest', description: 'Docker image version')
-        string(name: 'PULL_NUMBER', defaultValue: params.PULL_NUMBER ?:'master',  description: 'Branch/PR to build')
-        string(name: 'OE_LOG_LEVEL', defaultValue: params.OE_LOG_LEVEL ?:'master',  description: 'LogLevel for OE tests')
-        string(name: 'SPEC_TEST', defaultValue: params.SPEC_TEST ?:'master',  description: 'Run specific test(s) - By regex')
-    }
-
-    environment {
-        SHARED_LIBRARY="/config/jobs/openenclave-intel/jenkins/common.groovy"
-    }
-
     agent none
     stages {
         // Go through Build stages

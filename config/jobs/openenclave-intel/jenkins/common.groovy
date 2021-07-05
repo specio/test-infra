@@ -17,6 +17,8 @@ void checkout( String PULL_NUMBER="master" ) {
                 echo 'checking out  ${PULL_NUMBER}'
                 git checkout origin/pr/${PULL_NUMBER}
             fi
+            echo 'Changes checked out...'
+            git log -1
             """
     }
 }

@@ -32,11 +32,13 @@ pipeline {
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def BUILD_TYPE = "RelWithDebInfo"
                             def runner = load pwd() + "${SHARED_LIBRARY}"
+                            //Device openenclave busy - TODO prestige
+                            /*
                             stage("Clean"){
                                 cleanWs()
                                 checkout scm
                                 runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
-                            }
+                            }*/
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
@@ -130,7 +132,8 @@ pipeline {
                         }
                     }
                 }
-                //*/
+
+
             }
         }
     }

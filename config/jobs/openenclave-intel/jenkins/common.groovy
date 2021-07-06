@@ -26,7 +26,7 @@ void checkout( String PULL_NUMBER="master" ) {
 /** Build oeedgr8r based on build config, compiler and platform
   * TODO: Add container support
 **/
-def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-7", String EXTRA_CMAKE_ARGS ="", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
+def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-8", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
 
         sh """#!/usr/bin/env bash
@@ -43,7 +43,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "-----------------------------------------------------------------------"
             echo "Configuration:     ${BUILD_CONFIG}"
             echo "Using compiler:    ${COMPILER}"
-            echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
+#            echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
             echo "OE Log level:      ${OE_LOG_LEVEL}"
             echo "CTest test regex:  ${SPEC_TEST}"
             echo "======================================================================="
@@ -114,13 +114,13 @@ def ContainerClean(String imageName, String runArgs) {
     }
 }
 
-def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String buildArgs, String pullNumber, String oeLogLevel, String specifiedTest) {
+def ContainerBuild(String imageName, String buildType, String compiler, String runArgs, String pullNumber, String oeLogLevel, String specifiedTest) {
     docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/openenclave"){
-                cmakeBuildopenenclave(buildType,compiler,buildArgs,oeLogLevel, specifiedTest)
+                cmakeBuildopenenclave(buildType,compiler,oeLogLevel, specifiedTest)
             }
         }
     }

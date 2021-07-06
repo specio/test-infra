@@ -53,7 +53,7 @@ pipeline {
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
                                     runner.checkout("${PULL_NUMBER}")
-                                    runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","${EXTRA_CMAKE_ARGS}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
+                                    runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
                                 } catch (Exception e) {
                                     // Do something with the exception 
                                     error "Program failed, please read logs..."

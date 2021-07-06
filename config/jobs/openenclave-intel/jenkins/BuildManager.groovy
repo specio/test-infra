@@ -36,7 +36,7 @@ public void buildAndTest(String setup, String dockerTag, String compiler, String
             echo "Using compiler:    ${compiler}"
             echo "OE Log level:      ${oeLogLevel}"
             echo "CTest test regex:  ${specifiedTest}"
-            echo "-----------------------------------------------------------------------"
+            echo "----------------------------------------------------------------------------------------------------------------------------------------------"
             """
 
         def runner = load pwd() + "/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"

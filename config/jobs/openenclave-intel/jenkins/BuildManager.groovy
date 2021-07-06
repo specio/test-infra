@@ -40,7 +40,7 @@ public void buildAndTest(String setup, String dockerTag, String compiler, String
 
         def runner = load pwd() + "/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"
 
-        #runner.unixCheckout("${pullNumber}")
+        //runner.unixCheckout("${pullNumber}")
         runner.unixContainerBuild(currImage, dockerArgs, buildConf, compiler, oeLogLevel, specifiedTest)
 
         sh """#!/usr/bin/env bash

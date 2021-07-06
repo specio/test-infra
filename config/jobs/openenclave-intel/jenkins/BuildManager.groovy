@@ -1,6 +1,5 @@
 class UnixBuildManager {
 
-    @Override
     public void BuildAndTest() {
         if (isUnix()) {
             sh  """

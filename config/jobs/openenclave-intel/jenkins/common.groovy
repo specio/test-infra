@@ -54,6 +54,18 @@ def determineCompilers(String compiler) {
     return [c_compiler, cpp_compiler]
 }
 
+def verifyAttestation(){
+    sh """#!/usr/bin/env bash
+        set -o errexit
+        set -o pipefail
+        echo "-----------------------------------------------------------------------"
+        echo "------------------------ Veryfying Attestation ------------------------"
+            sudo apt install cpuid -y
+            if [[ \$(cpuid | grep "SGX launch") == *"true"* ]]; then sudo pm2 resurrect && sleep 5 && sudo pm2 status && curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"; else echo "Legacy Launch Control detected..."; fi
+        echo "======================================================================="
+        """
+}
+
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-8", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
 
@@ -80,12 +92,8 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "CXX:               ${cpp_compiler}"
             echo "OE Log level:      ${OE_LOG_LEVEL}"
             echo "CTest test regex:  ${SPEC_TEST}"
-            echo "======================================================================="
-            sudo apt install cpuid -y
-            if [[ \$(cpuid | grep "SGX launch") == *"true"* ]]; then sudo pm2 resurrect && sleep 5 && sudo pm2 status && curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"; else echo "Legacy Launch Control detected..."; fi
-            echo "======================================================================="
             """
-
+        verifyAttestation()
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
                 echo "start build..."

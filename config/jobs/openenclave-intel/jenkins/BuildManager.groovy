@@ -6,10 +6,10 @@ public void buildAndTest() {
 		sh  """
 			echo "starrt"
 		"""
-		for (key in getDockerImage.keySet()) {
-			println(key)
-			println(getDockerImage[key])
-		}
+		def PLATF=getDockerImage["SGX_FLC"]
+		sh  """
+			echo ${PLATF}
+		"""
 		sh  """
 			echo "mett"
 		"""

@@ -21,6 +21,7 @@ public void buildAndTest(String setup, String dockerTag, String compiler, String
         commonArgs = " --cap-add=SYS_PTRACE --user=root"
         dockerArgs = CustomDockerArgs[setup]+commonArgs+proxyArgs+volumeArgs
         currImage  = Images[setup]
+        buildConf  = "RelWithDebInfo"
 
         sh """#!/usr/bin/env bash
             set -o errexit
@@ -30,16 +31,17 @@ public void buildAndTest(String setup, String dockerTag, String compiler, String
             echo "----------------------------------------------------------------------------------------------------------------------------------------------"
             echo "Setup:             ${setup}"
             echo "Docker Image:      ${currImage}"
-            echo "Using compiler:    ${compiler}"
             echo "PullRequest:       ${pullNumber}"
+            echo "Build config:      ${buildConf}"
+            echo "Using compiler:    ${compiler}"
             echo "OE Log level:      ${oeLogLevel}"
             echo "CTest test regex:  ${specifiedTest}"
-            echo "Args:  ${dockerArgs}"
             """
 
         def runner = load pwd() + "/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"
 
-        runner.unixCheckout("${pullNumber}")
+        #runner.unixCheckout("${pullNumber}")
+        runner.unixContainerBuild(currImage, dockerArgs, buildConf, compiler, oeLogLevel, specifiedTest)
 
         sh """#!/usr/bin/env bash
             set -o errexit

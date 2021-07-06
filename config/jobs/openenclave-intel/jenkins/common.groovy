@@ -19,19 +19,6 @@ void unixCheckout( String PULL_NUMBER="master" ) {
         """
 }
 
-def unixContainerBuild(String imageName, String runArgs, String buildType, String compiler, String oeLogLevel, String specifiedTest) {
-    docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
-        def image = docker.image(imageName)
-        image.pull()
-        image.inside(runArgs) {
-            dir("${WORKSPACE}/openenclave"){
-                cmakeBuildopenenclave(buildType,compiler,oeLogLevel, specifiedTest)
-            }
-        }
-    }
-}
-
-
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-8", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
 
@@ -107,6 +94,23 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
         }
     }
 }
+
+def unixContainerBuild(String imageName, String runArgs, String buildType, String compiler, String oeLogLevel, String specifiedTest) {
+    docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
+        def image = docker.image(imageName)
+        image.pull()
+        image.inside(runArgs) {
+            dir("${WORKSPACE}/openenclave"){
+                cmakeBuildopenenclave(buildType,compiler,oeLogLevel, specifiedTest)
+            }
+        }
+    }
+}
+
+///////////
+//////////
+/////////
+////////
 
 def ContainerClean(String imageName, String runArgs) {
     docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {

@@ -17,7 +17,7 @@ public void buildAndTest(String setup, String dockerTag, String compiler, String
             "SGX1"         : "--device /dev/isgx"
             ]
         proxyArgs  = " --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost"
-        volumeArgs = " --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave"
+        volumeArgs = " --volume "+pwd()+"/openenclave:"+pwd()+"/openenclave"
         commonArgs = " --cap-add=SYS_PTRACE --user=root"
         dockerArgs = CustomDockerArgs[setup]+commonArgs+proxyArgs+volumeArgs
         currImage  = Images[setup]

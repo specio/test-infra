@@ -8,8 +8,8 @@ pipeline {
         string(name: 'COMPILER', defaultValue: params.COMPILER ?:'clang-8', description: 'Compiler version')
         string(name: 'DOCKER_TAG', defaultValue: params.DOCKER_TAG ?:'latest', description: 'Docker image version')
         string(name: 'PULL_NUMBER', defaultValue: params.PULL_NUMBER ?:'master',  description: 'Branch/PR to build')
-        string(name: 'OE_LOG_LEVEL', defaultValue: params.OE_LOG_LEVEL ?:'master',  description: 'LogLevel for OE tests')
-        string(name: 'SPEC_TEST', defaultValue: params.SPEC_TEST ?:'master',  description: 'Run specific test(s) - By regex')
+        string(name: 'OE_LOG_LEVEL', defaultValue: params.OE_LOG_LEVEL ?:'ERROR',  description: 'LogLevel for OE tests')
+        string(name: 'SPEC_TEST', defaultValue: params.SPEC_TEST ?:'ALL',  description: 'Run specific test(s) - By regex')
     }
 
     environment {

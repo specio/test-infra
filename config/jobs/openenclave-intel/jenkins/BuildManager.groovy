@@ -23,8 +23,6 @@ public void buildAndTest(String dockerTag, String compiler, String pullNumber, S
                 set -o errexit
                 set -o pipefail
                 echo "Testing: ${currSetUp}"
-				def runner = load pwd() + "/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"
-				runner.checkout("${pullNumber}")
             """
         }
         sh """#!/usr/bin/env bash

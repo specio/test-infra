@@ -3,12 +3,19 @@
 /** Checkout openenclave, along with merged pull request. If master is instead passed in, don't check out branch
   * as this is being ran as a validation of master or as a reverse integration test on the test-infra repo.
 **/
-void BuildAndTest() {
+void buildAndTest() {
 	if (isUnix()) {
 		sh  """
 			echo "starrtX"
 		"""
 	}
+}
+void checkoutx( String PULL_NUMBER="master" ) {
+    if (isUnix()) {
+        sh  """
+			echo "cosXXX"
+            """
+    }
 }
 
 void checkout( String PULL_NUMBER="master" ) {

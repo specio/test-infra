@@ -43,9 +43,10 @@ pipeline {
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
-									runner.BuildAndTest()
-                                    buildManager.BuildAndTest()
-									runner.BuildAndTest()
+									runner.buildAndTest()
+                                    buildManager.buildAndTest()
+									runner.buildAndTest()
+									runner.checkoutx("${PULL_NUMBER}")
                                     runner.checkout("${PULL_NUMBER}")
                                     //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","","${PULL_NUMBER}")
                                 } catch (Exception e) {

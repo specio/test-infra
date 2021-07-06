@@ -3,10 +3,16 @@ def getDockerImage = ["SGX1-FLC": "ImagedoSGXFLC", "SGX1-FLC-KSS": "ImagedoKSS",
 
 public void BuildAndTest() {
 	if (isUnix()) {
+		sh  """
+			echo "starrt"
+		"""
 		for (key in getDockerImage.keySet()) {
 			println(key)
 			println(getDockerImage[key])
 		}
+		sh  """
+			echo "mett"
+		"""
 	}
 }
 return this

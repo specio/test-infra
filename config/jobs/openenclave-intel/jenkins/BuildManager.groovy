@@ -7,14 +7,12 @@ public void buildAndTest() {
 		sh  """
 			echo "starrt"
 		"""
-		def colors = ["SGX1-FLC": '#FF0000', "SGX1-FLC-KSS": '#00FF00', "SGX1": '#0000FF']
+		def colors = ["SGX1-FLC": "#FF0000", "SGX1-FLC-KSS": "#00FF00", "SGX1": "#0000FF"]
 		for (key in colors.keySet().sort()) {
-			def ALA="Sim"
-			def PLATFORM = colors[key]
+			def ALA = colors[key]
 			sh  """
 				echo "____"
 				echo ${ALA}
-				echo ${PLATFORM}
 				echo "____"
 			"""
 		}

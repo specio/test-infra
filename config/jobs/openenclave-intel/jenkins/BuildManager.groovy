@@ -11,8 +11,6 @@ public void buildAndTest() {
 		for (key in colors.keySet().sort()) {
 			ALA = colors[key]
 			sh  """
-				ALA=${ALA}
-				echo $ALA
 				echo "srala ${ALA}"
 			"""
 		}

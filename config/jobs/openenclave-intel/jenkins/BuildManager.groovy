@@ -8,7 +8,7 @@ public void buildAndTest(String dockerTag, String compiler, String pullNumber, S
             set -o errexit
             set -o pipefail
             echo "======================================================================="
-            echo "Starting Build and Test
+            echo "Starting Build and Test"
             echo "-----------------------------------------------------------------------"
             echo "Docker Tag:     ${dockerTag}"
             echo "Using compiler:    ${compiler}"
@@ -25,7 +25,7 @@ public void buildAndTest(String dockerTag, String compiler, String pullNumber, S
         }
         sh  """
             echo "======================================================================="
-            echo "Finished Build and Test
+            echo "Finished Build and Test"
             echo "-----------------------------------------------------------------------"
         """
     }

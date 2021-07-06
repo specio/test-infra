@@ -17,13 +17,15 @@ public void buildAndTest(String dockerTag, String compiler, String pullNumber, S
             echo "CTest test regex:  ${specifiedTest}"
             """
         def colors = ["SGX1-FLC": "oetools-full-18.04:${dockerTag}", "SGX1-FLC-KSS": "oetools-full-18.04:${dockerTag}", "SGX1": "oetools-sgx1-llc-full-18.04:${dockerTag}"]
-        for (key in colors.keySet()) {
-            currSetUp = colors[key]
+        for (currSetUp in colors.keySet()) {
+            currImage = colors[currSetUp]
             sh """#!/usr/bin/env bash
                 set -o errexit
                 set -o pipefail
-                echo "Testing: ${currSetUp}"
+                echo "Testing ${currSetUp} on image: ${currImage}"
             """
+            def runner = load pwd() + "/test-infra/config/jobs/openenclave-intel/jenkins/common.groovy"
+            runner.checkout("${pullNumber}")
         }
         sh """#!/usr/bin/env bash
             set -o errexit

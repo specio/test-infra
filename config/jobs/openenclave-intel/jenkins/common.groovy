@@ -19,32 +19,19 @@ void unixCheckout( String PULL_NUMBER="master" ) {
         """
 }
 
-
-
-void checkout( String PULL_NUMBER="master" ) {
-    if (isUnix()) {
-        sh  """
-            git config --global core.compression 0 && \
-            rm -rf openenclave && \
-            git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \
-            cd openenclave && \
-            git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
-            if [ '${PULL_NUMBER}' != 'master' ]
-            then
-                echo 'checking out  ${PULL_NUMBER}'
-                git checkout origin/pr/${PULL_NUMBER}
-            fi
-            echo 'Changes checked out...'
-            echo "-----------------------------------------------------------------------"
-            git log -1
-            echo "-----------------------------------------------------------------------"
-            """
+def unixContainerBuild(String imageName, String runArgs, String buildType, String compiler, String oeLogLevel, String specifiedTest) {
+    docker.withRegistry("https://oenc-jenkins.sclab.intel.com:5000") {
+        def image = docker.image(imageName)
+        image.pull()
+        image.inside(runArgs) {
+            dir("${WORKSPACE}/openenclave"){
+                cmakeBuildopenenclave(buildType,compiler,oeLogLevel, specifiedTest)
+            }
+        }
     }
 }
 
-/** Build oeedgr8r based on build config, compiler and platform
-  * TODO: Add container support
-**/
+
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-8", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
 

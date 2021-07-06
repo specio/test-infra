@@ -14,6 +14,7 @@ public void BuildAndTest() {
 void checkout( String PULL_NUMBER="master" ) {
     if (isUnix()) {
         sh  """
+			echo "cos"
             git config --global core.compression 0 && \
             rm -rf openenclave && \
             git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \

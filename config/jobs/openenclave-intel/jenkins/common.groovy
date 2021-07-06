@@ -1,4 +1,4 @@
-void unixCheckout( String PULL_NUMBER="master" ) {
+def unixCheckout( String PULL_NUMBER="master" ) {
     sh """#!/usr/bin/env bash
         set -o errexit
         set -o pipefail
@@ -19,8 +19,49 @@ void unixCheckout( String PULL_NUMBER="master" ) {
         """
 }
 
+//returns CC and CXX variables as a table
+def determineCompilers(String compiler) {
+    def c_compiler
+    def cpp_compiler
+    def compiler_version
+    switch(COMPILER) {
+        case "clang-8":
+            c_compiler = "clang"
+            cpp_compiler = "clang++"
+            compiler_version = "8"
+            break
+        case "clang-7":
+            c_compiler = "clang"
+            cpp_compiler = "clang++"
+            compiler_version = "7"
+            break
+        case "gcc":
+            c_compiler = "gcc"
+            cpp_compiler = "g++"
+
+            break
+        default:
+            // This is needed for backwards compatibility with the old
+            // implementation of the method.
+            c_compiler = "clang"
+            cpp_compiler = "clang++"
+            compiler_version = "8"
+    }
+    if (compiler_version) {
+        c_compiler += "-${compiler_version}"
+        cpp_compiler += "-${compiler_version}"
+    }
+    return [c_compiler, cpp_compiler]
+}
+
 def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang-8", String OE_LOG_LEVEL ="false", String SPEC_TEST="ALL") {
     if (isUnix()) {
+
+        (c_compiler, cpp_compiler) = determineCompilers(compiler)
+        def ctest_regex = ""
+        if(SPEC_TEST != "ALL" && SPEC_TEST != "" ){
+            ctest_regex = "-R " + SPEC_TEST
+        }
 
         sh """#!/usr/bin/env bash
             set -o errexit
@@ -35,7 +76,8 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "no_proxy:    $no_proxy"
             echo "-----------------------------------------------------------------------"
             echo "Configuration:     ${BUILD_CONFIG}"
-            echo "Using compiler:    ${COMPILER}"
+            echo "CC:                ${c_compiler}"
+            echo "CXX:               ${cpp_compiler}"
             echo "OE Log level:      ${OE_LOG_LEVEL}"
             echo "CTest test regex:  ${SPEC_TEST}"
             echo "======================================================================="
@@ -43,44 +85,11 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             if [[ \$(cpuid | grep "SGX launch") == *"true"* ]]; then sudo pm2 resurrect && sleep 5 && sudo pm2 status && curl --noproxy "*" -v -k -G "https://localhost:8081/sgx/certification/v2/rootcacrl"; else echo "Legacy Launch Control detected..."; fi
             echo "======================================================================="
             """
-        def c_compiler
-        def cpp_compiler
-        def compiler_version
-        switch(COMPILER) {
-            case "clang-8":
-                c_compiler = "clang"
-                cpp_compiler = "clang++"
-                compiler_version = "8"
-                break
-            case "clang-7":
-                c_compiler = "clang"
-                cpp_compiler = "clang++"
-                compiler_version = "7"
-                break
-            case "gcc":
-                c_compiler = "gcc"
-                cpp_compiler = "g++"
 
-                break
-            default:
-                // This is needed for backwards compatibility with the old
-                // implementation of the method.
-                c_compiler = "clang"
-                cpp_compiler = "clang++"
-                compiler_version = "8"
-        }
-        if (compiler_version) {
-            c_compiler += "-${compiler_version}"
-            cpp_compiler += "-${compiler_version}"
-        }
-        
-        def ctest_regex = ""
-        if(SPEC_TEST != "ALL" && SPEC_TEST != "" ){
-            ctest_regex = "-R " + SPEC_TEST
-        }
-     
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
+                echo "start build..."
+                ls -la
                 mkdir build
                 cd ./build
                 pwd

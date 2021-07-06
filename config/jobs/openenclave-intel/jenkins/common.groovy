@@ -36,7 +36,6 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "-----------------------------------------------------------------------"
             echo "Configuration:     ${BUILD_CONFIG}"
             echo "Using compiler:    ${COMPILER}"
-#            echo "Compilator Params: ${EXTRA_CMAKE_ARGS}"
             echo "OE Log level:      ${OE_LOG_LEVEL}"
             echo "CTest test regex:  ${SPEC_TEST}"
             echo "======================================================================="

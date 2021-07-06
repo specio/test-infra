@@ -1,6 +1,6 @@
 
 
-public void BuildAndTest() {
+void BuildAndTest() {
 	if (isUnix()) {
 		sh  """
 			echo "starrt"

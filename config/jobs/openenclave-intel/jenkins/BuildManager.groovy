@@ -12,9 +12,9 @@ public void buildAndTest(String setup, String dockerTag, String compiler, String
             ]
         def CustomDockerArgs = 
             [
-            "SGX1-FLC"     : "oetools-full-18.04:${dockerTag}", 
-            "SGX1-FLC-KSS" : "oetools-full-18.04:${dockerTag}", 
-            "SGX1"         : "oetools-sgx1-llc-full-18.04:${dockerTag}"
+            "SGX1-FLC"     : "--device /dev/sgx", 
+            "SGX1-FLC-KSS" : "--device /dev/sgx", 
+            "SGX1"         : "--device /dev/isgx"
             ]
         proxyArgs  = " --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost"
         volumeArgs = " --volume /jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave:/jenkinsdata/workspace/Pipelines/OpenEnclave-TestInfra/openenclave"

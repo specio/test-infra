@@ -1,7 +1,27 @@
+void unixCheckout( String PULL_NUMBER="master" ) {
+    sh  """
+        git config --global core.compression 0 && \
+        rm -rf openenclave && \
+        git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \
+        cd openenclave && \
+        git fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*
+        if [ '${PULL_NUMBER}' != 'master' ]
+        then
+            echo 'checking out  ${PULL_NUMBER}'
+            git checkout origin/pr/${PULL_NUMBER}
+        fi
+        echo 'Changes checked out...'
+        echo "-----------------------------------------------------------------------"
+        git log -1
+        echo "-----------------------------------------------------------------------"
+        """
+}
+
+
+
 void checkout( String PULL_NUMBER="master" ) {
     if (isUnix()) {
         sh  """
-			echo "cos"
             git config --global core.compression 0 && \
             rm -rf openenclave && \
             git clone --recursive --depth 1 https://github.com/openenclave/openenclave && \
@@ -13,7 +33,9 @@ void checkout( String PULL_NUMBER="master" ) {
                 git checkout origin/pr/${PULL_NUMBER}
             fi
             echo 'Changes checked out...'
+            echo "-----------------------------------------------------------------------"
             git log -1
+            echo "-----------------------------------------------------------------------"
             """
     }
 }

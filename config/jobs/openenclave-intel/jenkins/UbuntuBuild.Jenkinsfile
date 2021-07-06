@@ -38,13 +38,14 @@ pipeline {
                             stage("Clean"){
                                 cleanWs()
                                 checkout scm
-								buildManager.BuildAndTest()
                                 runner.ContainerClean("oetools-full-18.04:${DOCKER_TAG}","--cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave")
                             }*/
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
+									runner.BuildAndTest()
                                     buildManager.BuildAndTest()
+									runner.BuildAndTest()
                                     runner.checkout("${PULL_NUMBER}")
                                     //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","","${PULL_NUMBER}")
                                 } catch (Exception e) {

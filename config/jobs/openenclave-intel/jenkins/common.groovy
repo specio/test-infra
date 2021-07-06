@@ -91,9 +91,10 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
             echo "CC:                ${c_compiler}"
             echo "CXX:               ${cpp_compiler}"
             echo "OE Log level:      ${OE_LOG_LEVEL}"
-            echo "CTest test regex:  ${SPEC_TEST}"
+            echo "CTest test regex:  ${ctest_regex}"
             """
         verifyAttestation()
+		verifyAttestation()
         withEnv(["CC=${c_compiler}","CXX=${cpp_compiler}"]) {
             sh  """
                 echo "start build..."
@@ -108,6 +109,7 @@ def cmakeBuildopenenclave( String BUILD_CONFIG="Release", String COMPILER="clang
                 ctest ${ctest_regex} --output-on-failure --timeout 480
                 """
         }
+		verifyAttestation()
     }
 }
 

@@ -31,7 +31,7 @@ pipeline {
                         script{
                             def PLATFORM_TYPE = "SGX1-FLC"
                             def BUILD_TYPE = "RelWithDebInfo"
-                            def runner = load pwd() + "${SHARED_LIBRARY}"
+                            def buildManager = load pwd() + "/test-infra/config/jobs/openenclave-intel/jenkins/BuildManager.groovy"
                             //Device openenclave busy - TODO prestige
                             /*
                             stage("Clean"){
@@ -42,6 +42,7 @@ pipeline {
                             /*     // Build and test in Hardware mode, do not clean up as we will package
                             stage("CheckCI"){
                                 try{
+                                    buildManager.BuildAndTest()
                                     runner.checkout("${PULL_NUMBER}")
                                     //runner.ContainerCheckCI("oetools-minimal-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--user=root --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","","${PULL_NUMBER}")
                                 } catch (Exception e) {

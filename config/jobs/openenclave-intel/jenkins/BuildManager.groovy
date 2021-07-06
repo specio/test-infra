@@ -7,14 +7,13 @@ public void buildAndTest() {
 		sh  """
 			echo "starrt"
 		"""
-		def colors = ["SGX1-FLC": "#FF0000", "SGX1-FLC-KSS": "#00FF00", "SGX1": "#0000FF"]
+		def colors = ["SGX1-FLC": "oetools-full-18.04", "SGX1-FLC-KSS": "oetools-full-18.04-KSS", "SGX1": "oetools-sgx1-llc-full-18.04"]
 		for (key in colors.keySet().sort()) {
 			ALA = colors[key]
 			sh  """
 				ALA=${ALA}
-				echo "____ $ALA"
-				echo ${ALA}
-				echo "____"
+				echo $ALA
+				echo "srala ${ALA}"
 			"""
 		}
 		sh  """

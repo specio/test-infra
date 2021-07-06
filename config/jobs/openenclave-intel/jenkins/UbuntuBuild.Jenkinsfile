@@ -22,10 +22,10 @@ pipeline {
         stage('PR-Check'){
             parallel{
                 stage('SGX1-FLC'){
-                    agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
                     when {
                         expression { return env.SGX1_FLC != "false" }
                     }
+                    agent { label 'DOCKER && SGX1 && FLC && !KSS && !OFF' }
                     steps{
                         script{
                             def PLATFORM_TYPE = "SGX1-FLC"
@@ -41,10 +41,10 @@ pipeline {
                     }
                 }
                 stage('SGX1-FLC-KSS'){
-                    agent { label 'DOCKER && SGX1 && FLC && KSS && !OFF' }
                     when {
                         expression { return env.SGX1_FLC_KSS != "false" }
                     }
+                    agent { label 'DOCKER && SGX1 && FLC && KSS && !OFF' }
                     steps{
                         script{
                             def PLATFORM_TYPE = "SGX1-FLC-KSS"
@@ -60,10 +60,10 @@ pipeline {
                     }
                 }
                 stage('SGX1'){
-                    agent { label 'DOCKER && SGX1 && !FLC && !OFF' }
                     when {
                         expression { return env.SGX1_LLC != "false" }
                     }
+                    agent { label 'DOCKER && SGX1 && !FLC && !OFF' }
                     steps{
                         script{
                             def PLATFORM_TYPE = "SGX1"

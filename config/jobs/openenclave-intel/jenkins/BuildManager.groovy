@@ -6,7 +6,8 @@ public void buildAndTest() {
 		sh  """
 			echo "starrt"
 		"""
-		
+		def PLATF=getDockerImage["SGX1-FLC"]
+
 		sh  """
 			echo "mett"
 		"""

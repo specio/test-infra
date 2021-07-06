@@ -36,7 +36,7 @@ pipeline {
 
                             stage("Ubuntu ${LINUX_VERSION} - ${PLATFORM_TYPE} - ${BUILD_TYPE}"){
                                 try{
-                                    buildManager.buildAndTest("${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
+                                    buildManager.buildAndTest("${DOCKER_TAG}","${COMPILER}","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
                                     runner.checkout("${PULL_NUMBER}")
                                     runner.ContainerBuild("oetools-full-18.04:${DOCKER_TAG}","${BUILD_TYPE}","${COMPILER}","--device /dev/sgx --cap-add=SYS_PTRACE --user=root --env https_proxy=http://proxy-mu.intel.com:912 --env http_proxy=http://proxy-mu.intel.com:911 --env no_proxy=intel.com,.intel.com,localhost --volume /jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave:/jenkinsdata/workspace/Pipelines/Intel-IntegrationTests/openenclave","${PULL_NUMBER}","${OE_LOG_LEVEL}","${SPEC_TEST}")
                                 } catch (Exception e) {

@@ -19,9 +19,9 @@ public void buildAndTest(String dockerTag, String compiler, String pullNumber, S
 
         def Setups = 
             [
-            "SGX1-FLC":     "oetools-full-18.04:${dockerTag}", 
-            "SGX1-FLC-KSS": "oetools-full-18.04:${dockerTag}", 
-            "SGX1":         "oetools-sgx1-llc-full-18.04:${dockerTag}"
+            "SGX1-FLC"     : "oetools-full-18.04:${dockerTag}", 
+            "SGX1-FLC-KSS" : "oetools-full-18.04:${dockerTag}", 
+            "SGX1"         : "oetools-sgx1-llc-full-18.04:${dockerTag}"
             ]
 
         for (currSetUp in Setups.keySet()) {

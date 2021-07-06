@@ -16,7 +16,7 @@ public void buildAndTest(String dockerTag, String compiler, String pullNumber, S
             echo "OE Log level:      ${oeLogLevel}"
             echo "CTest test regex:  ${specifiedTest}"
             """
-        def colors = ["SGX1-FLC": "oetools-full-18.04:", "SGX1-FLC-KSS:${dockerTag}": "oetools-full-18.04-KSS:${dockerTag}", "SGX1": "oetools-sgx1-llc-full-18.04:${dockerTag}"]
+        def colors = ["SGX1-FLC": "oetools-full-18.04:${dockerTag}", "SGX1-FLC-KSS": "oetools-full-18.04:${dockerTag}", "SGX1": "oetools-sgx1-llc-full-18.04:${dockerTag}"]
         for (key in colors.keySet()) {
             currSetUp = colors[key]
             sh  """

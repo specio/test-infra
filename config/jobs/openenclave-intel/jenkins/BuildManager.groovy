@@ -9,10 +9,11 @@ public void buildAndTest() {
 		"""
 		def colors = ["SGX1-FLC": '#FF0000', "SGX1-FLC-KSS": '#00FF00', "SGX1": '#0000FF']
 		for (key in colors.keySet().sort()) {
-			println(key)
-			println(colors[key])
+			def PLATFORM = colors[key]
+			sh  """
+				echo ${PLATFORM}
+			"""
 		}
-
 		sh  """
 			echo "mett"
 		"""

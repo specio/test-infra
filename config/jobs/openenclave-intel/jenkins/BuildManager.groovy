@@ -1,4 +1,4 @@
-class UnixBuildManager {
+class BuildManager {
 
     public void BuildAndTest() {
         if (isUnix()) {
@@ -9,4 +9,4 @@ class UnixBuildManager {
     }
 
 }
-return UnixBuildManager();
+return BuildManager();

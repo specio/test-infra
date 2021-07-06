@@ -1,6 +1,6 @@
 
 
-void buildAndTest() {
+def buildAndTest() {
 	if (isUnix()) {
 		sh  """
 			echo "starrt"
